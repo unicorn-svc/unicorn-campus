@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#2D1B69" />
+
+<title>YET · AI 업무자동화 기초 — 1주일 만에 나만의 AI팀원을 고용하는 법 | 이해경 강사</title>
+<meta name="description" content="YET(Your Engineering Takeoff) · AI 업무자동화 기초 1기. Claude Code·Codex로 1주일 만에 나만의 AI 팀원을 고용해 매일 2시간을 돌려받는 실전 강의. IBM 29년 경력 이해경 강사 직강. Early Birds 20명 한정 79,000원. 아직, 이라서 시작합니다." />
+<meta name="keywords" content="YET, YET Crew, YET AI 업무자동화, AI 업무자동화 강의, Claude Code 강의, AI 자동화 교육, 업무자동화 부트캠프, 프롬프트 엔지니어링, 이해경 강사, AI 에이전트 개발, AI 플러그인 개발, 유니콘주식회사" />
+<meta name="author" content="YET · 유니콘주식회사 · 이해경" />
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="YET · AI 업무자동화 기초 — 1주일 만에 나만의 AI팀원을 고용하는 법" />
+<meta property="og:description" content="아직, 이라서 시작합니다. Not yet, but we will ship it. YET AI 업무자동화 진입 코스 · IBM 29년 경력 이해경 강사 직강 · Early Birds 79,000원." />
+<meta property="og:image" content="assets/instructor.jpg" />
+<meta property="og:image:alt" content="이해경 강사 프로필" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="YET · Your Engineering Takeoff" />
+<meta property="og:url" content="https://yet-bootcamp.unicorn.kubepia.com/ai/ai-basic.html" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="YET · AI 업무자동화 기초 — 이해경 강사 직강" />
+<meta name="twitter:description" content="아직, 이라서 시작합니다. 1주일 만에 나만의 AI 팀원을 고용해 매일 2시간을 돌려받는 실전 강의. Early Birds 79,000원. #YET #YETCrew" />
+<meta name="twitter:image" content="assets/instructor.jpg" />
+
+<!-- Canonical -->
+<link rel="canonical" href="./ai-basic.html" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Archivo+Black&family=Georgia&display=swap" />
+
+<!-- Structured Data: Course -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "YET · AI 업무자동화 기초",
+  "description": "YET(Your Engineering Takeoff) · AI 업무자동화 기초 1기. Claude Code, Codex, Claude Web을 활용해 1주일 만에 나만의 AI 팀원을 고용하고 업무를 자동화하는 실전 강의.",
+  "provider": {
+    "@type": "Organization",
+    "name": "YET · 유니콘주식회사",
+    "url": "https://yet-bootcamp.unicorn.kubepia.com",
+    "alternateName": "Your Engineering Takeoff"
+  },
+  "instructor": {
+    "@type": "Person",
+    "name": "이해경",
+    "jobTitle": "IBM Architect / Agile Coach"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "79000",
+    "priceCurrency": "KRW",
+    "availability": "https://schema.org/LimitedAvailability",
+    "validFrom": "2026-05-16",
+    "category": "Early Bird"
+  }
+}
+</script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  font-size: 16px; line-height: 1.7;
+  color: #1A1A1A; background: #FFFFFF;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* ===== YET Brand Tokens ===== */
+:root {
+  /* YET Brand colors (from Brand Identity Guide) */
+  --yet-purple-900: #2D1B69;   /* Primary · Deep Purple */
+  --yet-purple-800: #1F1247;   /* Deeper for gradient */
+  --yet-purple-700: #4A2C8A;   /* Secondary */
+  --yet-purple-500: #6B4DAB;   /* Accent · Light Purple */
+  --yet-bg-soft:    #F8F6FC;   /* Off White background */
+  --yet-yellow:     #FFD23F;   /* Signal Yellow · Highlight */
+  --yet-yellow-d:   #E5A800;   /* Darker variant for text on white */
+
+  /* Aliases used through the page (kept names for code stability) */
+  --navy-900: var(--yet-purple-900);
+  --navy-800: var(--yet-purple-800);
+  --navy-700: var(--yet-purple-700);
+  --navy-50:  var(--yet-bg-soft);
+  --gold:     var(--yet-yellow);
+  --gold-dark:var(--yet-yellow-d);
+
+  --ink:      #1A1A1A;
+  --ink-2:    #4A4A4A;
+  --ink-3:    #6B7280;
+  --line:     #E7E3F0;
+  --bg-soft:  #F8F6FC;
+  --success:  #10B981;
+  --danger:   #EF4444;
+  --radius:   14px;
+  --shadow-1: 0 4px 16px rgba(45, 27, 105, 0.08);
+  --shadow-2: 0 12px 32px rgba(45, 27, 105, 0.14);
+  --maxw:     1140px;
+}
+
+.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+section { padding: 80px 0; }
+.section-head { text-align: center; margin-bottom: 48px; }
+.eyebrow {
+  display: inline-block; padding: 6px 14px; border-radius: 999px;
+  background: rgba(255, 210, 63, 0.16); color: #8A6500;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+  margin-bottom: 16px;
+}
+h1, h2, h3, h4 { color: var(--navy-900); font-weight: 800; line-height: 1.3; letter-spacing: -0.02em; word-break: keep-all; }
+h2 { font-size: 34px; margin-bottom: 14px; }
+h3 { font-size: 22px; }
+h4 { font-size: 18px; }
+p { color: var(--ink-2); word-break: keep-all; }
+.section-head p { font-size: 17px; color: var(--ink-3); max-width: 640px; margin: 0 auto; }
+
+/* ===== Top brand strip (YET) ===== */
+.brand-strip {
+  background: var(--yet-purple-900); color: #fff;
+  font-size: 12.5px; padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  letter-spacing: 0.01em;
+}
+.brand-strip .inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+}
+.brand-strip .left { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.brand-strip .yet-mark {
+  font-family: 'Archivo Black', 'Arial Black', sans-serif;
+  background: var(--yet-yellow); color: var(--yet-purple-900);
+  padding: 2px 8px; border-radius: 4px;
+  font-size: 12px; letter-spacing: 0.04em;
+}
+.brand-strip .tag { color: rgba(255,255,255,0.78); }
+.brand-strip .right { color: rgba(255,255,255,0.72); }
+.brand-strip a { color: var(--yet-yellow); font-weight: 700; }
+.brand-strip a:hover { text-decoration: underline; }
+
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,0.94);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+          backdrop-filter: saturate(160%) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--navy-900); font-size: 15px; }
+.brand-logo {
+  font-family: 'Archivo Black', 'Arial Black', sans-serif;
+  letter-spacing: 0.02em;
+  height: 32px; padding: 0 10px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--yet-purple-900), var(--yet-purple-700));
+  display: inline-flex; align-items: center; color: var(--yet-yellow);
+  font-size: 14px;
+}
+.brand .sep { color: var(--ink-3); font-weight: 500; }
+.brand .course-name { white-space: nowrap; }
+.nav-links { display: none; gap: 28px; font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.nav-links a:hover { color: var(--navy-900); }
+.nav-cta {
+  background: var(--navy-900); color: #fff; padding: 10px 18px; border-radius: 999px;
+  font-size: 14px; font-weight: 700; transition: transform .15s ease, background .15s;
+}
+.nav-cta:hover { background: var(--navy-700); transform: translateY(-1px); }
+@media (min-width: 880px) { .nav-links { display: flex; } }
+@media (max-width: 520px) {
+  .brand .course-name, .brand .sep { display: none; }
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 16px 28px; border-radius: 12px;
+  font-weight: 700; font-size: 16px; letter-spacing: -0.01em;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--gold); color: var(--navy-900);
+  box-shadow: 0 8px 24px rgba(255, 210, 63, 0.50);
+}
+.btn-primary:hover { background: #FFC000; color: var(--navy-900); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(255, 192, 0, 0.55); }
+.btn-secondary {
+  background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.5);
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: #fff; }
+.btn-dark { background: var(--navy-900); color: #fff; box-shadow: var(--shadow-2); }
+.btn-dark:hover { background: var(--navy-700); transform: translateY(-2px); }
+.btn-block { width: 100%; }
+.btn-lg { padding: 18px 32px; font-size: 17px; }
+
+.hero {
+  position: relative;
+  padding: 88px 0 96px;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(255,210,63,0.18), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(107,77,171,0.55), transparent 60%),
+    linear-gradient(180deg, var(--yet-purple-900), var(--yet-purple-800) 60%, var(--yet-purple-700));
+  color: #fff;
+  overflow: hidden;
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%);
+          mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; display: grid; gap: 48px; align-items: center; }
+@media (min-width: 980px) { .hero-inner { grid-template-columns: 1.15fr 0.85fr; gap: 56px; } }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12.5px; letter-spacing: 0.18em; font-weight: 800;
+  color: var(--yet-yellow); margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.hero-eyebrow::before {
+  content: ""; width: 28px; height: 2px; background: var(--yet-yellow);
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px; border-radius: 999px;
+  background: rgba(255,210,63,0.16); color: var(--yet-yellow);
+  font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+  border: 1px solid rgba(255,210,63,0.4);
+  margin-bottom: 22px;
+}
+.hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--yet-yellow); box-shadow: 0 0 12px var(--yet-yellow); }
+
+.hero h1 {
+  color: #fff;
+  font-size: clamp(30px, 5.4vw, 52px);
+  line-height: 1.2; letter-spacing: -0.025em;
+  margin-bottom: 22px;
+}
+.hero h1 .accent { color: var(--yet-yellow); }
+
+.hero-slogan {
+  display: inline-block; margin-bottom: 22px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: clamp(16px, 2.2vw, 19px);
+  color: rgba(255,255,255,0.78);
+  border-left: 3px solid var(--yet-yellow);
+  padding: 6px 14px;
+}
+.hero-slogan strong { color: var(--yet-yellow); font-style: normal; font-weight: 700; font-family: 'Archivo Black', 'Arial Black', sans-serif; letter-spacing: 0.04em; }
+
+.hero-sub {
+  font-size: clamp(15px, 2vw, 18px); line-height: 1.7;
+  color: rgba(255,255,255,0.82);
+  max-width: 560px; margin-bottom: 32px;
+}
+.hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  font-size: 14px; color: rgba(255,255,255,0.75);
+}
+.hero-meta .pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 10px; border-radius: 8px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+}
+
+.hero-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 28px;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  position: relative;
+}
+.hero-card::after {
+  content: "EARLY BIRDS";
+  position: absolute; top: -12px; right: 18px;
+  background: var(--yet-yellow); color: var(--navy-900);
+  padding: 4px 10px; border-radius: 999px;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
+  box-shadow: 0 4px 16px rgba(255,210,63,0.45);
+}
+.hero-card h3 { color: #fff; font-size: 18px; margin-bottom: 6px; }
+.hero-card .sub { font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 18px; }
+.price-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+.price-original { font-size: 16px; color: rgba(255,255,255,0.5); text-decoration: line-through; }
+.price-now { font-size: 38px; font-weight: 900; color: var(--yet-yellow); letter-spacing: -0.02em; font-family: 'JetBrains Mono', monospace; }
+.price-now small { font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.7); margin-left: 4px; font-family: inherit; }
+.discount-tag {
+  display: inline-block; margin-bottom: 14px;
+  background: rgba(16, 185, 129, 0.18); color: #6EE7B7;
+  padding: 4px 10px; border-radius: 6px;
+  font-size: 12px; font-weight: 700;
+}
+.hero-card-list { list-style: none; margin: 18px 0; }
+.hero-card-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 0; font-size: 14px; color: rgba(255,255,255,0.82);
+}
+.hero-card-list li svg { flex-shrink: 0; margin-top: 3px; color: var(--yet-yellow); }
+.hero-trust {
+  display: flex; gap: 18px; margin-top: 20px; padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 12px; color: rgba(255,255,255,0.55);
+}
+.hero-trust div { flex: 1; }
+.hero-trust strong { display: block; font-size: 18px; color: #fff; font-weight: 800; margin-bottom: 2px; font-family: 'JetBrains Mono', monospace; }
+
+.trust-strip {
+  background: var(--bg-soft);
+  padding: 28px 0; border-bottom: 1px solid var(--line);
+}
+.trust-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; text-align: center; }
+@media (min-width: 720px) { .trust-grid { grid-template-columns: repeat(4, 1fr); } }
+.trust-item .num {
+  font-size: 26px; font-weight: 800; color: var(--navy-900);
+  font-family: 'JetBrains Mono', monospace; letter-spacing: -0.02em;
+}
+.trust-item .num span { color: var(--yet-yellow-d); }
+.trust-item .lbl { font-size: 13px; color: var(--ink-3); margin-top: 4px; font-weight: 600; }
+
+.values-grid { display: grid; gap: 18px; grid-template-columns: 1fr; }
+@media (min-width: 720px) { .values-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .values-grid { grid-template-columns: repeat(3, 1fr); } }
+.value-card {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 28px 24px; transition: transform .2s ease, box-shadow .2s, border-color .2s;
+}
+.value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-2); border-color: rgba(255,210,63,0.5); }
+.value-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--yet-purple-900), var(--yet-purple-700));
+  color: var(--yet-yellow);
+  display: grid; place-items: center;
+  margin-bottom: 18px;
+  box-shadow: 0 6px 18px rgba(45,27,105,0.30);
+}
+.value-card h3 { font-size: 19px; margin-bottom: 8px; }
+.value-card p { font-size: 15px; color: var(--ink-2); }
+
+.target-wrap { background: var(--bg-soft); }
+.target-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 720px) { .target-grid { grid-template-columns: repeat(2, 1fr); } }
+.target-item {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: #fff; padding: 22px; border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+.target-item .check {
+  flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--yet-purple-900); color: var(--yet-yellow);
+  display: grid; place-items: center;
+}
+.target-item h4 { font-size: 16px; margin-bottom: 4px; color: var(--navy-900); }
+.target-item p { font-size: 14px; color: var(--ink-2); }
+
+.goals-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 720px) { .goals-grid { grid-template-columns: repeat(2, 1fr); } }
+.goal-card {
+  position: relative;
+  background: linear-gradient(180deg, #fff, #FBFAFE);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 26px 24px 26px 70px;
+}
+.goal-num {
+  position: absolute; top: 22px; left: 20px;
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--yet-yellow); color: var(--yet-purple-900);
+  display: grid; place-items: center;
+  font-weight: 800; font-size: 16px; font-family: 'JetBrains Mono', monospace;
+}
+.goal-card h4 { margin-bottom: 6px; font-size: 17px; color: var(--navy-900); }
+.goal-card p { font-size: 14.5px; color: var(--ink-2); }
+
+.curri-wrap { background: var(--yet-purple-900); color: #fff; }
+.curri-wrap h2 { color: #fff; }
+.curri-wrap .section-head p { color: rgba(255,255,255,0.7); }
+.curri-list { display: flex; flex-direction: column; gap: 18px; }
+.curri-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 28px; transition: border-color .2s, transform .2s;
+}
+.curri-item:hover { border-color: rgba(255,210,63,0.55); transform: translateX(4px); }
+.curri-head {
+  display: flex; align-items: flex-start; gap: 18px; margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.curri-num {
+  flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px; border-radius: 14px;
+  background: var(--yet-yellow); color: var(--yet-purple-900);
+  font-weight: 800; font-size: 18px; font-family: 'JetBrains Mono', monospace;
+}
+.curri-title-block { flex: 1; min-width: 0; }
+.curri-title-block h3 { color: #fff; font-size: 20px; margin-bottom: 4px; }
+.curri-meta {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 600;
+}
+.curri-meta span {
+  padding: 4px 10px; border-radius: 999px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+}
+.curri-body { display: grid; gap: 18px; }
+@media (min-width: 720px) { .curri-body { grid-template-columns: 1.1fr 0.9fr; } }
+.curri-topics { list-style: none; }
+.curri-topics li {
+  display: flex; gap: 10px; padding: 6px 0;
+  font-size: 14.5px; color: rgba(255,255,255,0.85);
+}
+.curri-topics li::before { content: "▸"; color: var(--yet-yellow); flex-shrink: 0; }
+.curri-outcome {
+  background: rgba(255,210,63,0.08);
+  border: 1px dashed rgba(255,210,63,0.45);
+  border-radius: 12px; padding: 16px;
+}
+.curri-outcome .lbl {
+  display: inline-block;
+  font-size: 11px; font-weight: 800; color: var(--yet-yellow);
+  letter-spacing: 0.08em; margin-bottom: 8px;
+}
+.curri-outcome p { color: rgba(255,255,255,0.92); font-size: 14px; line-height: 1.6; }
+
+.instructor-wrap { background: linear-gradient(180deg, #fff, var(--bg-soft)); }
+.instructor-headline { text-align: center; max-width: 760px; margin: 0 auto 44px; }
+.instructor-headline .eyebrow { background: rgba(45,27,105,0.08); color: var(--yet-purple-900); }
+.instructor-headline h2 { font-size: clamp(24px, 4vw, 34px); margin-bottom: 14px; }
+.instructor-headline p { color: var(--ink-2); font-size: 16px; }
+
+.instructor-card {
+  display: grid; gap: 28px; grid-template-columns: 1fr;
+  background: #fff; border: 1px solid var(--line); border-radius: 20px;
+  padding: 32px; box-shadow: var(--shadow-1);
+}
+@media (min-width: 820px) { .instructor-card { grid-template-columns: 260px 1fr; gap: 36px; padding: 40px; } }
+.instructor-photo {
+  position: relative; aspect-ratio: 4/5;
+  border-radius: 16px; overflow: hidden;
+  background: linear-gradient(135deg, var(--yet-purple-900), var(--yet-purple-700));
+  box-shadow: var(--shadow-2);
+  max-width: 280px; width: 100%; margin: 0 auto;
+}
+.instructor-photo img { width: 100%; height: 100%; object-fit: cover; }
+.instructor-photo .badge-img {
+  position: absolute; bottom: 12px; left: 12px; right: 12px;
+  background: rgba(45,27,105,0.88); color: #fff;
+  padding: 10px 12px; border-radius: 10px;
+  font-size: 12px; font-weight: 600;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+}
+.instructor-photo .badge-img strong { color: var(--yet-yellow); font-weight: 800; }
+
+.instructor-info .name-row {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px;
+  margin-bottom: 8px;
+}
+.instructor-info .name { font-size: 28px; font-weight: 800; color: var(--navy-900); }
+.instructor-info .title { font-size: 14px; color: var(--ink-3); font-weight: 600; }
+.instructor-info .intro {
+  font-size: 15px; color: var(--ink-2);
+  padding-bottom: 18px; margin-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+.stat-box {
+  background: var(--bg-soft); border-radius: 12px;
+  padding: 16px 12px; text-align: center;
+}
+.stat-box .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(20px, 4vw, 26px); font-weight: 800;
+  color: var(--navy-900); letter-spacing: -0.02em; line-height: 1.1;
+}
+.stat-box .num .plus { color: var(--yet-yellow-d); }
+.stat-box .lbl { font-size: 12px; color: var(--ink-3); margin-top: 4px; font-weight: 600; }
+
+.cred-section { margin-bottom: 20px; }
+.cred-section h4 {
+  font-size: 13px; font-weight: 800; color: var(--yet-yellow-d);
+  letter-spacing: 0.04em; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.cred-section h4::before { content: ""; width: 18px; height: 2px; background: var(--yet-yellow); }
+.cred-list { list-style: none; display: grid; gap: 8px; }
+.cred-list li {
+  font-size: 14.5px; color: var(--ink); line-height: 1.55;
+  padding-left: 18px; position: relative;
+}
+.cred-list li::before {
+  content: "•"; color: var(--yet-purple-700); font-weight: 800;
+  position: absolute; left: 4px; top: 0;
+}
+.cred-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.cred-tag {
+  font-size: 13px; padding: 6px 12px; border-radius: 999px;
+  background: #fff; border: 1px solid var(--line);
+  color: var(--navy-900); font-weight: 600;
+}
+
+.instructor-cta-row {
+  margin-top: 28px;
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+}
+
+/* ===== YET Brand Story Section ===== */
+.brand-story-wrap {
+  background:
+    radial-gradient(800px 400px at 100% 0%, rgba(255,210,63,0.10), transparent 60%),
+    var(--bg-soft);
+  position: relative;
+  overflow: hidden;
+}
+.brand-story-wrap::before {
+  content: "YET";
+  position: absolute; top: 24px; right: -10px;
+  font-family: 'Archivo Black', 'Arial Black', sans-serif;
+  font-size: clamp(140px, 22vw, 280px);
+  color: rgba(45,27,105,0.05);
+  letter-spacing: -0.02em;
+  pointer-events: none;
+  line-height: 1;
+}
+.brand-story-inner { position: relative; }
+.story-grid {
+  display: grid; gap: 28px;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
+@media (min-width: 880px) { .story-grid { grid-template-columns: 1fr 1fr; } }
+.quote-card {
+  background: var(--yet-purple-900); color: #fff;
+  border-radius: 20px; padding: 36px;
+  position: relative;
+  box-shadow: var(--shadow-2);
+}
+.quote-card::before {
+  content: "\201C";
+  font-family: Georgia, serif; font-size: 96px; line-height: 0.8;
+  color: var(--yet-yellow); position: absolute; top: 18px; left: 20px;
+}
+.quote-card .q {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: clamp(18px, 2.4vw, 22px); line-height: 1.6;
+  color: #fff; margin: 36px 0 18px;
+  padding-left: 4px;
+}
+.quote-card .q .hl {
+  background: linear-gradient(180deg, transparent 60%, rgba(255,210,63,0.35) 60%);
+  padding: 0 4px;
+}
+.quote-card .who {
+  font-size: 13px; color: var(--yet-yellow); font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.quote-card .who span { color: rgba(255,255,255,0.6); font-weight: 500; }
+
+.story-text h3 { font-size: 26px; margin-bottom: 14px; color: var(--yet-purple-900); }
+.story-text p { font-size: 16px; line-height: 1.75; color: var(--ink-2); margin-bottom: 14px; }
+.story-text p strong { color: var(--yet-purple-900); font-weight: 700; }
+.story-layers {
+  display: grid; gap: 12px; margin-top: 20px;
+}
+.story-layer {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 12px; padding: 14px 16px;
+}
+.story-layer .n {
+  flex-shrink: 0;
+  font-family: 'Archivo Black', 'Arial Black', sans-serif;
+  font-size: 14px;
+  width: 32px; height: 32px;
+  background: var(--yet-yellow); color: var(--yet-purple-900);
+  border-radius: 8px;
+  display: grid; place-items: center;
+}
+.story-layer .t { font-size: 14.5px; color: var(--ink); }
+.story-layer .t strong { color: var(--yet-purple-900); font-weight: 800; display: block; margin-bottom: 2px; }
+
+.journey-strip {
+  margin-top: 44px;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 16px; padding: 28px;
+  box-shadow: var(--shadow-1);
+}
+.journey-strip h4 {
+  font-size: 13px; font-weight: 800; color: var(--yet-yellow-d);
+  letter-spacing: 0.08em; text-align: center; margin-bottom: 18px;
+  text-transform: uppercase;
+}
+.journey-grid {
+  display: grid; gap: 14px; grid-template-columns: 1fr;
+  align-items: stretch;
+}
+@media (min-width: 720px) { .journey-grid { grid-template-columns: 1fr auto 1fr auto 1fr; } }
+.j-step {
+  padding: 16px; text-align: center; border-radius: 12px;
+}
+.j-step.s1 { background: var(--bg-soft); }
+.j-step.s2 { background: var(--yet-purple-900); color: #fff; }
+.j-step.s3 { background: var(--yet-yellow); color: var(--yet-purple-900); }
+.j-step .e { font-size: 28px; line-height: 1; margin-bottom: 8px; }
+.j-step .lbl { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; opacity: 0.65; margin-bottom: 6px; text-transform: uppercase; }
+.j-step .quote {
+  font-family: Georgia, serif; font-style: italic;
+  font-size: 14.5px; line-height: 1.5;
+}
+.j-arrow { display: none; align-items: center; justify-content: center; color: var(--yet-purple-700); }
+@media (min-width: 720px) { .j-arrow { display: flex; } }
+
+.ba-wrap { background: #fff; }
+.ba-grid { display: grid; gap: 18px; grid-template-columns: 1fr; position: relative; }
+@media (min-width: 820px) { .ba-grid { grid-template-columns: 1fr 48px 1fr; align-items: stretch; } }
+.ba-card { background: #fff; border-radius: 16px; padding: 28px; border: 1px solid var(--line); }
+.ba-card.before { border-color: rgba(239, 68, 68, 0.25); background: #FFFAFA; }
+.ba-card.after  { border-color: rgba(255,210,63, 0.5); background: linear-gradient(180deg, #fff, #FFFCF0); }
+.ba-tag {
+  display: inline-block; padding: 4px 10px; border-radius: 6px;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+.ba-card.before .ba-tag { background: rgba(239,68,68,0.12); color: var(--danger); }
+.ba-card.after  .ba-tag { background: var(--yet-yellow); color: var(--yet-purple-900); }
+.ba-card h3 { font-size: 19px; margin-bottom: 16px; color: var(--navy-900); }
+.ba-list { list-style: none; }
+.ba-list li {
+  padding: 10px 0; font-size: 15px; color: var(--ink-2);
+  display: flex; gap: 10px; align-items: flex-start;
+  border-bottom: 1px dashed var(--line);
+}
+.ba-list li:last-child { border-bottom: none; }
+.ba-list li .ico { flex-shrink: 0; margin-top: 3px; font-weight: 800; }
+.ba-card.before .ico { color: var(--danger); }
+.ba-card.after  .ico { color: var(--yet-yellow-d); }
+.ba-arrow { display: none; align-items: center; justify-content: center; color: var(--yet-yellow-d); }
+@media (min-width: 820px) { .ba-arrow { display: flex; } }
+
+.testimonials-grid { display: grid; gap: 18px; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
+.testimonial {
+  background: #fff; border: 1px solid var(--line); border-radius: 16px;
+  padding: 28px; position: relative; box-shadow: var(--shadow-1);
+}
+.testimonial::before {
+  content: "\201C"; position: absolute; top: -8px; left: 22px;
+  font-family: Georgia, serif; font-size: 80px; line-height: 1; color: var(--yet-yellow);
+}
+.testimonial .quote {
+  font-size: 16px; line-height: 1.7; color: var(--ink);
+  margin: 18px 0; padding-top: 14px;
+  font-weight: 500;
+}
+.testimonial .rating {
+  display: inline-flex; align-items: baseline; gap: 4px;
+  background: rgba(255,210,63,0.16); color: var(--yet-yellow-d);
+  padding: 4px 10px; border-radius: 6px;
+  font-size: 13px; font-weight: 800;
+  margin-bottom: 10px;
+}
+.testimonial .rating span { font-family: 'JetBrains Mono', monospace; }
+.testimonial .source {
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 13px; color: var(--ink-3); font-weight: 600;
+}
+.testimonial .source strong { color: var(--navy-900); }
+
+.faq-wrap { background: var(--bg-soft); }
+.faq-list { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+.faq-item {
+  background: #fff; border: 1px solid var(--line); border-radius: 12px;
+  overflow: hidden; transition: box-shadow .15s;
+}
+.faq-item[open] { box-shadow: var(--shadow-1); border-color: rgba(255,210,63,0.5); }
+.faq-item summary {
+  list-style: none; cursor: pointer;
+  padding: 20px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  font-weight: 700; color: var(--navy-900); font-size: 16px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: ""; flex-shrink: 0;
+  width: 12px; height: 12px;
+  border-right: 2px solid var(--navy-900);
+  border-bottom: 2px solid var(--navy-900);
+  transform: rotate(45deg); transition: transform .2s;
+}
+.faq-item[open] summary::after { transform: rotate(-135deg); }
+.faq-item .answer {
+  padding: 0 24px 22px; color: var(--ink-2); font-size: 15px; line-height: 1.75;
+}
+.faq-item .answer strong { color: var(--navy-900); }
+
+.pricing-wrap {
+  background:
+    radial-gradient(900px 500px at 80% 0%, rgba(255,210,63,0.20), transparent 60%),
+    linear-gradient(180deg, var(--yet-purple-900), var(--yet-purple-800));
+  color: #fff; padding: 100px 0;
+}
+.pricing-wrap h2 { color: #fff; }
+.pricing-wrap .section-head p { color: rgba(255,255,255,0.75); }
+
+.pricing-box {
+  max-width: 640px; margin: 0 auto;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,210,63,0.4);
+  border-radius: 20px; padding: 36px;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+}
+.pricing-box::before {
+  content: "EARLY BIRDS · 20명 한정";
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--yet-yellow); color: var(--yet-purple-900);
+  padding: 6px 16px; border-radius: 999px;
+  font-size: 12px; font-weight: 800; letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.pricing-name { font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 6px; font-weight: 600; }
+.pricing-title { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 18px; }
+.pricing-price-row { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; }
+.pricing-orig { font-size: 18px; color: rgba(255,255,255,0.45); text-decoration: line-through; font-family: 'JetBrains Mono', monospace; }
+.pricing-now { font-size: clamp(40px, 7vw, 52px); font-weight: 900; color: var(--yet-yellow); font-family: 'JetBrains Mono', monospace; letter-spacing: -0.02em; }
+.pricing-now small { font-size: 18px; color: rgba(255,255,255,0.7); margin-left: 6px; font-family: inherit; font-weight: 700; }
+.pricing-save {
+  display: inline-block; margin-bottom: 22px;
+  background: rgba(16,185,129,0.18); color: #6EE7B7;
+  padding: 6px 12px; border-radius: 8px;
+  font-size: 13px; font-weight: 700;
+}
+
+.schedule-grid {
+  display: grid; gap: 12px; grid-template-columns: 1fr;
+  margin: 24px 0; padding: 20px;
+  background: rgba(0,0,0,0.25); border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+@media (min-width: 580px) { .schedule-grid { grid-template-columns: repeat(2, 1fr); } }
+.sched-item {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 14px; color: rgba(255,255,255,0.85);
+}
+.sched-item .ico {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: rgba(255,210,63,0.18); color: var(--yet-yellow);
+  display: grid; place-items: center; flex-shrink: 0;
+  font-size: 14px;
+}
+.sched-item strong { color: #fff; font-weight: 700; }
+
+.pricing-includes { list-style: none; margin: 18px 0 24px; }
+.pricing-includes li {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 8px 0; font-size: 15px; color: rgba(255,255,255,0.92);
+}
+.pricing-includes li svg { flex-shrink: 0; margin-top: 4px; color: var(--yet-yellow); }
+
+.pricing-warn {
+  margin-top: 18px; padding: 12px 16px;
+  background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3);
+  border-radius: 10px;
+  font-size: 13px; color: rgba(255,255,255,0.85);
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.pricing-warn .ico { color: #FCA5A5; flex-shrink: 0; margin-top: 2px; font-weight: 800; }
+.pricing-warn strong { color: #FCA5A5; font-weight: 700; }
+
+.crew-cta {
+  margin-top: 30px;
+  text-align: center; font-size: 13px;
+  color: rgba(255,255,255,0.75);
+}
+.crew-cta .tags { margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--yet-yellow); letter-spacing: 0.02em; }
+
+.footer {
+  background: #0E0729; color: rgba(255,255,255,0.65);
+  padding: 56px 0 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-grid {
+  display: grid; gap: 28px; grid-template-columns: 1fr;
+  margin-bottom: 32px;
+}
+@media (min-width: 720px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; } }
+.footer-brand .wordmark {
+  display: inline-block;
+  font-family: 'Archivo Black', 'Arial Black', sans-serif;
+  background: var(--yet-yellow); color: var(--yet-purple-900);
+  padding: 6px 14px; border-radius: 6px;
+  font-size: 22px; letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+.footer-brand .fullname { color: #fff; font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+.footer-brand .slogan {
+  font-family: Georgia, serif; font-style: italic;
+  color: rgba(255,255,255,0.75); font-size: 14px; line-height: 1.6;
+  margin-bottom: 8px;
+}
+.footer-brand .slogan-ko {
+  font-family: inherit; font-style: normal; font-weight: 700;
+  color: var(--yet-yellow); font-size: 14px;
+}
+.footer-col h5 {
+  color: #fff; font-size: 13px; font-weight: 800;
+  letter-spacing: 0.06em; margin-bottom: 14px; text-transform: uppercase;
+}
+.footer-col ul { list-style: none; display: grid; gap: 8px; }
+.footer-col ul li { font-size: 14px; color: rgba(255,255,255,0.72); }
+.footer-col ul li a:hover { color: var(--yet-yellow); }
+.footer-col .meta {
+  font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.7;
+}
+.footer-col .meta strong { color: #fff; font-weight: 700; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 22px; display: flex; flex-wrap: wrap;
+  gap: 12px; align-items: center; justify-content: space-between;
+  font-size: 12.5px; color: rgba(255,255,255,0.5);
+}
+.footer-bottom .tags {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--yet-yellow); font-weight: 600;
+}
+
+.mobile-cta {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 60;
+  background: rgba(45,27,105,0.97);
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,210,63,0.35);
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0));
+  display: flex; gap: 12px; align-items: center;
+  box-shadow: 0 -8px 24px rgba(0,0,0,0.30);
+}
+.mobile-cta .info { flex: 1; min-width: 0; }
+.mobile-cta .info .price { font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 800; color: var(--yet-yellow); }
+.mobile-cta .info .price del { color: rgba(255,255,255,0.4); font-weight: 500; margin-right: 6px; font-size: 13px; }
+.mobile-cta .info .lbl { font-size: 11px; color: rgba(255,255,255,0.65); }
+.mobile-cta .btn { padding: 12px 18px; font-size: 14px; flex-shrink: 0; }
+@media (min-width: 880px) { .mobile-cta { display: none; } }
+@media (max-width: 879px) { body { padding-bottom: 80px; } }
+
+.center { text-align: center; }
+.mt-32 { margin-top: 32px; }
+
+@media (max-width: 600px) {
+  section { padding: 60px 0; }
+  h2 { font-size: 26px; }
+  .hero { padding: 64px 0 80px; }
+  .hero-card { padding: 22px; }
+  .pricing-box { padding: 28px 22px; }
+  .instructor-card { padding: 24px; }
+  .stats-row { gap: 8px; }
+  .stat-box { padding: 12px 8px; }
+  .stat-box .num { font-size: 18px; }
+  .nav-cta { padding: 8px 14px; font-size: 13px; }
+  .quote-card { padding: 26px 22px; }
+  .quote-card .q { font-size: 17px; }
+  .brand-strip .right { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== YET top brand strip ===== -->
+<div class="brand-strip">
+  <div class="container inner">
+    <div class="left">
+      <span class="yet-mark">YET</span>
+      <span class="tag">Your Engineering Takeoff · by 유니콘주식회사</span>
+    </div>
+    <div class="right">
+      <em style="font-style:normal;color:var(--yet-yellow);font-weight:700;">"Not yet, but we will ship it."</em>
+    </div>
+  </div>
+</div>
+
+<nav class="nav" aria-label="주요 메뉴">
+  <div class="container nav-inner">
+    <a href="#top" class="brand" aria-label="YET 홈으로">
+      <span class="brand-logo">YET</span>
+      <span class="sep">|</span>
+      <span class="course-name">AI 업무자동화 기초</span>
+    </a>
+    <div class="nav-links">
+      <a href="#brand-story">브랜드</a>
+      <a href="#curriculum">커리큘럼</a>
+      <a href="#instructor">강사</a>
+      <a href="#testimonials">후기</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#apply" class="nav-cta">신청하기</a>
+  </div>
+</nav>
+
+<header id="top" class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="hero-eyebrow">YET AI 업무자동화 · 진입 코스</div>
+      <span class="hero-badge"><span class="dot"></span> 1기 모집 중 · 6/22(월) 개강 · 50명 한정</span>
+      <h1>
+        1주일 만에<br/>
+        <span class="accent">나만의 AI 팀원</span>을 고용해<br/>
+        매일 2시간을 돌려받는 법
+      </h1>
+      <div class="hero-slogan">
+        <strong>YET.</strong> 아직 못하는 게 아니라, 아직 안 한 것뿐.
+      </div>
+      <p class="hero-sub">
+        반복 업무에 시간을 빼앗기는 직장인·취준생을 위한 4회차 실전 강의.
+        Claude Code·Codex·Claude Web으로 나만의 스킬·에이전트·플러그인을 직접 만들고
+        업무 자동화 시스템을 1주일 안에 완성합니다. <strong style="color:#fff;">Not yet, but we will ship it.</strong>
+      </p>
+      <div class="hero-cta-row">
+        <a href="#apply" class="btn btn-primary btn-lg">Early Birds 79,000원으로 신청하기</a>
+        <a href="#curriculum" class="btn btn-secondary btn-lg">커리큘럼 자세히 보기</a>
+      </div>
+      <div class="hero-meta">
+        <span class="pill">📅 6/22(월)·6/24(수)·6/26(금) 21:00–22:30 + 6/27(토) 10:00–17:00</span>
+        <span class="pill">💻 온라인 실시간 화상</span>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-label="얼리버드 가격 카드">
+      <h3>4회차 · 총 10시간 · 1주일 완성</h3>
+      <div class="sub">총 정원 50명 · 첫 20명에게만 Early Birds 할인 · 30명 미만 시 폐강·전액 환불</div>
+      <div class="price-row">
+        <span class="price-original">₩99,000</span>
+      </div>
+      <div class="price-row">
+        <span class="price-now">79,000<small>원</small></span>
+      </div>
+      <span class="discount-tag">💸 20,000원 할인 (20% off)</span>
+      <ul class="hero-card-list">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Claude Code·Codex·Claude Web 실전 활용</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>나만의 스킬·에이전트·플러그인 직접 개발</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>IBM 29년 경력 이해경 강사 직강</li>
+      </ul>
+      <div class="hero-trust">
+        <div><strong>29년+</strong>강사 현업 경력</div>
+        <div><strong>96.3점</strong>K은행 만족도</div>
+        <div><strong>80만+</strong>블로그 방문</div>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<section class="trust-strip" style="padding-top:28px;padding-bottom:28px;">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-item"><div class="num">29<span>년+</span></div><div class="lbl">강사 현업 경력</div></div>
+      <div class="trust-item"><div class="num">4.6<span>/5</span></div><div class="lbl">KTDS 강의 평가</div></div>
+      <div class="trust-item"><div class="num">96.3<span>점</span></div><div class="lbl">K은행 부트캠프 만족도</div></div>
+      <div class="trust-item"><div class="num">87.2<span>%↑</span></div><div class="lbl">KTDS 클라우드 역량 향상</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="values">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">WHY THIS COURSE</span>
+      <h2>이 강의가 다른 이유</h2>
+      <p>이론보다 결과물. 1주일 안에 본인 업무에 적용 가능한 자동화 시스템을 손에 쥡니다.</p>
+    </div>
+    <div class="values-grid">
+      <article class="value-card">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+        </div>
+        <h3>1주일이면 충분</h3>
+        <p>월·수·금 1.5시간 + 토요일 집중 실습 5.5시간. 직장인·취준생 일정에 맞춘 단기 완성 코스.</p>
+      </article>
+      <article class="value-card">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5L18.2 22 12 17.3 5.8 22l2.4-8.1L2 9.4h7.6z"/></svg>
+        </div>
+        <h3>도구가 아닌 시스템</h3>
+        <p>ChatGPT 사용법이 아닌, 본인 업무에 맞는 AI 에이전트·플러그인을 직접 설계·구현하는 방법을 습득.</p>
+      </article>
+      <article class="value-card">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v7H3z"/><path d="M14 3h7v7h-7z"/><path d="M14 14h7v7h-7z"/><path d="M3 14h7v7H3z"/></svg>
+        </div>
+        <h3>실습 중심 100%</h3>
+        <p>매 회차마다 본인의 결과물을 직접 만들어내는 실습 구성. 강의 끝나면 바로 쓸 수 있는 산출물 보유.</p>
+      </article>
+      <article class="value-card">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L9 18l-5-5"/></svg>
+        </div>
+        <h3>검증된 강사</h3>
+        <p>IBM 29년 경력의 현역 아키텍트가 직접 강의. KTDS·K은행·연세대 등 검증된 교육 성과 보유.</p>
+      </article>
+      <article class="value-card">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+        </div>
+        <h3>최신 AI 도구 총망라</h3>
+        <p>Claude Code·Codex·Claude Web·MCP까지. 2026년 현재 가장 강력한 AI 개발 도구를 한번에 익힘.</p>
+      </article>
+      <article class="value-card">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M3 15h18M5 7h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2z"/></svg>
+        </div>
+        <h3>온라인 실시간</h3>
+        <p>실시간 화상으로 진행되는 양방향 강의. 질의응답·실습 피드백이 그 자리에서 즉시 이루어짐.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== YET Brand Story Section ===== -->
+<section id="brand-story" class="brand-story-wrap">
+  <div class="container brand-story-inner">
+    <div class="section-head">
+      <span class="eyebrow">THE POWER OF YET</span>
+      <h2>왜 'YET' 인가요?</h2>
+      <p>이 강의는 단순한 도구 학습이 아닌, "아직"이라는 단어의 힘을 믿는 사람들이 함께 도약하는 자리입니다.</p>
+    </div>
+
+    <div class="story-grid">
+      <div class="quote-card">
+        <p class="q">
+          실패는 끝이 아니라 과정입니다. <span class="hl">'YET'이라는 단 한 단어가 학습자의 뇌를 바꿉니다.</span>
+        </p>
+        <p class="who">Carol Dweck <span>· Stanford University · "Growth Mindset"</span></p>
+      </div>
+
+      <div class="story-text">
+        <h3>아직, 이라서 시작합니다</h3>
+        <p>
+          스탠포드 대학은 'F(Fail)' 대신 <strong>'Not Yet'</strong>을 도입해 학습 포기율을 획기적으로 낮췄습니다.
+          실패를 끝이 아니라 과정으로 인식하는 프레이밍의 힘 — 그것이 <strong>YET</strong>의 출발점입니다.
+        </p>
+        <p>
+          <strong>YET</strong>은 'Your Engineering Takeoff'의 약자. 교육의 전 과정을 직접 경험하며
+          엔지니어링 역량의 도약을 시작하는 자리입니다. 아이디어에서 배포까지,
+          매 스프린트마다 <em>"Not yet"</em>에서 한 걸음씩 전진해
+          마침내 <strong style="color:var(--yet-yellow-d);">"We shipped it!"</strong>이라는 성취에 도달합니다.
+        </p>
+
+        <div class="story-layers">
+          <div class="story-layer">
+            <div class="n">01</div>
+            <div class="t"><strong>Yet · 아직</strong>아직 못하는 게 아니라, 아직 안 한 것뿐. 성장 마인드셋의 핵심.</div>
+          </div>
+          <div class="story-layer">
+            <div class="n">02</div>
+            <div class="t"><strong>Your Engineering Takeoff</strong>당신의 엔지니어링 도약. 기획-설계-개발-배포 전 과정 경험.</div>
+          </div>
+          <div class="story-layer">
+            <div class="n">03</div>
+            <div class="t"><strong>Power of Yet</strong>캐롤 드웩의 교육 철학. 실패를 끝이 아닌 과정으로 전환.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="journey-strip">
+      <h4>YET LEARNER JOURNEY · 수강생 여정</h4>
+      <div class="journey-grid">
+        <div class="j-step s1">
+          <div class="e">😟</div>
+          <div class="lbl">입과 전</div>
+          <div class="quote">"I can't build<br/>AI automation."</div>
+        </div>
+        <div class="j-arrow" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="j-step s2">
+          <div class="e">💪</div>
+          <div class="lbl">교육 중</div>
+          <div class="quote">"I can't build<br/>AI automation... <strong style="color:var(--yet-yellow);">YET.</strong>"</div>
+        </div>
+        <div class="j-arrow" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="j-step s3">
+          <div class="e">🚀</div>
+          <div class="lbl">수료 후</div>
+          <div class="quote">"We shipped it.<br/><strong>We are YET Crew.</strong>"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="target-wrap">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">FOR WHOM</span>
+      <h2>이런 분께 추천합니다</h2>
+      <p>지금 한 가지라도 해당된다면, 이 강의가 정확히 여러분을 위한 것입니다.</p>
+    </div>
+    <div class="target-grid">
+      <div class="target-item">
+        <div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <h4>반복 업무에 시간을 빼앗기는 직장인</h4>
+          <p>보고서 정리·자료 검색·메일 답변 같은 단순 업무를 AI에 위임하고 싶은 분</p>
+        </div>
+      </div>
+      <div class="target-item">
+        <div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <h4>AI 활용 역량으로 차별화하고 싶은 취준생</h4>
+          <p>이력서에 적을 수 있는 실제 AI 자동화 프로젝트 결과물이 필요한 분</p>
+        </div>
+      </div>
+      <div class="target-item">
+        <div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <h4>ChatGPT는 익숙하지만 한 단계 더 가고 싶은 분</h4>
+          <p>프롬프트만 쓰는 단계를 넘어 본인만의 AI 시스템을 만들고 싶은 분</p>
+        </div>
+      </div>
+      <div class="target-item">
+        <div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <h4>비개발자지만 AI 자동화는 직접 하고 싶은 분</h4>
+          <p>코딩 부담 없이 마크다운·YAML 기반의 선언형 방식으로 AI를 다루고 싶은 분</p>
+        </div>
+      </div>
+      <div class="target-item">
+        <div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <h4>독학으로 AI 도구를 익히다 막혔던 분</h4>
+          <p>혼자 공부하다 길을 잃은 분, 검증된 순서로 단숨에 끝내고 싶은 분</p>
+        </div>
+      </div>
+      <div class="target-item">
+        <div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <h4>팀 내 AI 자동화를 주도하고 싶은 리더</h4>
+          <p>본인이 먼저 익혀서 팀에 AI 워크플로우를 도입하고 싶은 실무 리더</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="goals">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">LEARNING OUTCOMES</span>
+      <h2>수강 후, 손에 남는 6가지</h2>
+      <p>강의가 끝나는 순간 바로 본인 업무에 적용할 수 있는 결과물을 가지고 갑니다.</p>
+    </div>
+    <div class="goals-grid">
+      <div class="goal-card">
+        <div class="goal-num">01</div>
+        <h4>나만의 AI 개발 환경</h4>
+        <p>Claude Code·Codex·Claude Web이 세팅된 본인만의 작업 환경 구축 완료.</p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-num">02</div>
+        <h4>업무에 즉시 쓸 프롬프트 라이브러리</h4>
+        <p>법령 MCP를 포함한 실전 프롬프트 패턴을 본인 직무에 맞춰 정리.</p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-num">03</div>
+        <h4>본인만의 스킬과 에이전트</h4>
+        <p>반복 업무를 자동화하는 본인 전용 Skill·Agent 1개 이상 직접 개발.</p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-num">04</div>
+        <h4>실전 동작하는 AI 플러그인</h4>
+        <p>업무 특화 플러그인 1종을 직접 설계·구현·배포까지 경험.</p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-num">05</div>
+        <h4>AI 협업 워크플로우</h4>
+        <p>AI 팀원과 협업하는 방법론을 체화. 매일 2시간 절약하는 새로운 일하는 방식 정착.</p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-num">06</div>
+        <h4>YET Crew 디스코드 합류권</h4>
+        <p>수료 즉시 YET Crew 디스코드 커뮤니티에 합류. 동기들과 산출물을 공유하고 강사·동료와 Q&amp;A를 이어가는 공식 채널.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="curriculum" class="curri-wrap">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" style="background: rgba(255,210,63,0.16); color: var(--yet-yellow);">CURRICULUM · THINK · BUILD · SHIP</span>
+      <h2>4회차 · 10시간 커리큘럼</h2>
+      <p>월·수·금 저녁 1.5시간 + 토요일 5.5시간 집중 실습. 매 회차 본인 결과물을 만들어냅니다.</p>
+    </div>
+
+    <div class="curri-list">
+      <article class="curri-item">
+        <div class="curri-head">
+          <div class="curri-num">01</div>
+          <div class="curri-title-block">
+            <h3>AI 도구 설치 & 프로젝트 구성</h3>
+            <div class="curri-meta">
+              <span>📅 6/22(월) 21:00–22:30</span>
+              <span>⏱ 1.5시간</span>
+              <span>💻 온라인 실시간</span>
+            </div>
+          </div>
+        </div>
+        <div class="curri-body">
+          <ul class="curri-topics">
+            <li>Claude Code 설치 및 환경 세팅</li>
+            <li>Claude Web 가입 및 Project 구성</li>
+            <li>Codex 설치와 기본 사용법</li>
+            <li>나만의 첫 AI 프로젝트 구성 실습</li>
+          </ul>
+          <div class="curri-outcome">
+            <span class="lbl">RESULT</span>
+            <p>3가지 AI 도구가 모두 동작하는 본인 작업 환경 완성. 첫 프로젝트 생성까지 직접 진행.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="curri-item">
+        <div class="curri-head">
+          <div class="curri-num">02</div>
+          <div class="curri-title-block">
+            <h3>프롬프팅 방법 & 법령 MCP 실습</h3>
+            <div class="curri-meta">
+              <span>📅 6/24(수) 21:00–22:30</span>
+              <span>⏱ 1.5시간</span>
+              <span>💻 온라인 실시간</span>
+            </div>
+          </div>
+        </div>
+        <div class="curri-body">
+          <ul class="curri-topics">
+            <li>업무에 통하는 프롬프트 설계 원칙</li>
+            <li>역할·맥락·제약 기반의 구조적 프롬프팅</li>
+            <li>MCP(Model Context Protocol) 개념 이해</li>
+            <li>법령 MCP를 활용한 실전 프롬프팅 실습</li>
+          </ul>
+          <div class="curri-outcome">
+            <span class="lbl">RESULT</span>
+            <p>외부 데이터·도구를 AI와 연결해 활용하는 실전 패턴 체득. 본인 업무용 프롬프트 라이브러리 초안 작성.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="curri-item">
+        <div class="curri-head">
+          <div class="curri-num">03</div>
+          <div class="curri-title-block">
+            <h3>스킬과 에이전트 개발</h3>
+            <div class="curri-meta">
+              <span>📅 6/26(금) 21:00–22:30</span>
+              <span>⏱ 1.5시간</span>
+              <span>💻 온라인 실시간</span>
+            </div>
+          </div>
+        </div>
+        <div class="curri-body">
+          <ul class="curri-topics">
+            <li>Skill과 Agent의 개념·차이·활용 시점</li>
+            <li>반복 업무 자동화를 위한 Skill 설계</li>
+            <li>역할별 Agent 정의와 조율 방법</li>
+            <li>본인 업무에 맞춘 Skill·Agent 직접 개발 실습</li>
+          </ul>
+          <div class="curri-outcome">
+            <span class="lbl">RESULT</span>
+            <p>나만의 Skill 1개 + Agent 1개 직접 구현 완료. 도구 사용자에서 'AI 시스템 제작자'로 전환.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="curri-item">
+        <div class="curri-head">
+          <div class="curri-num">04</div>
+          <div class="curri-title-block">
+            <h3>플러그인 이론 & 나만의 플러그인 개발 (Ship It!)</h3>
+            <div class="curri-meta">
+              <span>📅 6/27(토) 10:00–17:00 (점심 1.5시간 제외)</span>
+              <span>⏱ 5.5시간</span>
+              <span>💻 온라인 실시간</span>
+            </div>
+          </div>
+        </div>
+        <div class="curri-body">
+          <ul class="curri-topics">
+            <li>Claude Code 플러그인 구조와 동작 원리</li>
+            <li>선언형 멀티에이전트 플러그인(DMAP) 활용</li>
+            <li>업무 특화 플러그인 설계·구현·배포 전 과정</li>
+            <li>최종 산출물 발표 및 강사 피드백 → "We shipped it!"</li>
+          </ul>
+          <div class="curri-outcome">
+            <span class="lbl">RESULT</span>
+            <p>1주일 만에 본인 업무에 즉시 적용 가능한 AI 플러그인 1종 완성. 강사 검증을 받은 산출물 확보. YET Crew 합류 자격 획득.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="center mt-32">
+      <a href="#apply" class="btn btn-primary btn-lg">Early Birds 79,000원으로 신청하기</a>
+    </div>
+  </div>
+</section>
+
+<section id="instructor" class="instructor-wrap">
+  <div class="container">
+    <div class="instructor-headline">
+      <span class="eyebrow">INSTRUCTOR</span>
+      <h2>현업에서 직접 AI 자동화 시스템을 구축한<br/>강사가 직접 가르칩니다</h2>
+      <p>이론서 저자도, 강의만 하는 강사도 아닙니다. 29년 동안 실무에서 직접 코드를 짜고 시스템을 설계해 온<br/>현역 아키텍트가 본인의 실전 경험을 그대로 전수합니다.</p>
+    </div>
+
+    <article class="instructor-card">
+      <div class="instructor-photo">
+        <img src="assets/instructor.jpg" alt="이해경 강사 프로필 사진" loading="lazy" />
+        <div class="badge-img"><strong>이해경</strong> · IBM 29년+ 현역 아키텍트</div>
+      </div>
+      <div class="instructor-info">
+        <div class="name-row">
+          <span class="name">이해경</span>
+          <span class="title">IBM PM · Architect · Agile Coach · Developer</span>
+        </div>
+        <p class="intro">
+          IBM에서 29년간 PM·아키텍트·애자일 코치·개발자로 일해 온 현역 실무자.
+          기획부터 설계·개발·배포까지 Full-Cycle을 단독으로 교육 가능한 보기 드문 강사.
+          최신 AI 도구를 활용한 개발 생산성 극대화 방법론을 직접 만들어 현장에 적용하고 있음.
+        </p>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="num">29<span class="plus">년+</span></div>
+            <div class="lbl">현업 경력</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">80<span class="plus">만+</span></div>
+            <div class="lbl">블로그 누적 방문</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">96.3<span class="plus">점</span></div>
+            <div class="lbl">K은행 부트캠프 만족도</div>
+          </div>
+        </div>
+
+        <div class="cred-section">
+          <h4>주요 강의 이력</h4>
+          <ul class="cred-list">
+            <li>KTDS Digital Garage (1~5기) 총괄 강사 — 만족도 4.6/5점, 클라우드 역량 87.2% 향상</li>
+            <li>KB DigiTech Bootcamp MVP 코칭</li>
+            <li>비상교육·러닝스폰즈 Cloud Native Application 부트캠프 강사</li>
+            <li>연세대 AI 최고경영자과정 (1~3기) 강의</li>
+            <li>AI 활용 DT 서비스 기획자 멘토링 (총 3회)</li>
+            <li>IBM Korea 애자일 코치 및 아키텍트 (5년)</li>
+          </ul>
+        </div>
+
+        <div class="cred-section">
+          <h4>전문성 증명</h4>
+          <ul class="cred-list">
+            <li>저서 「마이크로서비스 패턴 쉽게 개발하기」</li>
+            <li>기술 블로그 「온달의 해피클라우드」 운영 — 누적 약 80만 방문</li>
+          </ul>
+          <div class="cred-tags" style="margin-top:12px;">
+            <span class="cred-tag">IBM Certified Agile Coach</span>
+            <span class="cred-tag">Professional Scrum Master</span>
+            <span class="cred-tag">IBM Certified Architect</span>
+            <span class="cred-tag">ODI JTBD Associate</span>
+          </div>
+        </div>
+
+        <div class="instructor-cta-row">
+          <a href="#apply" class="btn btn-dark">강사에게 직접 배우러 가기 →</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="ba-wrap">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">BEFORE / AFTER</span>
+      <h2>1주일 전과 1주일 후, 무엇이 달라질까요?</h2>
+      <p style="color: var(--ink-3);">"I can't…" 에서 "I can't… <strong style="color:var(--yet-yellow-d);">YET.</strong>" 으로,<br/>그리고 마침내 "We shipped it." 으로.</p>
+    </div>
+    <div class="ba-grid">
+      <div class="ba-card before">
+        <span class="ba-tag">BEFORE · 강의 전</span>
+        <h3>지금의 나</h3>
+        <ul class="ba-list">
+          <li><span class="ico">✕</span>ChatGPT는 쓰지만 "단발성 질문"에 머무름</li>
+          <li><span class="ico">✕</span>반복 업무를 매일 손으로 처리</li>
+          <li><span class="ico">✕</span>AI 도구가 너무 많아서 무엇부터 시작할지 모름</li>
+          <li><span class="ico">✕</span>업무 자동화는 개발자 영역이라고 생각함</li>
+          <li><span class="ico">✕</span>매일 야근하며 시간에 쫓김</li>
+        </ul>
+      </div>
+      <div class="ba-arrow" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </div>
+      <div class="ba-card after">
+        <span class="ba-tag">AFTER · 1주일 후</span>
+        <h3>달라진 나</h3>
+        <ul class="ba-list">
+          <li><span class="ico">✓</span>나만의 AI 팀원을 고용해 업무를 위임</li>
+          <li><span class="ico">✓</span>반복 업무는 Skill·Agent가 대신 처리</li>
+          <li><span class="ico">✓</span>업무에 필요한 AI 도구를 자유롭게 조합</li>
+          <li><span class="ico">✓</span>비개발자도 직접 AI 플러그인을 만들고 배포</li>
+          <li><span class="ico">✓</span>매일 2시간을 절약 → "We are YET Crew"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">TESTIMONIALS</span>
+      <h2>이해경 강사의 검증된 교육 성과</h2>
+      <p>본 강의는 YET 1기 신규 개설이지만, 강사의 기존 부트캠프 수강생들의 실제 평가를 공유합니다.</p>
+    </div>
+    <div class="testimonials-grid">
+      <article class="testimonial">
+        <div class="rating">⭐ <span>96.3 / 100점</span></div>
+        <p class="quote">기획부터 배포까지 디테일한 부분을 모두 배울 수 있어서 매우 큰 도움이 되었습니다.</p>
+        <div class="source"><strong>K은행 신입행원 부트캠프</strong> · 수강생 평균 만족도</div>
+      </article>
+      <article class="testimonial">
+        <div class="rating">⭐ <span>4.6 / 5점</span></div>
+        <p class="quote">DDD와 Event Storming을 통한 도메인 분석으로 시스템의 경계를 명확히 정의하고 서비스를 설계할 수 있게 되었습니다.</p>
+        <div class="source"><strong>KTDS Digital Garage</strong> · 1~5기 수강생 평균</div>
+      </article>
+    </div>
+    <p class="center mt-32" style="font-size: 13px; color: var(--ink-3);">
+      ※ 본 강의는 YET 1기 신규 모집 중입니다. 위 후기는 동일 강사가 진행한 KTDS·K은행 부트캠프의 실제 평가입니다.
+    </p>
+  </div>
+</section>
+
+<section id="faq" class="faq-wrap">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">FAQ</span>
+      <h2>자주 묻는 질문</h2>
+      <p>아래에 답이 없으시면 신청 페이지에서 직접 문의해 주세요.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>'YET'은 무엇인가요?</summary>
+        <div class="answer">
+          <strong>YET은 "Your Engineering Takeoff"의 약자</strong>이며, 유니콘주식회사가 운영하는 AI 업무자동화·Cloud Native 교육 브랜드입니다.
+          캐롤 드웩(스탠포드)의 <strong>'Power of Yet'</strong> 철학을 기반으로 — "아직 못하는 게 아니라, 아직 안 한 것뿐" —
+          학습자가 실패를 과정으로 받아들이고 끝까지 배포에 도달하도록 돕습니다.
+          본 강의 「AI 업무자동화 기초」는 YET AI 업무자동화의 진입 코스입니다.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>비개발자도 따라갈 수 있나요?</summary>
+        <div class="answer">
+          <strong>네, 충분히 가능합니다.</strong> 본 강의는 코드를 직접 작성하는 강의가 아닙니다.
+          Claude Code·Codex 같은 AI 도구가 코드 작성을 대신 해주기 때문에,
+          여러분은 "무엇을 자동화할지 정의하고 AI에게 지시"하는 방법을 익히게 됩니다.
+          엑셀과 PPT를 다룰 수 있는 수준이면 충분히 따라올 수 있습니다.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>준비물은 무엇이 필요한가요?</summary>
+        <div class="answer">
+          <strong>노트북(Windows·macOS 모두 가능)과 인터넷</strong>이 필수입니다.
+          강의 전에 Claude Code·Codex 가입과 사전 설치 안내를 메일로 보내드리며,
+          1회차 시작 전에 함께 환경 세팅을 진행합니다.
+          <strong>Claude Code는 Pro 구독이 필요</strong>하며, <strong>Codex는 무료 플랜으로도 모든 실습이 가능</strong>합니다.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>실시간 강의에 참여하지 못한 회차는 어떻게 하나요?</summary>
+        <div class="answer">
+          <strong>모든 회차는 녹화본을 제공합니다.</strong>
+          강의 종료 후 24시간 이내에 다시보기 링크가 발송되며,
+          수강 기간 동안 무제한 시청 가능합니다.
+          단, 실시간 실습 피드백과 질의응답은 라이브 참여 시에만 가능합니다.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>환불은 어떻게 되나요?</summary>
+        <div class="answer">
+          <strong>강의 시작 7일 전까지는 전액 환불</strong> 가능합니다.
+          이후 1회차 시작 전까지는 50% 환불, 1회차 시작 이후에는 환불이 불가합니다.
+          <strong>모집 인원 30명 미만으로 폐강될 경우</strong>에는 100% 자동 환불됩니다.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>강의 인원이 모자라면 어떻게 되나요?</summary>
+        <div class="answer">
+          <strong>신청 인원이 30명 미만일 경우 강의가 폐강됩니다.</strong>
+          폐강 결정은 1회차(6/22) 2일 전인 6/20(토)에 안내되며,
+          이미 결제한 수강료는 전액 자동 환불됩니다.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>수료증과 YET Crew 가입 혜택이 있나요?</summary>
+        <div class="answer">
+          <strong>4회차 모두 참여하고 최종 실습 산출물을 제출하신 분께는 "YET AI 업무자동화 1기 수료증"이 발급</strong>됩니다.
+          수료생은 자동으로 <strong>YET Crew(옛 크루) 디스코드 커뮤니티</strong>에 초대되어
+          동기들의 산출물 공유·강사 직접 Q&amp;A·다음 기수 멘토링 기회 등을 제공받습니다.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>기업에서 단체 수강이 가능한가요?</summary>
+        <div class="answer">
+          <strong>5명 이상 단체 신청 시 별도 할인 및 맞춤 커리큘럼이 가능</strong>합니다.
+          기업 내부 워크플로우에 맞춘 실습 사례 변경, 사후 컨설팅 추가 등이 협의 가능하므로
+          별도로 문의해 주세요.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>강의 후에도 질문이 가능한가요?</summary>
+        <div class="answer">
+          <strong>수료 후 30일간 YET Crew 디스코드 채널을 통해 추가 질문이 가능</strong>합니다.
+          강의에서 다룬 도구·실습 산출물 관련 질문에 강사가 직접 답변하며,
+          수강생들끼리 산출물을 공유하고 피드백할 수 있는 디스코드 전용 공간도 함께 제공됩니다.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="apply" class="pricing-wrap">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" style="background: rgba(255,210,63,0.20); color: var(--yet-yellow);">APPLY NOW · YET 1기</span>
+      <h2>지금 신청하면 20,000원 할인</h2>
+      <p>총 정원 <strong style="color:#fff;">50명</strong> 모집 · 첫 <strong style="color:var(--yet-yellow);">20명</strong>에게만 Early Birds 79,000원 적용 · 신청 <strong style="color:#fff;">30명 미만</strong> 시 폐강·100% 환불</p>
+    </div>
+
+    <div class="pricing-box">
+      <div class="pricing-name">YET · AI 업무자동화 기초 · 1기</div>
+      <div class="pricing-title">4회차 · 총 10시간 · 1주일 완성</div>
+      <div class="pricing-price-row">
+        <span class="pricing-orig">₩99,000</span>
+      </div>
+      <div class="pricing-price-row">
+        <span class="pricing-now">79,000<small>원</small></span>
+      </div>
+      <span class="pricing-save">💰 20,000원 즉시 할인 · 20% OFF</span>
+
+      <div class="schedule-grid">
+        <div class="sched-item">
+          <div class="ico">📅</div>
+          <div><strong>1회차</strong> 6/22(월) 21:00–22:30</div>
+        </div>
+        <div class="sched-item">
+          <div class="ico">📅</div>
+          <div><strong>2회차</strong> 6/24(수) 21:00–22:30</div>
+        </div>
+        <div class="sched-item">
+          <div class="ico">📅</div>
+          <div><strong>3회차</strong> 6/26(금) 21:00–22:30</div>
+        </div>
+        <div class="sched-item">
+          <div class="ico">📅</div>
+          <div><strong>4회차</strong> 6/27(토) 10:00–17:00 *</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.55);margin:-12px 0 6px;">* 토요일 점심시간 1.5시간 제외</p>
+
+      <ul class="pricing-includes">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>4회차 실시간 화상 강의 + 녹화본 무제한 다시보기</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>강의 자료 + 본인 직접 개발한 Skill·Agent·플러그인 산출물</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>YET AI 업무자동화 1기 공식 수료증</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>YET Crew 디스코드 커뮤니티 합류 + 수료 후 30일 Q&amp;A</li>
+      </ul>
+
+      <a href="mailto:hiondal@gmail.com?subject=%5BYET%20AI%20%EC%97%85%EB%AC%B4%EC%9E%90%EB%8F%99%ED%99%94%20%EA%B8%B0%EC%B4%88%201%EA%B8%B0%5D%20%EC%88%98%EA%B0%95%EC%8B%A0%EC%B2%AD&body=%EC%9D%B4%EB%A6%84%3A%0A%EC%97%B0%EB%9D%BD%EC%B2%98%3A%0A%EC%A7%81%EC%9E%A5%2F%EC%86%8C%EC%86%8D%3A%0A%EC%8B%A0%EC%B2%AD%EB%8F%99%EA%B8%B0%3A" class="btn btn-primary btn-lg btn-block">Early Birds 79,000원으로 6/22 강의 신청하기</a>
+
+      <div class="pricing-warn">
+        <span class="ico">⚠</span>
+        <div>
+          <strong>폐강 안내:</strong> 신청 인원이 30명 미만일 경우 강의가 폐강되며, 결제하신 수강료는 100% 자동 환불됩니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="crew-cta">
+      🚀 "Not yet, but we will ship it." — YET 1기 크루가 되어주세요.
+      <div class="tags">#YET · #YETCrew · #NotYetButWeWillShipIt</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="wordmark">YET</span>
+        <div class="fullname">Your Engineering Takeoff</div>
+        <p class="slogan">"Not yet, but we will ship it."</p>
+        <p class="slogan-ko">아직, 이라서 시작합니다.</p>
+        <p style="margin-top: 12px; font-size: 13px; color: rgba(255,255,255,0.55);">
+          AI · Cloud Native Application Education Brand<br/>by 유니콘주식회사
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>YET Brand</h5>
+        <ul>
+          <li><a href="#brand-story">The Power of YET</a></li>
+          <li>YET AI 업무자동화</li>
+          <li>YET Crew · 수료생 디스코드 커뮤니티</li>
+          <li>슬로건: Think · Build · Ship</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Course Info</h5>
+        <ul>
+          <li><a href="#curriculum">커리큘럼</a></li>
+          <li><a href="#instructor">강사 이해경</a></li>
+          <li><a href="#faq">FAQ · 환불 정책</a></li>
+          <li><a href="#apply">신청하기</a></li>
+        </ul>
+        <p class="meta" style="margin-top:14px;">
+          <strong>운영</strong> 유니콘주식회사<br/>
+          <strong>웹</strong> yet-bootcamp.unicorn.kubepia.com
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 YET · 유니콘주식회사. 본 페이지에 사용된 강사 실적·후기는 강사 제공 자료에 근거합니다.</div>
+      <div class="tags">#YET #YETCrew #NotYetButWeWillShipIt</div>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-cta" role="region" aria-label="신청 바로가기">
+  <div class="info">
+    <div class="price"><del>₩99,000</del>₩79,000</div>
+    <div class="lbl">YET 1기 · Early Birds 20명 한정</div>
+  </div>
+  <a href="#apply" class="btn btn-primary">지금 신청 →</a>
+</div>
+
+</body>
+</html>
