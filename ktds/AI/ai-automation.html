@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI 업무 자동화 집중과정 | KTDS</title>
+<meta name="description" content="KTDS 임직원을 위한 2일(14H) 멀티에이전트(MAS) 기반 업무 자동화 집중 과정. 코딩 없이도(DMAP) → 본격 MAS(Abra)까지, 실무 자동화 도구를 직접 만들어 봅니다." />
+<style>
+  /* ============ Reset & Base ============ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  :root {
+    --kt-red: #E60012;
+    --kt-red-dark: #B8000F;
+    --kt-black: #1A1A1A;
+    --kt-charcoal: #2C2C2C;
+    --kt-gray-900: #333333;
+    --kt-gray-700: #555555;
+    --kt-gray-500: #888888;
+    --kt-gray-300: #D4D4D4;
+    --kt-gray-100: #F5F5F5;
+    --kt-gray-50: #FAFAFA;
+    --kt-white: #FFFFFF;
+    --kt-accent: #FF3D4E;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.10);
+    --shadow-lg: 0 16px 48px rgba(0,0,0,0.16);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 24px;
+  }
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+    color: var(--kt-black);
+    background: var(--kt-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ============ Layout ============ */
+  .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 96px 0; position: relative; }
+  .section-label {
+    display: inline-block; font-size: 16px; font-weight: 700; letter-spacing: 0.18em;
+    color: var(--kt-red); text-transform: uppercase; margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 48px; font-weight: 800; line-height: 1.25; color: var(--kt-black);
+    margin-bottom: 16px; letter-spacing: -0.02em;
+  }
+  .section-subtitle {
+    font-size: 20px; color: var(--kt-gray-700); margin-bottom: 56px; max-width: 720px;
+  }
+
+  /* ============ Navigation ============ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,26,26,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner {
+    max-width: 1180px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; color: var(--kt-white); font-weight: 800; }
+  .nav-brand .dot { width: 10px; height: 10px; background: var(--kt-red); border-radius: 2px; }
+  .nav-brand .brand-name { font-size: 19px; letter-spacing: -0.01em; }
+  .nav-brand .brand-tag {
+    font-size: 13px; color: var(--kt-gray-300); font-weight: 500;
+    padding: 3px 8px; border: 1px solid rgba(255,255,255,0.15); border-radius: 999px;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    font-size: 17px; color: rgba(255,255,255,0.75); font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--kt-white); }
+  @media (max-width: 760px) { .nav-links { display: none; } }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: linear-gradient(135deg, #0F0F10 0%, #1A1A1A 50%, #2C2C2C 100%);
+    color: var(--kt-white); padding: 160px 0 110px; overflow: hidden; position: relative;
+  }
+  .hero::before {
+    content: ""; position: absolute; top: -180px; right: -180px; width: 540px; height: 540px;
+    background: radial-gradient(circle, rgba(230,0,18,0.22) 0%, transparent 65%);
+    filter: blur(20px);
+  }
+  .hero::after {
+    content: ""; position: absolute; bottom: -120px; left: -120px; width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(255,61,78,0.12) 0%, transparent 65%);
+    filter: blur(20px);
+  }
+  .hero-inner { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 16px; border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 999px; background: rgba(255,255,255,0.04);
+    font-size: 16px; color: rgba(255,255,255,0.85); margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .hero-eyebrow .pulse {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--kt-red);
+    box-shadow: 0 0 0 0 rgba(230,0,18,0.6); animation: pulse 1.8s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(230,0,18,0.6); }
+    70% { box-shadow: 0 0 0 12px rgba(230,0,18,0); }
+    100% { box-shadow: 0 0 0 0 rgba(230,0,18,0); }
+  }
+  .hero h1 {
+    font-size: clamp(43px, 5.4vw, 77px);
+    font-weight: 900; line-height: 1.1; letter-spacing: -0.03em;
+    margin-bottom: 24px; max-width: 980px;
+  }
+  .hero h1 .accent { color: var(--kt-red); }
+  .hero h1 .underline {
+    background: linear-gradient(180deg, transparent 65%, rgba(230,0,18,0.4) 65%);
+    padding: 0 4px;
+  }
+  .hero-lede {
+    font-size: clamp(19px, 1.4vw, 23px); color: rgba(255,255,255,0.78);
+    max-width: 720px; margin-bottom: 40px; line-height: 1.65;
+  }
+
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 32px;
+    padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.10);
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .meta-label { font-size: 14px; color: rgba(255,255,255,0.55); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+  .meta-value { font-size: 22px; color: var(--kt-white); font-weight: 700; }
+
+  /* Series badge */
+  .series-badge {
+    position: absolute; top: 100px; right: 24px; z-index: 3;
+    font-size: 13px; color: rgba(255,255,255,0.6);
+    padding: 6px 12px; border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 999px; background: rgba(255,255,255,0.04);
+    font-weight: 600; letter-spacing: 0.06em;
+  }
+  .series-badge b { color: var(--kt-red); font-weight: 800; }
+  @media (max-width: 760px) { .series-badge { display: none; } }
+
+  /* ============ Stats (Why) ============ */
+  .stats {
+    background: var(--kt-gray-50); padding: 88px 0;
+  }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  @media (max-width: 880px) { .stats-grid { grid-template-columns: 1fr; } }
+  .stat-card {
+    background: var(--kt-white); padding: 36px 32px; border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm); border: 1px solid var(--kt-gray-100);
+    position: relative; overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .stat-card::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+    background: var(--kt-red);
+  }
+  .stat-number {
+    font-size: 67px; font-weight: 900; color: var(--kt-red);
+    line-height: 1; letter-spacing: -0.04em; margin-bottom: 12px;
+  }
+  .stat-number .unit { font-size: 38px; font-weight: 700; }
+  .stat-title { font-size: 20px; font-weight: 700; color: var(--kt-black); margin-bottom: 8px; }
+  .stat-desc { font-size: 17px; color: var(--kt-gray-700); line-height: 1.55; margin-bottom: 14px; }
+  .stat-source {
+    font-size: 13px; color: var(--kt-gray-500); font-weight: 500;
+    padding-top: 12px; border-top: 1px dashed var(--kt-gray-300);
+  }
+  .stat-source a { color: var(--kt-red); font-weight: 600; }
+  .stat-source a:hover { text-decoration: underline; }
+
+  /* ============ AUDIENCE / OUTCOME ============ */
+  .audience {
+    background: var(--kt-white); padding: 110px 0;
+  }
+  .audience-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 48px;
+  }
+  @media (max-width: 880px) { .audience-grid { grid-template-columns: 1fr; } }
+  .audience-card {
+    background: var(--kt-gray-50); border-radius: var(--radius-md);
+    padding: 32px 30px; border: 1px solid var(--kt-gray-100);
+    transition: all 0.3s ease;
+  }
+  .audience-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .audience-icon {
+    width: 50px; height: 50px; border-radius: 12px;
+    background: var(--kt-red); color: var(--kt-white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; margin-bottom: 18px;
+  }
+  .audience-card h3 {
+    font-size: 24px; font-weight: 800; color: var(--kt-black); margin-bottom: 6px;
+  }
+  .audience-card .role {
+    font-size: 14px; color: var(--kt-red); font-weight: 700; letter-spacing: 0.06em;
+    margin-bottom: 18px; text-transform: uppercase;
+  }
+  .transform-row {
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center;
+    padding: 12px 0; border-top: 1px solid var(--kt-gray-300);
+  }
+  .transform-row:first-of-type { border-top: none; padding-top: 4px; }
+  .transform-before { color: var(--kt-gray-500); font-size: 16px; text-decoration: line-through; text-decoration-color: var(--kt-gray-300); }
+  .transform-arrow { color: var(--kt-red); font-weight: 800; font-size: 17px; }
+  .transform-after { color: var(--kt-black); font-size: 16px; font-weight: 600; }
+
+  .case-banner {
+    background: linear-gradient(135deg, var(--kt-black) 0%, var(--kt-charcoal) 100%);
+    color: var(--kt-white); border-radius: var(--radius-lg);
+    padding: 36px 40px; position: relative; overflow: hidden;
+  }
+  .case-banner::after {
+    content: ""; position: absolute; top: -80px; right: -80px; width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(230,0,18,0.25) 0%, transparent 70%);
+  }
+  .case-banner > * { position: relative; z-index: 1; }
+  .case-banner .case-tag {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
+    color: var(--kt-accent); text-transform: uppercase; margin-bottom: 8px;
+  }
+  .case-banner h4 { font-size: 26px; font-weight: 800; margin-bottom: 10px; color: var(--kt-white); letter-spacing: -0.01em; }
+  .case-banner p { font-size: 17px; color: rgba(255,255,255,0.75); max-width: 720px; }
+  .case-channels {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px;
+  }
+  .case-chip {
+    font-size: 14px; font-weight: 600; color: var(--kt-white);
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    padding: 6px 12px; border-radius: 999px;
+  }
+
+  /* ============ CURRICULUM ============ */
+  .curriculum {
+    background: var(--kt-gray-50); padding: 110px 0;
+  }
+  .timeline {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+  }
+  @media (max-width: 880px) { .timeline { grid-template-columns: 1fr; } }
+  .day-card {
+    background: var(--kt-white); border-radius: var(--radius-md);
+    padding: 32px 28px; border: 1px solid var(--kt-gray-100);
+    box-shadow: var(--shadow-sm); position: relative; transition: all 0.3s ease;
+    display: flex; flex-direction: column;
+  }
+  .day-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+  .day-card.featured { border-top: 4px solid var(--kt-red); }
+  .day-card.featured-2 { border-top: 4px solid var(--kt-charcoal); }
+  .day-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .day-number {
+    font-size: 16px; font-weight: 700; color: var(--kt-red);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .day-hours {
+    font-size: 14px; color: var(--kt-white); background: var(--kt-black);
+    padding: 4px 10px; border-radius: 999px; font-weight: 700;
+  }
+  .day-title {
+    font-size: 26px; font-weight: 800; color: var(--kt-black);
+    margin-bottom: 18px; line-height: 1.3; letter-spacing: -0.01em;
+  }
+  .module-list { list-style: none; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .module-item { padding-bottom: 14px; border-bottom: 1px dashed var(--kt-gray-300); }
+  .module-item:last-child { border-bottom: none; }
+  .module-name {
+    font-size: 17px; font-weight: 700; color: var(--kt-black); margin-bottom: 4px;
+    display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  }
+  .module-name .hours {
+    font-size: 13px; font-weight: 700; color: var(--kt-red);
+    background: rgba(230,0,18,0.08); padding: 2px 8px; border-radius: 4px;
+  }
+  .module-desc { font-size: 16px; color: var(--kt-gray-700); line-height: 1.5; }
+
+  .deliverable-chip {
+    display: inline-block; font-size: 13px; font-weight: 600;
+    color: var(--kt-gray-700); background: var(--kt-gray-100);
+    padding: 3px 8px; border-radius: 4px; margin-top: 6px; margin-right: 4px;
+  }
+  .deliverable-chip.hot {
+    color: var(--kt-red); background: rgba(230,0,18,0.08);
+  }
+
+  /* ============ METHODOLOGY (with PLUGIN DUO) ============ */
+  .methodology {
+    background: var(--kt-white); padding: 110px 0;
+  }
+  .method-flow {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+    margin-bottom: 56px;
+  }
+  @media (max-width: 880px) {
+    .method-flow { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  }
+  .method-step {
+    background: var(--kt-gray-50); padding: 22px 16px; border-radius: var(--radius-md);
+    text-align: center; border: 1px solid var(--kt-gray-100);
+    position: relative;
+  }
+  .method-step::after {
+    content: "→"; position: absolute; right: -16px; top: 50%; transform: translateY(-50%);
+    color: var(--kt-red); font-size: 26px; font-weight: 800;
+  }
+  .method-step:last-child::after { display: none; }
+  @media (max-width: 880px) { .method-step::after { display: none; } }
+  .method-step-num {
+    width: 32px; height: 32px; border-radius: 50%; background: var(--kt-red); color: var(--kt-white);
+    font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 12px;
+  }
+  .method-step-title { font-size: 17px; font-weight: 700; color: var(--kt-black); margin-bottom: 4px; }
+  .method-step-desc { font-size: 14px; color: var(--kt-gray-700); line-height: 1.4; }
+
+  /* Plugin Duo - DMAP + Abra */
+  .plugin-section-label {
+    display: inline-block; font-size: 14px; font-weight: 700; letter-spacing: 0.18em;
+    color: var(--kt-red); text-transform: uppercase; margin-bottom: 10px;
+  }
+  .plugin-section-title {
+    font-size: 31px; font-weight: 800; color: var(--kt-black); margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .plugin-section-subtitle {
+    font-size: 18px; color: var(--kt-gray-700); margin-bottom: 28px; max-width: 720px;
+  }
+  .plugin-duo {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  }
+  @media (max-width: 880px) { .plugin-duo { grid-template-columns: 1fr; } }
+  .plugin-card {
+    background: linear-gradient(135deg, var(--kt-black) 0%, var(--kt-charcoal) 100%);
+    color: var(--kt-white); padding: 32px 30px; border-radius: var(--radius-lg);
+    position: relative; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .plugin-card::after {
+    content: ""; position: absolute; top: -80px; right: -80px; width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(230,0,18,0.22) 0%, transparent 70%);
+  }
+  .plugin-card > * { position: relative; z-index: 1; }
+  .plugin-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: var(--kt-red); color: var(--kt-white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; font-weight: 900; margin-bottom: 16px;
+  }
+  .plugin-stage {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
+    color: var(--kt-accent); text-transform: uppercase; margin-bottom: 6px;
+  }
+  .plugin-card h4 {
+    font-size: 26px; font-weight: 800; margin-bottom: 6px; color: var(--kt-white); letter-spacing: -0.01em;
+  }
+  .plugin-card .plugin-tagline {
+    font-size: 16px; color: rgba(255,255,255,0.55); font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .plugin-card p {
+    font-size: 17px; color: rgba(255,255,255,0.78); line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .plugin-card p strong { color: var(--kt-white); font-weight: 700; }
+  .plugin-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .plugin-tags span {
+    font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+    padding: 5px 10px; border-radius: 6px;
+  }
+
+  /* ============ DIFFERENTIATORS + CTA ============ */
+  .differentiators {
+    background: linear-gradient(180deg, var(--kt-gray-50) 0%, var(--kt-white) 100%);
+    padding: 110px 0;
+  }
+  .diff-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+    margin-bottom: 56px;
+  }
+  @media (max-width: 760px) { .diff-grid { grid-template-columns: 1fr; } }
+  .diff-card {
+    background: var(--kt-white); padding: 32px; border-radius: var(--radius-md);
+    border: 1px solid var(--kt-gray-100); transition: all 0.3s ease;
+    display: flex; gap: 20px;
+  }
+  .diff-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .diff-icon {
+    flex-shrink: 0; width: 48px; height: 48px; border-radius: 10px;
+    background: rgba(230,0,18,0.08); color: var(--kt-red);
+    display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 900;
+  }
+  .diff-card h4 { font-size: 20px; font-weight: 800; color: var(--kt-black); margin-bottom: 6px; }
+  .diff-card p { font-size: 17px; color: var(--kt-gray-700); line-height: 1.55; }
+
+  /* CTA */
+  .cta-final {
+    background: var(--kt-black); color: var(--kt-white);
+    border-radius: var(--radius-lg); padding: 56px 48px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-final::before {
+    content: ""; position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(230,0,18,0.18) 0%, transparent 60%);
+  }
+  .cta-final > * { position: relative; z-index: 1; }
+  .cta-final h2 {
+    font-size: clamp(34px, 3vw, 46px); font-weight: 900; line-height: 1.25;
+    margin-bottom: 14px; letter-spacing: -0.02em;
+  }
+  .cta-final h2 .hl { color: var(--kt-red); }
+  .cta-final p { font-size: 19px; color: rgba(255,255,255,0.75); margin-bottom: 0; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .cta-meta {
+    display: inline-flex; flex-wrap: wrap; gap: 24px; justify-content: center;
+    padding: 14px 28px; background: rgba(255,255,255,0.05); border-radius: 999px;
+    margin-top: 28px; font-size: 16px; color: rgba(255,255,255,0.8);
+  }
+  .cta-meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .cta-meta span::before { content: "•"; color: var(--kt-red); }
+  .cta-meta span:first-child::before { content: ""; }
+
+  /* ============ Footer ============ */
+  footer {
+    background: var(--kt-black); color: rgba(255,255,255,0.55);
+    padding: 32px 0; font-size: 16px;
+  }
+  .footer-inner {
+    max-width: 1180px; margin: 0 auto; padding: 0 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-inner .brand-row { display: flex; align-items: center; gap: 12px; color: var(--kt-white); font-weight: 700; }
+  .footer-inner .brand-row .dot { width: 8px; height: 8px; background: var(--kt-red); border-radius: 2px; }
+
+  /* ============ Animations ============ */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ Mobile Refinements ============ */
+  @media (max-width: 760px) {
+    section { padding: 64px 0; }
+    .hero { padding: 130px 0 80px; }
+    .section-title { font-size: 36px; }
+    .hero-meta { gap: 20px; }
+    .stat-number { font-size: 53px; }
+    .stat-number .unit { font-size: 31px; }
+    .cta-final { padding: 44px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../" class="nav-brand">
+      <span class="dot"></span>
+      <span class="brand-name">KTDS</span>
+      <span class="brand-tag">AI Academy</span>
+    </a>
+    <div class="nav-links">
+      <a href="#why">Why</a>
+      <a href="#audience">대상</a>
+      <a href="#curriculum">커리큘럼</a>
+      <a href="#plugins">DMAP·Abra</a>
+      <a href="#diff">차별점</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ 1) HERO ============ -->
+<section class="hero" id="hero">
+  <span class="series-badge">AI Series · <b>Edition 1</b></span>
+  <div class="container hero-inner">
+    <div class="hero-eyebrow">
+      <span class="pulse"></span>
+      <span>2026 임직원 역량 강화 과정 · KTDS 사내 한정</span>
+    </div>
+    <h1>
+      AI 에이전트 시대,<br/>
+      <span class="underline accent">내 업무 자동화</span>를<br/>
+      <span class="accent">스스로 만드는 2일.</span>
+    </h1>
+    <p class="hero-lede">
+      2일 후, 당신의 노트북에는 <strong>매일 쓰는 자동화 도구</strong>가 남습니다. DMAP으로 코딩 없이 시작해, LangGraph 기반 멀티에이전트 시스템(MAS)까지 — KT가 보유한 실제 채널을 활용하는 서비스를 직접 만듭니다.
+    </p>
+
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">교육기간</span>
+        <span class="meta-value">2일 · 14시간</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">추천 대상</span>
+        <span class="meta-value">업무 자동화를 원하는 전 직원</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">선수 지식</span>
+        <span class="meta-value">AI 기초</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">실습 비중</span>
+        <span class="meta-value">12H+ (전체의 85%)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">교육 일정</span>
+        <span class="meta-value">6/4 · 6/5</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2) WHY (Stats) ============ -->
+
+<!-- ============ 3) AUDIENCE + OUTCOME ============ -->
+<section class="audience" id="audience">
+  <div class="container">
+    <span class="section-label">Who · Outcome</span>
+    <h2 class="section-title">개발자가 아니어도 괜찮습니다.</h2>
+    <p class="section-subtitle">
+      코딩 경험이 없어도 첫날부터 본인 업무 자동화 도구를 만들 수 있습니다. 둘째 날에는 본격 멀티에이전트 시스템(MAS)까지.
+    </p>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-icon">🧑‍💼</div>
+        <h3>기획자 · 운영자 · 마케팅</h3>
+        <div class="role">Non-Developer</div>
+        <div class="transform-row">
+          <div class="transform-before">"AI 도구가 많은데 어디부터?"</div>
+          <div class="transform-arrow">→</div>
+          <div class="transform-after">Enterprise AI 5-Layer 지도로 정리</div>
+        </div>
+        <div class="transform-row">
+          <div class="transform-before">"코딩을 못 해서 자동화 못 함"</div>
+          <div class="transform-arrow">→</div>
+          <div class="transform-after">DMAP으로 코딩 없이 플러그인 개발</div>
+        </div>
+            </div>
+
+      <div class="audience-card">
+        <div class="audience-icon">👨‍💻</div>
+        <h3>개발자 · 데이터·AI 엔지니어</h3>
+        <div class="role">Developer</div>
+        <div class="transform-row">
+          <div class="transform-before">"단일 LLM 호출만 해 봄"</div>
+          <div class="transform-arrow">→</div>
+          <div class="transform-after">LangGraph 기반 MAS 설계·구축</div>
+        </div>
+        <div class="transform-row">
+          <div class="transform-before">"Dify vs LangChain 뭐가 다름?"</div>
+          <div class="transform-arrow">→</div>
+          <div class="transform-after">Abra 플러그인으로 두 도구 결합 체험</div>
+        </div>
+            </div>
+    </div>
+
+    <!-- KT Case banner -->
+  </div>
+</section>
+
+<!-- ============ 4) CURRICULUM ============ -->
+<section class="curriculum" id="curriculum">
+  <div class="container">
+    <span class="section-label">Curriculum</span>
+    <h2 class="section-title">2일 · 14시간 · 자동화 마스터 여정</h2>
+    <p class="section-subtitle">
+      Day 1은 "코딩 없이도 가능"을 증명하고, Day 2는 본격 멀티에이전트 시스템 개발로 도약합니다.
+    </p>
+
+    <div class="timeline">
+      <!-- Day 1 -->
+      <div class="day-card featured">
+        <div class="day-header">
+          <span class="day-number">Day 1 · 기초 + DMAP</span>
+          <span class="day-hours">7H</span>
+        </div>
+        <h3 class="day-title">"코딩 없이도 만들 수 있다"를 증명하는 날</h3>
+        <ul class="module-list">
+          <li class="module-item">
+            <div class="module-name">엔터프라이즈 AI 서비스 이해 <span class="hours">1H</span></div>
+            <div class="module-desc">AI 개요·3대 필요성·5대 핵심 구성요소·AI 아키텍처. AI 도구 5-Layer 지도(Foundation Model → Cloud AI PaaS)</div>
+          </li>
+          <li class="module-item">
+            <div class="module-name">AI 도구 기본 사용법 <span class="hours">2H</span></div>
+            <div class="module-desc">Claude Code(AGENTS.md, MCP) · Codex · 프롬프트 5대 구성. 스킬·에이전트·플러그인 이해</div>
+            <span class="deliverable-chip hot">스킬·에이전트 실습</span>
+            <span class="deliverable-chip">MCP 추가</span>
+          </li>
+          <li class="module-item">
+            <div class="module-name">업무 자동화 플러그인 개발 (DMAP) <span class="hours">4H</span></div>
+            <div class="module-desc">DMAP 플러그인 설치·사용. 코딩 없이 스킬·에이전트·플러그인 개발. 웹+유튜브 검색 레포트 플러그인 + 개인 업무용 플러그인 제작</div>
+            <span class="deliverable-chip hot">레포트 플러그인</span>
+            <span class="deliverable-chip">개인 업무 플러그인</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="day-card featured-2">
+        <div class="day-header">
+          <span class="day-number">Day 2 · MAS + Abra</span>
+          <span class="day-hours">7H</span>
+        </div>
+        <h3 class="day-title">"멀티에이전트로 도약"하는 날</h3>
+        <ul class="module-list">
+          <li class="module-item">
+            <div class="module-name">MAS 이해 (LangGraph) <span class="hours">3H</span></div>
+            <div class="module-desc">MAS 정의·필요성·구축방안(SAS패턴, 외부 툴 통신, 상태 관리). LangGraph + 하네스 엔지니어링(비용·성능·보안). 실습: 질문 분류 → Code 생성(벡터DB 검색→재시도) / Q&A(내부DB+웹+YouTube) → Fallback 처리</div>
+            <span class="deliverable-chip hot">분류·라우팅 에이전트</span>
+            <span class="deliverable-chip">Fallback 처리</span>
+          </li>
+          <li class="module-item">
+            <div class="module-name">업무자동화 MAS 개발 (Abra) <span class="hours">4H</span></div>
+            <div class="module-desc">Abra 플러그인으로 <strong>기획(유저스토리)→설계(Dify DSL 자동생성)→개발(RAG+LangGraph MAS+프론트엔드)→배포(Docker Compose)</strong>까지. 실습 서비스: 업종/지역/시즌 트렌드 분석 → 예산별 이벤트 생성 → 우리동네TV·링고비즈·지니TV 다중 채널 배포 → 성과 분석</div>
+            <span class="deliverable-chip">Dify DSL → 프로토타입</span>
+            <span class="deliverable-chip">LangGraph MAS</span>
+            <span class="deliverable-chip hot">Docker 배포</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5) METHODOLOGY (with PLUGIN DUO) ============ -->
+<section class="methodology" id="plugins">
+  <div class="container">
+    <span class="section-label">Methodology</span>
+    <h2 class="section-title">우리는 이렇게 가르칩니다</h2>
+    <p class="section-subtitle">
+      5단계 학습 흐름 + 강사의 경험과 노우하우가 집약된 2개 플러그인을 활용해 "코딩 없이도 가능 → 본격 MAS"까지 한 호흡으로.
+    </p>
+    <!-- Plugin Duo -->
+    <span class="plugin-section-label">Built-in AI Toolkit · 2 Plugins</span>
+    <h3 class="plugin-section-title">본 과정의 핵심 도구 — DMAP & Abra</h3>
+    <p class="plugin-section-subtitle">
+      강사의 경험과 노우하우가 집약된 두 개의 플러그인을 실습 전반에 활용합니다. 단계별 학습 곡선에 맞게 설계되어, 초보자도 첫날부터 결과물을 만들 수 있습니다.
+    </p>
+
+    <div class="plugin-duo">
+      <div class="plugin-card">
+        <div class="plugin-icon">🛠</div>
+        <div class="plugin-stage">Day 1 · Non-Coding Automation</div>
+        <h4>DMAP 플러그인</h4>
+        <p class="plugin-tagline">코딩 없는 플러그인 개발 가속기</p>
+        <p>
+          <strong>코딩 없이 스킬·에이전트·플러그인을 만들 수 있도록 지원</strong>하는 강사의 경험과 노우하우가 집약된 플러그인.
+          AI를 처음 다루는 직원도 첫날에 본인 업무 자동화 도구를 직접 만들 수 있습니다. 첫 실습 산출물은 "웹+유튜브 검색하여 레포트 작성하는 플러그인".
+        </p>
+        <div class="plugin-tags">
+          <span>스킬 구성</span>
+          <span>에이전트 개발</span>
+          <span>플러그인 패키징</span>
+          <span>No-Code</span>
+        </div>
+      </div>
+
+      <div class="plugin-card">
+        <div class="plugin-icon">🧠</div>
+        <div class="plugin-stage">Day 2 · Multi-Agent System</div>
+        <h4>Abra 플러그인</h4>
+        <p class="plugin-tagline">Dify × LangGraph MAS 빌더</p>
+        <p>
+          <strong>Dify로 워크플로우를 시각적으로 설계하고, LangGraph로 본격 MAS를 구축</strong>하는 강사의 경험과 노우하우가 집약된 플러그인.
+          Dify의 빠른 프로토타이핑 + LangGraph의 프로덕션급 안정성을 결합. 실습 케이스는 "KT 채널 활용 AI 소상공인 마케팅 지원".
+        </p>
+        <div class="plugin-tags">
+          <span>Dify DSL</span>
+          <span>LangGraph</span>
+          <span>RAG</span>
+          <span>Docker Compose</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6) DIFFERENTIATORS + CTA ============ -->
+<section class="differentiators" id="diff">
+  <div class="container">
+    <span class="section-label">Why This Course</span>
+    <h2 class="section-title">다른 AI 교육과 무엇이 다릅니까?</h2>
+    <p class="section-subtitle">
+      "GPT 사용법"이나 "LangChain 데모"만 보여주는 교육과 명확히 구분됩니다.
+    </p>
+
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-icon">🎯</div>
+        <div>
+          <h4>코딩 없이도 시작</h4>
+          <p>DMAP 플러그인으로 첫날부터 코딩 없이 업무 자동화 도구를 직접 만듭니다.</p>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">🔗</div>
+        <div>
+          <h4>No-Code → MAS 단계적 학습</h4>
+          <p>Day 1(DMAP) → Day 2(LangGraph·Abra·MAS)로 학습 곡선이 매끄럽게 이어집니다.</p>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">📡</div>
+        <div>
+          <h4>KT 실제 채널 케이스</h4>
+          <p>우리동네TV·링고비즈·지니TV 등 KT 실제 채널을 활용하는 AI 소상공인 마케팅 MAS를 직접 만듭니다.</p>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">⚡</div>
+        <div>
+          <h4>강사의 경험과 노우하우가 집약된 2개 플러그인</h4>
+          <p>DMAP(No-Code 자동화) + Abra(Dify×LangGraph MAS) — 강사의 노우하우가 집약된 플러그인으로 실습합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="cta-final">
+      <h2>2일 후, 당신은<br/><span class="hl">AI 에이전트 빌더</span>가 됩니다.</h2>
+      <p>코딩 한 줄 없이 첫 자동화 도구를 만들고, KT 실제 채널 위에 동작하는 멀티에이전트 시스템까지 — 2일 만에 'AI 사용자'에서 'AI 빌더'로 도약합니다.</p>
+      <div class="cta-meta">
+        <span>2일 14시간</span>
+        <span>실습 12H+</span>
+        <span>업무 자동화를 원하는 전 직원</span>
+        <span>KTDS 임직원 한정</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="brand-row">
+      <span class="dot"></span>
+      <span>KTDS AI Academy</span>
+    </div>
+    <div>
+      © 2026 KTDS. AI 업무 자동화 집중과정 · 사내 교육 자료
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    const targets = document.querySelectorAll('.stat-card, .audience-card, .case-banner, .day-card, .method-step, .plugin-card, .diff-card');
+    targets.forEach(el => el.classList.add('reveal'));
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    targets.forEach(el => io.observe(el));
+  })();
+</script>
+
+</body>
+</html>

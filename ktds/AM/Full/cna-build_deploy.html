@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CNA 개발·배포 역량 향상 과정 | KTDS</title>
+<meta name="description" content="KTDS 임직원을 위한 3일(21H) Cloud Native Application 개발·배포 집중 과정. 백/프론트/AI 병렬 개발부터 GitOps(ArgoCD) 자동화까지, 실습 16H+ 중심 교육." />
+<style>
+  /* ============ Reset & Base ============ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  :root {
+    --kt-red: #E60012;
+    --kt-red-dark: #B8000F;
+    --kt-black: #1A1A1A;
+    --kt-charcoal: #2C2C2C;
+    --kt-gray-900: #333333;
+    --kt-gray-700: #555555;
+    --kt-gray-500: #888888;
+    --kt-gray-300: #D4D4D4;
+    --kt-gray-100: #F5F5F5;
+    --kt-gray-50: #FAFAFA;
+    --kt-white: #FFFFFF;
+    --kt-accent: #FF3D4E;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.10);
+    --shadow-lg: 0 16px 48px rgba(0,0,0,0.16);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 24px;
+  }
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+    color: var(--kt-black);
+    background: var(--kt-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ============ Layout ============ */
+  .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 96px 0; position: relative; }
+  .section-label {
+    display: inline-block; font-size: 16px; font-weight: 700; letter-spacing: 0.18em;
+    color: var(--kt-red); text-transform: uppercase; margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 48px; font-weight: 800; line-height: 1.25; color: var(--kt-black);
+    margin-bottom: 16px; letter-spacing: -0.02em;
+  }
+  .section-subtitle {
+    font-size: 20px; color: var(--kt-gray-700); margin-bottom: 56px; max-width: 720px;
+  }
+
+  /* ============ Navigation ============ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,26,26,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner {
+    max-width: 1180px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; color: var(--kt-white); font-weight: 800; }
+  .nav-brand .dot { width: 10px; height: 10px; background: var(--kt-red); border-radius: 2px; }
+  .nav-brand .brand-name { font-size: 19px; letter-spacing: -0.01em; }
+  .nav-brand .brand-tag {
+    font-size: 13px; color: var(--kt-gray-300); font-weight: 500;
+    padding: 3px 8px; border: 1px solid rgba(255,255,255,0.15); border-radius: 999px;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    font-size: 17px; color: rgba(255,255,255,0.75); font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--kt-white); }
+  @media (max-width: 760px) { .nav-links { display: none; } }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: linear-gradient(135deg, #0F0F10 0%, #1A1A1A 50%, #2C2C2C 100%);
+    color: var(--kt-white); padding: 160px 0 110px; overflow: hidden; position: relative;
+  }
+  .hero::before {
+    content: ""; position: absolute; top: -180px; right: -180px; width: 540px; height: 540px;
+    background: radial-gradient(circle, rgba(230,0,18,0.22) 0%, transparent 65%);
+    filter: blur(20px);
+  }
+  .hero::after {
+    content: ""; position: absolute; bottom: -120px; left: -120px; width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(255,61,78,0.12) 0%, transparent 65%);
+    filter: blur(20px);
+  }
+  .hero-inner { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 16px; border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 999px; background: rgba(255,255,255,0.04);
+    font-size: 16px; color: rgba(255,255,255,0.85); margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .hero-eyebrow .pulse {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--kt-red);
+    box-shadow: 0 0 0 0 rgba(230,0,18,0.6); animation: pulse 1.8s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(230,0,18,0.6); }
+    70% { box-shadow: 0 0 0 12px rgba(230,0,18,0); }
+    100% { box-shadow: 0 0 0 0 rgba(230,0,18,0); }
+  }
+  .hero h1 {
+    font-size: clamp(43px, 5.4vw, 77px);
+    font-weight: 900; line-height: 1.1; letter-spacing: -0.03em;
+    margin-bottom: 24px; max-width: 980px;
+  }
+  .hero h1 .accent { color: var(--kt-red); }
+  .hero h1 .underline {
+    background: linear-gradient(180deg, transparent 65%, rgba(230,0,18,0.4) 65%);
+    padding: 0 4px;
+  }
+  .hero-lede {
+    font-size: clamp(19px, 1.4vw, 23px); color: rgba(255,255,255,0.78);
+    max-width: 720px; margin-bottom: 40px; line-height: 1.65;
+  }
+
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 32px;
+    padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.10);
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .meta-label { font-size: 14px; color: rgba(255,255,255,0.55); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+  .meta-value { font-size: 22px; color: var(--kt-white); font-weight: 700; }
+
+  /* Series badge */
+  .series-badge {
+    position: absolute; top: 100px; right: 24px; z-index: 3;
+    font-size: 13px; color: rgba(255,255,255,0.6);
+    padding: 6px 12px; border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 999px; background: rgba(255,255,255,0.04);
+    font-weight: 600; letter-spacing: 0.06em;
+  }
+  .series-badge b { color: var(--kt-red); font-weight: 800; }
+  @media (max-width: 760px) { .series-badge { display: none; } }
+
+  /* ============ Stats (intro proof) ============ */
+  .stats {
+    background: var(--kt-gray-50); padding: 88px 0;
+  }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  @media (max-width: 880px) { .stats-grid { grid-template-columns: 1fr; } }
+  .stat-card {
+    background: var(--kt-white); padding: 36px 32px; border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm); border: 1px solid var(--kt-gray-100);
+    position: relative; overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .stat-card::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+    background: var(--kt-red);
+  }
+  .stat-number {
+    font-size: 67px; font-weight: 900; color: var(--kt-red);
+    line-height: 1; letter-spacing: -0.04em; margin-bottom: 12px;
+  }
+  .stat-number .unit { font-size: 38px; font-weight: 700; }
+  .stat-title { font-size: 20px; font-weight: 700; color: var(--kt-black); margin-bottom: 8px; }
+  .stat-desc { font-size: 17px; color: var(--kt-gray-700); line-height: 1.55; margin-bottom: 14px; }
+  .stat-source {
+    font-size: 13px; color: var(--kt-gray-500); font-weight: 500;
+    padding-top: 12px; border-top: 1px dashed var(--kt-gray-300);
+  }
+  .stat-source a { color: var(--kt-red); font-weight: 600; }
+  .stat-source a:hover { text-decoration: underline; }
+
+  /* ============ WHO + OUTCOME ============ */
+  .audience {
+    background: var(--kt-white); padding: 110px 0;
+  }
+  .audience-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 56px;
+  }
+  @media (max-width: 880px) { .audience-grid { grid-template-columns: 1fr; } }
+  .audience-card {
+    background: var(--kt-gray-50); border-radius: var(--radius-md);
+    padding: 36px; border: 1px solid var(--kt-gray-100);
+    transition: all 0.3s ease;
+  }
+  .audience-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .audience-icon {
+    width: 56px; height: 56px; border-radius: 12px;
+    background: var(--kt-red); color: var(--kt-white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 31px; margin-bottom: 20px;
+  }
+  .audience-card h3 {
+    font-size: 26px; font-weight: 800; color: var(--kt-black); margin-bottom: 8px;
+  }
+  .audience-card .role {
+    font-size: 16px; color: var(--kt-red); font-weight: 700; letter-spacing: 0.06em;
+    margin-bottom: 20px; text-transform: uppercase;
+  }
+  .transform-row {
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center;
+    padding: 14px 0; border-top: 1px solid var(--kt-gray-300);
+  }
+  .transform-row:first-of-type { border-top: none; padding-top: 4px; }
+  .transform-before { color: var(--kt-gray-500); font-size: 17px; text-decoration: line-through; text-decoration-color: var(--kt-gray-300); }
+  .transform-arrow { color: var(--kt-red); font-weight: 800; font-size: 17px; }
+  .transform-after { color: var(--kt-black); font-size: 17px; font-weight: 600; }
+
+  /* Outcome banner */
+  .outcome-banner {
+    background: linear-gradient(135deg, var(--kt-black) 0%, var(--kt-charcoal) 100%);
+    color: var(--kt-white); border-radius: var(--radius-lg);
+    padding: 44px 48px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .outcome-banner::after {
+    content: ""; position: absolute; top: -80px; right: -80px; width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(230,0,18,0.25) 0%, transparent 70%);
+  }
+  .outcome-banner > * { position: relative; z-index: 1; }
+  @media (max-width: 760px) { .outcome-banner { grid-template-columns: 1fr; padding: 32px 28px; } }
+  .outcome-banner h4 { font-size: 17px; color: rgba(255,255,255,0.65); font-weight: 600; margin-bottom: 8px; letter-spacing: 0.04em; }
+  .outcome-banner p { font-size: 26px; font-weight: 800; line-height: 1.4; max-width: 640px; }
+  .outcome-banner p .hl { color: var(--kt-accent); }
+  .outcome-banner .src { font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 12px; }
+  .outcome-banner .src a { color: rgba(255,255,255,0.7); border-bottom: 1px dotted rgba(255,255,255,0.4); }
+
+  /* ============ CURRICULUM ============ */
+  .curriculum {
+    background: var(--kt-gray-50); padding: 110px 0;
+  }
+  .timeline {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  @media (max-width: 880px) { .timeline { grid-template-columns: 1fr; } }
+  .day-card {
+    background: var(--kt-white); border-radius: var(--radius-md);
+    padding: 32px 28px; border: 1px solid var(--kt-gray-100);
+    box-shadow: var(--shadow-sm); position: relative; transition: all 0.3s ease;
+    display: flex; flex-direction: column;
+  }
+  .day-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+  .day-card.featured { border-top: 4px solid var(--kt-red); }
+  .day-card.featured-2 { border-top: 4px solid var(--kt-charcoal); }
+  .day-card.featured-3 { border-top: 4px solid var(--kt-red); }
+  .day-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .day-number {
+    font-size: 16px; font-weight: 700; color: var(--kt-red);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .day-hours {
+    font-size: 14px; color: var(--kt-white); background: var(--kt-black);
+    padding: 4px 10px; border-radius: 999px; font-weight: 700;
+  }
+  .day-title {
+    font-size: 26px; font-weight: 800; color: var(--kt-black);
+    margin-bottom: 18px; line-height: 1.3; letter-spacing: -0.01em;
+  }
+  .module-list { list-style: none; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .module-item { padding-bottom: 14px; border-bottom: 1px dashed var(--kt-gray-300); }
+  .module-item:last-child { border-bottom: none; }
+  .module-name {
+    font-size: 17px; font-weight: 700; color: var(--kt-black); margin-bottom: 4px;
+    display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  }
+  .module-name .hours {
+    font-size: 13px; font-weight: 700; color: var(--kt-red);
+    background: rgba(230,0,18,0.08); padding: 2px 8px; border-radius: 4px;
+  }
+  .module-desc { font-size: 16px; color: var(--kt-gray-700); line-height: 1.5; }
+
+  /* highlight chip */
+  .deliverable-chip {
+    display: inline-block; font-size: 13px; font-weight: 600;
+    color: var(--kt-gray-700); background: var(--kt-gray-100);
+    padding: 3px 8px; border-radius: 4px; margin-top: 6px; margin-right: 4px;
+  }
+  .deliverable-chip.hot {
+    color: var(--kt-red); background: rgba(230,0,18,0.08);
+  }
+
+  /* ============ METHODOLOGY ============ */
+  .methodology {
+    background: var(--kt-white); padding: 110px 0;
+  }
+  .method-flow {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+    margin-bottom: 56px;
+  }
+  @media (max-width: 880px) {
+    .method-flow { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  }
+  .method-step {
+    background: var(--kt-gray-50); padding: 22px 16px; border-radius: var(--radius-md);
+    text-align: center; border: 1px solid var(--kt-gray-100);
+    position: relative;
+  }
+  .method-step::after {
+    content: "→"; position: absolute; right: -16px; top: 50%; transform: translateY(-50%);
+    color: var(--kt-red); font-size: 26px; font-weight: 800;
+  }
+  .method-step:last-child::after { display: none; }
+  @media (max-width: 880px) { .method-step::after { display: none; } }
+  .method-step-num {
+    width: 32px; height: 32px; border-radius: 50%; background: var(--kt-red); color: var(--kt-white);
+    font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 12px;
+  }
+  .method-step-title { font-size: 17px; font-weight: 700; color: var(--kt-black); margin-bottom: 4px; }
+  .method-step-desc { font-size: 14px; color: var(--kt-gray-700); line-height: 1.4; }
+
+  /* Practice split */
+  .practice-split {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  @media (max-width: 880px) { .practice-split { grid-template-columns: 1fr; } }
+  .practice-card {
+    background: var(--kt-gray-50); padding: 36px 32px; border-radius: var(--radius-md);
+    border-left: 4px solid var(--kt-red);
+  }
+  .practice-card h4 {
+    font-size: 17px; font-weight: 700; color: var(--kt-red); letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 12px;
+  }
+  .practice-card h3 { font-size: 26px; font-weight: 800; color: var(--kt-black); margin-bottom: 18px; line-height: 1.3; }
+  .practice-card ul { list-style: none; }
+  .practice-card li {
+    padding: 10px 0 10px 24px; position: relative; font-size: 17px;
+    color: var(--kt-gray-900); border-bottom: 1px solid var(--kt-gray-300);
+  }
+  .practice-card li:last-child { border-bottom: none; }
+  .practice-card li::before {
+    content: "✓"; position: absolute; left: 0; color: var(--kt-red); font-weight: 800;
+  }
+
+  /* NPD Callout */
+  .npd-callout {
+    background: linear-gradient(135deg, var(--kt-black) 0%, var(--kt-charcoal) 100%);
+    color: var(--kt-white); border-radius: var(--radius-lg);
+    padding: 28px 36px; margin-bottom: 40px;
+    display: grid; grid-template-columns: 56px 1fr auto; gap: 24px; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .npd-callout::after {
+    content: ""; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(230,0,18,0.22) 0%, transparent 70%);
+  }
+  .npd-callout > * { position: relative; z-index: 1; }
+  .npd-icon {
+    width: 56px; height: 56px; border-radius: 12px;
+    background: var(--kt-red); color: var(--kt-white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; font-weight: 900;
+  }
+  .npd-content .npd-tag {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
+    color: var(--kt-accent); text-transform: uppercase; margin-bottom: 6px;
+  }
+  .npd-content h4 { font-size: 23px; font-weight: 800; margin-bottom: 6px; color: var(--kt-white); letter-spacing: -0.01em; }
+  .npd-content p { font-size: 17px; color: rgba(255,255,255,0.78); line-height: 1.55; max-width: 640px; }
+  .npd-content p strong { color: var(--kt-white); font-weight: 700; }
+  .npd-badge {
+    text-align: center; padding: 8px 24px; border-left: 1px solid rgba(255,255,255,0.18);
+  }
+  .npd-num { font-size: 48px; font-weight: 900; color: var(--kt-red); line-height: 1; letter-spacing: -0.04em; }
+  .npd-label { font-size: 13px; color: rgba(255,255,255,0.65); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 6px; }
+  @media (max-width: 760px) {
+    .npd-callout { grid-template-columns: 1fr; padding: 26px; text-align: center; gap: 16px; }
+    .npd-icon { margin: 0 auto; }
+    .npd-badge { border-left: none; border-top: 1px solid rgba(255,255,255,0.18); padding: 16px 0 0; }
+    .npd-content p { margin: 0 auto; }
+  }
+
+  /* ============ DIFFERENTIATORS + CTA ============ */
+  .differentiators {
+    background: linear-gradient(180deg, var(--kt-gray-50) 0%, var(--kt-white) 100%);
+    padding: 110px 0;
+  }
+  .diff-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+    margin-bottom: 56px;
+  }
+  @media (max-width: 760px) { .diff-grid { grid-template-columns: 1fr; } }
+  .diff-card {
+    background: var(--kt-white); padding: 32px; border-radius: var(--radius-md);
+    border: 1px solid var(--kt-gray-100); transition: all 0.3s ease;
+    display: flex; gap: 20px;
+  }
+  .diff-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .diff-icon {
+    flex-shrink: 0; width: 48px; height: 48px; border-radius: 10px;
+    background: rgba(230,0,18,0.08); color: var(--kt-red);
+    display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 900;
+  }
+  .diff-card h4 { font-size: 20px; font-weight: 800; color: var(--kt-black); margin-bottom: 6px; }
+  .diff-card p { font-size: 17px; color: var(--kt-gray-700); line-height: 1.55; }
+
+  /* CTA */
+  .cta-final {
+    background: var(--kt-black); color: var(--kt-white);
+    border-radius: var(--radius-lg); padding: 56px 48px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-final::before {
+    content: ""; position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(230,0,18,0.18) 0%, transparent 60%);
+  }
+  .cta-final > * { position: relative; z-index: 1; }
+  .cta-final h2 {
+    font-size: clamp(34px, 3vw, 46px); font-weight: 900; line-height: 1.25;
+    margin-bottom: 14px; letter-spacing: -0.02em;
+  }
+  .cta-final h2 .hl { color: var(--kt-red); }
+  .cta-final p { font-size: 19px; color: rgba(255,255,255,0.75); margin-bottom: 0; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .cta-meta {
+    display: inline-flex; flex-wrap: wrap; gap: 24px; justify-content: center;
+    padding: 14px 28px; background: rgba(255,255,255,0.05); border-radius: 999px;
+    margin-top: 28px; font-size: 16px; color: rgba(255,255,255,0.8);
+  }
+  .cta-meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .cta-meta span::before { content: "•"; color: var(--kt-red); }
+  .cta-meta span:first-child::before { content: ""; }
+
+  /* ============ Footer ============ */
+  footer {
+    background: var(--kt-black); color: rgba(255,255,255,0.55);
+    padding: 32px 0; font-size: 16px;
+  }
+  .footer-inner {
+    max-width: 1180px; margin: 0 auto; padding: 0 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-inner .brand-row { display: flex; align-items: center; gap: 12px; color: var(--kt-white); font-weight: 700; }
+  .footer-inner .brand-row .dot { width: 8px; height: 8px; background: var(--kt-red); border-radius: 2px; }
+
+  /* ============ Animations ============ */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ Mobile Refinements ============ */
+  @media (max-width: 760px) {
+    section { padding: 64px 0; }
+    .hero { padding: 130px 0 80px; }
+    .section-title { font-size: 36px; }
+    .hero-meta { gap: 20px; }
+    .stat-number { font-size: 53px; }
+    .stat-number .unit { font-size: 31px; }
+    .outcome-banner p { font-size: 22px; }
+    .cta-final { padding: 44px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../../" class="nav-brand">
+      <span class="dot"></span>
+      <span class="brand-name">KTDS</span>
+      <span class="brand-tag">CNA Academy</span>
+    </a>
+    <div class="nav-links">
+      <a href="#why">Why</a>
+      <a href="#audience">대상</a>
+      <a href="#curriculum">커리큘럼</a>
+      <a href="#methodology">학습방식</a>
+      <a href="#diff">차별점</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ 1) HERO ============ -->
+<section class="hero" id="hero">
+  <span class="series-badge">CNA Series · <b>Part 2 of 2</b> · Build & Deploy</span>
+  <div class="container hero-inner">
+    <div class="hero-eyebrow">
+      <span class="pulse"></span>
+      <span>2026 임직원 역량 강화 과정 · KTDS 사내 한정</span>
+    </div>
+    <h1>
+      잘 설계해 놓고,<br/>
+      <span class="underline accent">배포에서 무너지는 팀</span>이<br/>
+      <span class="accent">너무 많습니다.</span>
+    </h1>
+    <p class="hero-lede">
+      <strong>Elite 팀은 일반 팀보다 182배 더 자주 배포</strong>합니다. 그 차이는 도구 한두 개가 아닌 일관된 파이프라인. 3일 후, 코드 한 줄을 푸시하면 운영 환경까지 자동으로 흘러가는 GitOps 파이프라인을 직접 만들고 갑니다.
+    </p>
+
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">교육기간</span>
+        <span class="meta-value">3일 · 21시간</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">추천 대상</span>
+        <span class="meta-value">아키텍트 · 개발자 · 배포담당자</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">선수 지식</span>
+        <span class="meta-value">기획 + 설계 (Part 1 권장)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">실습 비중</span>
+        <span class="meta-value">16H+ (전체의 76%)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">교육 일정</span>
+        <span class="meta-value">6/17 · 18 · 19</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTRO STATS (Why now) ============ -->
+
+<!-- ============ 2) AUDIENCE & OUTCOME ============ -->
+<section class="audience" id="audience">
+  <div class="container">
+    <span class="section-label">Who · Outcome</span>
+    <h2 class="section-title">이 과정을 마치면, 무엇이 달라집니까?</h2>
+    <p class="section-subtitle">
+      개발자와 배포 담당자, 두 직군이 각자의 일하는 방식에서 즉시 활용 가능한 결과물을 얻어 갑니다.
+    </p>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-icon">💻</div>
+        <h3>IT 아키텍트 / 개발자</h3>
+        <div class="role">MSA 개발 · 통합 · 테스트</div>
+        <div class="transform-row">
+          <div class="transform-before">"설계서는 봤는데 어떻게 시작하지?"</div>
+          <div class="transform-arrow">→</div>
+          <div class="transform-after">설계서 기반 개발 계획서 작성·백킹 서비스 배포</div>
+        </div>
+        <div class="transform-row">
+          <div class="transform-before">"백/프론트 따로 만들다 끝에서 충돌"</div>
+          <div class="transform-arrow">→</div>
+          <div class="transform-after">NPD 플러그인으로 백/프론트/AI 병렬 개발</div>
+        </div>
+            </div>
+
+      <div class="audience-card">
+        <div class="audience-icon">🚀</div>
+        <h3>배포 담당자</h3>
+        <div class="role">컨테이너 · K8s · CI/CD 자동화</div>
+        <div class="transform-row">
+          <div class="transform-before">"kubectl 명령어가 두려움"</div>
+          <div class="transform-arrow">→</div>
+          <div class="transform-after">매니페스트·kubectl로 k8s 클러스터 수동 배포 완수</div>
+        </div>
+        <div class="transform-row">
+          <div class="transform-before">"Jenkins vs GitHub Actions 어느 쪽?"</div>
+          <div class="transform-arrow">→</div>
+          <div class="transform-after">둘 다 직접 작성 + SonarQube·Kustomize 연동</div>
+        </div>
+            </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3) CURRICULUM ============ -->
+<section class="curriculum" id="curriculum">
+  <div class="container">
+    <span class="section-label">Curriculum</span>
+    <h2 class="section-title">3일, 21시간의 학습 여정</h2>
+    <p class="section-subtitle">
+      "개발 → 수동 배포 → 자동화"의 자연스러운 흐름. 손으로 한 번 만져본 뒤에 자동화의 가치를 체감합니다.
+    </p>
+
+    <div class="timeline">
+      <!-- Day 1 -->
+      <div class="day-card featured">
+        <div class="day-header">
+          <span class="day-number">Day 1 · 개발</span>
+          <span class="day-hours">7H</span>
+        </div>
+        <h3 class="day-title">설계서를 동작하는 코드로 만드는 날</h3>
+        <ul class="module-list">
+          <li class="module-item">
+            <div class="module-name">AM 개요 <span class="hours">2H</span></div>
+            <div class="module-desc">AM 필요성·모더나이제이션 6R·일하는 방식 변화·현대화 기술(MSA·DevOps·AI·Cloud) 기본 이해</div>
+          </li>
+          <li class="module-item">
+            <div class="module-name">설계 결과 이해 <span class="hours">1H</span></div>
+            <div class="module-desc">백엔드/프론트엔드 설계서 이해. 샘플앱 유저스토리·시퀀스·API 설계서 데모</div>
+            <span class="deliverable-chip">샘플앱 데모</span>
+          </li>
+          <li class="module-item">
+            <div class="module-name">백/프론트/AI앱 개발 <span class="hours">4H</span></div>
+            <div class="module-desc">개발 계획서 작성 · 백킹 서비스 배포 · NPD 플러그인으로 백/프론트/AI 병렬 개발</div>
+            <span class="deliverable-chip hot">NPD 병렬 개발</span>
+            <span class="deliverable-chip">백킹 서비스</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="day-card featured-2">
+        <div class="day-header">
+          <span class="day-number">Day 2 · 통합 + 수동 배포</span>
+          <span class="day-hours">7H</span>
+        </div>
+        <h3 class="day-title">동작 코드를 "직접" 띄워 보는 날</h3>
+        <ul class="module-list">
+          <li class="module-item">
+            <div class="module-name">개발 (통합·E2E·UAT) <span class="hours">4H</span></div>
+            <div class="module-desc">통합 연동(백+AI, 프론트+백) · Playwright MCP로 E2E 자동 테스트 · UAT</div>
+            <span class="deliverable-chip hot">Playwright E2E</span>
+            <span class="deliverable-chip">UAT</span>
+          </li>
+          <li class="module-item">
+            <div class="module-name">수동 배포 <span class="hours">3H</span></div>
+            <div class="module-desc"><strong>컨테이너 이미지 빌드·실행</strong>부터 시작. 쿠버네티스 핵심 리소스·매니페스트·kubectl 명령. <strong>VM 생성→이미지 빌드→k8s 클러스터 생성→매니페스트 작성→kubectl 배포</strong>까지 손으로 한 번 만져봅니다 (자동화의 가치를 체감하는 단계)</div>
+            <span class="deliverable-chip">컨테이너 이미지</span>
+            <span class="deliverable-chip">매니페스트</span>
+            <span class="deliverable-chip hot">k8s 클러스터 배포</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="day-card featured-3">
+        <div class="day-header">
+          <span class="day-number">Day 3 · CI/CD 자동화</span>
+          <span class="day-hours">7H</span>
+        </div>
+        <h3 class="day-title">"두 번 다시 손으로 배포하지 않는" 날</h3>
+        <ul class="module-list">
+          <li class="module-item">
+            <div class="module-name">CI/CD 자동화 1 — Jenkins / GitHub Actions <span class="hours">4H</span></div>
+            <div class="module-desc"><strong>SonarQube</strong> 품질검사·자동화 테스트 연동 → <strong>Jenkins Scripted 파이프라인</strong> → <strong>GitHub Workflow</strong> CI/CD → <strong>Kustomize</strong> 환경별 배포. 3대 도구를 같은 MVP 주제로 비교 체험</div>
+            <span class="deliverable-chip">SonarQube</span>
+            <span class="deliverable-chip">Jenkins</span>
+            <span class="deliverable-chip hot">GitHub Workflow CI/CD</span>
+          </li>
+          <li class="module-item">
+            <div class="module-name">CI/CD 자동화 2 — ArgoCD GitOps <span class="hours">3H</span></div>
+            <div class="module-desc"><strong>ArgoCD GitOps</strong> 기반 CD 분리: Project/Application 작성 → Jenkins·GitHub Workflow에서 CD 과정 분리 → <strong>자동 동기화 운영</strong>. 코드 푸시만으로 운영까지 흘러가는 파이프라인 완성</div>
+            <span class="deliverable-chip">ArgoCD Project</span>
+            <span class="deliverable-chip hot">GitHub Workflow + ArgoCD</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4) METHODOLOGY ============ -->
+<section class="methodology" id="methodology">
+  <div class="container">
+    <span class="section-label">Methodology</span>
+    <h2 class="section-title">우리는 이렇게 가르칩니다</h2>
+    <p class="section-subtitle">
+      "수동 → 자동"의 자연스러운 흐름. 컨테이너와 kubectl을 손으로 만져본 뒤 자동화의 가치를 체감합니다.
+    </p>
+    <div class="npd-callout">
+      <div class="npd-icon">🤖</div>
+      <div class="npd-content">
+        <span class="npd-tag">Built-in AI Toolkit</span>
+        <h4>NPD 플러그인 — New Product Development</h4>
+        <p><strong>기획 → 설계 → 개발 → 배포의 전 과정을 9개 전문가 AI가 협업하여 지원하는</strong> 플러그인. 본 과정에서 백/프론트/AI 병렬 개발을 가속하는 핵심 도구로 사용합니다.</p>
+      </div>
+      <div class="npd-badge">
+        <div class="npd-num">9</div>
+        <div class="npd-label">전문가 AI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5) DIFFERENTIATORS + CTA ============ -->
+<section class="differentiators" id="diff">
+  <div class="container">
+    <span class="section-label">Why This Course</span>
+    <h2 class="section-title">다른 CI/CD 교육과 무엇이 다릅니까?</h2>
+    <p class="section-subtitle">
+      Jenkins만 가르치거나, ArgoCD만 데모하는 교육과 명확히 구분됩니다.
+    </p>
+
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-icon">🔗</div>
+        <div>
+          <h4>개발부터 배포까지 한 흐름</h4>
+          <p>개발 → 통합·E2E → 수동 배포 → GitOps 자동화까지 한 호흡으로 진행. 하나의 시스템이 운영 환경까지 올라가는 전 과정 경험.</p>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">⚙️</div>
+        <div>
+          <h4>3대 CI/CD 도구 모두 다룸</h4>
+          <p>Jenkins · GitHub Actions · ArgoCD — 가장 많이 쓰이는 3대 도구를 같은 MVP 주제로 직접 작성합니다.</p>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">🤖</div>
+        <div>
+          <h4>AI 도구를 개발·테스트·배포에 통합</h4>
+          <p>NPD 플러그인으로 병렬 개발, Playwright MCP로 E2E 테스트, Claude Code로 매니페스트·파이프라인 작성.</p>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">🌊</div>
+        <div>
+          <h4>"수동→자동"의 자연스러운 흐름</h4>
+          <p>kubectl로 손수 배포 → Jenkins 자동화 → ArgoCD GitOps로 진화. 자동화의 가치를 체감합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="cta-final">
+      <h2>"내 코드가 운영 환경까지<br/><span class="hl">자동으로 흘러가는</span>" 경험.</h2>
+      <p>3일 후, '왜 우리는 배포가 두렵지?'라는 질문에서 벗어납니다. 코드 한 줄 푸시로 운영까지 흘러가는 파이프라인을 우리 팀의 자산으로.</p>
+      <div class="cta-meta">
+        <span>3일 21시간</span>
+        <span>실습 16H+</span>
+        <span>아키텍트 · 개발자 · 배포담당자</span>
+        <span>KTDS 임직원 한정</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="brand-row">
+      <span class="dot"></span>
+      <span>KTDS CNA Academy</span>
+    </div>
+    <div>
+      © 2026 KTDS. CNA 개발·배포 역량 향상 과정 · 사내 교육 자료
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Lightweight scroll reveal
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    const targets = document.querySelectorAll('.stat-card, .audience-card, .day-card, .method-step, .practice-card, .diff-card, .outcome-banner');
+    targets.forEach(el => el.classList.add('reveal'));
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    targets.forEach(el => io.observe(el));
+  })();
+</script>
+
+</body>
+</html>

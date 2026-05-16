@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KTDS 역량강화 교육 과정 | AI · CNA Academy</title>
+<meta name="description" content="KTDS 임직원을 위한 AI 업무 자동화 및 Cloud Native Application(CNA) 역량 강화 과정 전체 안내." />
+<style>
+  /* ============ Reset & Base ============ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  :root {
+    --kt-red: #E60012;
+    --kt-red-dark: #B8000F;
+    --kt-black: #1A1A1A;
+    --kt-charcoal: #2C2C2C;
+    --kt-gray-900: #333333;
+    --kt-gray-700: #555555;
+    --kt-gray-500: #888888;
+    --kt-gray-300: #D4D4D4;
+    --kt-gray-100: #F5F5F5;
+    --kt-gray-50: #FAFAFA;
+    --kt-white: #FFFFFF;
+    --kt-accent: #FF3D4E;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.10);
+    --shadow-lg: 0 16px 48px rgba(0,0,0,0.16);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 24px;
+  }
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+    color: var(--kt-black);
+    background: var(--kt-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ============ Layout ============ */
+  .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 88px 0; position: relative; }
+
+  .section-label {
+    display: inline-block; font-size: 14px; font-weight: 700; letter-spacing: 0.18em;
+    color: var(--kt-red); text-transform: uppercase; margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: 43px; font-weight: 800; line-height: 1.25; color: var(--kt-black);
+    margin-bottom: 14px; letter-spacing: -0.02em;
+  }
+  .section-subtitle {
+    font-size: 19px; color: var(--kt-gray-700); margin-bottom: 48px; max-width: 680px;
+  }
+
+  /* ============ Navigation ============ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,26,26,0.95); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner {
+    max-width: 1180px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; color: var(--kt-white); font-weight: 800; }
+  .nav-brand .dot { width: 10px; height: 10px; background: var(--kt-red); border-radius: 2px; }
+  .nav-brand .brand-name { font-size: 19px; letter-spacing: -0.01em; }
+  .nav-brand .brand-tag {
+    font-size: 13px; color: var(--kt-gray-300); font-weight: 500;
+    padding: 3px 8px; border: 1px solid rgba(255,255,255,0.15); border-radius: 999px;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    font-size: 17px; color: rgba(255,255,255,0.75); font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--kt-white); }
+  @media (max-width: 760px) { .nav-links { display: none; } }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: linear-gradient(135deg, #0A0A0B 0%, #1A1A1A 55%, #2C2C2C 100%);
+    color: var(--kt-white); padding: 160px 0 100px; overflow: hidden; position: relative;
+  }
+  .hero::before {
+    content: ""; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(230,0,18,0.20) 0%, transparent 65%);
+    filter: blur(24px);
+  }
+  .hero::after {
+    content: ""; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,61,78,0.10) 0%, transparent 65%);
+    filter: blur(20px);
+  }
+  .hero-inner { position: relative; z-index: 2; }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 16px; border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 999px; background: rgba(255,255,255,0.04);
+    font-size: 16px; color: rgba(255,255,255,0.85); margin-bottom: 28px; font-weight: 500;
+  }
+  .hero-eyebrow .pulse {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--kt-red);
+    box-shadow: 0 0 0 0 rgba(230,0,18,0.6); animation: pulse 1.8s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(230,0,18,0.6); }
+    70% { box-shadow: 0 0 0 12px rgba(230,0,18,0); }
+    100% { box-shadow: 0 0 0 0 rgba(230,0,18,0); }
+  }
+
+  .hero h1 {
+    font-size: clamp(46px, 5.6vw, 82px);
+    font-weight: 900; line-height: 1.08; letter-spacing: -0.03em;
+    margin-bottom: 24px; max-width: 900px;
+  }
+  .hero h1 .accent { color: var(--kt-red); }
+  .hero-lede {
+    font-size: clamp(19px, 1.4vw, 23px); color: rgba(255,255,255,0.75);
+    max-width: 680px; margin-bottom: 48px; line-height: 1.65;
+  }
+
+  /* Stats strip */
+  .hero-strip {
+    display: flex; flex-wrap: wrap; gap: 0;
+    border: 1px solid rgba(255,255,255,0.10); border-radius: var(--radius-md);
+    overflow: hidden; max-width: 860px;
+  }
+  .strip-item {
+    flex: 1; min-width: 140px; padding: 20px 24px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .strip-item:last-child { border-right: none; }
+  .strip-label { font-size: 13px; color: rgba(255,255,255,0.50); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+  .strip-value { font-size: 24px; color: var(--kt-white); font-weight: 800; letter-spacing: -0.01em; }
+  .strip-value .red { color: var(--kt-red); }
+  @media (max-width: 760px) {
+    .strip-item { min-width: 50%; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .strip-item:nth-child(even) { border-right: none; }
+    .strip-item:nth-last-child(-n+2) { border-bottom: none; }
+  }
+
+  /* ============ COURSE GROUPS ============ */
+  .courses-ai { background: var(--kt-gray-50); }
+  .courses-cna { background: var(--kt-white); }
+
+  /* Group header */
+  .group-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px; margin-bottom: 40px;
+  }
+  .group-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--kt-red); margin-bottom: 8px;
+  }
+  .group-badge .badge-dot { width: 6px; height: 6px; background: var(--kt-red); border-radius: 50%; }
+  .group-note {
+    font-size: 16px; color: var(--kt-gray-500); font-weight: 500;
+    padding: 6px 14px; border: 1px solid var(--kt-gray-300);
+    border-radius: 999px;
+  }
+
+  /* ============ COURSE CARD ============ */
+  .course-grid { display: grid; gap: 24px; }
+  .course-grid.single { grid-template-columns: 1fr; max-width: 800px; }
+  .course-grid.duo { grid-template-columns: repeat(2, 1fr); }
+  .course-grid.trio { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 960px) { .course-grid.trio { grid-template-columns: 1fr; } }
+  @media (max-width: 760px) {
+    .course-grid.duo { grid-template-columns: 1fr; }
+    .course-grid.single { max-width: 100%; }
+  }
+
+  .course-card {
+    background: var(--kt-white); border-radius: var(--radius-lg);
+    border: 1px solid var(--kt-gray-100); box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column;
+    transition: all 0.3s ease; overflow: hidden;
+  }
+  .course-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--kt-gray-300); }
+
+  /* Card top accent bar */
+  .course-card.ai-card { border-top: 4px solid var(--kt-red); }
+  .course-card.cna-full-1 { border-top: 4px solid var(--kt-red); }
+  .course-card.cna-full-2 { border-top: 4px solid var(--kt-charcoal); }
+  .course-card.cna-quick { border-top: 4px solid var(--kt-red); }
+
+  /* Card content on gray bg — make white */
+  .courses-ai .course-card { background: var(--kt-white); }
+
+  .card-head { padding: 28px 28px 20px; }
+  .card-series {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 0.14em;
+    color: var(--kt-red); text-transform: uppercase; margin-bottom: 10px;
+  }
+  .card-title {
+    font-size: 26px; font-weight: 800; color: var(--kt-black);
+    line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 12px;
+  }
+  .card-lede {
+    font-size: 17px; color: var(--kt-gray-700); line-height: 1.6;
+  }
+
+  /* Meta row */
+  .card-meta {
+    display: flex; flex-wrap: wrap; gap: 0;
+    border-top: 1px solid var(--kt-gray-100);
+    border-bottom: 1px solid var(--kt-gray-100);
+    margin: 0 28px;
+  }
+  .meta-cell {
+    flex: 1; min-width: 120px; padding: 14px 0;
+    border-right: 1px solid var(--kt-gray-100);
+  }
+  .meta-cell:last-child { border-right: none; }
+  .meta-lbl { font-size: 12px; color: var(--kt-gray-500); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+  .meta-val { font-size: 17px; font-weight: 700; color: var(--kt-black); }
+  .meta-val .red { color: var(--kt-red); }
+
+  /* Key topics */
+  .card-topics { padding: 20px 28px; flex: 1; }
+  .topics-label {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--kt-gray-500); margin-bottom: 12px;
+  }
+  .topic-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .topic-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 16px; color: var(--kt-gray-900); line-height: 1.5;
+  }
+  .topic-dot {
+    flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%;
+    background: rgba(230,0,18,0.08); color: var(--kt-red);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 800; margin-top: 1px;
+  }
+
+  /* Tag chips */
+  .card-tags {
+    padding: 0 28px 20px; display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .tag-chip {
+    font-size: 13px; font-weight: 600; color: var(--kt-gray-700);
+    background: var(--kt-gray-100); padding: 4px 10px; border-radius: 6px;
+  }
+  .tag-chip.hot { color: var(--kt-red); background: rgba(230,0,18,0.08); }
+
+  /* CTA link */
+  .card-cta {
+    padding: 16px 28px 24px; margin-top: auto;
+  }
+  .btn-detail {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--kt-black); color: var(--kt-white);
+    padding: 13px 22px; border-radius: var(--radius-sm); font-weight: 700; font-size: 17px;
+    transition: all 0.2s ease; width: 100%; justify-content: center;
+  }
+  .btn-detail:hover { background: var(--kt-red); transform: translateY(-1px); }
+  .btn-detail .arrow { font-size: 19px; transition: transform 0.2s; }
+  .btn-detail:hover .arrow { transform: translateX(4px); }
+
+  /* ============ SERIES GUIDE ============ */
+  .series-guide {
+    background: var(--kt-black); padding: 72px 0;
+  }
+  .guide-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+  }
+  @media (max-width: 760px) { .guide-grid { grid-template-columns: 1fr; } }
+
+  .guide-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10);
+    border-radius: var(--radius-md); padding: 28px 30px; color: var(--kt-white);
+    position: relative; overflow: hidden;
+  }
+  .guide-card::after {
+    content: ""; position: absolute; top: -80px; right: -80px; width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(230,0,18,0.18) 0%, transparent 70%);
+  }
+  .guide-card > * { position: relative; z-index: 1; }
+  .guide-label { font-size: 13px; color: var(--kt-red); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .guide-card h3 { font-size: 24px; font-weight: 800; margin-bottom: 12px; line-height: 1.3; letter-spacing: -0.01em; }
+  .guide-card p { font-size: 17px; color: rgba(255,255,255,0.72); line-height: 1.6; }
+
+  .flow-steps {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 16px;
+  }
+  .flow-step {
+    font-size: 14px; font-weight: 700; color: var(--kt-white);
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+    padding: 5px 12px; border-radius: 6px;
+  }
+  .flow-arrow { color: var(--kt-red); font-weight: 800; font-size: 17px; }
+
+  /* ============ Footer ============ */
+  footer {
+    background: var(--kt-black); color: rgba(255,255,255,0.50);
+    padding: 32px 0; font-size: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-inner {
+    max-width: 1180px; margin: 0 auto; padding: 0 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 10px; color: var(--kt-white); font-weight: 700; }
+  .footer-brand .dot { width: 8px; height: 8px; background: var(--kt-red); border-radius: 2px; }
+
+  /* ============ Animations ============ */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(18px); transition: all 0.55s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ Mobile ============ */
+  @media (max-width: 760px) {
+    section { padding: 64px 0; }
+    .hero { padding: 130px 0 80px; }
+    .section-title { font-size: 34px; }
+    .hero h1 { font-size: 43px; }
+    .card-meta { margin: 0 20px; }
+    .card-head, .card-topics, .card-tags, .card-cta { padding-left: 20px; padding-right: 20px; }
+    .meta-cell { min-width: 100%; border-right: none; border-bottom: 1px solid var(--kt-gray-100); }
+    .meta-cell:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">
+      <span class="dot"></span>
+      <span class="brand-name">KTDS</span>
+      <span class="brand-tag">Academy 2026</span>
+    </a>
+    <div class="nav-links">
+      <a href="#ai-courses">AI 과정</a>
+      <a href="#cna-courses">CNA 과정</a>
+      <a href="#guide">수강 가이드</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="container hero-inner">
+    <div class="hero-eyebrow">
+      <span class="pulse"></span>
+      <span>2026 임직원 역량 강화 과정 · KTDS 사내 한정</span>
+    </div>
+    <h1>
+      AI · CNA<br/>
+      <span class="accent">실무 역량</span>을<br/>
+      만드는 4개 과정
+    </h1>
+    <p class="hero-lede">
+      <strong>매일 쓰는 자동화 도구</strong>를 직접 만드는 AI 과정, <strong>아키텍처 정의서부터 GitOps 자동 배포까지</strong>를 완성하는 CNA 과정. KTDS 임직원의 손에 산출물을 쥐어드리는 4개 집중 과정.
+    </p>
+
+    <div class="hero-strip">
+      <div class="strip-item">
+        <span class="strip-label">총 과정 수</span>
+        <span class="strip-value"><span class="red">4</span>개 과정</span>
+      </div>
+      <div class="strip-item">
+        <span class="strip-label">최단 과정</span>
+        <span class="strip-value"><span class="red">2</span>일 14H</span>
+      </div>
+      <div class="strip-item">
+        <span class="strip-label">총 교육 시간</span>
+        <span class="strip-value">최대 <span class="red">77H</span></span>
+      </div>
+      <div class="strip-item">
+        <span class="strip-label">실습 비중</span>
+        <span class="strip-value">최대 <span class="red">85%</span></span>
+      </div>
+      <div class="strip-item">
+        <span class="strip-label">선수 지식</span>
+        <span class="strip-value">입문 가능</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AI 과정 ============ -->
+<section class="courses-ai" id="ai-courses">
+  <div class="container">
+    <div class="group-header">
+      <div>
+        <div class="group-badge"><span class="badge-dot"></span> AI Series</div>
+        <h2 class="section-title">AI 업무 자동화 과정</h2>
+        <p class="section-subtitle">코딩 없이 시작해 멀티에이전트 시스템(MAS)까지 — 전 직원을 위한 AI 자동화 집중 과정입니다.</p>
+      </div>
+      <span class="group-note">Edition 1 · 1개 과정</span>
+    </div>
+
+    <div class="course-grid single reveal">
+      <!-- AI 업무 자동화 -->
+      <div class="course-card ai-card">
+        <div class="card-head">
+          <div class="card-series">AI Series · Edition 1</div>
+          <h2 class="card-title">AI 업무 자동화 집중과정</h2>
+          <p class="card-lede">2일 후 손에 남는 것: 매일 쓰는 자동화 도구 + KT 채널 위에 동작하는 MAS. 코딩 없이도 시작해 LangGraph 기반 멀티에이전트까지.</p>
+        </div>
+
+        <div class="card-meta">
+          <div class="meta-cell">
+            <div class="meta-lbl">교육기간</div>
+            <div class="meta-val"><span class="red">2일 · 14시간</span></div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">추천 대상</div>
+            <div class="meta-val">업무 자동화를 원하는 전 직원</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">선수 지식</div>
+            <div class="meta-val">AI 기초</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">실습 비중</div>
+            <div class="meta-val"><span class="red">12H+ (85%)</span></div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">교육 일정</div>
+            <div class="meta-val"><span class="red">6/4 · 6/5</span></div>
+          </div>
+        </div>
+
+        <div class="card-topics">
+          <div class="topics-label">주요 강의 내용</div>
+          <ul class="topic-list">
+            <li class="topic-item">
+              <span class="topic-dot">1</span>
+              <span><strong>엔터프라이즈 AI 이해</strong> — AI 5-Layer 지도, 에이전트·스킬·플러그인 구조 파악</span>
+            </li>
+            <li class="topic-item">
+              <span class="topic-dot">2</span>
+              <span><strong>AI 도구 실습</strong> — Claude Code(MCP), Codex, 프롬프트 엔지니어링 5대 구성</span>
+            </li>
+            <li class="topic-item">
+              <span class="topic-dot">3</span>
+              <span><strong>DMAP 플러그인</strong> — 코딩 없이 업무 자동화 플러그인 개발 · 개인별 주제 실습</span>
+            </li>
+            <li class="topic-item">
+              <span class="topic-dot">4</span>
+              <span><strong>MAS 개발 (LangGraph + Abra)</strong> — 분류·라우팅 에이전트 → KT 채널 활용 AI 소상공인 마케팅 서비스 구축 → Docker 배포</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-tags">
+          <span class="tag-chip hot">DMAP No-Code</span>
+          <span class="tag-chip hot">LangGraph MAS</span>
+          <span class="tag-chip">Abra 플러그인</span>
+          <span class="tag-chip">Dify DSL</span>
+          <span class="tag-chip">RAG</span>
+          <span class="tag-chip">Docker Compose</span>
+          <span class="tag-chip">Claude Code · Codex</span>
+        </div>
+
+        <div class="card-cta">
+          <a href="AI/ai-automation.html" class="btn-detail">
+            강의 소개 보기 <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CNA 과정 ============ -->
+<section class="courses-cna" id="cna-courses">
+  <div class="container">
+    <div class="group-header">
+      <div>
+        <div class="group-badge"><span class="badge-dot"></span> CNA Series</div>
+        <h2 class="section-title">Cloud Native Application 과정</h2>
+        <p class="section-subtitle">기획·설계부터 개발·배포까지 — 풀 과정(Part 1 + Part 2)과 압축 과정(Quickwin) 중 선택할 수 있습니다.</p>
+      </div>
+      <span class="group-note">3개 과정 · 풀/Quickwin 선택</span>
+    </div>
+
+    <!-- Full 과정 2개 -->
+    <div style="margin-bottom: 16px;">
+      <p style="font-size: 14px; font-weight: 700; color: var(--kt-gray-500); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px;">
+        ─── Full 과정 (Part 1 → Part 2 순차 수강 권장)
+      </p>
+    </div>
+    <div class="course-grid duo" style="margin-bottom: 40px;">
+
+      <!-- CNA Part 1: 기획·설계 -->
+      <div class="course-card cna-full-1 reveal">
+        <div class="card-head">
+          <div class="card-series">CNA Series · Part 1 of 2</div>
+          <h2 class="card-title">CNA 기획·설계 역량 향상 과정</h2>
+          <p class="card-lede">3일 후 손에 남는 것: 본인 MVP 주제의 High-level 아키텍처 정의서. Design Thinking 고객 여정 맵부터 42개 클라우드 디자인 패턴 적용 설계까지.</p>
+        </div>
+
+        <div class="card-meta">
+          <div class="meta-cell">
+            <div class="meta-lbl">교육기간</div>
+            <div class="meta-val"><span class="red">3일 · 21시간</span></div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">추천 대상</div>
+            <div class="meta-val">PM/PO · 아키텍트 · 개발자</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">선수 지식</div>
+            <div class="meta-val">없음 (입문 가능)</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">실습 비중</div>
+            <div class="meta-val"><span class="red">12H+ (57%)</span></div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">교육 일정</div>
+            <div class="meta-val"><span class="red">5/27 · 28 · 29</span></div>
+          </div>
+        </div>
+
+        <div class="card-topics">
+          <div class="topics-label">주요 강의 내용</div>
+          <ul class="topic-list">
+            <li class="topic-item">
+              <span class="topic-dot">D1</span>
+              <span><strong>기획</strong> — Design Thinking · 고객 여정 맵 · Lean Canvas · gamma.app 발표자료</span>
+            </li>
+            <li class="topic-item">
+              <span class="topic-dot">D2</span>
+              <span><strong>구체화</strong> — Event Storming · DDD · 유저스토리 · 42개 클라우드 디자인 패턴(CQRS·SAGA·Circuit Breaker 등)</span>
+            </li>
+            <li class="topic-item">
+              <span class="topic-dot">D3</span>
+              <span><strong>설계</strong> — 논리 아키텍처 · 시퀀스 · API · Class · High-level 아키텍처 정의서</span>
+            </li>
+            <li class="topic-item">
+              <span class="topic-dot">AI</span>
+              <span><strong>AI 도구 통합</strong> — Claude Code(외부 아키텍처) · Codex(내부 아키텍처) · NPD 플러그인</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-tags">
+          <span class="tag-chip hot">Design Thinking</span>
+          <span class="tag-chip hot">MSA 7대 구성요소</span>
+          <span class="tag-chip">42 Cloud Patterns</span>
+          <span class="tag-chip">Event Storming</span>
+          <span class="tag-chip">NPD 플러그인</span>
+          <span class="tag-chip">Claude Code · Codex</span>
+        </div>
+
+        <div class="card-cta">
+          <a href="AM/Full/cna-think_design.html" class="btn-detail">
+            강의 소개 보기 <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- CNA Part 2: 개발·배포 -->
+      <div class="course-card cna-full-2 reveal">
+        <div class="card-head">
+          <div class="card-series">CNA Series · Part 2 of 2</div>
+          <h2 class="card-title">CNA 개발·배포 역량 향상 과정</h2>
+          <p class="card-lede">3일 후 손에 남는 것: 코드 푸시 → 운영까지 자동으로 흐르는 GitOps 파이프라인. NPD 병렬 개발 + Playwright MCP E2E + ArgoCD까지.</p>
+        </div>
+
+        <div class="card-meta">
+          <div class="meta-cell">
+            <div class="meta-lbl">교육기간</div>
+            <div class="meta-val"><span class="red">3일 · 21시간</span></div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">추천 대상</div>
+            <div class="meta-val">아키텍트 · 개발자 · 배포담당자</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">선수 지식</div>
+            <div class="meta-val">Part 1 수강 권장</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">실습 비중</div>
+            <div class="meta-val"><span class="red">16H+ (76%)</span></div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">교육 일정</div>
+            <div class="meta-val"><span class="red">6/17 · 18 · 19</span></div>
+          </div>
+        </div>
+
+        <div class="card-topics">
+          <div class="topics-label">주요 강의 내용</div>
+          <ul class="topic-list">
+            <li class="topic-item">
+              <span class="topic-dot">D1</span>
+              <span><strong>개발</strong> — NPD 플러그인으로 백엔드·프론트엔드·AI 병렬 개발 · 백킹 서비스 배포</span>
+            </li>
+            <li class="topic-item">
+              <span class="topic-dot">D2</span>
+              <span><strong>통합 + 수동 배포</strong> — Playwright MCP E2E 자동 테스트 · 컨테이너 이미지 · K8s 매니페스트 · kubectl 수동 배포</span>
+            </li>
+            <li class="topic-item">
+              <span class="topic-dot">D3</span>
+              <span><strong>CI/CD 자동화</strong> — SonarQube · Jenkins · GitHub Actions · Kustomize · ArgoCD GitOps CD 분리</span>
+            </li>
+            <li class="topic-item">
+              <span class="topic-dot">AI</span>
+              <span><strong>AI 도구 통합</strong> — NPD 병렬 개발 · Playwright MCP · Claude Code 매니페스트 작성</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-tags">
+          <span class="tag-chip hot">NPD 병렬 개발</span>
+          <span class="tag-chip hot">ArgoCD GitOps</span>
+          <span class="tag-chip">Playwright MCP</span>
+          <span class="tag-chip">Jenkins</span>
+          <span class="tag-chip">GitHub Actions</span>
+          <span class="tag-chip">Kubernetes</span>
+          <span class="tag-chip">SonarQube</span>
+        </div>
+
+        <div class="card-cta">
+          <a href="AM/Full/cna-build_deploy.html" class="btn-detail">
+            강의 소개 보기 <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quickwin 과정 -->
+    <div style="margin-bottom: 16px;">
+      <p style="font-size: 14px; font-weight: 700; color: var(--kt-gray-500); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px;">
+        ─── Quickwin 과정 (기획~배포 3일 압축 · 조직 맞춤 MVP)
+      </p>
+    </div>
+    <div class="course-grid single reveal">
+      <div class="course-card cna-quick">
+        <div class="card-head">
+          <div class="card-series">CNA Series · Quickwin Edition</div>
+          <h2 class="card-title">CNA Quickwin 3일 집중과정</h2>
+          <p class="card-lede">3일 후 손에 남는 것: 우리 팀 업무를 다룬 움직이는 프로토타입 + 자동 배포 파이프라인. PM/PO·개발자·배포담당자가 같은 자리에서.</p>
+        </div>
+
+        <div class="card-meta">
+          <div class="meta-cell">
+            <div class="meta-lbl">교육기간</div>
+            <div class="meta-val"><span class="red">3일 · 21시간</span></div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">추천 대상</div>
+            <div class="meta-val">PM/PO · 아키텍트 · 개발자 · 배포담당자</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">선수 지식</div>
+            <div class="meta-val">없음 (입문 가능)</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">MVP 주제</div>
+            <div class="meta-val"><span class="red">참가 조직 업무 맞춤</span></div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-lbl">교육 일정</div>
+            <div class="meta-val"><span class="red">6/8 · 9 · 10</span></div>
+          </div>
+        </div>
+
+        <div class="card-topics">
+          <div class="topics-label">주요 강의 내용 (3일 압축 풀스택)</div>
+          <ul class="topic-list">
+            <li class="topic-item">
+              <span class="topic-dot">D1</span>
+              <span><strong>기획</strong> — AM 개요 · AI 도구 기본 · Design Thinking · Lean Canvas · 조직 업무 기반 MVP 주제 선정</span>
+            </li>
+            <li class="topic-item">
+              <span class="topic-dot">D2</span>
+              <span><strong>구체화 + 설계</strong> — Event Storming · 유저스토리 · 42개 클라우드 패턴 · 논리 아키텍처 · API · High-level 정의서</span>
+            </li>
+            <li class="topic-item">
+              <span class="topic-dot">D3</span>
+              <span><strong>개발 + 배포</strong> — NPD 병렬 개발 · Playwright E2E · GitHub Actions CI · ArgoCD GitOps CD 자동 배포</span>
+            </li>
+            <li class="topic-item">
+              <span class="topic-dot">★</span>
+              <span><strong>3개 직군이 같은 자리</strong> — PM/PO · 아키텍트/개발자 · 배포담당자가 동일한 MVP를 함께 제작</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-tags">
+          <span class="tag-chip hot">조직 맞춤 MVP</span>
+          <span class="tag-chip hot">기획~배포 한 흐름</span>
+          <span class="tag-chip">NPD 플러그인</span>
+          <span class="tag-chip">ArgoCD GitOps</span>
+          <span class="tag-chip">GitHub Actions</span>
+          <span class="tag-chip">Playwright MCP</span>
+          <span class="tag-chip">3개 직군 동시 수강</span>
+        </div>
+
+        <div class="card-cta">
+          <a href="AM/QuickWin/cna-quickwin.html" class="btn-detail">
+            강의 소개 보기 <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 수강 가이드 ============ -->
+<section class="series-guide" id="guide">
+  <div class="container">
+    <span class="section-label" style="color: rgba(255,255,255,0.6);">수강 가이드</span>
+    <h2 class="section-title" style="color: var(--kt-white); margin-bottom: 40px;">어떤 과정을 선택해야 할까요?</h2>
+
+    <div class="guide-grid">
+      <div class="guide-card">
+        <div class="guide-label">AI 업무 자동화가 목표라면</div>
+        <h3>AI 업무 자동화 집중과정</h3>
+        <p>코딩 경험 0에서 출발해 2일 만에 'AI 사용자' → 'AI 빌더'로 도약. DMAP으로 첫 자동화 도구를, Abra·LangGraph로 KT 채널 위 멀티에이전트를.</p>
+        <div class="flow-steps">
+          <span class="flow-step">AI 도구 이해</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">DMAP 플러그인</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">LangGraph MAS</span>
+        </div>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-label">CNA 기초부터 체계적으로</div>
+        <h3>CNA Full 과정 (Part 1 → Part 2)</h3>
+        <p>6일에 걸쳐 본인 MVP 주제 위에 산출물을 쌓아 올립니다. 기획·설계(3일) → 개발·배포(3일). 끝에는 운영까지 자동으로 흐르는 시스템이 완성됩니다.</p>
+        <div class="flow-steps">
+          <span class="flow-step">기획 (Day1)</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">설계 (Day2-3)</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">개발·배포 (3일)</span>
+        </div>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-label">빠르게 전체 흐름을 경험하고 싶다면</div>
+        <h3>CNA Quickwin 3일 집중과정</h3>
+        <p>참가 조직 업무를 MVP로 선정 → 3일 만에 기획·설계·개발·자동배포 완성. 끝에 남는 것: 후속 PoC의 출발점이 될 프로토타입. PM/PO·개발자·배포담당자가 같은 자리에서.</p>
+        <div class="flow-steps">
+          <span class="flow-step">조직 MVP 선정</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">풀스택 개발</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">자동 배포</span>
+        </div>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-label">조합 추천</div>
+        <h3>AI + CNA 연계 수강</h3>
+        <p>AI 자동화(2일)로 Claude Code · MAS를 익힌 뒤 CNA로 클라우드 네이티브 풀스택까지. 두 과정 공통으로 사용되는 Claude Code · NPD 플러그인 덕에 학습이 누적됩니다.</p>
+        <div class="flow-steps">
+          <span class="flow-step">AI 2일</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-step">CNA Quickwin 3일</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="dot"></span>
+      <span>KTDS Academy 2026</span>
+    </div>
+    <div>© 2026 KTDS. 임직원 역량 강화 과정 · 사내 교육 자료</div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    const targets = document.querySelectorAll('.reveal, .guide-card');
+    targets.forEach(el => el.classList.add('reveal'));
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    targets.forEach(el => io.observe(el));
+  })();
+</script>
+
+</body>
+</html>
