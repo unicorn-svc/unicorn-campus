@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Agentic AI 개발 집중과정 | KTDS</title>
+<title>[AI College] Agentic AI 개발 집중과정 | KTDS</title>
 <meta name="description" content="KTDS IT 개발자를 위한 2일(16H) Agentic AI 개발 집중 과정. LangChain·LangGraph 기반 MAS, RAG/GraphRAG, MCP 서버 개발, Claude Code 플러그인까지 — 산업 표준 스택을 직접 구현합니다." />
 <style>
   /* ============ Reset & Base ============ */
@@ -462,6 +462,16 @@
     .stat-number .unit { font-size: 31px; }
     .cta-final { padding: 44px 28px; }
   }
+  /* ============ Print (PDF export) ============ */
+  @media print {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .nav { position: static !important; background: var(--kt-black) !important; }
+    section { padding: 36px 0 !important; }
+    .hero { padding: 48px 0 40px !important; }
+    .stat-card, .audience-card, .day-card, .plugin-card, .diff-card, .case-banner, .cta-final { page-break-inside: avoid; break-inside: avoid; }
+    a { color: inherit !important; text-decoration: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -486,7 +496,7 @@
 
 <!-- ============ 1) HERO ============ -->
 <section class="hero" id="hero">
-  <span class="series-badge">AI Series · <b>Edition 1</b></span>
+  <span class="series-badge">AI College · <b>Edition 1</b></span>
   <div class="container hero-inner">
     <div class="hero-eyebrow">
       <span class="pulse"></span>
@@ -815,7 +825,7 @@
       <span>KTDS AI Academy</span>
     </div>
     <div>
-      © 2026 KTDS. AI 업무 자동화 집중과정 · 사내 교육 자료
+      © 2026 KTDS. [AI College] Agentic AI 개발 집중과정 · 사내 교육 자료
     </div>
   </div>
 </footer>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CNA 개발·배포 역량 향상 과정 | KTDS</title>
+<title>[Cloud College] CNA 개발·배포 역량 향상 과정 | KTDS</title>
 <meta name="description" content="KTDS 임직원을 위한 3일(21H) Cloud Native Application 개발·배포 집중 과정. 백/프론트/AI 병렬 개발부터 GitOps(ArgoCD) 자동화까지, 실습 16H+ 중심 교육." />
 <style>
   /* ============ Reset & Base ============ */
@@ -463,6 +463,17 @@
     .outcome-banner p { font-size: 22px; }
     .cta-final { padding: 44px 28px; }
   }
+
+  /* ============ Print (PDF export) ============ */
+  @media print {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .nav { position: static !important; }
+    section { padding: 36px 0 !important; }
+    .hero { padding: 48px 0 40px !important; }
+    .stat-card, .audience-card, .day-card, .plugin-card, .diff-card, .case-banner, .cta-final, .course-card, .guide-card, .outcome-banner { page-break-inside: avoid; break-inside: avoid; }
+    a { color: inherit !important; text-decoration: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -487,7 +498,7 @@
 
 <!-- ============ 1) HERO ============ -->
 <section class="hero" id="hero">
-  <span class="series-badge">CNA Series · <b>Part 2 of 2</b> · Build & Deploy</span>
+  <span class="series-badge">Cloud College · <b>Part 2 of 2</b> · Build & Deploy</span>
   <div class="container hero-inner">
     <div class="hero-eyebrow">
       <span class="pulse"></span>
@@ -746,7 +757,7 @@
       <span>KTDS CNA Academy</span>
     </div>
     <div>
-      © 2026 KTDS. CNA 개발·배포 역량 향상 과정 · 사내 교육 자료
+      © 2026 KTDS. [Cloud College] CNA 개발·배포 역량 향상 과정 · 사내 교육 자료
     </div>
   </div>
 </footer>

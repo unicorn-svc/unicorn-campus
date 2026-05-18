@@ -327,6 +327,16 @@
     .meta-cell { min-width: 100%; border-right: none; border-bottom: 1px solid var(--kt-gray-100); }
     .meta-cell:last-child { border-bottom: none; }
   }
+  /* ============ Print (PDF export) ============ */
+  @media print {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .nav { position: static !important; background: var(--kt-black) !important; }
+    section { padding: 36px 0 !important; }
+    .hero { padding: 48px 0 40px !important; }
+    .course-card, .stat-card, .audience-card, .guide-card, .day-card, .plugin-card, .diff-card, .case-banner, .cta-final { page-break-inside: avoid; break-inside: avoid; }
+    a { color: inherit !important; text-decoration: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -393,8 +403,8 @@
   <div class="container">
     <div class="group-header">
       <div>
-        <div class="group-badge"><span class="badge-dot"></span> AI Series</div>
-        <h2 class="section-title">Agentic AI 개발 과정</h2>
+        <div class="group-badge"><span class="badge-dot"></span> AI College</div>
+        <h2 class="section-title">[AI College] 엔터프라이즈 Agentic AI 아키텍처 및 구현 과정</h2>
         <p class="section-subtitle">LangChain·LangGraph 기반 MAS, RAG/GraphRAG, MCP 서버 개발까지 — IT 개발자를 위한 Agentic AI 집중 과정입니다.</p>
       </div>
       <span class="group-note">Edition 1 · 1개 과정</span>
@@ -404,8 +414,8 @@
       <!-- Agentic AI 개발 -->
       <div class="course-card ai-card">
         <div class="card-head">
-          <div class="card-series">AI Series · Edition 1</div>
-          <h2 class="card-title">Agentic AI 개발 집중과정</h2>
+          <div class="card-series">AI College · Edition 1</div>
+          <h2 class="card-title">[AI College] Agentic AI 개발 집중과정</h2>
           <p class="card-lede">2일 후 손에 남는 것: 개발자가 직접 만든 LangGraph 기반 MAS + 직접 구현한 MCP 서버 + RAG/GraphRAG 파이프라인 + Claude Code 플러그인.</p>
         </div>
 
@@ -483,8 +493,8 @@
   <div class="container">
     <div class="group-header">
       <div>
-        <div class="group-badge"><span class="badge-dot"></span> CNA Series</div>
-        <h2 class="section-title">Cloud Native Application 과정</h2>
+        <div class="group-badge"><span class="badge-dot"></span> Cloud College</div>
+        <h2 class="section-title">[Cloud College] AM(Application Modernization) 설계·구현 실전</h2>
         <p class="section-subtitle">기획·설계부터 개발·배포까지 — 풀 과정(Part 1 + Part 2)과 압축 과정(Quickwin) 중 선택할 수 있습니다.</p>
       </div>
       <span class="group-note">3개 과정 · 풀/Quickwin 선택</span>
@@ -501,8 +511,8 @@
       <!-- CNA Part 1: 기획·설계 -->
       <div class="course-card cna-full-1 reveal">
         <div class="card-head">
-          <div class="card-series">CNA Series · Part 1 of 2</div>
-          <h2 class="card-title">CNA 기획·설계 역량 향상 과정</h2>
+          <div class="card-series">Cloud College · Part 1 of 2</div>
+          <h2 class="card-title">[Cloud College] CNA 기획·설계 역량 향상 과정</h2>
           <p class="card-lede">3일 후 손에 남는 것: 본인 MVP 주제의 High-level 아키텍처 정의서. Design Thinking 고객 여정 맵부터 42개 클라우드 디자인 패턴 적용 설계까지.</p>
         </div>
 
@@ -570,8 +580,8 @@
       <!-- CNA Part 2: 개발·배포 -->
       <div class="course-card cna-full-2 reveal">
         <div class="card-head">
-          <div class="card-series">CNA Series · Part 2 of 2</div>
-          <h2 class="card-title">CNA 개발·배포 역량 향상 과정</h2>
+          <div class="card-series">Cloud College · Part 2 of 2</div>
+          <h2 class="card-title">[Cloud College] CNA 개발·배포 역량 향상 과정</h2>
           <p class="card-lede">3일 후 손에 남는 것: 코드 푸시 → 운영까지 자동으로 흐르는 GitOps 파이프라인. NPD 병렬 개발 + Playwright MCP E2E + ArgoCD까지.</p>
         </div>
 
@@ -647,8 +657,8 @@
     <div class="course-grid single reveal">
       <div class="course-card cna-quick">
         <div class="card-head">
-          <div class="card-series">CNA Series · Quickwin Edition</div>
-          <h2 class="card-title">CNA Quickwin 3일 집중과정</h2>
+          <div class="card-series">Cloud College · Quickwin Edition</div>
+          <h2 class="card-title">[Cloud College] CNA Quickwin 3일 집중과정</h2>
           <p class="card-lede">3일 후 손에 남는 것: 우리 팀 업무를 다룬 움직이는 프로토타입 + 자동 배포 파이프라인. PM/PO·개발자·배포담당자가 같은 자리에서.</p>
         </div>
 
@@ -726,7 +736,7 @@
     <div class="guide-grid">
       <div class="guide-card">
         <div class="guide-label">Agentic AI 개발이 목표라면</div>
-        <h3>Agentic AI 개발 집중과정</h3>
+        <h3>[AI College] Agentic AI 개발 집중과정</h3>
         <p>Python 기초만 있으면 2일 만에 'LLM 사용자' → 'Agentic AI 빌더'로 도약. LangChain·LangGraph로 MAS를, MCP로 표준 Tool을, RAG/GraphRAG로 검색 품질까지 직접 구축.</p>
         <div class="flow-steps">
           <span class="flow-step">Agentic AI 구조</span>
@@ -739,7 +749,7 @@
 
       <div class="guide-card">
         <div class="guide-label">CNA 기초부터 체계적으로</div>
-        <h3>CNA Full 과정 (Part 1 → Part 2)</h3>
+        <h3>[Cloud College] CNA Full 과정 (Part 1 → Part 2)</h3>
         <p>6일에 걸쳐 본인 MVP 주제 위에 산출물을 쌓아 올립니다. 기획·설계(3일) → 개발·배포(3일). 끝에는 운영까지 자동으로 흐르는 시스템이 완성됩니다.</p>
         <div class="flow-steps">
           <span class="flow-step">기획 (Day1)</span>
@@ -752,7 +762,7 @@
 
       <div class="guide-card">
         <div class="guide-label">빠르게 전체 흐름을 경험하고 싶다면</div>
-        <h3>CNA Quickwin 3일 집중과정</h3>
+        <h3>[Cloud College] CNA Quickwin 3일 집중과정</h3>
         <p>참가 조직 업무를 MVP로 선정 → 3일 만에 기획·설계·개발·자동배포 완성. 끝에 남는 것: 후속 PoC의 출발점이 될 프로토타입. PM/PO·개발자·배포담당자가 같은 자리에서.</p>
         <div class="flow-steps">
           <span class="flow-step">조직 MVP 선정</span>

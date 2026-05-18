@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CNA Quickwin 3일 집중과정 | KTDS</title>
+<title>[Cloud College] CNA Quickwin 3일 집중과정 | KTDS</title>
 <meta name="description" content="KTDS 임직원을 위한 3일(21H) Cloud Native Application 풀스택 집중 과정. 우리 조직 업무에 맞춘 MVP로 기획부터 GitOps 배포까지 한 번에." />
 <style>
   /* ============ Reset & Base ============ */
@@ -460,6 +460,17 @@
     .cta-final { padding: 44px 28px; }
     .orgmvp-lead h3 { font-size: 24px; }
   }
+
+  /* ============ Print (PDF export) ============ */
+  @media print {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .nav { position: static !important; }
+    section { padding: 36px 0 !important; }
+    .hero { padding: 48px 0 40px !important; }
+    .stat-card, .audience-card, .day-card, .plugin-card, .diff-card, .case-banner, .cta-final, .course-card, .guide-card, .orgmvp-lead { page-break-inside: avoid; break-inside: avoid; }
+    a { color: inherit !important; text-decoration: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -484,7 +495,7 @@
 
 <!-- ============ 1) HERO ============ -->
 <section class="hero" id="hero">
-  <span class="series-badge">CNA Series · <b>Quickwin Edition</b></span>
+  <span class="series-badge">Cloud College · <b>Quickwin Edition</b></span>
   <div class="container hero-inner">
     <div class="hero-eyebrow">
       <span class="pulse"></span>
@@ -779,7 +790,7 @@
       <span>KTDS CNA Academy</span>
     </div>
     <div>
-      © 2026 KTDS. CNA Quickwin 3일 집중과정 · 사내 교육 자료
+      © 2026 KTDS. [Cloud College] CNA Quickwin 3일 집중과정 · 사내 교육 자료
     </div>
   </div>
 </footer>
