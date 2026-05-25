@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"python3 -c \\\"\\nimport openpyxl\\nwb = openpyxl.load_workbook('ktds/AI/AI_커리큘럼_KTDS.xlsx', data_only=True)\\nfor sheet_name in wb.sheetnames:\\n    ws = wb[sheet_name]\\n    print(f'=== Sheet: ...",
+  "error": "Exit code 1\nTraceback (most recent call last):\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/xml/etree/ElementTree.py\", line 1532, in __init__\n    from xml.parsers import expat\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/xml/parsers/expat.py\", line 4, in <module>\n    from pyexpat import *\nImportError: dlopen(/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Ve...",
+  "timestamp": "2026-05-18T05:08:06.382Z",
+  "retry_count": 1
+}

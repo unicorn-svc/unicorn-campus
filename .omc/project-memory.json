@@ -1,0 +1,100 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1779352459874,
+  "projectRoot": "/Users/dreamondal/Documents/강의/unicorn-campus",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "ai": {
+      "path": "ai",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1779352459848,
+      "keyFiles": [
+        "ai-basic.html"
+      ]
+    },
+    "ktds": {
+      "path": "ktds",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1779352459848,
+      "keyFiles": [
+        "index.html"
+      ]
+    },
+    "prompts": {
+      "path": "prompts",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1779352459849,
+      "keyFiles": [
+        "모객페이지개발.txt"
+      ]
+    },
+    "references": {
+      "path": "references",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1779352459849,
+      "keyFiles": [
+        "YET_Brand_Identity.pptx",
+        "투입강사_프로필_이해경.pptx"
+      ]
+    },
+    "ai/assets": {
+      "path": "ai/assets",
+      "purpose": "Static assets",
+      "fileCount": 1,
+      "lastAccessed": 1779352459849,
+      "keyFiles": [
+        "instructor.jpg"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "ktds/index.html",
+      "accessCount": 2,
+      "lastAccessed": 1779352531870,
+      "type": "file"
+    },
+    {
+      "path": "index.html",
+      "accessCount": 2,
+      "lastAccessed": 1779352776247,
+      "type": "file"
+    },
+    {
+      "path": "ai/ai-basic.html",
+      "accessCount": 1,
+      "lastAccessed": 1779352532467,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
