@@ -351,54 +351,6 @@
   .stack-card h4 { font-size: 20px; font-weight: 800; margin-bottom: 6px; color: var(--kt-white); }
   .stack-card p { font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.55; }
 
-  /* ============ INSTRUCTOR ============ */
-  .instructor { background: var(--kt-gray-50); padding: 110px 0; }
-  .instructor-card {
-    display: grid; gap: 32px; grid-template-columns: 1fr;
-    background: var(--kt-white); border: 1px solid var(--kt-gray-100); border-radius: var(--radius-lg);
-    padding: 36px; box-shadow: var(--shadow-sm);
-  }
-  @media (min-width: 820px) { .instructor-card { grid-template-columns: 280px 1fr; gap: 40px; padding: 44px; } }
-  .instructor-photo {
-    position: relative; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden;
-    background: linear-gradient(135deg, var(--kt-black), var(--kt-charcoal));
-    box-shadow: var(--shadow-md); max-width: 300px; width: 100%; margin: 0 auto;
-  }
-  .instructor-photo img { width: 100%; height: 100%; object-fit: cover; }
-  .instructor-photo .ph-badge {
-    position: absolute; bottom: 12px; left: 12px; right: 12px;
-    background: rgba(26,26,26,0.86); color: var(--kt-white);
-    padding: 10px 12px; border-radius: 10px; font-size: 12.5px; font-weight: 600;
-    backdrop-filter: blur(8px);
-  }
-  .instructor-photo .ph-badge strong { color: var(--kt-red); font-weight: 800; }
-  .instructor-info .name-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin-bottom: 10px; }
-  .instructor-info .name { font-size: 30px; font-weight: 800; color: var(--kt-black); }
-  .instructor-info .title { font-size: 14px; color: var(--kt-gray-500); font-weight: 600; }
-  .instructor-info .intro {
-    font-size: 16px; color: var(--kt-gray-700); line-height: 1.65;
-    padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid var(--kt-gray-100);
-  }
-  .istats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
-  .istat { background: var(--kt-gray-50); border-radius: 12px; padding: 16px 12px; text-align: center; }
-  .istat .num { font-size: clamp(22px, 4vw, 28px); font-weight: 900; color: var(--kt-red); letter-spacing: -0.02em; line-height: 1.1; }
-  .istat .lbl { font-size: 12px; color: var(--kt-gray-500); margin-top: 4px; font-weight: 600; }
-  .icred { margin-bottom: 20px; }
-  .icred h5 {
-    font-size: 13px; font-weight: 800; color: var(--kt-red); letter-spacing: 0.04em; margin-bottom: 10px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .icred h5::before { content: ""; width: 18px; height: 2px; background: var(--kt-red); }
-  .icred ul { list-style: none; display: grid; gap: 7px; }
-  .icred li { font-size: 15px; color: var(--kt-gray-900); line-height: 1.55; padding-left: 16px; position: relative; }
-  .icred li::before { content: "•"; color: var(--kt-red); font-weight: 800; position: absolute; left: 2px; }
-  .icred-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .icred-tag {
-    font-size: 13px; padding: 6px 12px; border-radius: 999px;
-    background: var(--kt-gray-50); border: 1px solid var(--kt-gray-300); color: var(--kt-black); font-weight: 600;
-  }
-  .idisclaimer { font-size: 13px; color: var(--kt-gray-500); margin-top: 18px; line-height: 1.6; }
-
   /* ============ DIFFERENTIATORS + CTA ============ */
   .differentiators {
     background: linear-gradient(180deg, var(--kt-gray-50) 0%, var(--kt-white) 100%);
@@ -486,7 +438,7 @@
     .nav { position: static !important; background: var(--kt-black) !important; }
     section { padding: 36px 0 !important; }
     .hero { padding: 48px 0 40px !important; }
-    .stat-card, .audience-card, .day-card, .stack-card, .diff-card, .outcome-band, .instructor-card, .cta-final { page-break-inside: avoid; break-inside: avoid; }
+    .stat-card, .audience-card, .day-card, .stack-card, .diff-card, .outcome-band, .cta-final { page-break-inside: avoid; break-inside: avoid; }
     a { color: inherit !important; text-decoration: none !important; }
   }
 </style>
@@ -506,7 +458,6 @@
       <a href="#audience">대상</a>
       <a href="#curriculum">커리큘럼</a>
       <a href="#stack">핵심 도구</a>
-      <a href="#instructor">강사</a>
       <a href="#diff">차별점</a>
     </div>
   </div>
@@ -813,75 +764,7 @@
   </div>
 </section>
 
-<!-- ============ 6) INSTRUCTOR ============ -->
-<section class="instructor" id="instructor">
-  <div class="container">
-    <span class="section-label">Instructor</span>
-    <h2 class="section-title" style="margin-bottom: 40px;">현업에서 직접 시스템을 만든 강사가 가르칩니다.</h2>
-
-    <article class="instructor-card">
-      <div class="instructor-photo">
-        <img src="assets/instructor.jpg" alt="이해경 강사 프로필 사진" loading="lazy" />
-        <div class="ph-badge"><strong>이해경</strong> · IBM 29년+ 현역 아키텍트</div>
-      </div>
-      <div class="instructor-info">
-        <div class="name-row">
-          <span class="name">이해경</span>
-          <span class="title">IBM PM · Architect · Agile Coach · Developer</span>
-        </div>
-        <p class="intro">
-          IBM에서 29년간 PM·아키텍트·애자일 코치·개발자로 일해 온 현역 실무자입니다. 기획부터 설계·개발·배포까지 Full-Cycle을 단독으로 교육 가능한 보기 드문 강사로, 최신 AI 도구를 활용한 개발 생산성 극대화 방법론을 직접 만들어 현장에 적용하고 있습니다. 현재 유니콘주식회사 CEO.
-        </p>
-
-        <div class="istats">
-          <div class="istat">
-            <div class="num">29년+</div>
-            <div class="lbl">현업 경력</div>
-          </div>
-          <div class="istat">
-            <div class="num">79만+</div>
-            <div class="lbl">블로그 누적 조회</div>
-          </div>
-          <div class="istat">
-            <div class="num">96.3점</div>
-            <div class="lbl">K은행 부트캠프 만족도</div>
-          </div>
-        </div>
-
-        <div class="icred">
-          <h5>주요 강의 이력</h5>
-          <ul>
-            <li>KTDS Digital Garage 1~5기 — Cloud Design 패턴 기반 App Modernization 총괄</li>
-            <li>KB DigiTech Bootcamp — 신입행원 대상 애자일 기획 및 MVP 개발 코칭</li>
-            <li>연세대 AI 최고경영자 과정 1~3기 — 산업별 AI 유즈케이스·생성형 AI 기반 기획</li>
-            <li>비상교육·러닝스푼즈 CNA 부트캠프 — IT 직원·직장인 대상 기획/설계/개발/배포</li>
-          </ul>
-        </div>
-
-        <div class="icred">
-          <h5>전문성 증명</h5>
-          <ul>
-            <li>저서 「마이크로서비스 패턴 쉽게 개발하기」</li>
-            <li>기술 블로그 「온달의 해피클라우드」 운영 — 누적 약 79만 조회</li>
-          </ul>
-          <div class="icred-tags">
-            <span class="icred-tag">IBM Certified Agile Coach</span>
-            <span class="icred-tag">IBM Certified Architect</span>
-            <span class="icred-tag">Professional Scrum Master (PSM I)</span>
-            <span class="icred-tag">PMP</span>
-            <span class="icred-tag">JTBD &amp; ODI Associate</span>
-          </div>
-        </div>
-
-        <p class="idisclaimer">
-          ※ 위 만족도·평가 수치(96.3점 K은행, 79만 블로그 등)는 강사가 진행한 이전 과정의 실적이며, 본 과정의 성과를 보장하지 않습니다.
-        </p>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- ============ 7) DIFFERENTIATORS + CTA ============ -->
+<!-- ============ 6) DIFFERENTIATORS + CTA ============ -->
 <section class="differentiators" id="diff">
   <div class="container">
     <span class="section-label">Why This Course</span>
@@ -966,7 +849,7 @@
 <script>
   (function () {
     if (!('IntersectionObserver' in window)) return;
-    const targets = document.querySelectorAll('.stat-card, .audience-card, .outcome-band, .day-card, .stack-card, .instructor-card, .diff-card');
+    const targets = document.querySelectorAll('.stat-card, .audience-card, .outcome-band, .day-card, .stack-card, .diff-card');
     targets.forEach(el => el.classList.add('reveal'));
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
