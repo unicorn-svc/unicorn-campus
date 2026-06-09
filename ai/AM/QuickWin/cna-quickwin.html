@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>[Cloud College] CNA 기획·설계 역량 향상 과정 | KTDS</title>
-<meta name="description" content="KTDS 임직원을 위한 3일(21H) Cloud Native Application 기획·설계 집중 과정. Design Thinking부터 MSA 아키텍처까지, AI 도구로 가속하는 실습 중심 교육." />
+<title>[Cloud College] CNA Quickwin 3일 집중과정 | CNA Academy</title>
+<meta name="description" content="임직원을 위한 3일(21H) Cloud Native Application 풀스택 집중 과정. 우리 조직 업무에 맞춘 MVP로 기획부터 GitOps 배포까지 한 번에." />
 <style>
   /* ============ Reset & Base ============ */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -78,12 +78,7 @@
     transition: color 0.2s ease;
   }
   .nav-links a:hover { color: var(--kt-white); }
-  .nav-cta {
-    background: var(--kt-red); color: var(--kt-white) !important;
-    padding: 8px 16px; border-radius: 6px; font-weight: 700 !important;
-  }
-  .nav-cta:hover { background: var(--kt-red-dark) !important; }
-  @media (max-width: 760px) { .nav-links { display: none; } .nav-links .nav-cta { display: inline-block; } .nav-links { gap: 0; } }
+  @media (max-width: 760px) { .nav-links { display: none; } }
 
   /* ============ HERO ============ */
   .hero {
@@ -131,25 +126,7 @@
     font-size: clamp(19px, 1.4vw, 23px); color: rgba(255,255,255,0.78);
     max-width: 720px; margin-bottom: 40px; line-height: 1.65;
   }
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--kt-red); color: var(--kt-white);
-    padding: 16px 28px; border-radius: 8px; font-weight: 700; font-size: 18px;
-    border: none; cursor: pointer; transition: all 0.2s ease;
-    box-shadow: 0 8px 24px rgba(230,0,18,0.32);
-  }
-  .btn-primary:hover { background: var(--kt-red-dark); transform: translateY(-1px); box-shadow: 0 12px 32px rgba(230,0,18,0.42); }
-  .btn-ghost {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: transparent; color: var(--kt-white);
-    padding: 16px 24px; border-radius: 8px; font-weight: 600; font-size: 18px;
-    border: 1px solid rgba(255,255,255,0.25);
-    transition: all 0.2s ease;
-  }
-  .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.4); }
 
-  /* Meta strip */
   .hero-meta {
     display: flex; flex-wrap: wrap; gap: 32px;
     padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.10);
@@ -158,7 +135,29 @@
   .meta-label { font-size: 14px; color: rgba(255,255,255,0.55); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
   .meta-value { font-size: 22px; color: var(--kt-white); font-weight: 700; }
 
-  /* ============ Stats (intro proof) ============ */
+  /* Series badge */
+  .series-badge {
+    position: absolute; top: 100px; right: 24px; z-index: 3;
+    font-size: 13px; color: rgba(255,255,255,0.6);
+    padding: 6px 12px; border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 999px; background: rgba(255,255,255,0.04);
+    font-weight: 600; letter-spacing: 0.06em;
+  }
+  .series-badge b { color: var(--kt-red); font-weight: 800; }
+  @media (max-width: 760px) { .series-badge { display: none; } }
+
+  /* Compare strip (6→3일) */
+  .hero-compare {
+    display: inline-flex; align-items: center; gap: 14px;
+    margin-top: 12px; padding: 12px 18px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 999px; font-size: 16px; color: rgba(255,255,255,0.85);
+  }
+  .hero-compare .strike { color: rgba(255,255,255,0.45); text-decoration: line-through; text-decoration-color: rgba(255,255,255,0.35); }
+  .hero-compare .arrow { color: var(--kt-red); font-weight: 800; }
+  .hero-compare .bold { color: var(--kt-white); font-weight: 800; }
+
+  /* ============ Stats (Why) ============ */
   .stats {
     background: var(--kt-gray-50); padding: 88px 0;
   }
@@ -191,60 +190,71 @@
   .stat-source a { color: var(--kt-red); font-weight: 600; }
   .stat-source a:hover { text-decoration: underline; }
 
-  /* ============ WHO + OUTCOME ============ */
-  .audience {
+  /* ============ ORG-SPECIFIC MVP (signature) ============ */
+  .orgmvp {
     background: var(--kt-white); padding: 110px 0;
-  }
-  .audience-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 56px;
-  }
-  @media (max-width: 880px) { .audience-grid { grid-template-columns: 1fr; } }
-  .audience-card {
-    background: var(--kt-gray-50); border-radius: var(--radius-md);
-    padding: 36px; border: 1px solid var(--kt-gray-100);
-    transition: all 0.3s ease;
-  }
-  .audience-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-  .audience-icon {
-    width: 56px; height: 56px; border-radius: 12px;
-    background: var(--kt-red); color: var(--kt-white);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 31px; margin-bottom: 20px;
-  }
-  .audience-card h3 {
-    font-size: 26px; font-weight: 800; color: var(--kt-black); margin-bottom: 8px;
-  }
-  .audience-card .role {
-    font-size: 16px; color: var(--kt-red); font-weight: 700; letter-spacing: 0.06em;
-    margin-bottom: 20px; text-transform: uppercase;
-  }
-  .transform-row {
-    display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center;
-    padding: 14px 0; border-top: 1px solid var(--kt-gray-300);
-  }
-  .transform-row:first-of-type { border-top: none; padding-top: 4px; }
-  .transform-before { color: var(--kt-gray-500); font-size: 17px; text-decoration: line-through; text-decoration-color: var(--kt-gray-300); }
-  .transform-arrow { color: var(--kt-red); font-weight: 800; font-size: 17px; }
-  .transform-after { color: var(--kt-black); font-size: 17px; font-weight: 600; }
-
-  /* Outcome banner */
-  .outcome-banner {
-    background: linear-gradient(135deg, var(--kt-black) 0%, var(--kt-charcoal) 100%);
-    color: var(--kt-white); border-radius: var(--radius-lg);
-    padding: 44px 48px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
     position: relative; overflow: hidden;
   }
-  .outcome-banner::after {
-    content: ""; position: absolute; top: -80px; right: -80px; width: 240px; height: 240px;
-    background: radial-gradient(circle, rgba(230,0,18,0.25) 0%, transparent 70%);
+  .orgmvp::before {
+    content: ""; position: absolute; top: -200px; left: -200px; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(230,0,18,0.05) 0%, transparent 70%);
   }
-  .outcome-banner > * { position: relative; z-index: 1; }
-  @media (max-width: 760px) { .outcome-banner { grid-template-columns: 1fr; padding: 32px 28px; } }
-  .outcome-banner h4 { font-size: 17px; color: rgba(255,255,255,0.65); font-weight: 600; margin-bottom: 8px; letter-spacing: 0.04em; }
-  .outcome-banner p { font-size: 26px; font-weight: 800; line-height: 1.4; max-width: 640px; }
-  .outcome-banner p .hl { color: var(--kt-accent); }
-  .outcome-banner .src { font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 12px; }
-  .outcome-banner .src a { color: rgba(255,255,255,0.7); border-bottom: 1px dotted rgba(255,255,255,0.4); }
+  .orgmvp-inner { position: relative; z-index: 1; }
+  .orgmvp-lead {
+    background: var(--kt-black); color: var(--kt-white);
+    padding: 36px 40px; border-radius: var(--radius-lg); margin-bottom: 48px;
+    display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .orgmvp-lead::after {
+    content: ""; position: absolute; top: -100px; right: -100px; width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(230,0,18,0.30) 0%, transparent 70%);
+  }
+  .orgmvp-lead > * { position: relative; z-index: 1; }
+  @media (max-width: 760px) { .orgmvp-lead { grid-template-columns: 1fr; padding: 28px; } }
+  .orgmvp-lead h3 { font-size: 29px; font-weight: 800; line-height: 1.35; letter-spacing: -0.01em; }
+  .orgmvp-lead h3 .hl { color: var(--kt-accent); }
+  .orgmvp-lead p { font-size: 17px; color: rgba(255,255,255,0.72); margin-top: 10px; max-width: 660px; }
+  .orgmvp-quote {
+    font-size: 16px; color: rgba(255,255,255,0.6); font-style: italic;
+    border-left: 3px solid var(--kt-red); padding: 4px 16px;
+  }
+
+  /* Scenario grid */
+  .scenario-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 880px) { .scenario-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .scenario-grid { grid-template-columns: 1fr; } }
+  .scenario-card {
+    background: var(--kt-gray-50); padding: 24px 22px; border-radius: var(--radius-md);
+    border: 1px solid var(--kt-gray-100);
+    transition: all 0.3s ease;
+  }
+  .scenario-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--kt-red); }
+  .scenario-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(230,0,18,0.08); color: var(--kt-red);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; margin-bottom: 14px;
+  }
+  .scenario-card h5 { font-size: 19px; font-weight: 800; color: var(--kt-black); margin-bottom: 6px; }
+  .scenario-card p { font-size: 16px; color: var(--kt-gray-700); line-height: 1.5; }
+
+  /* Triple role banner */
+  .role-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    background: var(--kt-gray-50); padding: 28px; border-radius: var(--radius-md);
+    border: 1px solid var(--kt-gray-100);
+  }
+  @media (max-width: 760px) { .role-row { grid-template-columns: 1fr; } }
+  .role-cell {
+    text-align: center; padding: 12px;
+  }
+  .role-cell .role-num { display: inline-block; width: 28px; height: 28px; line-height: 28px; border-radius: 50%; background: var(--kt-red); color: var(--kt-white); font-size: 16px; font-weight: 800; margin-bottom: 10px; }
+  .role-cell h5 { font-size: 18px; font-weight: 800; color: var(--kt-black); margin-bottom: 4px; }
+  .role-cell p { font-size: 14px; color: var(--kt-gray-700); }
 
   /* ============ CURRICULUM ============ */
   .curriculum {
@@ -293,7 +303,6 @@
   }
   .module-desc { font-size: 16px; color: var(--kt-gray-700); line-height: 1.5; }
 
-  /* highlight chip */
   .deliverable-chip {
     display: inline-block; font-size: 13px; font-weight: 600;
     color: var(--kt-gray-700); background: var(--kt-gray-100);
@@ -309,7 +318,7 @@
   }
   .method-flow {
     display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
-    margin-bottom: 56px;
+    margin-bottom: 48px;
   }
   @media (max-width: 880px) {
     .method-flow { grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -333,35 +342,11 @@
   .method-step-title { font-size: 17px; font-weight: 700; color: var(--kt-black); margin-bottom: 4px; }
   .method-step-desc { font-size: 14px; color: var(--kt-gray-700); line-height: 1.4; }
 
-  /* Practice split */
-  .practice-split {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-  }
-  @media (max-width: 880px) { .practice-split { grid-template-columns: 1fr; } }
-  .practice-card {
-    background: var(--kt-gray-50); padding: 36px 32px; border-radius: var(--radius-md);
-    border-left: 4px solid var(--kt-red);
-  }
-  .practice-card h4 {
-    font-size: 17px; font-weight: 700; color: var(--kt-red); letter-spacing: 0.12em;
-    text-transform: uppercase; margin-bottom: 12px;
-  }
-  .practice-card h3 { font-size: 26px; font-weight: 800; color: var(--kt-black); margin-bottom: 18px; line-height: 1.3; }
-  .practice-card ul { list-style: none; }
-  .practice-card li {
-    padding: 10px 0 10px 24px; position: relative; font-size: 17px;
-    color: var(--kt-gray-900); border-bottom: 1px solid var(--kt-gray-300);
-  }
-  .practice-card li:last-child { border-bottom: none; }
-  .practice-card li::before {
-    content: "✓"; position: absolute; left: 0; color: var(--kt-red); font-weight: 800;
-  }
-
   /* NPD Callout */
   .npd-callout {
     background: linear-gradient(135deg, var(--kt-black) 0%, var(--kt-charcoal) 100%);
     color: var(--kt-white); border-radius: var(--radius-lg);
-    padding: 28px 36px; margin-bottom: 40px;
+    padding: 28px 36px;
     display: grid; grid-template-columns: 56px 1fr auto; gap: 24px; align-items: center;
     position: relative; overflow: hidden;
   }
@@ -436,7 +421,7 @@
     margin-bottom: 14px; letter-spacing: -0.02em;
   }
   .cta-final h2 .hl { color: var(--kt-red); }
-  .cta-final p { font-size: 19px; color: rgba(255,255,255,0.75); margin-bottom: 32px; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .cta-final p { font-size: 19px; color: rgba(255,255,255,0.75); margin-bottom: 0; max-width: 560px; margin-left: auto; margin-right: auto; }
   .cta-meta {
     display: inline-flex; flex-wrap: wrap; gap: 24px; justify-content: center;
     padding: 14px 28px; background: rgba(255,255,255,0.05); border-radius: 999px;
@@ -472,8 +457,8 @@
     .hero-meta { gap: 20px; }
     .stat-number { font-size: 53px; }
     .stat-number .unit { font-size: 31px; }
-    .outcome-banner p { font-size: 22px; }
     .cta-final { padding: 44px 28px; }
+    .orgmvp-lead h3 { font-size: 24px; }
   }
 
   /* ============ Print (PDF export) ============ */
@@ -483,7 +468,7 @@
     .nav { position: static !important; }
     section { padding: 36px 0 !important; }
     .hero { padding: 48px 0 40px !important; }
-    .stat-card, .audience-card, .day-card, .plugin-card, .diff-card, .case-banner, .cta-final, .course-card, .guide-card, .outcome-banner { page-break-inside: avoid; break-inside: avoid; }
+    .stat-card, .audience-card, .day-card, .plugin-card, .diff-card, .case-banner, .cta-final, .course-card, .guide-card, .orgmvp-lead { page-break-inside: avoid; break-inside: avoid; }
     a { color: inherit !important; text-decoration: none !important; }
   }
 </style>
@@ -495,34 +480,41 @@
   <div class="nav-inner">
     <a href="../../" class="nav-brand">
       <span class="dot"></span>
-      <span class="brand-name">KTDS</span>
+      <span class="brand-name">Cloud College</span>
       <span class="brand-tag">CNA Academy</span>
     </a>
     <div class="nav-links">
       <a href="#why">Why</a>
-      <a href="#audience">대상</a>
+      <a href="#orgmvp">조직별 MVP</a>
       <a href="#curriculum">커리큘럼</a>
       <a href="#methodology">학습방식</a>
-      <a href="#apply">차별점</a>
+      <a href="#diff">차별점</a>
     </div>
   </div>
 </nav>
 
 <!-- ============ 1) HERO ============ -->
 <section class="hero" id="hero">
+  <span class="series-badge">Cloud College · <b>Quickwin Edition</b></span>
   <div class="container hero-inner">
     <div class="hero-eyebrow">
       <span class="pulse"></span>
-      <span>2026 임직원 역량 강화 과정 · KTDS 사내 한정</span>
+      <span>2026 임직원 역량 강화 과정 · 사내 한정</span>
     </div>
     <h1>
-      클라우드 네이티브 시대,<br/>
-      <span class="underline accent">기획·설계 역량</span>이<br/>
-      <span class="accent">팀의 격차</span>를 만듭니다.
+      3일.<br/>
+      <span class="underline accent">우리 팀의 업무</span>로<br/>
+      <span class="accent">CNA 풀스택</span> 완성.
     </h1>
     <p class="hero-lede">
-      3일 후, 당신의 손에는 <strong>본인 MVP 주제의 High-level 아키텍처 정의서</strong>가 남습니다. Design Thinking 고객 여정 맵부터 42개 클라우드 디자인 패턴 적용 아키텍처까지 — Claude Code · Codex로 가속한 실습 중심 21시간.
+      또 다른 To-Do 앱 예제는 그만. <strong>참가 조직의 실제 업무</strong>를 MVP로 선정해 기획·설계·개발·배포 풀스택 완성. 3일 후 우리 팀의 손에는 <strong>움직이는 프로토타입 + 자동 배포 파이프라인</strong>이 남습니다.
     </p>
+    <div class="hero-compare">
+      <span class="strike">풀과정 6일 (Part 1 + Part 2)</span>
+      <span class="arrow">→</span>
+      <span class="bold">Quickwin 3일 압축</span>
+    </div>
+
     <div class="hero-meta">
       <div class="meta-item">
         <span class="meta-label">교육기간</span>
@@ -530,15 +522,15 @@
       </div>
       <div class="meta-item">
         <span class="meta-label">추천 대상</span>
-        <span class="meta-value">PM/PO · 아키텍트 · 개발자</span>
+        <span class="meta-value">PM/PO · 아키텍트 · 개발자 · 배포담당자</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">선수 지식</span>
         <span class="meta-value">없음 (입문 가능)</span>
       </div>
       <div class="meta-item">
-        <span class="meta-label">실습 비중</span>
-        <span class="meta-value">12H+ (전체의 57%)</span>
+        <span class="meta-label">MVP 주제</span>
+        <span class="meta-value">참가 조직 업무 맞춤 선정</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">교육 형태</span>
@@ -548,60 +540,87 @@
   </div>
 </section>
 
-<!-- ============ INTRO STATS (Why now) ============ -->
+<!-- ============ 2) WHY (Stats) ============ -->
 
-<!-- ============ 2) AUDIENCE & OUTCOME ============ -->
-<section class="audience" id="audience">
-  <div class="container">
-    <span class="section-label">Who · Outcome</span>
-    <h2 class="section-title">이 과정을 마치면, 무엇이 달라집니까?</h2>
+<!-- ============ 3) ORG-SPECIFIC MVP (signature) ============ -->
+<section class="orgmvp" id="orgmvp">
+  <div class="container orgmvp-inner">
+    <span class="section-label">Signature · 이 과정만의 차별점</span>
+    <h2 class="section-title">"우리 조직의 업무"가 곧 학습 주제입니다.</h2>
     <p class="section-subtitle">
-      두 가지 핵심 직군이 각자의 일하는 방식에서 즉시 활용 가능한 결과물을 얻어 갑니다.
+      일반론적 샘플 앱이 아닌, 참가 조직이 실제로 다루는 도메인을 MVP로 선정해 함께 만듭니다. 익숙한 도메인을 다루기에 학습 흡수가 빨라지고, 후속 PoC나 현업 논의의 출발점이 될 프로토타입이 산출됩니다.
     </p>
 
-    <div class="audience-grid">
-      <div class="audience-card">
-        <div class="audience-icon">📋</div>
-        <h3>PM / PO</h3>
-        <div class="role">요구사항 정의 · MVP 기획</div>
-        <div class="transform-row">
-          <div class="transform-before">"고객이 뭘 원하는지 모르겠다"</div>
-          <div class="transform-arrow">→</div>
-          <div class="transform-after">Design Thinking · 고객 여정 맵 작성</div>
-        </div>
-        <div class="transform-row">
-          <div class="transform-before">"문서로만 남는 기획안"</div>
-          <div class="transform-arrow">→</div>
-          <div class="transform-after">Lean Canvas + 발표자료(gamma.app)</div>
-        </div>
-            </div>
-
-      <div class="audience-card">
-        <div class="audience-icon">🏗</div>
-        <h3>아키텍트 / 개발자</h3>
-        <div class="role">MSA 설계 · 클라우드 디자인 패턴</div>
-        <div class="transform-row">
-          <div class="transform-before">"MSA 7대 구성요소가 흐릿함"</div>
-          <div class="transform-arrow">→</div>
-          <div class="transform-after">API Gateway · Service Mesh · Discovery 등 명확히</div>
-        </div>
-        <div class="transform-row">
-          <div class="transform-before">"패턴은 들었지만 적용은 못함"</div>
-          <div class="transform-arrow">→</div>
-          <div class="transform-after">42개 클라우드 디자인 패턴 적용 실습</div>
-        </div>
-            </div>
+    <div class="orgmvp-lead">
+      <div>
+        <h3>"또 다른 To-Do 앱 예제는 그만.<br/><span class="hl">우리 팀의 진짜 업무로</span> 시작합니다."</h3>
+        <p>
+          기획 단계에서 강사와 함께 참가 조직의 업무를 분석해 MVP 주제를 선정합니다. 이후 설계·개발·배포 전 과정이 그 MVP를 기준으로 진행됩니다.
+        </p>
+      </div>
+      <div class="orgmvp-quote">
+        익숙한 업무로 학습<br/>→ 프로토타입 산출<br/>→ 후속 PoC의 출발점
+      </div>
     </div>
+
+    <!-- Scenario examples -->
+    <div class="scenario-grid">
+      <div class="scenario-card">
+        <div class="scenario-icon">📋</div>
+        <h5>업무 자동화</h5>
+        <p>반복되는 운영 업무·승인 프로세스를 MSA + AI로 자동화하는 사내 도구</p>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-icon">📊</div>
+        <h5>데이터 인사이트</h5>
+        <p>흩어진 운영 데이터를 한곳에서 조회·분석하는 대시보드형 서비스</p>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-icon">🤝</div>
+        <h5>고객·파트너 채널</h5>
+        <p>외부 고객/파트너 대상 셀프서비스 포털 또는 협업 채널</p>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-icon">⚙️</div>
+        <h5>내부 플랫폼</h5>
+        <p>개발팀이 공통으로 쓰는 사내 플랫폼·SDK·DevOps 도구</p>
+      </div>
+    </div>
+    <p style="font-size: 14px; color:var(--kt-gray-500); margin: -32px 0 48px; text-align:center;">
+      * 위 카드는 가능한 MVP 영역 예시이며, 실제 주제는 참가 조직 업무를 기준으로 강사와 함께 선정합니다.
+    </p>
+
+    <!-- 3 roles in one room -->
+    <div class="role-row">
+      <div class="role-cell">
+        <div class="role-num">1</div>
+        <h5>PM / PO</h5>
+        <p>요구사항·MVP 정의 · 린캔버스 · 발표자료</p>
+      </div>
+      <div class="role-cell">
+        <div class="role-num">2</div>
+        <h5>아키텍트 / 개발자</h5>
+        <p>MSA 설계 · 백/프론트/AI 병렬 개발 · E2E</p>
+      </div>
+      <div class="role-cell">
+        <div class="role-num">3</div>
+        <h5>배포 담당자</h5>
+        <p>컨테이너 · K8s · GitHub Actions · ArgoCD GitOps</p>
+      </div>
+    </div>
+    <p style="font-size: 16px; color:var(--kt-gray-700); margin-top: 20px; text-align:center;">
+      <strong>3개 직군이 같은 자리, 같은 MVP, 같은 언어로</strong> — 부서 간 일정·언어 미스매치를 학습 단계에서부터 해소합니다.
+    </p>
   </div>
 </section>
 
-<!-- ============ 3) CURRICULUM ============ -->
+<!-- ============ 4) CURRICULUM ============ -->
 <section class="curriculum" id="curriculum">
   <div class="container">
     <span class="section-label">Curriculum</span>
-    <h2 class="section-title">3일, 21시간의 학습 여정</h2>
+    <h2 class="section-title">3일 · 21시간 · 풀스택 압축 여정</h2>
     <p class="section-subtitle">
-      "왜(Why)" → "무엇(What)" → "어떻게(How)"의 자연스러운 흐름. 매일 직접 만들어 보고, 다음 날 그 산출물 위에 한 층씩 쌓아 올립니다.
+      Day 1은 기획, Day 2는 구체화와 설계, Day 3는 개발과 자동 배포. 같은 MVP가 매일 한 층씩 자라납니다.
     </p>
 
     <div class="timeline">
@@ -615,18 +634,17 @@
         <ul class="module-list">
           <li class="module-item">
             <div class="module-name">AM 개요 <span class="hours">2H</span></div>
-            <div class="module-desc"><strong>왜 지금 AM인가</strong> — 모더나이제이션 6R 전략·점진적 전환. 애자일 사상과 마인드셋(조직구조·의사결정·업무방식·조직문화). MSA·DevOps·AI·Cloud의 기본 이해</div>
+            <div class="module-desc">AM 필요성·모더나이제이션 6R·일하는 방식 변화·현대화 기술(MSA·DevOps·AI·Cloud) 기본 이해</div>
           </li>
           <li class="module-item">
             <div class="module-name">AI 도구 기본 사용법 <span class="hours">1H</span></div>
-            <div class="module-desc">Claude Code(AGENTS.md, MCP) · Codex · 프롬프트 5대 구성. 에이전트/스킬 개발 실습</div>
-            <span class="deliverable-chip hot">실습: 에이전트/스킬 개발</span>
+            <div class="module-desc">Claude Code(AGENTS.md, MCP) · Codex · 프롬프트 5대 구성. 스킬/에이전트 개발 실습</div>
+            <span class="deliverable-chip hot">AI 도구 실습</span>
           </li>
           <li class="module-item">
-            <div class="module-name">상위 수준 기획 (공동 MVP) <span class="hours">4H</span></div>
-            <div class="module-desc"><strong>Design Thinking</strong>으로 고객 문제 정의 — User Journey Map · Great 2 WHY · 솔루션 탐색·우선순위 선정. <strong>린캔버스 9대 영역</strong> 작성. gamma.app + Claude Code로 발표자료 한 번에 생성</div>
+            <div class="module-name">상위 수준 기획 (조직별 MVP) <span class="hours">4H</span></div>
+            <div class="module-desc">Design Thinking · 고객 여정 맵 · Lean Canvas · gamma.app. 참가 조직 업무 영역에서 MVP 주제 선정</div>
             <span class="deliverable-chip hot">MVP 주제 선정</span>
-            <span class="deliverable-chip hot">User Journey Map</span>
             <span class="deliverable-chip">린캔버스</span>
           </li>
         </ul>
@@ -635,24 +653,27 @@
       <!-- Day 2 -->
       <div class="day-card featured-2">
         <div class="day-header">
-          <span class="day-number">Day 2 · 구체화</span>
+          <span class="day-number">Day 2 · 구체화 + 설계</span>
           <span class="day-hours">7H</span>
         </div>
-        <h3 class="day-title">"무엇을 만드는가"를 구체화하는 날</h3>
+        <h3 class="day-title">"무엇을·어떻게"를 그리는 날</h3>
         <ul class="module-list">
           <li class="module-item">
-            <div class="module-name">상위 수준 기획 (개별 MVP) <span class="hours">1.5H</span></div>
-            <div class="module-desc">NPD 플러그인 이해·설치. 본인 MVP 주제로 상위 수준 기획(Codex)</div>
-          </li>
-          <li class="module-item">
             <div class="module-name">기획 구체화 <span class="hours">2H</span></div>
-            <div class="module-desc">Event Storming · DDD 핵심 · 유저스토리 · Claude Code 프로토타이핑</div>
+            <div class="module-desc">Event Storming · DDD 핵심 · 유저스토리(Codex) · Claude Code 프로토타이핑</div>
             <span class="deliverable-chip">유저스토리</span>
             <span class="deliverable-chip hot">프로토타입</span>
           </li>
           <li class="module-item">
-            <div class="module-name">아키텍처 설계 기본 <span class="hours">3.5H</span></div>
+            <div class="module-name">아키텍처 설계 기본 <span class="hours">3H</span></div>
             <div class="module-desc">MSA 7대 구성요소 · Layered/Clean/Hexagonal/EDA · 42개 클라우드 디자인 패턴(CQRS·SAGA·Circuit Breaker 등)</div>
+          </li>
+          <li class="module-item">
+            <div class="module-name">아키텍처 설계 (실습) <span class="hours">2H</span></div>
+            <div class="module-desc">외부 아키텍처(Claude Code) · 내부 아키텍처(Codex) · 논리 아키텍처 · 시퀀스 · API · High-level 정의서</div>
+            <span class="deliverable-chip">논리 아키텍처</span>
+            <span class="deliverable-chip">API 설계</span>
+            <span class="deliverable-chip hot">High-level 정의서</span>
           </li>
         </ul>
       </div>
@@ -660,22 +681,23 @@
       <!-- Day 3 -->
       <div class="day-card featured-3">
         <div class="day-header">
-          <span class="day-number">Day 3 · 설계</span>
+          <span class="day-number">Day 3 · 개발 + 배포</span>
           <span class="day-hours">7H</span>
         </div>
-        <h3 class="day-title">"어떻게 만드는가"를 설계하는 날</h3>
+        <h3 class="day-title">"코드 → 운영"으로 흘려보내는 날</h3>
         <ul class="module-list">
           <li class="module-item">
-            <div class="module-name">아키텍처 설계 방법 <span class="hours">2.5H</span></div>
-            <div class="module-desc">외부/내부 아키텍처 설계법 · 논리 아키텍처 · 시퀀스 · API · Class · High-level 정의서 작성법</div>
+            <div class="module-name">백/프론트/AI앱 개발 + E2E <span class="hours">2H</span></div>
+            <div class="module-desc"><strong>NPD 플러그인</strong>으로 백엔드·프론트엔드·AI 병렬 개발. 통합 연동(백+AI, 프론트+백) · <strong>Playwright MCP</strong>로 AI가 E2E 테스트 자동 생성·실행 · 사용자 테스트</div>
+            <span class="deliverable-chip hot">NPD 병렬 개발</span>
+            <span class="deliverable-chip">Playwright E2E</span>
           </li>
           <li class="module-item">
-            <div class="module-name">아키텍처 설계 (실습) <span class="hours">4.5H</span></div>
-            <div class="module-desc">본인 MVP 주제로 직접 설계. <strong>외부 아키텍처(Claude Code)</strong>: 클라우드 패턴 적용·논리·외부 시퀀스. <strong>내부 아키텍처(Codex)</strong>: 내부 시퀀스·API·Class. <strong>High-level 정의서(Claude Code)</strong> 작성</div>
-            <span class="deliverable-chip">논리 아키텍처</span>
-            <span class="deliverable-chip">시퀀스</span>
-            <span class="deliverable-chip">API 설계</span>
-            <span class="deliverable-chip hot">High-level 정의서</span>
+            <div class="module-name">CI/CD 자동화 (ArgoCD GitOps) <span class="hours">5H</span></div>
+            <div class="module-desc">VM 생성 → 컨테이너 이미지 빌드/실행 → k8s 클러스터 생성 → <strong>GitHub Workflow CI</strong> → <strong>Kustomize</strong> 환경별 배포 → <strong>ArgoCD GitOps CD</strong> 분리 · 자동 동기화. 코드 푸시 → 운영까지 자동</div>
+            <span class="deliverable-chip">컨테이너·K8s</span>
+            <span class="deliverable-chip">GitHub Workflow</span>
+            <span class="deliverable-chip hot">ArgoCD GitOps</span>
           </li>
         </ul>
       </div>
@@ -683,20 +705,20 @@
   </div>
 </section>
 
-<!-- ============ 4) METHODOLOGY ============ -->
+<!-- ============ 5) METHODOLOGY ============ -->
 <section class="methodology" id="methodology">
   <div class="container">
     <span class="section-label">Methodology</span>
     <h2 class="section-title">우리는 이렇게 가르칩니다</h2>
     <p class="section-subtitle">
-      이론 강의가 아닌, 검증된 글로벌 방법론을 한 줄기로 엮은 실습 여정. 매 시간 손으로 직접 만들어 봅니다.
+      이론을 압축한 게 아니라 "한 흐름으로 꿰어" 압축했습니다. 5단계가 매끄럽게 이어집니다.
     </p>
     <div class="npd-callout">
       <div class="npd-icon">🤖</div>
       <div class="npd-content">
         <span class="npd-tag">Built-in AI Toolkit</span>
         <h4>NPD 플러그인 — New Product Development</h4>
-        <p><strong>기획 → 설계 → 개발 → 배포의 전 과정을 9개 전문가 AI가 협업하여 지원하는</strong> 플러그인. 본 과정에서 직접 설치하고 사용해 봅니다.</p>
+        <p><strong>기획 → 설계 → 개발 → 배포의 전 과정을 9개 전문가 AI가 협업하여 지원하는</strong> 플러그인. 본 과정 전반에 걸쳐 핵심 가속 도구로 사용합니다.</p>
       </div>
       <div class="npd-badge">
         <div class="npd-num">9</div>
@@ -706,55 +728,55 @@
   </div>
 </section>
 
-<!-- ============ 5) DIFFERENTIATORS + CTA ============ -->
-<section class="differentiators" id="apply">
+<!-- ============ 6) DIFFERENTIATORS + CTA ============ -->
+<section class="differentiators" id="diff">
   <div class="container">
     <span class="section-label">Why This Course</span>
     <h2 class="section-title">다른 CNA 교육과 무엇이 다릅니까?</h2>
     <p class="section-subtitle">
-      AI 도구 사용법만 가르치거나, MSA 패턴만 나열하는 교육과 명확히 구분됩니다.
+      "3일짜리니까 표면만 훑는다"는 통념을 깨는 4가지 차별점.
     </p>
 
     <div class="diff-grid">
       <div class="diff-card">
         <div class="diff-icon">🎯</div>
         <div>
-          <h4>"기획부터 설계까지" 한 흐름</h4>
-          <p>고객 문제 정의(Day 1) → 도메인 구체화(Day 2) → 아키텍처 설계(Day 3). 하나의 MVP를 끝까지 완성합니다.</p>
+          <h4>조직 업무 맞춤 MVP</h4>
+          <p>참가 조직의 실제 업무 영역으로 MVP를 선정. 학습 흡수가 빠르고, 종료 시점에 현업 논의의 출발점이 되는 프로토타입이 남습니다.</p>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">🔗</div>
+        <div>
+          <h4>기획~배포 한 흐름</h4>
+          <p>Day 1의 MVP가 Day 2에서 아키텍처로, Day 3에서 코드와 운영 배포로 이어집니다. 하나의 시스템이 자라는 경험.</p>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-icon">👥</div>
+        <div>
+          <h4>3개 직군이 같은 자리</h4>
+          <p>PM/PO, 아키텍트/개발자, 배포담당자가 같은 MVP를 함께 만들어 부서 간 언어·기대치 미스매치를 해소합니다.</p>
         </div>
       </div>
       <div class="diff-card">
         <div class="diff-icon">⚡</div>
         <div>
-          <h4>AI 도구를 전 과정에 통합</h4>
-          <p>Claude Code · Codex · NPD 플러그인 · gamma.app을 기획·설계 매 단계에서 직접 사용합니다.</p>
-        </div>
-      </div>
-      <div class="diff-card">
-        <div class="diff-icon">📐</div>
-        <div>
-          <h4>42개 클라우드 디자인 패턴</h4>
-          <p>CQRS · SAGA · Circuit Breaker 등 — 본인 MVP 주제에 적용 가능한 패턴을 선정·적용합니다.</p>
-        </div>
-      </div>
-      <div class="diff-card">
-        <div class="diff-icon">🧭</div>
-        <div>
-          <h4>선수지식 불필요</h4>
-          <p>PM/PO든 개발자든 입문 가능. AM 개요(2H)부터 출발해 3일 만에 산출물을 완성합니다.</p>
+          <h4>AI 도구로 가속</h4>
+          <p>NPD 플러그인(9개 전문가 AI) · Claude Code · Codex · Playwright MCP를 전 과정에 통합. 6일 분량을 3일에 담는 비결.</p>
         </div>
       </div>
     </div>
 
     <!-- Final CTA -->
     <div class="cta-final">
-      <h2>"내가 만든 시스템이<br/><span class="hl">왜·무엇을·어떻게</span>"를 설명할 수 있게 됩니다.</h2>
-      <p>3일 후, 본인 MVP의 High-level 아키텍처 정의서를 들고 동료들과 같은 언어로 대화합니다. 더 이상 '아키텍처는 누가 그리지?'를 묻지 않습니다.</p>
+      <h2>3일 후, 우리 팀의 손에는<br/><span class="hl">움직이는 프로토타입</span>이 남습니다.</h2>
+      <p>PM/PO · 아키텍트/개발자 · 배포담당자가 같은 자리에서 같은 언어로 우리 팀의 MVP를 만듭니다. 3일 후 손에 남는 것: 움직이는 프로토타입 + 자동 배포 파이프라인 + 부서 간 정렬된 언어</p>
       <div class="cta-meta">
         <span>3일 21시간</span>
         <span>선수지식 무</span>
-        <span>PM/PO · 아키텍트 · 개발자</span>
-        <span>KTDS 임직원 한정</span>
+        <span>PM/PO · 아키텍트 · 개발자 · 배포담당자</span>
+        <span>임직원 한정</span>
       </div>
     </div>
   </div>
@@ -765,10 +787,10 @@
   <div class="footer-inner">
     <div class="brand-row">
       <span class="dot"></span>
-      <span>KTDS CNA Academy</span>
+      <span>CNA Academy</span>
     </div>
     <div>
-      © 2026 KTDS. [Cloud College] CNA 기획·설계 역량 향상 과정 · 사내 교육 자료
+      © 2026 CNA Academy. [Cloud College] CNA Quickwin 3일 집중과정 · 사내 교육 자료
     </div>
   </div>
 </footer>
@@ -777,7 +799,7 @@
   // Lightweight scroll reveal
   (function () {
     if (!('IntersectionObserver' in window)) return;
-    const targets = document.querySelectorAll('.stat-card, .audience-card, .day-card, .method-step, .practice-card, .diff-card, .outcome-banner');
+    const targets = document.querySelectorAll('.stat-card, .scenario-card, .role-cell, .day-card, .method-step, .diff-card, .orgmvp-lead, .npd-callout');
     targets.forEach(el => el.classList.add('reveal'));
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
