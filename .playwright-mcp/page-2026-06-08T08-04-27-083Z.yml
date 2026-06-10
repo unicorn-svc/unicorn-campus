@@ -1,0 +1,79 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - button "주 콘텐츠로 건너뛰기"
+    - banner "Microsoft Azure" [ref=e3]:
+      - button "Microsoft Cloud 메뉴 표시" [ref=e5] [cursor=pointer]:
+        - img [ref=e7]
+      - button "포털 메뉴 표시" [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - heading "Microsoft Azure" [level=1] [ref=e12]:
+        - link "Microsoft Azure" [ref=e13] [cursor=pointer]:
+          - /url: "#home"
+      - search [ref=e14]:
+        - generic [ref=e15]:
+          - img [ref=e17]
+          - textbox "리소스, 서비스 및 문서 검색(G+/)" [ref=e20]
+      - button "Copilot" [ref=e21] [cursor=pointer]:
+        - img [ref=e23]
+        - generic [ref=e25]: Copilot
+      - generic [ref=e26]:
+        - button "Cloud Shell" [ref=e27] [cursor=pointer]:
+          - img [ref=e28]
+        - button "알림" [ref=e31] [cursor=pointer]:
+          - img [ref=e32]
+        - button "설정" [ref=e34] [cursor=pointer]:
+          - img [ref=e35]
+        - button "지원 + 문제 해결" [ref=e38] [cursor=pointer]:
+          - img [ref=e39]
+        - button "피드백" [ref=e41] [cursor=pointer]:
+          - img [ref=e42]
+      - button "계정 메뉴 현재 Default Directory(hiondalgmail.onmicrosoft.com) 테넌트 아래에 hiondal@gmail.com(으)로 로그인했음" [ref=e45] [cursor=pointer]:
+        - 'generic "이름: 이 해경 전자 메일: hiondal@gmail.com 디렉터리: Default Directory(5b29e13a-2e82-4e7f-be31-fb84b376a89c) 도메인: hiondalgmail.onmicrosoft.com 로그인에서 다단계 인증을 사용했습니다." [ref=e46]':
+          - generic [ref=e47]:
+            - generic [ref=e48]: hiondal@gmail.com
+            - generic [ref=e49]: Default Directory(hiondalgmail.onmicrosoft.com)
+          - img [ref=e52]
+    - main [ref=e57]:
+      - generic [ref=e75]:
+        - region [ref=e378]
+        - region [ref=e379]
+  - generic:
+    - generic:
+      - generic: 콘텐츠가 닫혔습니다.
+    - generic:
+      - generic: 콘텐츠가 닫혔습니다.
+  - img [ref=e343]
+  - img [ref=e344]
+  - img [ref=e345]
+  - img [ref=e346]
+  - img [ref=e347]
+  - img [ref=e348]
+  - img [ref=e349]
+  - img [ref=e350]
+  - img [ref=e351]
+  - img [ref=e352]
+  - img [ref=e353]
+  - img [ref=e354]
+  - img [ref=e355]
+  - img [ref=e356]
+  - img [ref=e357]
+  - img [ref=e358]
+  - img [ref=e359]
+  - img [ref=e360]
+  - img [ref=e361]
+  - img [ref=e362]
+  - img [ref=e363]
+  - img [ref=e364]
+  - img [ref=e365]
+  - img [ref=e366]
+  - img [ref=e367]
+  - img [ref=e368]
+  - img [ref=e369]
+  - img [ref=e370]
+  - img [ref=e371]
+  - img [ref=e372]
+  - img [ref=e373]
+  - img [ref=e374]
+  - img [ref=e375]
+  - img [ref=e376]
+  - img [ref=e377]

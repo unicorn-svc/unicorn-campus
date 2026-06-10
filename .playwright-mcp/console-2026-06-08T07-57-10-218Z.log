@@ -1,0 +1,67 @@
+[      92ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[      93ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[     401ms] [INFO] BSSO Telemetry: {"result":"Error","error":"NoExtension","type":"ChromeSsoTelemetry","data":{},"traces":["BrowserSSO Initialized","Creating ChromeBrowserCore provider","Sending message for method CreateProviderAsync","Received message for method CreateProviderAsync","Error: ChromeBrowserCore error NoExtension: Extension is not installed."]} @ https://aadcdn.msftauth.net/shared/1.0/content/js/BssoInterrupt_Core_9GPLBwek-swGv_tRKLyCgw2.js:17
+[     491ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ https://login.microsoftonline.com/favicon.ico:0
+[     794ms] [ERROR] Framing 'https://portal.azure.com/' violates the following Content Security Policy directive: "frame-ancestors 'self'". The request has been blocked.
+ @ :0
+[     795ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize?client_id=c44b4083-3bb0-49c1-b47d-974e53cbdf3c&scope=https%3A%2F%2Fmanagement.core.windows.net%2F%2F.default%20openid%20profile%20offline_access&redirect_uri=https%3A%2F%2Fentra.microsoft.com%2Fauth%2Flogin%2F&client-request-id=019ea63c-4d82-7aed-9eaf-69d0abfe1083&response_mode=fragment&client_info=1&clidata=1&nonce=019ea63c-4d84-764e-96c1-582c2c9833cf&state=eyJpZCI6IjAxOWVhNjNjLTRkODMtN2RmZS1hYzdmLTAwM2I1OTE3MzQ0OSIsIm1ldGEiOnsiaW50ZXJhY3Rpb25UeXBlIjoicmVkaXJlY3QifX0%3D&x-client-SKU=msal.js.browser&x-client-VER=5.8.0&response_type=code&code_challenge=JihB3HTa68WpWQ8NFbrV38SDnofC_Ijzv_W4W8q2pKs&code_challenge_method=S256&site_id=501430&instance_aware=true&sso_reload=true:0
+[   14971ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ https://login.live.com/favicon.ico:0
+[   17942ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ https://management.azure.com/providers/Microsoft.PortalServices/settings/default?api-version=2024-09-01-preview:0
+[   18034ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[   18034ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[   18704ms] [LOG] Version: 17.385.0.1
+Session: 6cd628b17b9643f5b76d7ea807955667 @ https://entra.microsoft.com/Content/Dynamic/k80GJpTTTJ9c.js:383
+[   18877ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[   18877ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[   18947ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[   18947ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[   19129ms] [LOG] Extension: HubsExtension @ blob:https://entra.microsoft.com/1e4e46da-17cd-4ebc-9559-ec58d7c5a134:0
+[   19178ms] [LOG] Extension: Microsoft_Entra_Copilot @ blob:https://entra.microsoft.com/1e4e46da-17cd-4ebc-9559-ec58d7c5a134:0
+[   19223ms] [LOG] Extension: Microsoft_AAD_IAM @ blob:https://entra.microsoft.com/1e4e46da-17cd-4ebc-9559-ec58d7c5a134:0
+[   19546ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://entra.microsoft.com/#home:0
+[   19621ms] [ERROR] [Microsoft_Entra_Copilot]  오후 4:57:29 MsPortalFx/MsPortalFxEnd MsPortalFxEnd: Uncaught Error: Module name "buffer" has not been loaded yet. Use require([]). {error: Object} @ https://entra.microsoft.com/Content/Dynamic/nq_A6dwmcvdo.js:0
+[   19622ms] [ERROR] [Microsoft_Entra_Copilot]  오후 4:57:29 MsPortalFx/MsPortalFxEnd MsPortalFxEnd: Uncaught Error: Module name "long" has not been loaded yet. Use require([]). {error: Object} @ https://entra.microsoft.com/Content/Dynamic/nq_A6dwmcvdo.js:0
+[   19718ms] [ERROR] [Microsoft_Entra_Copilot]  오후 4:57:29 MsPortalFx/MsPortalFxEnd MsPortalFxEnd: Uncaught Error: Module name "buffer" has not been loaded yet. Use require([]). {error: Object} @ https://entra.microsoft.com/Content/Dynamic/nq_A6dwmcvdo.js:0
+[   19719ms] [ERROR] [Microsoft_Entra_Copilot]  오후 4:57:29 MsPortalFx/MsPortalFxEnd MsPortalFxEnd: Uncaught Error: Module name "long" has not been loaded yet. Use require([]). {error: Object} @ https://entra.microsoft.com/Content/Dynamic/nq_A6dwmcvdo.js:0
+[   20001ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ https://graph.microsoft.com/beta/$batch:0
+[   20025ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ https://graph.microsoft.com/beta/$batch:0
+[   20062ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ https://graph.microsoft.com/beta/$batch:0
+[   20110ms] [ERROR] Refused to get unsafe header "request-id" @ https://hosting.portal.azure.net/iam/Content/Dynamic/hMnQ3GcJaxtH.js:2
+[   20179ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   20187ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   20189ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   20216ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   20217ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   20218ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   20226ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   20291ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   20396ms] [ERROR] Refused to get unsafe header "request-id" @ https://hosting.portal.azure.net/iam/Content/Dynamic/xfdZThOhi2k5.js:2
+[   20642ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://api.securitycopilot.microsoft.com/auth?CheckValidCapacity=true:0
+[   20643ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   20643ms] [ERROR] Refused to get unsafe header "client-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   20689ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   20689ms] [ERROR] Refused to get unsafe header "client-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   21038ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[   21038ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[   21096ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   21116ms] [ERROR] Access to XMLHttpRequest at 'https://api.securitycopilot.microsoft.com/usage/capacities' from origin 'https://sandbox-2.reactblade.portal.azure.net' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://sandbox-2.reactblade.portal.azure.net/React/Index?reactView=true&retryCount=0&l=ko.ko-kr&trustedAuthority=https://entra.microsoft.com&contentHash=QWDzrMoxxT8z&reactIndex=0&sessionId=6cd628b17b9643f5b76d7ea807955667#postParams/:0
+[   21117ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.securitycopilot.microsoft.com/usage/capacities:0
+[   21141ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   21141ms] [ERROR] Refused to get unsafe header "client-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   21179ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   21527ms] [ERROR] [Microsoft_AAD_IAM]  오후 4:57:31 cache Failed to serialize cache entry to shell. When using the cache service (including queries or DataCache) with session scope, the object being cached must be serializable. Details: Failed to execute 'postMessage' on 'Window': Headers object could not be cloned. {error: Object} {cacheId: :query:entraTrialBannerDataQuery:[""]} Failed to execute 'postMessage' on 'Window': Headers object could not be cloned. @ https://entra.microsoft.com/Content/Dynamic/nq_A6dwmcvdo.js:0
+[   21527ms] [ERROR] [Microsoft_AAD_IAM]  오후 4:57:31 EntraHomeV2 Failed to fetch Entra Copilot trial banner data {error: Object} {error: Object} @ https://entra.microsoft.com/Content/Dynamic/nq_A6dwmcvdo.js:0
+[   21817ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ https://graph.microsoft.com/v1.0/users/f84c4681-8f66-4f53-8815-f0592e5a402b/photo/$value:0
+[   21817ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   23538ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   23593ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   23700ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   23969ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   24543ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[   24543ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[   41398ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   41561ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   41675ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   41675ms] [ERROR] Refused to get unsafe header "client-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[   42578ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[   42579ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0

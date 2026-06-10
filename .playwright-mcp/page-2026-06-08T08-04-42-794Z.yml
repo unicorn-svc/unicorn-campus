@@ -1,0 +1,140 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - button "주 콘텐츠로 건너뛰기"
+    - banner "Microsoft Azure" [ref=e3]:
+      - button "Microsoft Cloud 메뉴 표시" [ref=e5] [cursor=pointer]:
+        - img [ref=e7]
+      - button "포털 메뉴 표시" [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - heading "Microsoft Azure" [level=1] [ref=e12]:
+        - link "Microsoft Azure" [ref=e13] [cursor=pointer]:
+          - /url: "#home"
+      - search [ref=e14]:
+        - generic [ref=e15]:
+          - img [ref=e17]
+          - textbox "리소스, 서비스 및 문서 검색(G+/)" [ref=e20]
+      - button "Copilot" [ref=e21] [cursor=pointer]:
+        - img [ref=e23]
+        - generic [ref=e25]: Copilot
+      - generic [ref=e26]:
+        - button "Cloud Shell" [ref=e27] [cursor=pointer]:
+          - img [ref=e28]
+        - button "알림" [ref=e31] [cursor=pointer]:
+          - img [ref=e32]
+        - button "설정" [ref=e34] [cursor=pointer]:
+          - img [ref=e35]
+        - button "지원 + 문제 해결" [ref=e38] [cursor=pointer]:
+          - img [ref=e39]
+        - button "피드백" [ref=e41] [cursor=pointer]:
+          - img [ref=e42]
+      - button "계정 메뉴 현재 Default Directory(hiondalgmail.onmicrosoft.com) 테넌트 아래에 hiondal@gmail.com(으)로 로그인했음" [ref=e45] [cursor=pointer]:
+        - 'generic "이름: 이 해경 전자 메일: hiondal@gmail.com 디렉터리: Default Directory(5b29e13a-2e82-4e7f-be31-fb84b376a89c) 도메인: hiondalgmail.onmicrosoft.com 로그인에서 다단계 인증을 사용했습니다." [ref=e46]':
+          - generic [ref=e47]:
+            - generic [ref=e48]: hiondal@gmail.com
+            - generic [ref=e49]: Default Directory(hiondalgmail.onmicrosoft.com)
+          - img [ref=e52]
+    - main [ref=e57]:
+      - generic [ref=e58]:
+        - navigation "탐색 기록" [ref=e380]:
+          - navigation "breadcrumb" [ref=e383]:
+            - list [ref=e384]:
+              - listitem [ref=e385]:
+                - link "홈" [ref=e386] [cursor=pointer]:
+                  - /url: "#home"
+                - img [ref=e389]
+              - listitem [ref=e391]:
+                - link "unicorn-sub | 액세스 제어(IAM)" [ref=e741] [cursor=pointer]:
+                  - /url: "#@hiondalgmail.onmicrosoft.com/resource/subscriptions/331cddde-a813-40e5-affe-851f3f29e337/overview"
+        - region "역할 할당 추가" [ref=e742]:
+          - generic "역할 할당 추가" [ref=e745]:
+            - generic [ref=e748]:
+              - heading "역할 할당 추가" [level=2] [ref=e749]: 역할 할당 추가
+              - generic [ref=e750]:
+                - button "추가 콘텐츠 작업" [ref=e752] [cursor=pointer]:
+                  - img [ref=e755]
+                - button "'역할 할당 추가' 콘텐츠 닫기" [ref=e758] [cursor=pointer]:
+                  - img [ref=e761]
+  - generic:
+    - generic:
+      - generic: 콘텐츠가 닫혔습니다.
+    - generic:
+      - generic: 콘텐츠가 닫혔습니다.
+    - generic:
+      - generic: 콘텐츠를 로드하는 중입니다.
+      - generic: 콘텐츠가 준비되었습니다.
+    - generic:
+      - generic: 콘텐츠를 로드하는 중입니다.
+  - img [ref=e343]
+  - img [ref=e344]
+  - img [ref=e345]
+  - img [ref=e346]
+  - img [ref=e347]
+  - img [ref=e348]
+  - img [ref=e349]
+  - img [ref=e350]
+  - img [ref=e351]
+  - img [ref=e352]
+  - img [ref=e353]
+  - img [ref=e354]
+  - img [ref=e355]
+  - img [ref=e356]
+  - img [ref=e357]
+  - img [ref=e358]
+  - img [ref=e359]
+  - img [ref=e360]
+  - img [ref=e361]
+  - img [ref=e362]
+  - img [ref=e363]
+  - img [ref=e364]
+  - img [ref=e365]
+  - img [ref=e366]
+  - img [ref=e367]
+  - img [ref=e368]
+  - img [ref=e369]
+  - img [ref=e370]
+  - img [ref=e371]
+  - img [ref=e372]
+  - img [ref=e373]
+  - img [ref=e374]
+  - img [ref=e375]
+  - img [ref=e376]
+  - img [ref=e377]
+  - img [ref=e703]
+  - img [ref=e704]
+  - img [ref=e705]
+  - img [ref=e706]
+  - img [ref=e707]
+  - img [ref=e708]
+  - img [ref=e709]
+  - img [ref=e710]
+  - img [ref=e711]
+  - img [ref=e712]
+  - img [ref=e713]
+  - img [ref=e714]
+  - img [ref=e715]
+  - img [ref=e716]
+  - img [ref=e717]
+  - img [ref=e718]
+  - img [ref=e719]
+  - img [ref=e720]
+  - img [ref=e721]
+  - img [ref=e722]
+  - img [ref=e723]
+  - img [ref=e724]
+  - img [ref=e725]
+  - img [ref=e726]
+  - img [ref=e727]
+  - img [ref=e728]
+  - img [ref=e729]
+  - img [ref=e730]
+  - img [ref=e731]
+  - img [ref=e732]
+  - img [ref=e733]
+  - img [ref=e734]
+  - img [ref=e735]
+  - img [ref=e736]
+  - img [ref=e737]
+  - img [ref=e738]
+  - img [ref=e739]
+  - img [ref=e740]
+  - img [ref=e781]

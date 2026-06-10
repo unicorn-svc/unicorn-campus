@@ -1,0 +1,892 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - heading "hands-on 예제 설명 페이지" [level=1] [ref=e4]
+    - paragraph [ref=e5]: AI Boot Camp 실습 예제별 "코드 설명 페이지(explain)" 목록임. 파이썬을 몰라도 예제 코드 흐름을 쉽게 따라갈 수 있음.
+  - generic [ref=e6]:
+    - generic [ref=e7]: 77개 예제
+    - generic [ref=e8]: 15개 챕터
+    - link "📖 용어집 보기" [ref=e9] [cursor=pointer]:
+      - /url: ../agentic-ai/textbook/glossary/index.html
+  - generic [ref=e10]:
+    - text: 📖 설명 보기를 클릭하면 새 탭에서 해당 예제의 코드 설명 페이지가 열림. (공용 셸
+    - code [ref=e11]: explain-exam
+    - text: 기반)
+  - table [ref=e12]:
+    - rowgroup [ref=e13]:
+      - row "챕터 예제 프로그램명 설명 링크 README" [ref=e14]:
+        - columnheader "챕터" [ref=e15]
+        - columnheader "예제 프로그램명" [ref=e16]
+        - columnheader "설명" [ref=e17]
+        - columnheader "링크" [ref=e18]
+        - columnheader "README" [ref=e19]
+    - rowgroup [ref=e20]:
+      - row "02. 멀티턴 대화 chatbot travel_planner.py 멀티턴 여행 플래너 (Gemini + Streamlit) 📖 설명 보기 📄 README" [ref=e21]:
+        - cell "02. 멀티턴 대화" [ref=e22]
+        - cell "chatbot travel_planner.py" [ref=e23]:
+          - strong [ref=e24]: chatbot
+          - code [ref=e25]: travel_planner.py
+        - cell "멀티턴 여행 플래너 (Gemini + Streamlit)" [ref=e26]
+        - cell "📖 설명 보기" [ref=e27]:
+          - link "📖 설명 보기" [ref=e28] [cursor=pointer]:
+            - /url: 02.multiturn/chatbot/explain/index.html
+        - cell "📄 README" [ref=e29]:
+          - link "📄 README" [ref=e30] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/02.multiturn/chatbot
+      - row "full-history travel_planner.py 멀티턴 여행 플래너 (전체 히스토리 방식) 📖 설명 보기 📄 README" [ref=e31]:
+        - cell "full-history travel_planner.py" [ref=e32]:
+          - strong [ref=e33]: full-history
+          - code [ref=e34]: travel_planner.py
+        - cell "멀티턴 여행 플래너 (전체 히스토리 방식)" [ref=e35]
+        - cell "📖 설명 보기" [ref=e36]:
+          - link "📖 설명 보기" [ref=e37] [cursor=pointer]:
+            - /url: 02.multiturn/full-history/explain/index.html
+        - cell "📄 README" [ref=e38]:
+          - link "📄 README" [ref=e39] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/02.multiturn/full-history
+      - row "server-side/claude travel_planner.py 멀티턴 여행 플래너 (Claude Anthropic API) 📖 설명 보기 📄 README" [ref=e40]:
+        - cell "server-side/claude travel_planner.py" [ref=e41]:
+          - strong [ref=e42]: server-side/claude
+          - code [ref=e43]: travel_planner.py
+        - cell "멀티턴 여행 플래너 (Claude Anthropic API)" [ref=e44]
+        - cell "📖 설명 보기" [ref=e45]:
+          - link "📖 설명 보기" [ref=e46] [cursor=pointer]:
+            - /url: 02.multiturn/server-side/claude/explain/index.html
+        - cell "📄 README" [ref=e47]:
+          - link "📄 README" [ref=e48] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/02.multiturn/server-side/claude
+      - row "server-side/gemini travel_planner.py 멀티턴 여행 플래너 (Gemini Chat Session) 📖 설명 보기 📄 README" [ref=e49]:
+        - cell "server-side/gemini travel_planner.py" [ref=e50]:
+          - strong [ref=e51]: server-side/gemini
+          - code [ref=e52]: travel_planner.py
+        - cell "멀티턴 여행 플래너 (Gemini Chat Session)" [ref=e53]
+        - cell "📖 설명 보기" [ref=e54]:
+          - link "📖 설명 보기" [ref=e55] [cursor=pointer]:
+            - /url: 02.multiturn/server-side/gemini/explain/index.html
+        - cell "📄 README" [ref=e56]:
+          - link "📄 README" [ref=e57] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/02.multiturn/server-side/gemini
+      - row "server-side/openai travel_planner.py 멀티턴 여행 플래너 (OpenAI Responses API — 서버 측 상태 관리) 📖 설명 보기 📄 README" [ref=e58]:
+        - cell "server-side/openai travel_planner.py" [ref=e59]:
+          - strong [ref=e60]: server-side/openai
+          - code [ref=e61]: travel_planner.py
+        - cell "멀티턴 여행 플래너 (OpenAI Responses API — 서버 측 상태 관리)" [ref=e62]
+        - cell "📖 설명 보기" [ref=e63]:
+          - link "📖 설명 보기" [ref=e64] [cursor=pointer]:
+            - /url: 02.multiturn/server-side/openai/explain/index.html
+        - cell "📄 README" [ref=e65]:
+          - link "📄 README" [ref=e66] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/02.multiturn/server-side/openai
+      - row "summary travel_planner.py 멀티턴 여행 플래너 (슬라이딩 윈도우 + 요약) 📖 설명 보기 📄 README" [ref=e67]:
+        - cell "summary travel_planner.py" [ref=e68]:
+          - strong [ref=e69]: summary
+          - code [ref=e70]: travel_planner.py
+        - cell "멀티턴 여행 플래너 (슬라이딩 윈도우 + 요약)" [ref=e71]
+        - cell "📖 설명 보기" [ref=e72]:
+          - link "📖 설명 보기" [ref=e73] [cursor=pointer]:
+            - /url: 02.multiturn/summary/explain/index.html
+        - cell "📄 README" [ref=e74]:
+          - link "📄 README" [ref=e75] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/02.multiturn/summary
+      - row "03. 문서 요약 exaone summary.py EXAONE 로컬 LLM 텍스트 요약 📖 설명 보기 📄 README" [ref=e76]:
+        - cell "03. 문서 요약" [ref=e77]
+        - cell "exaone summary.py" [ref=e78]:
+          - strong [ref=e79]: exaone
+          - code [ref=e80]: summary.py
+        - cell "EXAONE 로컬 LLM 텍스트 요약" [ref=e81]
+        - cell "📖 설명 보기" [ref=e82]:
+          - link "📖 설명 보기" [ref=e83] [cursor=pointer]:
+            - /url: 03.summary/exaone/explain/index.html
+        - cell "📄 README" [ref=e84]:
+          - link "📄 README" [ref=e85] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/03.summary/exaone
+      - row "groq summary.py Groq LPU 텍스트 요약 📖 설명 보기 📄 README" [ref=e86]:
+        - cell "groq summary.py" [ref=e87]:
+          - strong [ref=e88]: groq
+          - code [ref=e89]: summary.py
+        - cell "Groq LPU 텍스트 요약" [ref=e90]
+        - cell "📖 설명 보기" [ref=e91]:
+          - link "📖 설명 보기" [ref=e92] [cursor=pointer]:
+            - /url: 03.summary/groq/explain/index.html
+        - cell "📄 README" [ref=e93]:
+          - link "📄 README" [ref=e94] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/03.summary/groq
+      - row "kobart summary.py KoBART 뉴스 요약 📖 설명 보기 📄 README" [ref=e95]:
+        - cell "kobart summary.py" [ref=e96]:
+          - strong [ref=e97]: kobart
+          - code [ref=e98]: summary.py
+        - cell "KoBART 뉴스 요약" [ref=e99]
+        - cell "📖 설명 보기" [ref=e100]:
+          - link "📖 설명 보기" [ref=e101] [cursor=pointer]:
+            - /url: 03.summary/kobart/explain/index.html
+        - cell "📄 README" [ref=e102]:
+          - link "📄 README" [ref=e103] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/03.summary/kobart
+      - row "04. PDF 처리 PyMuPDF pdf2md.py PDF → 마크다운 변환 (PyMuPDF) 📖 설명 보기 📄 README" [ref=e104]:
+        - cell "04. PDF 처리" [ref=e105]
+        - cell "PyMuPDF pdf2md.py" [ref=e106]:
+          - strong [ref=e107]: PyMuPDF
+          - code [ref=e108]: pdf2md.py
+        - cell "PDF → 마크다운 변환 (PyMuPDF)" [ref=e109]
+        - cell "📖 설명 보기" [ref=e110]:
+          - link "📖 설명 보기" [ref=e111] [cursor=pointer]:
+            - /url: 04.pdf/PyMuPDF/explain/index.html
+        - cell "📄 README" [ref=e112]:
+          - link "📄 README" [ref=e113] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/04.pdf/PyMuPDF
+      - row "docling pdf2md.py Docling PDF → 마크다운 변환 📖 설명 보기 📄 README" [ref=e114]:
+        - cell "docling pdf2md.py" [ref=e115]:
+          - strong [ref=e116]: docling
+          - code [ref=e117]: pdf2md.py
+        - cell "Docling PDF → 마크다운 변환" [ref=e118]
+        - cell "📖 설명 보기" [ref=e119]:
+          - link "📖 설명 보기" [ref=e120] [cursor=pointer]:
+            - /url: 04.pdf/docling/explain/index.html
+        - cell "📄 README" [ref=e121]:
+          - link "📄 README" [ref=e122] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/04.pdf/docling
+      - row "pdfplumber pdf2md.py PDF → 마크다운 변환 (pdfplumber) 📖 설명 보기 📄 README" [ref=e123]:
+        - cell "pdfplumber pdf2md.py" [ref=e124]:
+          - strong [ref=e125]: pdfplumber
+          - code [ref=e126]: pdf2md.py
+        - cell "PDF → 마크다운 변환 (pdfplumber)" [ref=e127]
+        - cell "📖 설명 보기" [ref=e128]:
+          - link "📖 설명 보기" [ref=e129] [cursor=pointer]:
+            - /url: 04.pdf/pdfplumber/explain/index.html
+        - cell "📄 README" [ref=e130]:
+          - link "📄 README" [ref=e131] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/04.pdf/pdfplumber
+      - row "05. 음성 인식 (STT) diarization diarization.py Whisper + pyannote 화자 분리 📖 설명 보기 📄 README" [ref=e132]:
+        - cell "05. 음성 인식 (STT)" [ref=e133]
+        - cell "diarization diarization.py" [ref=e134]:
+          - strong [ref=e135]: diarization
+          - code [ref=e136]: diarization.py
+        - cell "Whisper + pyannote 화자 분리" [ref=e137]
+        - cell "📖 설명 보기" [ref=e138]:
+          - link "📖 설명 보기" [ref=e139] [cursor=pointer]:
+            - /url: 05.stt/diarization/explain/index.html
+        - cell "📄 README" [ref=e140]:
+          - link "📄 README" [ref=e141] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/05.stt/diarization
+      - row "llm-diarization/claude diarization.py Whisper + Claude 화자 분리 📖 설명 보기 📄 README" [ref=e142]:
+        - cell "llm-diarization/claude diarization.py" [ref=e143]:
+          - strong [ref=e144]: llm-diarization/claude
+          - code [ref=e145]: diarization.py
+        - cell "Whisper + Claude 화자 분리" [ref=e146]
+        - cell "📖 설명 보기" [ref=e147]:
+          - link "📖 설명 보기" [ref=e148] [cursor=pointer]:
+            - /url: 05.stt/llm-diarization/claude/explain/index.html
+        - cell "📄 README" [ref=e149]:
+          - link "📄 README" [ref=e150] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/05.stt/llm-diarization/claude
+      - row "llm-diarization/gemini diarization.py Gemini 화자 분리 음성 인식 📖 설명 보기 📄 README" [ref=e151]:
+        - cell "llm-diarization/gemini diarization.py" [ref=e152]:
+          - strong [ref=e153]: llm-diarization/gemini
+          - code [ref=e154]: diarization.py
+        - cell "Gemini 화자 분리 음성 인식" [ref=e155]
+        - cell "📖 설명 보기" [ref=e156]:
+          - link "📖 설명 보기" [ref=e157] [cursor=pointer]:
+            - /url: 05.stt/llm-diarization/gemini/explain/index.html
+        - cell "📄 README" [ref=e158]:
+          - link "📄 README" [ref=e159] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/05.stt/llm-diarization/gemini
+      - row "llm-diarization/openai diarization.py OpenAI LLM 화자 분리(Diarization) 📖 설명 보기 📄 README" [ref=e160]:
+        - cell "llm-diarization/openai diarization.py" [ref=e161]:
+          - strong [ref=e162]: llm-diarization/openai
+          - code [ref=e163]: diarization.py
+        - cell "OpenAI LLM 화자 분리(Diarization)" [ref=e164]
+        - cell "📖 설명 보기" [ref=e165]:
+          - link "📖 설명 보기" [ref=e166] [cursor=pointer]:
+            - /url: 05.stt/llm-diarization/openai/explain/index.html
+        - cell "📄 README" [ref=e167]:
+          - link "📄 README" [ref=e168] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/05.stt/llm-diarization/openai
+      - row "simple whisper.py OpenAI Whisper STT 📖 설명 보기 📄 README" [ref=e169]:
+        - cell "simple whisper.py" [ref=e170]:
+          - strong [ref=e171]: simple
+          - code [ref=e172]: whisper.py
+        - cell "OpenAI Whisper STT" [ref=e173]
+        - cell "📖 설명 보기" [ref=e174]:
+          - link "📖 설명 보기" [ref=e175] [cursor=pointer]:
+            - /url: 05.stt/simple/explain/index.html
+        - cell "📄 README" [ref=e176]:
+          - link "📄 README" [ref=e177] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/05.stt/simple
+      - row "whisper whisper-large-v3-turbo.py Whisper 로컬 모델 STT (whisper-large-v3-turbo) 📖 설명 보기 📄 README" [ref=e178]:
+        - cell "whisper whisper-large-v3-turbo.py" [ref=e179]:
+          - strong [ref=e180]: whisper
+          - code [ref=e181]: whisper-large-v3-turbo.py
+        - cell "Whisper 로컬 모델 STT (whisper-large-v3-turbo)" [ref=e182]
+        - cell "📖 설명 보기" [ref=e183]:
+          - link "📖 설명 보기" [ref=e184] [cursor=pointer]:
+            - /url: 05.stt/whisper/explain/index.html
+        - cell "📄 README" [ref=e185]:
+          - link "📄 README" [ref=e186] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/05.stt/whisper
+      - row "whisperx whisperx-diarization.py WhisperX STT + 화자 분리 📖 설명 보기 📄 README" [ref=e187]:
+        - cell "whisperx whisperx-diarization.py" [ref=e188]:
+          - strong [ref=e189]: whisperx
+          - code [ref=e190]: whisperx-diarization.py
+        - cell "WhisperX STT + 화자 분리" [ref=e191]
+        - cell "📖 설명 보기" [ref=e192]:
+          - link "📖 설명 보기" [ref=e193] [cursor=pointer]:
+            - /url: 05.stt/whisperx/explain/index.html
+        - cell "📄 README" [ref=e194]:
+          - link "📄 README" [ref=e195] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/05.stt/whisperx
+      - row "06. 음성 합성 (TTS) bark tts.py Bark TTS — GPT-4o-mini 번역 + Bark 음성 합성 📖 설명 보기 📄 README" [ref=e196]:
+        - cell "06. 음성 합성 (TTS)" [ref=e197]
+        - cell "bark tts.py" [ref=e198]:
+          - strong [ref=e199]: bark
+          - code [ref=e200]: tts.py
+        - cell "Bark TTS — GPT-4o-mini 번역 + Bark 음성 합성" [ref=e201]
+        - cell "📖 설명 보기" [ref=e202]:
+          - link "📖 설명 보기" [ref=e203] [cursor=pointer]:
+            - /url: 06.tts/bark/explain/index.html
+        - cell "📄 README" [ref=e204]:
+          - link "📄 README" [ref=e205] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/06.tts/bark
+      - row "chatterbox tts.py Chatterbox TTS 음성 복제 📖 설명 보기 📄 README" [ref=e206]:
+        - cell "chatterbox tts.py" [ref=e207]:
+          - strong [ref=e208]: chatterbox
+          - code [ref=e209]: tts.py
+        - cell "Chatterbox TTS 음성 복제" [ref=e210]
+        - cell "📖 설명 보기" [ref=e211]:
+          - link "📖 설명 보기" [ref=e212] [cursor=pointer]:
+            - /url: 06.tts/chatterbox/explain/index.html
+        - cell "📄 README" [ref=e213]:
+          - link "📄 README" [ref=e214] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/06.tts/chatterbox
+      - row "chatterbox-single tts.py Chatterbox 한국어 음성 복제 TTS 📖 설명 보기 📄 README" [ref=e215]:
+        - cell "chatterbox-single tts.py" [ref=e216]:
+          - strong [ref=e217]: chatterbox-single
+          - code [ref=e218]: tts.py
+        - cell "Chatterbox 한국어 음성 복제 TTS" [ref=e219]
+        - cell "📖 설명 보기" [ref=e220]:
+          - link "📖 설명 보기" [ref=e221] [cursor=pointer]:
+            - /url: 06.tts/chatterbox-single/explain/index.html
+        - cell "📄 README" [ref=e222]:
+          - link "📄 README" [ref=e223] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/06.tts/chatterbox-single
+      - row "coqui-xtts tts.py Coqui XTTS v2 음성 복제 TTS 📖 설명 보기 📄 README" [ref=e224]:
+        - cell "coqui-xtts tts.py" [ref=e225]:
+          - strong [ref=e226]: coqui-xtts
+          - code [ref=e227]: tts.py
+        - cell "Coqui XTTS v2 음성 복제 TTS" [ref=e228]
+        - cell "📖 설명 보기" [ref=e229]:
+          - link "📖 설명 보기" [ref=e230] [cursor=pointer]:
+            - /url: 06.tts/coqui-xtts/explain/index.html
+        - cell "📄 README" [ref=e231]:
+          - link "📄 README" [ref=e232] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/06.tts/coqui-xtts
+      - row "kakao-vits tts.py Kakao VITS TTS — 다화자 텍스트 음성 합성 📖 설명 보기 📄 README" [ref=e233]:
+        - cell "kakao-vits tts.py" [ref=e234]:
+          - strong [ref=e235]: kakao-vits
+          - code [ref=e236]: tts.py
+        - cell "Kakao VITS TTS — 다화자 텍스트 음성 합성" [ref=e237]
+        - cell "📖 설명 보기" [ref=e238]:
+          - link "📖 설명 보기" [ref=e239] [cursor=pointer]:
+            - /url: 06.tts/kakao-vits/explain/index.html
+        - cell "📄 README" [ref=e240]:
+          - link "📄 README" [ref=e241] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/06.tts/kakao-vits
+      - row "llm tts.py LLM TTS — OpenAI 번역·음성 합성 📖 설명 보기 📄 README" [ref=e242]:
+        - cell "llm tts.py" [ref=e243]:
+          - strong [ref=e244]: llm
+          - code [ref=e245]: tts.py
+        - cell "LLM TTS — OpenAI 번역·음성 합성" [ref=e246]
+        - cell "📖 설명 보기" [ref=e247]:
+          - link "📖 설명 보기" [ref=e248] [cursor=pointer]:
+            - /url: 06.tts/llm/explain/index.html
+        - cell "📄 README" [ref=e249]:
+          - link "📄 README" [ref=e250] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/06.tts/llm
+      - row "openvoice tts.py OpenVoice V2 음성 복제(Voice Cloning) TTS 📖 설명 보기 📄 README" [ref=e251]:
+        - cell "openvoice tts.py" [ref=e252]:
+          - strong [ref=e253]: openvoice
+          - code [ref=e254]: tts.py
+        - cell "OpenVoice V2 음성 복제(Voice Cloning) TTS" [ref=e255]
+        - cell "📖 설명 보기" [ref=e256]:
+          - link "📖 설명 보기" [ref=e257] [cursor=pointer]:
+            - /url: 06.tts/openvoice/explain/index.html
+        - cell "📄 README" [ref=e258]:
+          - link "📄 README" [ref=e259] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/06.tts/openvoice
+      - row "07. 비전 언어 모델 (VLM) gemini vlm.py Gemini Vision 이미지 분석 (VLM) 📖 설명 보기 📄 README" [ref=e260]:
+        - cell "07. 비전 언어 모델 (VLM)" [ref=e261]
+        - cell "gemini vlm.py" [ref=e262]:
+          - strong [ref=e263]: gemini
+          - code [ref=e264]: vlm.py
+        - cell "Gemini Vision 이미지 분석 (VLM)" [ref=e265]
+        - cell "📖 설명 보기" [ref=e266]:
+          - link "📖 설명 보기" [ref=e267] [cursor=pointer]:
+            - /url: 07.vlm/gemini/explain/index.html
+        - cell "📄 README" [ref=e268]:
+          - link "📄 README" [ref=e269] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/07.vlm/gemini
+      - row "qwen3-vl vlm.py Qwen3-VL 이미지 분석 📖 설명 보기 📄 README" [ref=e270]:
+        - cell "qwen3-vl vlm.py" [ref=e271]:
+          - strong [ref=e272]: qwen3-vl
+          - code [ref=e273]: vlm.py
+        - cell "Qwen3-VL 이미지 분석" [ref=e274]
+        - cell "📖 설명 보기" [ref=e275]:
+          - link "📖 설명 보기" [ref=e276] [cursor=pointer]:
+            - /url: 07.vlm/qwen3-vl/explain/index.html
+        - cell "📄 README" [ref=e277]:
+          - link "📄 README" [ref=e278] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/07.vlm/qwen3-vl
+      - row "08. Function Calling claude travel_planner.py 여행 플래너 (Claude Messages API Tool Use) 📖 설명 보기 📄 README" [ref=e279]:
+        - cell "08. Function Calling" [ref=e280]
+        - cell "claude travel_planner.py" [ref=e281]:
+          - strong [ref=e282]: claude
+          - code [ref=e283]: travel_planner.py
+        - cell "여행 플래너 (Claude Messages API Tool Use)" [ref=e284]
+        - cell "📖 설명 보기" [ref=e285]:
+          - link "📖 설명 보기" [ref=e286] [cursor=pointer]:
+            - /url: 08.function-call/claude/explain/index.html
+        - cell "📄 README" [ref=e287]:
+          - link "📄 README" [ref=e288] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/08.function-call/claude
+      - row "claude/streaming travel_planner.py 여행 플래너 (Claude Streaming) 📖 설명 보기 📄 README" [ref=e289]:
+        - cell "claude/streaming travel_planner.py" [ref=e290]:
+          - strong [ref=e291]: claude/streaming
+          - code [ref=e292]: travel_planner.py
+        - cell "여행 플래너 (Claude Streaming)" [ref=e293]
+        - cell "📖 설명 보기" [ref=e294]:
+          - link "📖 설명 보기" [ref=e295] [cursor=pointer]:
+            - /url: 08.function-call/claude/streaming/explain/index.html
+        - cell "📄 README" [ref=e296]:
+          - link "📄 README" [ref=e297] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/08.function-call/claude/streaming
+      - row "gemini travel_planner.py 여행 플래너 (Gemini Function Calling) 📖 설명 보기 📄 README" [ref=e298]:
+        - cell "gemini travel_planner.py" [ref=e299]:
+          - strong [ref=e300]: gemini
+          - code [ref=e301]: travel_planner.py
+        - cell "여행 플래너 (Gemini Function Calling)" [ref=e302]
+        - cell "📖 설명 보기" [ref=e303]:
+          - link "📖 설명 보기" [ref=e304] [cursor=pointer]:
+            - /url: 08.function-call/gemini/explain/index.html
+        - cell "📄 README" [ref=e305]:
+          - link "📄 README" [ref=e306] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/08.function-call/gemini
+      - row "gemini/streaming travel_planner.py 여행 플래너 (Gemini + Streaming) 📖 설명 보기 📄 README" [ref=e307]:
+        - cell "gemini/streaming travel_planner.py" [ref=e308]:
+          - strong [ref=e309]: gemini/streaming
+          - code [ref=e310]: travel_planner.py
+        - cell "여행 플래너 (Gemini + Streaming)" [ref=e311]
+        - cell "📖 설명 보기" [ref=e312]:
+          - link "📖 설명 보기" [ref=e313] [cursor=pointer]:
+            - /url: 08.function-call/gemini/streaming/explain/index.html
+        - cell "📄 README" [ref=e314]:
+          - link "📄 README" [ref=e315] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/08.function-call/gemini/streaming
+      - row "openai travel_planner.py 여행 플래너 (OpenAI Tool Calling) 📖 설명 보기 📄 README" [ref=e316]:
+        - cell "openai travel_planner.py" [ref=e317]:
+          - strong [ref=e318]: openai
+          - code [ref=e319]: travel_planner.py
+        - cell "여행 플래너 (OpenAI Tool Calling)" [ref=e320]
+        - cell "📖 설명 보기" [ref=e321]:
+          - link "📖 설명 보기" [ref=e322] [cursor=pointer]:
+            - /url: 08.function-call/openai/explain/index.html
+        - cell "📄 README" [ref=e323]:
+          - link "📄 README" [ref=e324] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/08.function-call/openai
+      - row "openai/streaming travel_planner.py 여행 플래너 (OpenAI Streaming) 📖 설명 보기 📄 README" [ref=e325]:
+        - cell "openai/streaming travel_planner.py" [ref=e326]:
+          - strong [ref=e327]: openai/streaming
+          - code [ref=e328]: travel_planner.py
+        - cell "여행 플래너 (OpenAI Streaming)" [ref=e329]
+        - cell "📖 설명 보기" [ref=e330]:
+          - link "📖 설명 보기" [ref=e331] [cursor=pointer]:
+            - /url: 08.function-call/openai/streaming/explain/index.html
+        - cell "📄 README" [ref=e332]:
+          - link "📄 README" [ref=e333] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/08.function-call/openai/streaming
+      - row "09. LangChain claude travel_planner.py 여행 플래너 (LangChain + Claude) 📖 설명 보기 📄 README" [ref=e334]:
+        - cell "09. LangChain" [ref=e335]
+        - cell "claude travel_planner.py" [ref=e336]:
+          - strong [ref=e337]: claude
+          - code [ref=e338]: travel_planner.py
+        - cell "여행 플래너 (LangChain + Claude)" [ref=e339]
+        - cell "📖 설명 보기" [ref=e340]:
+          - link "📖 설명 보기" [ref=e341] [cursor=pointer]:
+            - /url: 09.langchain/claude/explain/index.html
+        - cell "📄 README" [ref=e342]:
+          - link "📄 README" [ref=e343] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/09.langchain/claude
+      - row "claude/streaming travel_planner.py 여행 플래너 (LangChain + Claude Streaming) 📖 설명 보기 📄 README" [ref=e344]:
+        - cell "claude/streaming travel_planner.py" [ref=e345]:
+          - strong [ref=e346]: claude/streaming
+          - code [ref=e347]: travel_planner.py
+        - cell "여행 플래너 (LangChain + Claude Streaming)" [ref=e348]
+        - cell "📖 설명 보기" [ref=e349]:
+          - link "📖 설명 보기" [ref=e350] [cursor=pointer]:
+            - /url: 09.langchain/claude/streaming/explain/index.html
+        - cell "📄 README" [ref=e351]:
+          - link "📄 README" [ref=e352] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/09.langchain/claude/streaming
+      - row "gemini travel_planner.py 여행 플래너 (LangChain + Gemini) 📖 설명 보기 📄 README" [ref=e353]:
+        - cell "gemini travel_planner.py" [ref=e354]:
+          - strong [ref=e355]: gemini
+          - code [ref=e356]: travel_planner.py
+        - cell "여행 플래너 (LangChain + Gemini)" [ref=e357]
+        - cell "📖 설명 보기" [ref=e358]:
+          - link "📖 설명 보기" [ref=e359] [cursor=pointer]:
+            - /url: 09.langchain/gemini/explain/index.html
+        - cell "📄 README" [ref=e360]:
+          - link "📄 README" [ref=e361] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/09.langchain/gemini
+      - row "gemini/streaming travel_planner.py 여행 플래너 (LangChain + Gemini + Streaming) 📖 설명 보기 📄 README" [ref=e362]:
+        - cell "gemini/streaming travel_planner.py" [ref=e363]:
+          - strong [ref=e364]: gemini/streaming
+          - code [ref=e365]: travel_planner.py
+        - cell "여행 플래너 (LangChain + Gemini + Streaming)" [ref=e366]
+        - cell "📖 설명 보기" [ref=e367]:
+          - link "📖 설명 보기" [ref=e368] [cursor=pointer]:
+            - /url: 09.langchain/gemini/streaming/explain/index.html
+        - cell "📄 README" [ref=e369]:
+          - link "📄 README" [ref=e370] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/09.langchain/gemini/streaming
+      - row "openai travel_planner.py 여행 플래너 (LangChain + OpenAI) 📖 설명 보기 📄 README" [ref=e371]:
+        - cell "openai travel_planner.py" [ref=e372]:
+          - strong [ref=e373]: openai
+          - code [ref=e374]: travel_planner.py
+        - cell "여행 플래너 (LangChain + OpenAI)" [ref=e375]
+        - cell "📖 설명 보기" [ref=e376]:
+          - link "📖 설명 보기" [ref=e377] [cursor=pointer]:
+            - /url: 09.langchain/openai/explain/index.html
+        - cell "📄 README" [ref=e378]:
+          - link "📄 README" [ref=e379] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/09.langchain/openai
+      - row "openai/streaming travel_planner.py 여행 플래너 (LangChain + OpenAI Streaming) 📖 설명 보기 📄 README" [ref=e380]:
+        - cell "openai/streaming travel_planner.py" [ref=e381]:
+          - strong [ref=e382]: openai/streaming
+          - code [ref=e383]: travel_planner.py
+        - cell "여행 플래너 (LangChain + OpenAI Streaming)" [ref=e384]
+        - cell "📖 설명 보기" [ref=e385]:
+          - link "📖 설명 보기" [ref=e386] [cursor=pointer]:
+            - /url: 09.langchain/openai/streaming/explain/index.html
+        - cell "📄 README" [ref=e387]:
+          - link "📄 README" [ref=e388] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/09.langchain/openai/streaming
+      - row "10. RAG hybrid-search app.py Hybrid Search — 키워드+의미 검색 결합 📖 설명 보기 📄 README" [ref=e389]:
+        - cell "10. RAG" [ref=e390]
+        - cell "hybrid-search app.py" [ref=e391]:
+          - strong [ref=e392]: hybrid-search
+          - code [ref=e393]: app.py
+        - cell "Hybrid Search — 키워드+의미 검색 결합" [ref=e394]
+        - cell "📖 설명 보기" [ref=e395]:
+          - link "📖 설명 보기" [ref=e396] [cursor=pointer]:
+            - /url: 10.rag/hybrid-search/explain/index.html
+        - cell "📄 README" [ref=e397]:
+          - link "📄 README" [ref=e398] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/10.rag/hybrid-search
+      - row "indexing indexing.py 인덱싱(Indexing) — 공용 벡터 DB 구축 📖 설명 보기 📄 README" [ref=e399]:
+        - cell "indexing indexing.py" [ref=e400]:
+          - strong [ref=e401]: indexing
+          - code [ref=e402]: indexing.py
+        - cell "인덱싱(Indexing) — 공용 벡터 DB 구축" [ref=e403]
+        - cell "📖 설명 보기" [ref=e404]:
+          - link "📖 설명 보기" [ref=e405] [cursor=pointer]:
+            - /url: 10.rag/indexing/explain/index.html
+        - cell "📄 README" [ref=e406]:
+          - link "📄 README" [ref=e407] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/10.rag/indexing
+      - row "naive naive_rag.py Naive RAG — 가장 기본적인 검색·생성 파이프라인 📖 설명 보기 📄 README" [ref=e408]:
+        - cell "naive naive_rag.py" [ref=e409]:
+          - strong [ref=e410]: naive
+          - code [ref=e411]: naive_rag.py
+        - cell "Naive RAG — 가장 기본적인 검색·생성 파이프라인" [ref=e412]
+        - cell "📖 설명 보기" [ref=e413]:
+          - link "📖 설명 보기" [ref=e414] [cursor=pointer]:
+            - /url: 10.rag/naive/explain/index.html
+        - cell "📄 README" [ref=e415]:
+          - link "📄 README" [ref=e416] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/10.rag/naive
+      - row "query-transformation/hyde app.py HyDE — 가상 답변 임베딩 검색 📖 설명 보기 📄 README" [ref=e417]:
+        - cell "query-transformation/hyde app.py" [ref=e418]:
+          - strong [ref=e419]: query-transformation/hyde
+          - code [ref=e420]: app.py
+        - cell "HyDE — 가상 답변 임베딩 검색" [ref=e421]
+        - cell "📖 설명 보기" [ref=e422]:
+          - link "📖 설명 보기" [ref=e423] [cursor=pointer]:
+            - /url: 10.rag/query-transformation/hyde/explain/index.html
+        - cell "📄 README" [ref=e424]:
+          - link "📄 README" [ref=e425] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/10.rag/query-transformation/hyde
+      - row "query-transformation/multi-query app.py Multi-Query — 여러 질문 변형 검색 📖 설명 보기 📄 README" [ref=e426]:
+        - cell "query-transformation/multi-query app.py" [ref=e427]:
+          - strong [ref=e428]: query-transformation/multi-query
+          - code [ref=e429]: app.py
+        - cell "Multi-Query — 여러 질문 변형 검색" [ref=e430]
+        - cell "📖 설명 보기" [ref=e431]:
+          - link "📖 설명 보기" [ref=e432] [cursor=pointer]:
+            - /url: 10.rag/query-transformation/multi-query/explain/index.html
+        - cell "📄 README" [ref=e433]:
+          - link "📄 README" [ref=e434] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/10.rag/query-transformation/multi-query
+      - row "query-transformation/query-rewriting app.py Query Rewriting — 질의 재작성 📖 설명 보기 📄 README" [ref=e435]:
+        - cell "query-transformation/query-rewriting app.py" [ref=e436]:
+          - strong [ref=e437]: query-transformation/query-rewriting
+          - code [ref=e438]: app.py
+        - cell "Query Rewriting — 질의 재작성" [ref=e439]
+        - cell "📖 설명 보기" [ref=e440]:
+          - link "📖 설명 보기" [ref=e441] [cursor=pointer]:
+            - /url: 10.rag/query-transformation/query-rewriting/explain/index.html
+        - cell "📄 README" [ref=e442]:
+          - link "📄 README" [ref=e443] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/10.rag/query-transformation/query-rewriting
+      - row "query-transformation/step-back app.py Step-Back Prompting — 한 걸음 물러난 상위 질문으로 폭넓게 검색하는 RAG 📖 설명 보기 📄 README" [ref=e444]:
+        - cell "query-transformation/step-back app.py" [ref=e445]:
+          - strong [ref=e446]: query-transformation/step-back
+          - code [ref=e447]: app.py
+        - cell "Step-Back Prompting — 한 걸음 물러난 상위 질문으로 폭넓게 검색하는 RAG" [ref=e448]
+        - cell "📖 설명 보기" [ref=e449]:
+          - link "📖 설명 보기" [ref=e450] [cursor=pointer]:
+            - /url: 10.rag/query-transformation/step-back/explain/index.html
+        - cell "📄 README" [ref=e451]:
+          - link "📄 README" [ref=e452] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/10.rag/query-transformation/step-back
+      - row "re-ranking app.py Re-ranking — 검색 결과 재정렬 📖 설명 보기 📄 README" [ref=e453]:
+        - cell "re-ranking app.py" [ref=e454]:
+          - strong [ref=e455]: re-ranking
+          - code [ref=e456]: app.py
+        - cell "Re-ranking — 검색 결과 재정렬" [ref=e457]
+        - cell "📖 설명 보기" [ref=e458]:
+          - link "📖 설명 보기" [ref=e459] [cursor=pointer]:
+            - /url: 10.rag/re-ranking/explain/index.html
+        - cell "📄 README" [ref=e460]:
+          - link "📄 README" [ref=e461] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/10.rag/re-ranking
+      - row "self-rag app.py Self-RAG — 스스로 점검·교정하는 RAG 📖 설명 보기 📄 README" [ref=e462]:
+        - cell "self-rag app.py" [ref=e463]:
+          - strong [ref=e464]: self-rag
+          - code [ref=e465]: app.py
+        - cell "Self-RAG — 스스로 점검·교정하는 RAG" [ref=e466]
+        - cell "📖 설명 보기" [ref=e467]:
+          - link "📖 설명 보기" [ref=e468] [cursor=pointer]:
+            - /url: 10.rag/self-rag/explain/index.html
+        - cell "📄 README" [ref=e469]:
+          - link "📄 README" [ref=e470] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/10.rag/self-rag
+      - row "11. RAG 품질 튜닝 ragas evaluate_ragas.py RAGAS — 청킹 사이즈를 바꿔가며 RAG 품질을 측정·비교하는 평가 예제 📖 설명 보기 📄 README" [ref=e471]:
+        - cell "11. RAG 품질 튜닝" [ref=e472]
+        - cell "ragas evaluate_ragas.py" [ref=e473]:
+          - strong [ref=e474]: ragas
+          - code [ref=e475]: evaluate_ragas.py
+        - cell "RAGAS — 청킹 사이즈를 바꿔가며 RAG 품질을 측정·비교하는 평가 예제" [ref=e476]
+        - cell "📖 설명 보기" [ref=e477]:
+          - link "📖 설명 보기" [ref=e478] [cursor=pointer]:
+            - /url: 11.rag-tuning/ragas/explain/index.html
+        - cell "📄 README" [ref=e479]:
+          - link "📄 README" [ref=e480] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/11.rag-tuning/ragas
+      - row "re-ranking app.py Re-ranking (LangChain Compressor) — ContextualCompressionRetriever로 검색 결과를 재정렬 📖 설명 보기 📄 README" [ref=e481]:
+        - cell "re-ranking app.py" [ref=e482]:
+          - strong [ref=e483]: re-ranking
+          - code [ref=e484]: app.py
+        - cell "Re-ranking (LangChain Compressor) — ContextualCompressionRetriever로 검색 결과를 재정렬" [ref=e485]
+        - cell "📖 설명 보기" [ref=e486]:
+          - link "📖 설명 보기" [ref=e487] [cursor=pointer]:
+            - /url: 11.rag-tuning/re-ranking/explain/index.html
+        - cell "📄 README" [ref=e488]:
+          - link "📄 README" [ref=e489] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/11.rag-tuning/re-ranking
+      - row "12. 웹 검색 + YouTube agentic-rag app.py Agentic RAG — LangGraph로 검색 소스를 스스로 고르고 답을 자가검증하는 챗봇 📖 설명 보기 📄 README" [ref=e490]:
+        - cell "12. 웹 검색 + YouTube" [ref=e491]
+        - cell "agentic-rag app.py" [ref=e492]:
+          - strong [ref=e493]: agentic-rag
+          - code [ref=e494]: app.py
+        - cell "Agentic RAG — LangGraph로 검색 소스를 스스로 고르고 답을 자가검증하는 챗봇" [ref=e495]
+        - cell "📖 설명 보기" [ref=e496]:
+          - link "📖 설명 보기" [ref=e497] [cursor=pointer]:
+            - /url: 12.web-youtube-search/agentic-rag/explain/index.html
+        - cell "📄 README" [ref=e498]:
+          - link "📄 README" [ref=e499] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/12.web-youtube-search/agentic-rag
+      - row "multi-source app.py 멀티소스 RAG — 질문 라우팅으로 벡터DB·웹·YouTube를 골라 종합 📖 설명 보기 📄 README" [ref=e500]:
+        - cell "multi-source app.py" [ref=e501]:
+          - strong [ref=e502]: multi-source
+          - code [ref=e503]: app.py
+        - cell "멀티소스 RAG — 질문 라우팅으로 벡터DB·웹·YouTube를 골라 종합" [ref=e504]
+        - cell "📖 설명 보기" [ref=e505]:
+          - link "📖 설명 보기" [ref=e506] [cursor=pointer]:
+            - /url: 12.web-youtube-search/multi-source/explain/index.html
+        - cell "📄 README" [ref=e507]:
+          - link "📄 README" [ref=e508] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/12.web-youtube-search/multi-source
+      - row "web-rag app.py 질문 라우팅 RAG — 특허법은 벡터DB로, 최신 트렌드는 웹검색으로 📖 설명 보기 📄 README" [ref=e509]:
+        - cell "web-rag app.py" [ref=e510]:
+          - strong [ref=e511]: web-rag
+          - code [ref=e512]: app.py
+        - cell "질문 라우팅 RAG — 특허법은 벡터DB로, 최신 트렌드는 웹검색으로" [ref=e513]
+        - cell "📖 설명 보기" [ref=e514]:
+          - link "📖 설명 보기" [ref=e515] [cursor=pointer]:
+            - /url: 12.web-youtube-search/web-rag/explain/index.html
+        - cell "📄 README" [ref=e516]:
+          - link "📄 README" [ref=e517] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/12.web-youtube-search/web-rag
+      - row "youtube-rag app.py YouTube 자막 RAG — Data API로 영상 찾고, 자막을 시점별로 잘라 답하기 📖 설명 보기 📄 README" [ref=e518]:
+        - cell "youtube-rag app.py" [ref=e519]:
+          - strong [ref=e520]: youtube-rag
+          - code [ref=e521]: app.py
+        - cell "YouTube 자막 RAG — Data API로 영상 찾고, 자막을 시점별로 잘라 답하기" [ref=e522]
+        - cell "📖 설명 보기" [ref=e523]:
+          - link "📖 설명 보기" [ref=e524] [cursor=pointer]:
+            - /url: 12.web-youtube-search/youtube-rag/explain/index.html
+        - cell "📄 README" [ref=e525]:
+          - link "📄 README" [ref=e526] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/12.web-youtube-search/youtube-rag
+      - row "13. RAG + Local LLM agentic-rag app.py 특허 Agentic RAG — 로컬 LLM gemma3:12b 📖 설명 보기 📄 README" [ref=e527]:
+        - cell "13. RAG + Local LLM" [ref=e528]
+        - cell "agentic-rag app.py" [ref=e529]:
+          - strong [ref=e530]: agentic-rag
+          - code [ref=e531]: app.py
+        - cell "특허 Agentic RAG — 로컬 LLM gemma3:12b" [ref=e532]
+        - cell "📖 설명 보기" [ref=e533]:
+          - link "📖 설명 보기" [ref=e534] [cursor=pointer]:
+            - /url: 13.local-llm/agentic-rag/explain/index.html
+        - cell "📄 README" [ref=e535]:
+          - link "📄 README" [ref=e536] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/13.local-llm/agentic-rag
+      - row "agentic-rag-chat retrieve/app.py 특허 Agentic RAG 챗봇 — 2-Stage Retrieval + Streamlit 📖 설명 보기 📄 README" [ref=e537]:
+        - cell "agentic-rag-chat retrieve/app.py" [ref=e538]:
+          - strong [ref=e539]: agentic-rag-chat
+          - code [ref=e540]: retrieve/app.py
+        - cell "특허 Agentic RAG 챗봇 — 2-Stage Retrieval + Streamlit" [ref=e541]
+        - cell "📖 설명 보기" [ref=e542]:
+          - link "📖 설명 보기" [ref=e543] [cursor=pointer]:
+            - /url: 13.local-llm/agentic-rag-chat/explain/index.html
+        - cell "📄 README" [ref=e544]:
+          - link "📄 README" [ref=e545] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/13.local-llm/agentic-rag-chat
+      - row "14. GraphRAG simple/indexing index_documents.py 간단 GraphRAG 인덱싱 — 특허법.pdf → Neo4j KG+Vector (OpenAI 임베딩 1536d) 📖 설명 보기 📄 README" [ref=e546]:
+        - cell "14. GraphRAG" [ref=e547]
+        - cell "simple/indexing index_documents.py" [ref=e548]:
+          - strong [ref=e549]: simple/indexing
+          - code [ref=e550]: index_documents.py
+        - cell "간단 GraphRAG 인덱싱 — 특허법.pdf → Neo4j KG+Vector (OpenAI 임베딩 1536d)" [ref=e551]
+        - cell "📖 설명 보기" [ref=e552]:
+          - link "📖 설명 보기" [ref=e553] [cursor=pointer]:
+            - /url: 14.graphrag/simple/indexing/explain/index.html
+        - cell "📄 README" [ref=e554]:
+          - link "📄 README" [ref=e555] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/14.graphrag/simple/indexing
+      - row "simple/agentic-rag app.py 간단 GraphRAG 챗봇 — agentic-rag 법률 Vector DB를 Neo4j GraphRAG로 교체 (Self-RAG 유지) 📖 설명 보기 📄 README" [ref=e556]:
+        - cell "simple/agentic-rag app.py" [ref=e557]:
+          - strong [ref=e558]: simple/agentic-rag
+          - code [ref=e559]: app.py
+        - cell "간단 GraphRAG 챗봇 — agentic-rag 법률 Vector DB를 Neo4j GraphRAG로 교체 (Self-RAG 유지)" [ref=e560]
+        - cell "📖 설명 보기" [ref=e561]:
+          - link "📖 설명 보기" [ref=e562] [cursor=pointer]:
+            - /url: 14.graphrag/simple/agentic-rag/explain/index.html
+        - cell "📄 README" [ref=e563]:
+          - link "📄 README" [ref=e564] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/14.graphrag/simple/agentic-rag
+      - row "lightrag/indexing index_documents.py LightRAG 인덱싱 파이프라인 📖 설명 보기 📄 README" [ref=e565]:
+        - cell "lightrag/indexing index_documents.py" [ref=e566]:
+          - strong [ref=e567]: lightrag/indexing
+          - code [ref=e568]: index_documents.py
+        - cell "LightRAG 인덱싱 파이프라인" [ref=e569]
+        - cell "📖 설명 보기" [ref=e570]:
+          - link "📖 설명 보기" [ref=e571] [cursor=pointer]:
+            - /url: 14.graphrag/lightrag/indexing/explain/index.html
+        - cell "📄 README" [ref=e572]:
+          - link "📄 README" [ref=e573] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/14.graphrag/lightrag/indexing
+      - row "lightrag/retrieve app.py LightRAG GraphRAG 검색 파이프라인 📖 설명 보기 📄 README" [ref=e574]:
+        - cell "lightrag/retrieve app.py" [ref=e575]:
+          - strong [ref=e576]: lightrag/retrieve
+          - code [ref=e577]: app.py
+        - cell "LightRAG GraphRAG 검색 파이프라인" [ref=e578]
+        - cell "📖 설명 보기" [ref=e579]:
+          - link "📖 설명 보기" [ref=e580] [cursor=pointer]:
+            - /url: 14.graphrag/lightrag/retrieve/explain/index.html
+        - cell "📄 README" [ref=e581]:
+          - link "📄 README" [ref=e582] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/14.graphrag/lightrag/retrieve
+      - row "ms-graphrag/indexing index_documents.py Microsoft GraphRAG 인덱싱 — 교재 KG+Vector / 예제코드 Vector 📖 설명 보기 📄 README" [ref=e583]:
+        - cell "ms-graphrag/indexing index_documents.py" [ref=e584]:
+          - strong [ref=e585]: ms-graphrag/indexing
+          - code [ref=e586]: index_documents.py
+        - cell "Microsoft GraphRAG 인덱싱 — 교재 KG+Vector / 예제코드 Vector" [ref=e587]
+        - cell "📖 설명 보기" [ref=e588]:
+          - link "📖 설명 보기" [ref=e589] [cursor=pointer]:
+            - /url: 14.graphrag/ms-graphrag/indexing/explain/index.html
+        - cell "📄 README" [ref=e590]:
+          - link "📄 README" [ref=e591] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/14.graphrag/ms-graphrag/indexing
+      - row "ms-graphrag/retrieve app.py MS GraphRAG 검색 파이프라인 — Auto Router + 4가지 검색 모드 + 코드 벡터 📖 설명 보기 📄 README" [ref=e592]:
+        - cell "ms-graphrag/retrieve app.py" [ref=e593]:
+          - strong [ref=e594]: ms-graphrag/retrieve
+          - code [ref=e595]: app.py
+        - cell "MS GraphRAG 검색 파이프라인 — Auto Router + 4가지 검색 모드 + 코드 벡터" [ref=e596]
+        - cell "📖 설명 보기" [ref=e597]:
+          - link "📖 설명 보기" [ref=e598] [cursor=pointer]:
+            - /url: 14.graphrag/ms-graphrag/retrieve/explain/index.html
+        - cell "📄 README" [ref=e599]:
+          - link "📄 README" [ref=e600] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/14.graphrag/ms-graphrag/retrieve
+      - row "neo4j/indexing index_documents.py LangChain + Neo4j GraphRAG 인덱싱 파이프라인 📖 설명 보기 📄 README" [ref=e601]:
+        - cell "neo4j/indexing index_documents.py" [ref=e602]:
+          - strong [ref=e603]: neo4j/indexing
+          - code [ref=e604]: index_documents.py
+        - cell "LangChain + Neo4j GraphRAG 인덱싱 파이프라인" [ref=e605]
+        - cell "📖 설명 보기" [ref=e606]:
+          - link "📖 설명 보기" [ref=e607] [cursor=pointer]:
+            - /url: 14.graphrag/neo4j/indexing/explain/index.html
+        - cell "📄 README" [ref=e608]:
+          - link "📄 README" [ref=e609] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/14.graphrag/neo4j/indexing
+      - row "neo4j/retrieve app.py LangChain + Neo4j GraphRAG 검색 파이프라인 📖 설명 보기 📄 README" [ref=e610]:
+        - cell "neo4j/retrieve app.py" [ref=e611]:
+          - strong [ref=e612]: neo4j/retrieve
+          - code [ref=e613]: app.py
+        - cell "LangChain + Neo4j GraphRAG 검색 파이프라인" [ref=e614]
+        - cell "📖 설명 보기" [ref=e615]:
+          - link "📖 설명 보기" [ref=e616] [cursor=pointer]:
+            - /url: 14.graphrag/neo4j/retrieve/explain/index.html
+        - cell "📄 README" [ref=e617]:
+          - link "📄 README" [ref=e618] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/14.graphrag/neo4j/retrieve
+      - row "15. MCP elicitation client.py MCP Elicitation — 서버가 사용자에게 역요청 📖 설명 보기 📄 README" [ref=e619]:
+        - cell "15. MCP" [ref=e620]
+        - cell "elicitation client.py" [ref=e621]:
+          - strong [ref=e622]: elicitation
+          - code [ref=e623]: client.py
+        - cell "MCP Elicitation — 서버가 사용자에게 역요청" [ref=e624]
+        - cell "📖 설명 보기" [ref=e625]:
+          - link "📖 설명 보기" [ref=e626] [cursor=pointer]:
+            - /url: 15.mcp/elicitation/explain/index.html
+        - cell "📄 README" [ref=e627]:
+          - link "📄 README" [ref=e628] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/15.mcp/elicitation
+      - row "graphrag server.py MCP GraphRAG 서버 — 사내 교재 Knowledge Graph 검색 📖 설명 보기 📄 README" [ref=e629]:
+        - cell "graphrag server.py" [ref=e630]:
+          - strong [ref=e631]: graphrag
+          - code [ref=e632]: server.py
+        - cell "MCP GraphRAG 서버 — 사내 교재 Knowledge Graph 검색" [ref=e633]
+        - cell "📖 설명 보기" [ref=e634]:
+          - link "📖 설명 보기" [ref=e635] [cursor=pointer]:
+            - /url: 15.mcp/graphrag/explain/index.html
+        - cell "📄 README" [ref=e636]:
+          - link "📄 README" [ref=e637] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/15.mcp/graphrag
+      - row "roots client.py MCP Roots — 디렉토리 접근 통제 📖 설명 보기 📄 README" [ref=e638]:
+        - cell "roots client.py" [ref=e639]:
+          - strong [ref=e640]: roots
+          - code [ref=e641]: client.py
+        - cell "MCP Roots — 디렉토리 접근 통제" [ref=e642]
+        - cell "📖 설명 보기" [ref=e643]:
+          - link "📖 설명 보기" [ref=e644] [cursor=pointer]:
+            - /url: 15.mcp/roots/explain/index.html
+        - cell "📄 README" [ref=e645]:
+          - link "📄 README" [ref=e646] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/15.mcp/roots
+      - row "sampling client.py MCP Sampling — 서버가 클라이언트의 LLM을 빌려 추론 📖 설명 보기 📄 README" [ref=e647]:
+        - cell "sampling client.py" [ref=e648]:
+          - strong [ref=e649]: sampling
+          - code [ref=e650]: client.py
+        - cell "MCP Sampling — 서버가 클라이언트의 LLM을 빌려 추론" [ref=e651]
+        - cell "📖 설명 보기" [ref=e652]:
+          - link "📖 설명 보기" [ref=e653] [cursor=pointer]:
+            - /url: 15.mcp/sampling/explain/index.html
+        - cell "📄 README" [ref=e654]:
+          - link "📄 README" [ref=e655] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/15.mcp/sampling
+      - row "simple client.py MCP 기본 예제 — 계산기 + 날씨 서버 📖 설명 보기 📄 README" [ref=e656]:
+        - cell "simple client.py" [ref=e657]:
+          - strong [ref=e658]: simple
+          - code [ref=e659]: client.py
+        - cell "MCP 기본 예제 — 계산기 + 날씨 서버" [ref=e660]
+        - cell "📖 설명 보기" [ref=e661]:
+          - link "📖 설명 보기" [ref=e662] [cursor=pointer]:
+            - /url: 15.mcp/simple/explain/index.html
+        - cell "📄 README" [ref=e663]:
+          - link "📄 README" [ref=e664] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/15.mcp/simple
+      - row "16. 멀티 에이전트 (MAS) aistudy-chat app.py Agentic AI 학습지원 MAS 챗봇 — LangGraph SAS 멀티에이전트 📖 설명 보기 📄 README" [ref=e665]:
+        - cell "16. 멀티 에이전트 (MAS)" [ref=e666]
+        - cell "aistudy-chat app.py" [ref=e667]:
+          - strong [ref=e668]: aistudy-chat
+          - code [ref=e669]: app.py
+        - cell "Agentic AI 학습지원 MAS 챗봇 — LangGraph SAS 멀티에이전트" [ref=e670]
+        - cell "📖 설명 보기" [ref=e671]:
+          - link "📖 설명 보기" [ref=e672] [cursor=pointer]:
+            - /url: 16.mas/aistudy-chat/explain/index.html
+        - cell "📄 README" [ref=e673]:
+          - link "📄 README" [ref=e674] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/16.mas/aistudy-chat
+      - row "patent-mas/indexing/graphrag index_documents.py 특허법 GraphRAG 지식그래프 인덱싱 — PDF를 입력 텍스트로 만들고 GraphRAG 엔진을 호출하는 오케스트레이터 📖 설명 보기 📄 README" [ref=e675]:
+        - cell "patent-mas/indexing/graphrag index_documents.py" [ref=e676]:
+          - strong [ref=e677]: patent-mas/indexing/graphrag
+          - code [ref=e678]: index_documents.py
+        - cell "특허법 GraphRAG 지식그래프 인덱싱 — PDF를 입력 텍스트로 만들고 GraphRAG 엔진을 호출하는 오케스트레이터" [ref=e679]
+        - cell "📖 설명 보기" [ref=e680]:
+          - link "📖 설명 보기" [ref=e681] [cursor=pointer]:
+            - /url: 16.mas/patent-mas/indexing/graphrag/explain/index.html
+        - cell "📄 README" [ref=e682]:
+          - link "📄 README" [ref=e683] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/16.mas/patent-mas/indexing/graphrag
+      - row "patent-mas/indexing/vector indexing.py 특허법 조문 벡터 RAG 인덱싱 — 장/조/항 메타데이터 부여 파이프라인 📖 설명 보기 📄 README" [ref=e684]:
+        - cell "patent-mas/indexing/vector indexing.py" [ref=e685]:
+          - strong [ref=e686]: patent-mas/indexing/vector
+          - code [ref=e687]: indexing.py
+        - cell "특허법 조문 벡터 RAG 인덱싱 — 장/조/항 메타데이터 부여 파이프라인" [ref=e688]
+        - cell "📖 설명 보기" [ref=e689]:
+          - link "📖 설명 보기" [ref=e690] [cursor=pointer]:
+            - /url: 16.mas/patent-mas/indexing/vector/explain/index.html
+        - cell "📄 README" [ref=e691]:
+          - link "📄 README" [ref=e692] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/16.mas/patent-mas/indexing/vector
+      - row "patent-mas/mas-a server.py 법령지식 MAS (MAS A) — 조문 벡터 RAG + MS GraphRAG 융합 검색을 FastMCP로 노출 📖 설명 보기 📄 README" [ref=e693]:
+        - cell "patent-mas/mas-a server.py" [ref=e694]:
+          - strong [ref=e695]: patent-mas/mas-a
+          - code [ref=e696]: server.py
+        - cell "법령지식 MAS (MAS A) — 조문 벡터 RAG + MS GraphRAG 융합 검색을 FastMCP로 노출" [ref=e697]
+        - cell "📖 설명 보기" [ref=e698]:
+          - link "📖 설명 보기" [ref=e699] [cursor=pointer]:
+            - /url: 16.mas/patent-mas/mas-a/explain/index.html
+        - cell "📄 README" [ref=e700]:
+          - link "📄 README" [ref=e701] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/16.mas/patent-mas/mas-a
+      - row "patent-mas/mas-b app.py 특허 선행기술·동향 리서치 MAS B — 다중 소스 Self-RAG (법령 MCP·웹·YouTube) 📖 설명 보기 📄 README" [ref=e702]:
+        - cell "patent-mas/mas-b app.py" [ref=e703]:
+          - strong [ref=e704]: patent-mas/mas-b
+          - code [ref=e705]: app.py
+        - cell "특허 선행기술·동향 리서치 MAS B — 다중 소스 Self-RAG (법령 MCP·웹·YouTube)" [ref=e706]
+        - cell "📖 설명 보기" [ref=e707]:
+          - link "📖 설명 보기" [ref=e708] [cursor=pointer]:
+            - /url: 16.mas/patent-mas/mas-b/explain/index.html
+        - cell "📄 README" [ref=e709]:
+          - link "📄 README" [ref=e710] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/16.mas/patent-mas/mas-b
+      - row "patent-mas/mas-c app.py 특허 의견서 작성·검증 MAS — 인라인 검증 게이트 + HITL(사람 승인) + DLP(민감정보 마스킹) 📖 설명 보기 📄 README" [ref=e711]:
+        - cell "patent-mas/mas-c app.py" [ref=e712]:
+          - strong [ref=e713]: patent-mas/mas-c
+          - code [ref=e714]: app.py
+        - cell "특허 의견서 작성·검증 MAS — 인라인 검증 게이트 + HITL(사람 승인) + DLP(민감정보 마스킹)" [ref=e715]
+        - cell "📖 설명 보기" [ref=e716]:
+          - link "📖 설명 보기" [ref=e717] [cursor=pointer]:
+            - /url: 16.mas/patent-mas/mas-c/explain/index.html
+        - cell "📄 README" [ref=e718]:
+          - link "📄 README" [ref=e719] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/16.mas/patent-mas/mas-c
+      - row "patent-mas/orchestrator run_cli.py 특허법 분산 MAS 오케스트레이터 — 한 지휘자가 3개 AI 팀(A·B·C)을 안전하게 조율하는 2계층 SAS 📖 설명 보기 📄 README" [ref=e720]:
+        - cell "patent-mas/orchestrator run_cli.py" [ref=e721]:
+          - strong [ref=e722]: patent-mas/orchestrator
+          - code [ref=e723]: run_cli.py
+        - cell "특허법 분산 MAS 오케스트레이터 — 한 지휘자가 3개 AI 팀(A·B·C)을 안전하게 조율하는 2계층 SAS" [ref=e724]
+        - cell "📖 설명 보기" [ref=e725]:
+          - link "📖 설명 보기" [ref=e726] [cursor=pointer]:
+            - /url: 16.mas/patent-mas/orchestrator/explain/index.html
+        - cell "📄 README" [ref=e727]:
+          - link "📄 README" [ref=e728] [cursor=pointer]:
+            - /url: https://github.com/cna-bootcamp/aistudy/tree/main/hands-on/16.mas/patent-mas/orchestrator
+  - contentinfo [ref=e729]:
+    - text: 각 링크는 예제 폴더의
+    - code [ref=e730]: explain/index.html
+    - text: (launcher)로 연결되며, 공용 셸
+    - code [ref=e731]: hands-on/explain-exam/
+    - text: 에서
+    - code [ref=e732]: data.js
+    - text: 를 읽어 렌더링함.

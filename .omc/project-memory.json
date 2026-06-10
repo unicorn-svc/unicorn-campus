@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1780886138872,
+  "lastScanned": 1780983855155,
   "projectRoot": "C:\\Users\\hiond\\Documents\\unicorn-campus",
   "techStack": {
     "languages": [],
@@ -36,7 +36,7 @@
       "path": "ai",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1780886138851,
+      "lastAccessed": 1780983855065,
       "keyFiles": [
         "ai-basic.html"
       ]
@@ -45,7 +45,7 @@
       "path": "ktds",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1780886138851,
+      "lastAccessed": 1780983855131,
       "keyFiles": [
         "index.html"
       ]
@@ -54,7 +54,7 @@
       "path": "prompts",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1780886138851,
+      "lastAccessed": 1780983855131,
       "keyFiles": [
         "모객페이지개발.txt"
       ]
@@ -63,7 +63,7 @@
       "path": "references",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1780886138852,
+      "lastAccessed": 1780983855132,
       "keyFiles": [
         "YET_Brand_Identity.pptx",
         "투입강사_프로필_이해경.pptx"
@@ -73,7 +73,7 @@
       "path": "ai\\assets",
       "purpose": "Static assets",
       "fileCount": 1,
-      "lastAccessed": 1780886138852,
+      "lastAccessed": 1780983855132,
       "keyFiles": [
         "instructor.jpg"
       ]
@@ -94,9 +94,57 @@
     },
     {
       "path": "ktds\\AI\\ai_agentic.html",
-      "accessCount": 9,
-      "lastAccessed": 1780889694624,
+      "accessCount": 10,
+      "lastAccessed": 1780890138680,
       "type": "file"
+    },
+    {
+      "path": "ai\\AI\\ai_basic.html",
+      "accessCount": 9,
+      "lastAccessed": 1780986923217,
+      "type": "file"
+    },
+    {
+      "path": "ai\\AI\\ai_agentic.html",
+      "accessCount": 9,
+      "lastAccessed": 1780987013919,
+      "type": "file"
+    },
+    {
+      "path": "ai\\index.html",
+      "accessCount": 9,
+      "lastAccessed": 1780987252825,
+      "type": "file"
+    },
+    {
+      "path": "ai\\AM\\QuickWin\\cna-quickwin.html",
+      "accessCount": 8,
+      "lastAccessed": 1780986975906,
+      "type": "file"
+    },
+    {
+      "path": "ai\\AM\\Full\\cna-think_design.html",
+      "accessCount": 8,
+      "lastAccessed": 1780986996952,
+      "type": "file"
+    },
+    {
+      "path": "ktds\\ai\\ai_agentic.html",
+      "accessCount": 6,
+      "lastAccessed": 1780985537763,
+      "type": "file"
+    },
+    {
+      "path": "ai",
+      "accessCount": 6,
+      "lastAccessed": 1780987392578,
+      "type": "directory"
+    },
+    {
+      "path": "role-filter.yml",
+      "accessCount": 3,
+      "lastAccessed": 1780905977301,
+      "type": "directory"
     },
     {
       "path": "ktds/index.html",
@@ -133,6 +181,12 @@
       "accessCount": 2,
       "lastAccessed": 1780888532207,
       "type": "file"
+    },
+    {
+      "path": "role-filter2.yml",
+      "accessCount": 2,
+      "lastAccessed": 1780906038242,
+      "type": "directory"
     },
     {
       "path": "ai/ai-basic.html",
@@ -186,6 +240,96 @@
       "path": "agentic_curriculum.jpeg",
       "accessCount": 1,
       "lastAccessed": 1780889946207,
+      "type": "file"
+    },
+    {
+      "path": "role-priv.yml",
+      "accessCount": 1,
+      "lastAccessed": 1780906092735,
+      "type": "directory"
+    },
+    {
+      "path": "role-priv2.yml",
+      "accessCount": 1,
+      "lastAccessed": 1780906119865,
+      "type": "directory"
+    },
+    {
+      "path": "role-selected.yml",
+      "accessCount": 1,
+      "lastAccessed": 1780906160018,
+      "type": "directory"
+    },
+    {
+      "path": "member-step.yml",
+      "accessCount": 1,
+      "lastAccessed": 1780906182129,
+      "type": "directory"
+    },
+    {
+      "path": "member-panel.yml",
+      "accessCount": 1,
+      "lastAccessed": 1780906202086,
+      "type": "directory"
+    },
+    {
+      "path": "member-selected.yml",
+      "accessCount": 1,
+      "lastAccessed": 1780906224704,
+      "type": "directory"
+    },
+    {
+      "path": "before-assign.yml",
+      "accessCount": 1,
+      "lastAccessed": 1780906249989,
+      "type": "directory"
+    },
+    {
+      "path": "review-tab.yml",
+      "accessCount": 1,
+      "lastAccessed": 1780906273609,
+      "type": "directory"
+    },
+    {
+      "path": "after-assign.yml",
+      "accessCount": 1,
+      "lastAccessed": 1780906317146,
+      "type": "directory"
+    },
+    {
+      "path": "role-assignments.yml",
+      "accessCount": 1,
+      "lastAccessed": 1780906339611,
+      "type": "directory"
+    },
+    {
+      "path": "group-members.yml",
+      "accessCount": 1,
+      "lastAccessed": 1780906525163,
+      "type": "directory"
+    },
+    {
+      "path": "hands-on-ref.png",
+      "accessCount": 1,
+      "lastAccessed": 1780983966977,
+      "type": "file"
+    },
+    {
+      "path": "selfstudy-section.png",
+      "accessCount": 1,
+      "lastAccessed": 1780985385851,
+      "type": "file"
+    },
+    {
+      "path": "selfstudy-top.png",
+      "accessCount": 1,
+      "lastAccessed": 1780985414431,
+      "type": "file"
+    },
+    {
+      "path": "verify-index-top.png",
+      "accessCount": 1,
+      "lastAccessed": 1780987066581,
       "type": "file"
     }
   ],

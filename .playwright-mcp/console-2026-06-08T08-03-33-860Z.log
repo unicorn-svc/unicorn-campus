@@ -1,0 +1,16 @@
+[      83ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[      83ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[    2701ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ https://management.azure.com/providers/Microsoft.PortalServices/settings/default?api-version=2024-09-01-preview:0
+[    3055ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[    3055ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[    3649ms] [LOG] Version: 17.385.0.1
+Session: 3a74c481e2d541618ce845ce3c7e0be3 @ https://portal.azure.com/Content/Dynamic/k80GJpTTTJ9c.js:383
+[    3807ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[    3807ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[    3956ms] [LOG] Extension: HubsExtension @ blob:https://portal.azure.com/5849f900-cce9-4de7-9771-992b2f3b0e89:0
+[    3987ms] [LOG] Extension: Microsoft_Azure_Copilot @ blob:https://portal.azure.com/5849f900-cce9-4de7-9771-992b2f3b0e89:0
+[    4208ms] [LOG] Extension: Microsoft_Azure_Billing @ blob:https://portal.azure.com/5849f900-cce9-4de7-9771-992b2f3b0e89:0
+[    4303ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://portal.azure.com/#view/Microsoft_Azure_Billing/SubscriptionsBlade:0
+[    4461ms] [ERROR] [fx]  오후 5:03:38 MsPortalImpl/Services/Services.PortalServicesManager Services.PortalServicesManager: Portal service not found for extension Microsoft_Azure_HybridNetworking and portal service id ApplicationGateway {error: Object} @ https://portal.azure.com/Content/Dynamic/nq_A6dwmcvdo.js:0
+[    4461ms] [ERROR] [fx]  오후 5:03:38 MsPortalImpl/Services/Services.PortalServicesManager Services.PortalServicesManager: Portal service not found for extension Microsoft_Azure_DNS and portal service id TrafficManager {error: Object} @ https://portal.azure.com/Content/Dynamic/nq_A6dwmcvdo.js:0
+[    5537ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ https://graph.microsoft.com/v1.0/me/photo/$value:0

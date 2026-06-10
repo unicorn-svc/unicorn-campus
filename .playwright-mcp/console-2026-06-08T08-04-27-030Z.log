@@ -1,0 +1,4 @@
+[     175ms] [LOG] Extension: Microsoft_Azure_AD @ blob:https://portal.azure.com/5849f900-cce9-4de7-9771-992b2f3b0e89:0
+[    2422ms] [ERROR] [Microsoft_Azure_AD]  오후 5:04:29 Parts 1 Parts: Sanitization error found in following extension(Microsoft_Azure_AD) styleSheets:
+[0]Microsoft_Azure_AD-[1]AccessControlBlade-[2]TemplateBladeVirtualLens-[5]AccessControlBlade - Blades/DenyAssignmentsUsers.css - Invalid CSS property - Disallowed style property. Property name: outline-offset
+CSS rule: .ext-denyassignments-rowaction-icon:focus { outline: currentcolor solid 1px; outline-offset: -1px; } {error: Object} @ https://portal.azure.com/Content/Dynamic/nq_A6dwmcvdo.js:0

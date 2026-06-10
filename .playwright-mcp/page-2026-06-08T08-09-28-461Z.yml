@@ -1,0 +1,188 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - button "주 콘텐츠로 건너뛰기"
+    - banner "Microsoft Azure" [ref=e3]:
+      - button "Microsoft Cloud 메뉴 표시" [ref=e5] [cursor=pointer]:
+        - img [ref=e7]
+      - button "포털 메뉴 표시" [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - heading "Microsoft Azure" [level=1] [ref=e12]:
+        - link "Microsoft Azure" [ref=e13] [cursor=pointer]:
+          - /url: "#home"
+      - search [ref=e14]:
+        - generic [ref=e15]:
+          - img [ref=e17]
+          - textbox "리소스, 서비스 및 문서 검색(G+/)" [ref=e20]
+      - button "Copilot" [ref=e21] [cursor=pointer]:
+        - img [ref=e23]
+      - generic [ref=e26]:
+        - button "Cloud Shell" [ref=e27] [cursor=pointer]:
+          - img [ref=e28]
+        - button "알림" [ref=e31] [cursor=pointer]:
+          - img [ref=e32]
+        - button "설정" [ref=e34] [cursor=pointer]:
+          - img [ref=e35]
+        - button "지원 + 문제 해결" [ref=e38] [cursor=pointer]:
+          - img [ref=e39]
+        - button "피드백" [ref=e41] [cursor=pointer]:
+          - img [ref=e42]
+      - button "계정 메뉴 현재 Default Directory(hiondalgmail.onmicrosoft.com) 테넌트 아래에 hiondal@gmail.com(으)로 로그인했음" [ref=e45] [cursor=pointer]:
+        - 'generic "이름: 이 해경 전자 메일: hiondal@gmail.com 디렉터리: Default Directory(5b29e13a-2e82-4e7f-be31-fb84b376a89c) 도메인: hiondalgmail.onmicrosoft.com 로그인에서 다단계 인증을 사용했습니다." [ref=e46]':
+          - generic [ref=e47]:
+            - generic [ref=e48]: hiondal@gmail.com
+            - generic [ref=e49]: Default Directory(hiondalgmail.onmicrosoft.com)
+          - img [ref=e52]
+    - main [ref=e57]:
+      - generic [ref=e58]:
+        - navigation "탐색 기록" [ref=e380]:
+          - navigation "breadcrumb" [ref=e383]:
+            - list [ref=e384]:
+              - listitem [ref=e385]:
+                - link "홈" [ref=e386] [cursor=pointer]:
+                  - /url: "#home"
+                - img [ref=e389]
+              - listitem [ref=e391]:
+                - link "unicorn-sub | 액세스 제어(IAM)" [ref=e741] [cursor=pointer]:
+                  - /url: "#@hiondalgmail.onmicrosoft.com/resource/subscriptions/331cddde-a813-40e5-affe-851f3f29e337/overview"
+        - region "역할 할당 추가" [ref=e742]:
+          - generic "역할 할당 추가" [ref=e745]:
+            - generic [ref=e748]:
+              - heading "역할 할당 추가" [level=2] [ref=e749]: 역할 할당 추가
+              - generic [ref=e750]:
+                - button "추가 콘텐츠 작업" [ref=e752] [cursor=pointer]:
+                  - img [ref=e782]
+                - button "'역할 할당 추가' 콘텐츠 닫기" [ref=e758] [cursor=pointer]:
+                  - img [ref=e761]
+          - generic [ref=e785]:
+            - generic [ref=e787]:
+              - generic [ref=e788]:
+                - tablist [ref=e789]:
+                  - tab "역할" [ref=e3560] [cursor=pointer]:
+                    - generic [ref=e792]: 역할
+                  - tab "구성원 (필수)" [active] [selected] [ref=e794] [cursor=pointer]:
+                    - generic [ref=e796]: 구성원
+                  - tab "조건" [disabled] [ref=e798]:
+                    - generic [ref=e800]: 조건
+                  - tab "검토 + 할당" [ref=e801] [cursor=pointer]:
+                    - generic [ref=e803]: 검토 + 할당
+                - generic: 필수
+              - tabpanel "구성원 (필수)" [ref=e3563]:
+                - group "구성원 (필수)" [ref=e3564]:
+                  - generic [ref=e3567]:
+                    - generic [ref=e3568]:
+                      - generic [ref=e3569]: 선택한 역할
+                      - generic [ref=e3570]: 기여자
+                    - generic [ref=e3571]:
+                      - generic [ref=e3572]: "다음에 대한 액세스 할당:"
+                      - radiogroup "다음에 대한 액세스 할당:" [ref=e3577]:
+                        - radio "사용자, 그룹 또는 서비스 주체" [checked] [ref=e3578]:
+                          - generic [ref=e3580]: 사용자, 그룹 또는 서비스 주체
+                        - radio "관리 ID" [ref=e3581]:
+                          - generic [ref=e3583]: 관리 ID
+                    - generic [ref=e3584]:
+                      - generic [ref=e3585]: 구성원
+                      - link "구성원 선택" [ref=e3587] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e3589]
+                        - text: 구성원 선택
+                    - grid "구성원 그리드" [ref=e3594]:
+                      - generic [ref=e3597]:
+                        - row "이름 개체 ID 유형" [ref=e3599]:
+                          - columnheader "이름" [ref=e3600] [cursor=pointer]:
+                            - generic [ref=e3602]: 이름
+                          - columnheader "개체 ID" [ref=e3604] [cursor=pointer]:
+                            - generic [ref=e3606]: 개체 ID
+                          - columnheader "유형" [ref=e3608] [cursor=pointer]:
+                            - generic [ref=e3610]: 유형
+                          - columnheader [ref=e3612] [cursor=pointer]
+                        - generic [ref=e3617]: 선택한 구성원 없음
+                    - generic [ref=e3618]:
+                      - generic [ref=e3619]: Description
+                      - textbox "설명" [ref=e3625]:
+                        - /placeholder: 선택 사항
+            - generic [ref=e2249]:
+              - button "검토 + 할당" [disabled] [ref=e2251]:
+                - generic [ref=e2252]: 검토 + 할당
+              - button "이전" [ref=e2254] [cursor=pointer]:
+                - generic [ref=e2255]: 이전
+              - button "다음" [ref=e2257] [cursor=pointer]:
+                - generic [ref=e2258]: 다음
+              - link "사용자 의견" [ref=e2262] [cursor=pointer]:
+                - /url: "#"
+                - img [ref=e2264]
+                - text: 사용자 의견
+  - img [ref=e343]
+  - img [ref=e344]
+  - img [ref=e345]
+  - img [ref=e346]
+  - img [ref=e347]
+  - img [ref=e348]
+  - img [ref=e349]
+  - img [ref=e350]
+  - img [ref=e351]
+  - img [ref=e352]
+  - img [ref=e353]
+  - img [ref=e354]
+  - img [ref=e355]
+  - img [ref=e356]
+  - img [ref=e357]
+  - img [ref=e358]
+  - img [ref=e359]
+  - img [ref=e360]
+  - img [ref=e361]
+  - img [ref=e362]
+  - img [ref=e363]
+  - img [ref=e364]
+  - img [ref=e365]
+  - img [ref=e366]
+  - img [ref=e367]
+  - img [ref=e368]
+  - img [ref=e369]
+  - img [ref=e370]
+  - img [ref=e371]
+  - img [ref=e372]
+  - img [ref=e373]
+  - img [ref=e374]
+  - img [ref=e375]
+  - img [ref=e376]
+  - img [ref=e377]
+  - img [ref=e703]
+  - img [ref=e704]
+  - img [ref=e705]
+  - img [ref=e706]
+  - img [ref=e707]
+  - img [ref=e708]
+  - img [ref=e709]
+  - img [ref=e710]
+  - img [ref=e711]
+  - img [ref=e712]
+  - img [ref=e713]
+  - img [ref=e714]
+  - img [ref=e715]
+  - img [ref=e716]
+  - img [ref=e717]
+  - img [ref=e718]
+  - img [ref=e719]
+  - img [ref=e720]
+  - img [ref=e721]
+  - img [ref=e722]
+  - img [ref=e723]
+  - img [ref=e724]
+  - img [ref=e725]
+  - img [ref=e726]
+  - img [ref=e727]
+  - img [ref=e728]
+  - img [ref=e729]
+  - img [ref=e730]
+  - img [ref=e731]
+  - img [ref=e732]
+  - img [ref=e733]
+  - img [ref=e734]
+  - img [ref=e735]
+  - img [ref=e736]
+  - img [ref=e737]
+  - img [ref=e738]
+  - img [ref=e739]
+  - img [ref=e740]
+  - img [ref=e781]
+  - img [ref=e2266]

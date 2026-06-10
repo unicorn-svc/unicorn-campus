@@ -1,0 +1,342 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "KTDS AI Academy" [ref=e4] [cursor=pointer]:
+        - /url: ../
+        - generic [ref=e6]: KTDS
+        - generic [ref=e7]: AI Academy
+      - generic [ref=e8]:
+        - link "Why" [ref=e9] [cursor=pointer]:
+          - /url: "#why"
+        - link "대상" [ref=e10] [cursor=pointer]:
+          - /url: "#audience"
+        - link "커리큘럼" [ref=e11] [cursor=pointer]:
+          - /url: "#curriculum"
+        - link "핵심 스택" [ref=e12] [cursor=pointer]:
+          - /url: "#stack"
+        - link "실습 예제" [ref=e13] [cursor=pointer]:
+          - /url: "#selfstudy"
+        - link "차별점" [ref=e14] [cursor=pointer]:
+          - /url: "#diff"
+  - generic [ref=e15]:
+    - generic [ref=e16]: AI College · 심화
+    - generic [ref=e17]:
+      - generic [ref=e20]: 2026 임직원 역량 강화 과정 · KTDS 사내 한정
+      - heading "Agentic AI 시대, LangGraph 기반 MAS를 직접 설계하는 2일." [level=1] [ref=e21]:
+        - text: Agentic AI 시대,
+        - text: LangGraph 기반 MAS를
+        - text: 직접 설계하는 2일.
+      - paragraph [ref=e22]:
+        - text: 2일 후, 당신의 노트북에는
+        - strong [ref=e23]: LangChain·LangGraph 기반 멀티에이전트 시스템
+        - text: 이 남습니다. 멀티모달 처리, RAG·GraphRAG 파이프라인, 직접 구현한 MCP 서버까지 — Agentic AI 산업 표준 스택을 코드로 완성합니다.
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - generic [ref=e26]: 교육기간
+          - generic [ref=e27]: 2일 · 16시간
+        - generic [ref=e28]:
+          - generic [ref=e29]: 추천 대상
+          - generic [ref=e30]: IT 개발자 (AI 서비스·백엔드·풀스택)
+        - generic [ref=e31]:
+          - generic [ref=e32]: 선수 지식
+          - generic [ref=e33]: Python 기초 문법
+        - generic [ref=e34]:
+          - generic [ref=e35]: 실습 비중
+          - generic [ref=e36]: 실습 중심 (80%+)
+        - generic [ref=e37]:
+          - generic [ref=e38]: 교육 형태
+          - generic [ref=e39]: 오프라인 집합
+  - generic [ref=e41]:
+    - generic [ref=e42]: Why This Course
+    - heading "개발자에게 필요한 3가지를 한 호흡에." [level=2] [ref=e43]
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - generic [ref=e46]: 3대 스택
+        - generic [ref=e47]: Agentic AI 산업 표준
+        - paragraph [ref=e48]: LangChain · LangGraph · MCP — 단편 데모가 아닌, 글로벌 프로덕션 현장에서 검증된 표준 스택만으로 MAS를 직접 구축합니다.
+        - generic [ref=e49]: "실습 환경: Claude Code · VSCode · Docker · Dify"
+      - generic [ref=e50]:
+        - generic [ref=e51]: 2단계 학습
+        - generic [ref=e52]: RAG → GraphRAG
+        - paragraph [ref=e53]: Chroma·Multi-Query 기본부터 RAGAS 품질 평가, 멀티홉 추론 GraphRAG까지 — 단순 검색이 아닌 "쓸 수 있는 RAG"를 만듭니다.
+        - generic [ref=e54]: "실습: Chroma + Multi-Query Retriever / RAGAS / LightRAG · Neo4j"
+      - generic [ref=e55]:
+        - generic [ref=e56]: 5대 안전장치
+        - generic [ref=e57]: MAS 운영 안정성까지
+        - paragraph [ref=e58]: Loop 종료 조건, Agent Budget, Supervisor Kill-switch, HITL 승인, 운영 모니터링 — "데모"가 아닌 "운영 가능한 MAS"를 설계합니다.
+        - generic [ref=e59]: SAS Pattern · ReAct · Planning & Execution · Multi-Agent Collaboration
+  - generic [ref=e61]:
+    - generic [ref=e62]: Who · Outcome
+    - heading "AI 서비스를 직접 만드는 개발자를 위한 과정." [level=2] [ref=e63]
+    - paragraph [ref=e64]: Python 기초 이상의 IT 개발자라면 누구나. 1회차에서 AI 도구·멀티모달·Agentic AI 구조를 다지고, 2회차에서 RAG/GraphRAG·MCP 서버·LangGraph MAS를 직접 구현합니다.
+    - generic [ref=e65]:
+      - generic [ref=e66]:
+        - generic [ref=e67]: 🧠
+        - heading "AI 서비스 개발자" [level=3] [ref=e68]
+        - generic [ref=e69]: IT Developer
+        - generic [ref=e70]:
+          - generic [ref=e71]: "\"LLM API 단일 호출만 해 봄\""
+          - generic [ref=e72]: →
+          - generic [ref=e73]: LangChain·LangGraph 기반 MAS 설계·구축
+        - generic [ref=e74]:
+          - generic [ref=e75]: "\"Function Calling을 들어만 봄\""
+          - generic [ref=e76]: →
+          - generic [ref=e77]: OpenAI·Claude·Gemini 3사 Tool Use 비교 실습
+        - generic [ref=e78]:
+          - generic [ref=e79]: "\"MAS는 PoC 데모 수준만 가능\""
+          - generic [ref=e80]: →
+          - generic [ref=e81]: Budget·Kill-switch·HITL까지 운영 가능 MAS
+      - generic [ref=e82]:
+        - generic [ref=e83]: ⚙️
+        - heading "백엔드 · 풀스택 개발자" [level=3] [ref=e84]
+        - generic [ref=e85]: IT Developer
+        - generic [ref=e86]:
+          - generic [ref=e87]: "\"RAG는 키워드만 들어봄\""
+          - generic [ref=e88]: →
+          - generic [ref=e89]: Chroma·Multi-Query·RAGAS·GraphRAG 직접 구축
+        - generic [ref=e90]:
+          - generic [ref=e91]: "\"MCP가 뭔지 막연함\""
+          - generic [ref=e92]: →
+          - generic [ref=e93]: JSON-RPC 2.0 기반 MCP 서버 직접 구현·연동
+        - generic [ref=e94]:
+          - generic [ref=e95]: "\"AI 기능을 어떻게 서비스에 얹지?\""
+          - generic [ref=e96]: →
+          - generic [ref=e97]: Dify·Docker Compose로 프로토타입→배포
+  - generic [ref=e99]:
+    - generic [ref=e100]: Curriculum
+    - heading "2일 · 16시간 · Agentic AI 개발 여정" [level=2] [ref=e101]
+    - paragraph [ref=e102]: 1회차는 AI 도구·멀티모달·Agentic AI 구조를 다지고, 2회차는 RAG/GraphRAG·MCP·LangGraph MAS까지 직접 구현합니다.
+    - generic [ref=e103]:
+      - generic [ref=e104]:
+        - generic [ref=e106]: 1회차 · Foundation · 멀티모달 · Agentic 구조
+        - heading "AI 도구·멀티모달부터 Agentic 구조까지 다지는 날" [level=3] [ref=e107]
+        - list [ref=e108]:
+          - listitem [ref=e109]:
+            - generic [ref=e110]:
+              - text: 엔터프라이즈 AI 서비스 이해
+              - generic [ref=e111]: 1H
+            - generic [ref=e112]: AI 개요·3대 필요성·5대 핵심 구성요소·AI 어플리케이션 아키텍처와 개발 흐름. AI 도구 지형 5-Layer(Foundation Model → AI 코딩툴 → Workflow 빌더 → Agentic AI 프레임워크 → 클라우드 AI PaaS).
+            - generic [ref=e113]: 개발 환경 구성
+            - generic [ref=e114]: Claude Code · VSCode · Docker · Dify
+          - listitem [ref=e115]:
+            - generic [ref=e116]:
+              - text: AI툴 기본 사용법
+              - generic [ref=e117]: 1.5H
+            - generic [ref=e118]: Claude Code 기본(AGENTS.md+CLAUDE.md·설정·수행모드·MCP 추가) / Codex 기본 / 프롬프트 엔지니어링 5대 구성(목표·역할/맥락·입력/작업/출력·제약·예시) / 스킬·에이전트·플러그인 이해.
+            - generic [ref=e119]: 프롬프팅 5대 실습
+            - generic [ref=e120]: 스킬·에이전트 개발
+            - generic [ref=e121]: MCP 추가
+          - listitem [ref=e122]:
+            - generic [ref=e123]:
+              - text: 멀티모달 기반 기능
+              - generic [ref=e124]: 1.5H
+            - generic [ref=e125]: 문서 요약·PDF 변환·STT·TTS·VLM 등 멀티모달 작업을 클라우드/로컬 LLM 모델로 직접 처리. AI 서비스에 멀티모달 입출력을 결합하는 실전 패턴.
+            - generic [ref=e126]: 멀티모달 예제 실습
+            - generic [ref=e127]: STT · TTS · VLM
+          - listitem [ref=e128]:
+            - generic [ref=e129]:
+              - text: Agentic AI 구조와 핵심 패턴
+              - generic [ref=e130]: 3H
+            - generic [ref=e131]:
+              - strong [ref=e132]: LangChain 5대 구성
+              - text: (Workflow·LLM 인터페이스·RAG·Tools·State 관리) / MAS 아키텍처(SAS 패턴·상태관리·내외부 통신) /
+              - strong [ref=e133]: Function Calling & Tool Use
+              - text: (공통 5단계·OpenAI/Claude/Gemini 3사 비교·병렬/순차/스트리밍).
+            - generic [ref=e134]: Travel Planner 실습
+            - generic [ref=e135]: 3사 Tool Use 비교
+      - generic [ref=e136]:
+        - generic [ref=e138]: 2회차 · RAG · MCP · MAS 통합
+        - heading "RAG·MCP 서버와 LangGraph MAS를 완성하는 날" [level=3] [ref=e139]
+        - list [ref=e140]:
+          - listitem [ref=e141]:
+            - generic [ref=e142]:
+              - text: RAG / GraphRAG 개요
+              - generic [ref=e143]: 2H
+            - generic [ref=e144]:
+              - text: RAG 기초(인덱싱 Load→Split→Embed→Store·시맨틱/하이브리드 검색) / 품질 튜닝(청킹·임베딩·벡터스토어·쿼리·리랭킹·평가) /
+              - strong [ref=e145]: GraphRAG
+              - text: (Vector RAG 비교·멀티홉 추론·LightRAG·Neo4j).
+            - generic [ref=e146]: Chroma + Multi-Query
+            - generic [ref=e147]: RAGAS 데모
+            - generic [ref=e148]: GraphRAG 데모
+          - listitem [ref=e149]:
+            - generic [ref=e150]:
+              - text: MCP 개발
+              - generic [ref=e151]: 1H
+            - generic [ref=e152]: MCP(Model Context Protocol) Host-Client-Server 아키텍처 / 프로토콜(JSON-RPC 2.0·Stdio/HTTP) / 기본 기능(Tools·Resources·Prompts) / 고급 기능(Sampling·Elicitation·OAuth 2.1) / MCP 서버 커스텀 구현(Python·TypeScript SDK).
+            - generic [ref=e153]: MCP 서버 구현
+            - generic [ref=e154]: Claude 연동
+          - listitem [ref=e155]:
+            - generic [ref=e156]:
+              - text: LangGraph & MAS 통합 개발
+              - generic [ref=e157]: 3.5H
+            - generic [ref=e158]:
+              - text: "멀티에이전트 아키텍처(SAS: Scheduler·Agent·Supervisor·통신 구조·프로토콜 선택) / 아키텍처 패턴("
+              - strong [ref=e159]: ReAct·Planning & Execution·Multi-Agent Collaboration
+              - text: ) / 상태 관리(Checkpointing·Shared State·Persistence) /
+              - strong [ref=e160]: 운영 안정성
+              - text: "(Loop 종료·Budget·Kill-switch·HITL·모니터링). 실습: KT 채널 활용 AI 소상공인 마케팅(트렌드→이벤트→다중 채널 배포→성과). 프로세스: [기획] 유저스토리 → [설계] Dify DSL → [개발] LangChain+LangGraph MAS → [배포] Docker Compose. (Claude Code 플러그인 활용)"
+            - generic [ref=e161]: KT 마케팅 MAS
+            - generic [ref=e162]: SAS · ReAct
+            - generic [ref=e163]: HITL · Budget
+            - generic [ref=e164]: Claude Code 플러그인
+            - generic [ref=e165]: Docker Compose
+          - listitem [ref=e166]:
+            - generic [ref=e167]:
+              - text: Wrap-up
+              - generic [ref=e168]: 0.5H
+            - generic [ref=e169]: 2일간 학습 내용 정리 / Lessons & Learned 공유 토론.
+            - generic [ref=e170]: Lessons & Learned
+  - generic [ref=e172]:
+    - generic [ref=e173]: Core Stack
+    - heading "본 과정의 핵심 스택" [level=2] [ref=e174]
+    - paragraph [ref=e175]: 단일 도구의 데모가 아닙니다. Agentic AI 산업 표준 스택을 2일 동안 코드 위에서 직접 다룹니다.
+    - generic [ref=e176]: Industry-Standard Agentic Stack · 2 Pillars
+    - heading "LangChain·LangGraph · MCP·RAG/GraphRAG" [level=3] [ref=e177]
+    - paragraph [ref=e178]: Agentic AI는 더 이상 단일 LLM 호출이 아닙니다. 워크플로우 오케스트레이션과 표준 Tool 프로토콜, 그리고 검색 기반 응답의 품질 — 이 세 축을 직접 구현합니다.
+    - generic [ref=e179]:
+      - generic [ref=e180]:
+        - generic [ref=e181]: 🧠
+        - generic [ref=e182]: Agentic AI 오케스트레이션
+        - heading "LangChain + LangGraph" [level=4] [ref=e183]
+        - paragraph [ref=e184]: SAS 패턴부터 운영 안정성까지
+        - paragraph [ref=e185]:
+          - strong [ref=e186]: LangChain 5대 구성
+          - text: (Workflow·LLM 인터페이스·RAG·Tools·State)과
+          - strong [ref=e187]: LangGraph 기반 MAS
+          - text: 를 직접 구축합니다. SAS(Scheduler·Agent·Supervisor) 패턴, ReAct·Planning & Execution·Multi-Agent Collaboration, 그리고
+          - strong [ref=e188]: Budget·Kill-switch·HITL
+          - text: 까지 — "데모"가 아닌 "운영 가능한" MAS를 만듭니다.
+        - generic [ref=e189]:
+          - generic [ref=e190]: SAS Pattern
+          - generic [ref=e191]: ReAct
+          - generic [ref=e192]: HITL
+          - generic [ref=e193]: Checkpointing
+          - generic [ref=e194]: Budget · Kill-switch
+      - generic [ref=e195]:
+        - generic [ref=e196]: 🔌
+        - generic [ref=e197]: 표준 Tool · 검색 기반 응답
+        - heading "MCP + RAG / GraphRAG" [level=4] [ref=e198]
+        - paragraph [ref=e199]: JSON-RPC 2.0 표준 + 멀티홉 검색
+        - paragraph [ref=e200]:
+          - strong [ref=e201]: MCP 서버를 직접 구현
+          - text: 하여 Claude·OpenAI·Gemini가 공통으로 호출 가능한 Tool을 제공합니다. Chroma·Multi-Query Retriever 기본부터
+          - strong [ref=e202]: RAGAS 품질 평가
+          - text: ", 그리고 Neo4j·LightRAG 기반"
+          - strong [ref=e203]: GraphRAG 멀티홉 추론
+          - text: 까지 — "쓸 수 있는 RAG"를 만듭니다.
+        - generic [ref=e204]:
+          - generic [ref=e205]: JSON-RPC 2.0
+          - generic [ref=e206]: OAuth 2.1
+          - generic [ref=e207]: Chroma · Multi-Query
+          - generic [ref=e208]: RAGAS
+          - generic [ref=e209]: GraphRAG · Neo4j
+  - generic [ref=e211]:
+    - generic [ref=e212]: Hands-on · Self-Study
+    - heading "강의가 끝나도, 77개 예제로 계속 실습합니다." [level=2] [ref=e213]
+    - paragraph [ref=e214]:
+      - text: 교육에서 다룬
+      - strong [ref=e215]: 15개 챕터의 전 주제
+      - text: 를
+      - strong [ref=e216]: 77개 실습 예제
+      - text: 로 제공합니다. 모든 예제에
+      - strong [ref=e217]: 코드 설명 페이지(explain)
+      - text: 와
+      - strong [ref=e218]: README
+      - text: 가 함께 있어, 강의 후에도 주요 코드를 한 줄씩 이해하며 직접 실습하고 셀프 스터디로 복습합니다.
+    - generic [ref=e219]:
+      - generic [ref=e220]:
+        - generic [ref=e221]: 77개
+        - generic [ref=e222]: 실습 예제
+        - generic [ref=e223]: 멀티턴 대화부터 멀티에이전트(MAS)까지, 손으로 직접 돌려보는 예제
+      - generic [ref=e224]:
+        - generic [ref=e225]: 15개
+        - generic [ref=e226]: 주제 챕터
+        - generic [ref=e227]: 강의 커리큘럼의 전 주제를 챕터별로 그대로 커버
+      - generic [ref=e228]:
+        - generic [ref=e229]: 100%
+        - generic [ref=e230]: 코드 설명 + README
+        - generic [ref=e231]: 모든 예제마다 코드 설명 페이지와 실행 가이드(README) 제공
+    - generic [ref=e232]:
+      - generic [ref=e233]:
+        - generic [ref=e234]: 📖
+        - heading "코드 설명 페이지(explain)" [level=4] [ref=e235]
+        - paragraph [ref=e236]:
+          - text: 주요 코드를 한 줄씩 짚어주는 설명 페이지로,
+          - strong [ref=e237]: 파이썬에 익숙하지 않아도
+          - text: 예제의 코드 흐름을 쉽게 따라갑니다.
+      - generic [ref=e238]:
+        - generic [ref=e239]: 📄
+        - heading "예제별 README" [level=4] [ref=e240]
+        - paragraph [ref=e241]:
+          - text: 환경 설정부터 실행 방법까지 정리되어 있어, 내 노트북에서 예제를
+          - code [ref=e242]: 그대로 실행
+          - text: 하며 실습합니다.
+      - generic [ref=e243]:
+        - generic [ref=e244]: 🔁
+        - heading "강의 후 셀프 스터디" [level=4] [ref=e245]
+        - paragraph [ref=e246]:
+          - text: 강의에서 다룬 패턴을 예제로
+          - strong [ref=e247]: 직접 복습·변형
+          - text: 하며, 교육이 끝난 뒤에도 스스로 학습을 이어갑니다.
+    - generic [ref=e248]:
+      - generic [ref=e249]: 15개 챕터 · 77개 예제로 전 주제 복습
+      - generic [ref=e250]:
+        - generic [ref=e251]: 02멀티턴 대화
+        - generic [ref=e252]: 03문서 요약
+        - generic [ref=e253]: 04PDF 처리
+        - generic [ref=e254]: 05음성 인식(STT)
+        - generic [ref=e255]: 06음성 합성(TTS)
+        - generic [ref=e256]: 07비전 언어 모델(VLM)
+        - generic [ref=e257]: 08Function Calling
+        - generic [ref=e258]: 09LangChain
+        - generic [ref=e259]: 10RAG
+        - generic [ref=e260]: 11RAG 품질 튜닝
+        - generic [ref=e261]: 12웹·YouTube 검색
+        - generic [ref=e262]: 13RAG + Local LLM
+        - generic [ref=e263]: 14GraphRAG
+        - generic [ref=e264]: 15MCP
+        - generic [ref=e265]: 16멀티 에이전트(MAS)
+      - paragraph [ref=e266]:
+        - text: OpenAI·Claude·Gemini 3사 비교, 스트리밍, RAG → GraphRAG, MCP 서버, LangGraph MAS까지 —
+        - strong [ref=e267]: 강의에서 배운 그 코드
+        - text: 를 예제로 다시 열어 직접 실습하고 셀프 스터디합니다.
+  - generic [ref=e269]:
+    - generic [ref=e270]: Why This Course
+    - heading "다른 AI 교육과 무엇이 다릅니까?" [level=2] [ref=e271]
+    - paragraph [ref=e272]: "\"GPT 사용법\"이나 \"LangChain Hello World\"만 보여주는 교육과 명확히 구분됩니다."
+    - generic [ref=e273]:
+      - generic [ref=e274]:
+        - generic [ref=e275]: 🧱
+        - generic [ref=e276]:
+          - heading "Agentic AI 산업 표준 스택" [level=4] [ref=e277]
+          - paragraph [ref=e278]: LangChain · LangGraph · MCP — 글로벌 프로덕션에서 검증된 표준 스택만으로 MAS를 직접 구현합니다.
+      - generic [ref=e279]:
+        - generic [ref=e280]: 🔁
+        - generic [ref=e281]:
+          - heading "MAS 운영 안정성까지 다룸" [level=4] [ref=e282]
+          - paragraph [ref=e283]: Loop 종료 조건·Agent Budget·Supervisor Kill-switch·HITL·운영 모니터링 — "데모"가 아닌 "운영 가능한" MAS를 설계합니다.
+      - generic [ref=e284]:
+        - generic [ref=e285]: 🔎
+        - generic [ref=e286]:
+          - heading "RAG → GraphRAG 단계적 학습" [level=4] [ref=e287]
+          - paragraph [ref=e288]: Chroma·Multi-Query Retriever 기본부터 RAGAS 품질 평가, 그리고 LightRAG·Neo4j 기반 멀티홉 GraphRAG까지.
+      - generic [ref=e289]:
+        - generic [ref=e290]: 📡
+        - generic [ref=e291]:
+          - heading "KT 실제 채널 케이스 + 운영 실습" [level=4] [ref=e292]
+          - paragraph [ref=e293]: 우리동네TV·링고비즈·지니TV를 활용하는 AI 소상공인 마케팅 MAS를 LangChain+LangGraph로 직접 구축·배포합니다.
+    - generic [ref=e294]:
+      - heading "2일 후, 당신은 Agentic AI 빌더가 됩니다." [level=2] [ref=e295]:
+        - text: 2일 후, 당신은
+        - text: Agentic AI 빌더가 됩니다.
+      - paragraph [ref=e296]: LangChain·LangGraph 기반 MAS, RAG·GraphRAG 파이프라인, 멀티모달 처리, 직접 구현한 MCP 서버까지 — 2일 만에 'LLM 사용자'에서 'Agentic AI 시스템 빌더'로 도약합니다.
+      - generic [ref=e297]:
+        - generic [ref=e298]: 2일 16시간
+        - generic [ref=e299]: • 실습 80%+
+        - generic [ref=e300]: • IT 개발자 한정
+        - generic [ref=e301]: • KTDS 임직원 한정
+  - contentinfo [ref=e302]:
+    - generic [ref=e303]:
+      - generic [ref=e306]: KTDS AI Academy
+      - generic [ref=e307]: © 2026 KTDS. [AI College] Agentic AI 개발 집중과정 · 사내 교육 자료

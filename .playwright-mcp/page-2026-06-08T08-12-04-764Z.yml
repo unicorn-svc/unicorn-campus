@@ -1,0 +1,464 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - button "주 콘텐츠로 건너뛰기"
+    - banner "Microsoft Azure" [ref=e3]:
+      - button "Microsoft Cloud 메뉴 표시" [ref=e5] [cursor=pointer]:
+        - img [ref=e7]
+      - button "포털 메뉴 표시" [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+      - heading "Microsoft Azure" [level=1] [ref=e12]:
+        - link "Microsoft Azure" [ref=e13] [cursor=pointer]:
+          - /url: "#home"
+      - search [ref=e14]:
+        - generic [ref=e15]:
+          - img [ref=e17]
+          - textbox "리소스, 서비스 및 문서 검색(G+/)" [ref=e20]
+      - button "Copilot" [ref=e21] [cursor=pointer]:
+        - img [ref=e23]
+      - generic [ref=e26]:
+        - button "Cloud Shell" [ref=e27] [cursor=pointer]:
+          - img [ref=e28]
+        - generic "읽지 않은 알림 1개" [ref=e3864]:
+          - button "알림" [ref=e31] [cursor=pointer]:
+            - img [ref=e32]
+          - generic [ref=e3865]: "1"
+        - button "설정" [ref=e34] [cursor=pointer]:
+          - img [ref=e35]
+        - button "지원 + 문제 해결" [ref=e38] [cursor=pointer]:
+          - img [ref=e39]
+        - button "피드백" [ref=e41] [cursor=pointer]:
+          - img [ref=e42]
+      - button "계정 메뉴 현재 Default Directory(hiondalgmail.onmicrosoft.com) 테넌트 아래에 hiondal@gmail.com(으)로 로그인했음" [ref=e45] [cursor=pointer]:
+        - 'generic "이름: 이 해경 전자 메일: hiondal@gmail.com 디렉터리: Default Directory(5b29e13a-2e82-4e7f-be31-fb84b376a89c) 도메인: hiondalgmail.onmicrosoft.com 로그인에서 다단계 인증을 사용했습니다." [ref=e46]':
+          - generic [ref=e47]:
+            - generic [ref=e48]: hiondal@gmail.com
+            - generic [ref=e49]: Default Directory(hiondalgmail.onmicrosoft.com)
+          - img [ref=e52]
+    - main [ref=e57]:
+      - generic [ref=e58]:
+        - navigation "탐색 기록" [ref=e380]:
+          - navigation "breadcrumb" [ref=e383]:
+            - list [ref=e384]:
+              - listitem [ref=e385]:
+                - link "홈" [ref=e386] [cursor=pointer]:
+                  - /url: "#home"
+                - img [ref=e389]
+              - listitem [ref=e391]:
+                - link "unicorn-sub" [ref=e3877] [cursor=pointer]:
+                  - /url: "#@hiondalgmail.onmicrosoft.com/resource/subscriptions/331cddde-a813-40e5-affe-851f3f29e337/overview"
+        - region "unicorn-sub | 액세스 제어(IAM) 구독" [ref=e394]:
+          - generic "unicorn-sub | 액세스 제어(IAM) 구독" [ref=e397]:
+            - generic [ref=e398]:
+              - img [ref=e400]
+              - generic [ref=e402]:
+                - generic [ref=e403]:
+                  - heading "unicorn-sub | 액세스 제어(IAM)" [level=2] [ref=e404]
+                  - generic [ref=e405]:
+                    - button "즐겨찾기에 리소스 추가" [ref=e406] [cursor=pointer]:
+                      - img [ref=e409]
+                    - button "추가 콘텐츠 작업" [ref=e412] [cursor=pointer]:
+                      - img [ref=e415]
+                    - button "'unicorn-sub | 액세스 제어(IAM)' 콘텐츠 닫기" [ref=e418] [cursor=pointer]:
+                      - img [ref=e421]
+                - generic [ref=e424]: 구독
+          - generic [ref=e425]:
+            - generic [ref=e428]:
+              - generic [ref=e435]:
+                - generic [ref=e436]:
+                  - generic [ref=e437]:
+                    - img [ref=e439]
+                    - generic "검색 상자" [ref=e441]:
+                      - searchbox "검색 상자" [ref=e446]
+                  - button "모든 머리글 펼치기" [ref=e447]:
+                    - img [ref=e448]
+                - list "unicorn-sub" [ref=e452]:
+                  - listitem "빠른 실행" [ref=e453]:
+                    - list "빠른 실행 그룹의 항목 목록" [ref=e454]:
+                      - listitem [ref=e455]:
+                        - link "개요" [ref=e456] [cursor=pointer]:
+                          - /url: "#@hiondalgmail.onmicrosoft.com/resource/subscriptions/331cddde-a813-40e5-affe-851f3f29e337/overview"
+                          - img [ref=e458]
+                          - generic [ref=e460]: 개요
+                      - listitem [ref=e461]:
+                        - link "활동 로그" [ref=e462] [cursor=pointer]:
+                          - /url: "#@hiondalgmail.onmicrosoft.com/resource/subscriptions/331cddde-a813-40e5-affe-851f3f29e337/eventlogs"
+                          - img [ref=e464]
+                          - generic [ref=e466]: 활동 로그
+                      - listitem [ref=e467]:
+                        - link "액세스 제어(IAM)" [ref=e468] [cursor=pointer]:
+                          - /url: "#@hiondalgmail.onmicrosoft.com/resource/subscriptions/331cddde-a813-40e5-affe-851f3f29e337/users"
+                          - img [ref=e470]
+                          - generic [ref=e472]: 액세스 제어(IAM)
+                      - listitem [ref=e473]:
+                        - link "태그" [ref=e474] [cursor=pointer]:
+                          - /url: "#@hiondalgmail.onmicrosoft.com/resource/subscriptions/331cddde-a813-40e5-affe-851f3f29e337/tags"
+                          - img [ref=e476]
+                          - generic [ref=e478]: 태그
+                      - listitem [ref=e479]:
+                        - link "문제 진단 및 해결" [ref=e480] [cursor=pointer]:
+                          - /url: "#@hiondalgmail.onmicrosoft.com/resource/subscriptions/331cddde-a813-40e5-affe-851f3f29e337/troubleshoot"
+                          - img [ref=e482]
+                          - generic [ref=e484]: 문제 진단 및 해결
+                      - listitem [ref=e485]:
+                        - link "보안" [ref=e486] [cursor=pointer]:
+                          - /url: "#@hiondalgmail.onmicrosoft.com/resource/subscriptions/331cddde-a813-40e5-affe-851f3f29e337/security"
+                          - img [ref=e488]
+                          - generic [ref=e490]: 보안
+                      - listitem [ref=e491]:
+                        - link "리소스 시각화 도우미" [ref=e492] [cursor=pointer]:
+                          - /url: "#@hiondalgmail.onmicrosoft.com/resource/subscriptions/331cddde-a813-40e5-affe-851f3f29e337/resourcevisualizer"
+                          - img [ref=e494]
+                          - generic [ref=e496]: 리소스 시각화 도우미
+                      - listitem [ref=e497]:
+                        - link "이벤트" [ref=e498] [cursor=pointer]:
+                          - /url: "#@hiondalgmail.onmicrosoft.com/resource/subscriptions/331cddde-a813-40e5-affe-851f3f29e337/events"
+                          - img [ref=e500]
+                          - generic [ref=e502]: 이벤트
+                      - listitem [ref=e503]:
+                        - link "리소스 그룹" [ref=e504] [cursor=pointer]:
+                          - /url: "#@hiondalgmail.onmicrosoft.com/resource/subscriptions/331cddde-a813-40e5-affe-851f3f29e337/resourceGroups"
+                          - img [ref=e506]
+                          - generic [ref=e508]: 리소스 그룹
+                      - listitem [ref=e509]:
+                        - link "리소스" [ref=e510] [cursor=pointer]:
+                          - /url: "#@hiondalgmail.onmicrosoft.com/resource/subscriptions/331cddde-a813-40e5-affe-851f3f29e337/resources"
+                          - img [ref=e512]
+                          - generic [ref=e514]: 리소스
+                  - listitem "비용 관리" [ref=e515]:
+                    - button "비용 관리 토글" [ref=e516] [cursor=pointer]:
+                      - img [ref=e518]
+                      - generic [ref=e520]: 비용 관리
+                  - listitem "청구" [ref=e521]:
+                    - button "청구 토글" [ref=e522] [cursor=pointer]:
+                      - img [ref=e524]
+                      - generic [ref=e526]: 청구
+                  - listitem "설정" [ref=e527]:
+                    - button "설정 토글" [ref=e528] [cursor=pointer]:
+                      - img [ref=e530]
+                      - generic [ref=e532]: 설정
+                  - listitem "모니터링" [ref=e533]:
+                    - button "모니터링 토글" [ref=e534] [cursor=pointer]:
+                      - img [ref=e536]
+                      - generic [ref=e538]: 모니터링
+                  - listitem "도움말" [ref=e539]:
+                    - button "도움말 토글" [ref=e540] [cursor=pointer]:
+                      - img [ref=e542]
+                      - generic [ref=e544]: 도움말
+                - generic [ref=e545]: Ctrl+Shift+F을(를) 눌러 즐겨찾기 추가 또는 제거
+              - button "unicorn-sub에 대한 메뉴 숨기기" [expanded] [ref=e546] [cursor=pointer]:
+                - img [ref=e547]
+            - generic [ref=e550]:
+              - toolbar [ref=e553]:
+                - button "추가" [ref=e554] [cursor=pointer]:
+                  - img [ref=e556]
+                  - generic [ref=e558]: 추가
+                  - img [ref=e560]
+                - button "역할 할당 다운로드" [ref=e562] [cursor=pointer]:
+                  - img [ref=e564]
+                  - generic [ref=e566]: 역할 할당 다운로드
+                - button "열 편집" [ref=e3878] [cursor=pointer]:
+                  - img [ref=e3880]
+                  - generic [ref=e3882]: 열 편집
+                - button "새로 고침" [ref=e3883] [cursor=pointer]:
+                  - img [ref=e3885]
+                  - generic [ref=e3887]: 새로 고침
+                - separator [ref=e3888] [cursor=pointer]:
+                  - img [ref=e3890]
+                - button "삭제" [disabled] [ref=e3892]:
+                  - img [ref=e3894]
+                  - generic [ref=e3896]: 삭제
+                - separator [ref=e3897] [cursor=pointer]:
+                  - img [ref=e3899]
+                - button "사용자 의견" [ref=e590] [cursor=pointer]:
+                  - img [ref=e592]
+                  - generic [ref=e594]: 사용자 의견
+              - generic [ref=e606]:
+                - generic [ref=e607]:
+                  - tablist [ref=e608]:
+                    - tab "액세스 권한 확인" [ref=e609] [cursor=pointer]:
+                      - generic [ref=e611]: 액세스 권한 확인
+                    - tab "역할 할당" [active] [selected] [ref=e612] [cursor=pointer]:
+                      - generic [ref=e614]: 역할 할당
+                    - tab "역할" [ref=e615] [cursor=pointer]:
+                      - generic [ref=e617]: 역할
+                    - tab "거부 할당" [ref=e618] [cursor=pointer]:
+                      - generic [ref=e620]: 거부 할당
+                  - generic: 필수
+                - tabpanel "역할 할당" [ref=e3901]:
+                  - group "역할 할당" [ref=e3902]:
+                    - generic [ref=e3904]:
+                      - generic [ref=e3908]:
+                        - generic [ref=e3911]:
+                          - generic [ref=e3912]:
+                            - text: 이 구독의 역할 할당 수
+                            - button "구독을 통해 역할 할당을 4000개까지 추가할 수 있습니다." [ref=e3914] [cursor=pointer]:
+                              - img [ref=e3917]
+                          - progressbar [ref=e3922]
+                          - text: 8 4000
+                        - generic [ref=e3927]:
+                          - generic [ref=e3928]:
+                            - text: 권한 있음
+                            - button [ref=e3930] [cursor=pointer]:
+                              - img [ref=e3933]
+                          - generic [ref=e3937]: "4"
+                          - button "할당 보기" [ref=e3942] [cursor=pointer]
+                      - generic [ref=e3943]:
+                        - generic [ref=e3944]:
+                          - img [ref=e3946]
+                          - generic "검색 상자" [ref=e3948]:
+                            - searchbox "검색 상자" [ref=e3953]
+                        - list [ref=e3955]:
+                          - listitem [ref=e3956]:
+                            - generic [ref=e3957] [cursor=pointer]:
+                              - 'button "필터, 형식 : 모두" [ref=e3958]':
+                                - generic [ref=e3960]:
+                                  - generic [ref=e3961]: 형식
+                                  - generic [ref=e3962]: ":"
+                                  - generic [ref=e3963]: 모두
+                              - generic: "'Space' 또는 'Enter' 키를 사용하여 편집 모드 사용"
+                          - listitem [ref=e3964]:
+                            - generic [ref=e3965] [cursor=pointer]:
+                              - 'button "필터, 역할 : 모두" [ref=e3966]':
+                                - generic [ref=e3968]:
+                                  - generic [ref=e3969]: 역할
+                                  - generic [ref=e3970]: ":"
+                                  - generic [ref=e3971]: 모두
+                              - generic: "'Space' 또는 'Enter' 키를 사용하여 편집 모드 사용"
+                          - listitem [ref=e3972]:
+                            - generic [ref=e3973] [cursor=pointer]:
+                              - 'button "필터, 범위 : 모든 범위" [ref=e3974]':
+                                - generic [ref=e3976]:
+                                  - generic [ref=e3977]: 범위
+                                  - generic [ref=e3978]: ":"
+                                  - generic [ref=e3979]: 모든 범위
+                              - generic: "'Space' 또는 'Enter' 키를 사용하여 편집 모드 사용"
+                          - listitem [ref=e3980]:
+                            - generic [ref=e3981] [cursor=pointer]:
+                              - 'button "필터, 그룹화 방법 : 역할" [ref=e3982]':
+                                - generic [ref=e3984]:
+                                  - generic [ref=e3985]: 그룹화 방법
+                                  - generic [ref=e3986]: ":"
+                                  - generic [ref=e3987]: 역할
+                              - generic: "'Space' 또는 'Enter' 키를 사용하여 편집 모드 사용"
+                      - generic [ref=e3988]:
+                        - generic [ref=e3989]:
+                          - tablist [ref=e3990]:
+                            - tab "모두 (4)" [selected] [ref=e3991] [cursor=pointer]:
+                              - generic [ref=e3993]: 모두 (4)
+                            - tab "작업 기능 역할 (0)" [ref=e3994] [cursor=pointer]:
+                              - generic [ref=e3996]: 작업 기능 역할 (0)
+                            - tab "권한 있는 관리자 역할 (4)" [ref=e3997] [cursor=pointer]:
+                              - generic [ref=e3999]: 권한 있는 관리자 역할 (4)
+                          - generic: 필수
+                        - tabpanel "모두 (4)"
+                      - treegrid [ref=e4001]:
+                        - generic [ref=e4002]:
+                          - generic [ref=e4004]:
+                            - row "선택 영역 이름 형식 역할 범위 조건 명령" [ref=e4006]:
+                              - columnheader "선택 영역" [ref=e4007]:
+                                - checkbox "모든 항목 선택" [ref=e4012]
+                              - columnheader "이름" [ref=e4015] [cursor=pointer]:
+                                - generic [ref=e4016]:
+                                  - generic [ref=e4017]: 이름
+                                  - img [ref=e4021]
+                              - columnheader "형식" [ref=e4025] [cursor=pointer]:
+                                - generic [ref=e4026]:
+                                  - generic [ref=e4027]: 형식
+                                  - img [ref=e4031]
+                              - columnheader "역할" [ref=e4035] [cursor=pointer]:
+                                - generic [ref=e4036]:
+                                  - generic [ref=e4037]: 역할
+                                  - img [ref=e4041]
+                              - columnheader "범위" [ref=e4045] [cursor=pointer]:
+                                - generic [ref=e4046]:
+                                  - generic [ref=e4047]: 범위
+                                  - img [ref=e4051]
+                              - columnheader "조건" [ref=e4055] [cursor=pointer]:
+                                - generic [ref=e4056]:
+                                  - generic [ref=e4057]: 조건
+                                  - img [ref=e4061]
+                              - columnheader "명령" [ref=e4065]
+                            - generic [ref=e4069]:
+                              - row "그룹 확장 또는 축소 소유자 (1)" [expanded] [level=1] [ref=e4070]:
+                                - gridcell "그룹 확장 또는 축소 소유자 (1)" [ref=e4072]:
+                                  - button "그룹 확장 또는 축소" [expanded] [ref=e4075] [cursor=pointer]:
+                                    - img [ref=e4076]
+                                  - generic [ref=e4079]: 소유자 (1)
+                              - row "선택 취소됨 이 해경 f84c4681-8f66-4f53-8815-f0592e5a402b 사용자 소유자 이 리소스 추가" [level=2] [ref=e4080]:
+                                - generic [ref=e4081]:
+                                  - gridcell "선택 취소됨" [ref=e4082]:
+                                    - img "선택 취소됨" [ref=e4083]
+                                  - gridcell "이 해경 f84c4681-8f66-4f53-8815-f0592e5a402b" [ref=e4084]:
+                                    - generic [ref=e4088]:
+                                      - generic [ref=e4092]:
+                                        - paragraph
+                                      - link "이 해경" [ref=e4094] [cursor=pointer]:
+                                        - /url: "#"
+                                      - generic "f84c4681-8f66-4f53-8815-f0592e5a402b" [ref=e4095]
+                                  - gridcell "사용자" [ref=e4096]:
+                                    - generic [ref=e4097]: 사용자
+                                  - gridcell "소유자" [ref=e4098]:
+                                    - link "소유자" [ref=e4100] [cursor=pointer]:
+                                      - /url: "#blade/Microsoft_Azure_AD/RolePermissionsLandingBlade/allowRoleSelection//priorityRoles/%5B%5D/roleId/%2Fsubscriptions%2F331cddde-a813-40e5-affe-851f3f29e337%2Fproviders%2FMicrosoft.Authorization%2FroleDefinitions%2F8e3af657-a8ff-443c-a75c-2fe8c4bcb635/scope/%2Fsubscriptions%2F331cddde-a813-40e5-affe-851f3f29e337/showLinks/"
+                                  - gridcell "이 리소스" [ref=e4101]:
+                                    - generic [ref=e4102]:
+                                      - img [ref=e4104]
+                                      - text: 이 리소스
+                                  - gridcell "추가" [ref=e4106]:
+                                    - link "추가" [ref=e4108] [cursor=pointer]:
+                                      - /url: "#blade/Microsoft_Azure_AD/AbacEditorBlade/isReadOnly//roleAssignmentId/%2Fsubscriptions%2F331cddde-a813-40e5-affe-851f3f29e337%2Fproviders%2FMicrosoft.Authorization%2FroleAssignments%2F2500c0d0-e7a8-4b24-a1c4-c1b3f8149f38/abacSettings/%7B%7D"
+                                  - gridcell
+                              - row "그룹 확장 또는 축소 기여자 (3)" [expanded] [level=1] [ref=e4109]:
+                                - gridcell "그룹 확장 또는 축소 기여자 (3)" [ref=e4111]:
+                                  - button "그룹 확장 또는 축소" [expanded] [ref=e4114] [cursor=pointer]:
+                                    - img [ref=e4115]
+                                  - generic [ref=e4118]: 기여자 (3)
+                              - row "선택 취소됨 윤다솔 81fd1798-3603-4c38-8e93-88cbad3de359 사용자 기여자 이 리소스 없음" [level=2] [ref=e4119]:
+                                - generic [ref=e4120]:
+                                  - gridcell "선택 취소됨" [ref=e4121]:
+                                    - img "선택 취소됨" [ref=e4122]
+                                  - gridcell "윤다솔 81fd1798-3603-4c38-8e93-88cbad3de359" [ref=e4123]:
+                                    - generic [ref=e4127]:
+                                      - generic [ref=e4131]:
+                                        - paragraph
+                                      - link "윤다솔" [ref=e4133] [cursor=pointer]:
+                                        - /url: "#"
+                                      - generic "81fd1798-3603-4c38-8e93-88cbad3de359" [ref=e4134]
+                                  - gridcell "사용자" [ref=e4135]:
+                                    - generic [ref=e4136]: 사용자
+                                  - gridcell "기여자" [ref=e4137]:
+                                    - link "기여자" [ref=e4139] [cursor=pointer]:
+                                      - /url: "#blade/Microsoft_Azure_AD/RolePermissionsLandingBlade/allowRoleSelection//priorityRoles/%5B%5D/roleId/%2Fsubscriptions%2F331cddde-a813-40e5-affe-851f3f29e337%2Fproviders%2FMicrosoft.Authorization%2FroleDefinitions%2Fb24988ac-6180-42a0-ab88-20f7382dd24c/scope/%2Fsubscriptions%2F331cddde-a813-40e5-affe-851f3f29e337/showLinks/"
+                                  - gridcell "이 리소스" [ref=e4140]:
+                                    - generic [ref=e4141]:
+                                      - img [ref=e4143]
+                                      - text: 이 리소스
+                                  - gridcell "없음" [ref=e4145]:
+                                    - generic [ref=e4146]: 없음
+                                  - gridcell
+                              - row "선택 취소됨 최병휘 860e9017-516e-4fd8-974a-53c224b2e138 사용자 기여자 이 리소스 없음" [level=2] [ref=e4147]:
+                                - generic [ref=e4148]:
+                                  - gridcell "선택 취소됨" [ref=e4149]:
+                                    - img "선택 취소됨" [ref=e4150]
+                                  - gridcell "최병휘 860e9017-516e-4fd8-974a-53c224b2e138" [ref=e4151]:
+                                    - generic [ref=e4155]:
+                                      - generic [ref=e4159]:
+                                        - paragraph
+                                      - link "최병휘" [ref=e4161] [cursor=pointer]:
+                                        - /url: "#"
+                                      - generic "860e9017-516e-4fd8-974a-53c224b2e138" [ref=e4162]
+                                  - gridcell "사용자" [ref=e4163]:
+                                    - generic [ref=e4164]: 사용자
+                                  - gridcell "기여자" [ref=e4165]:
+                                    - link "기여자" [ref=e4167] [cursor=pointer]:
+                                      - /url: "#blade/Microsoft_Azure_AD/RolePermissionsLandingBlade/allowRoleSelection//priorityRoles/%5B%5D/roleId/%2Fsubscriptions%2F331cddde-a813-40e5-affe-851f3f29e337%2Fproviders%2FMicrosoft.Authorization%2FroleDefinitions%2Fb24988ac-6180-42a0-ab88-20f7382dd24c/scope/%2Fsubscriptions%2F331cddde-a813-40e5-affe-851f3f29e337/showLinks/"
+                                  - gridcell "이 리소스" [ref=e4168]:
+                                    - generic [ref=e4169]:
+                                      - img [ref=e4171]
+                                      - text: 이 리소스
+                                  - gridcell "없음" [ref=e4173]:
+                                    - generic [ref=e4174]: 없음
+                                  - gridcell
+                              - row "선택 취소됨 KF kt-finops 711464dc-c8ef-42c9-8382-17609b2db57e 그룹 기여자 이 리소스 없음" [level=2] [ref=e4175]:
+                                - generic [ref=e4176]:
+                                  - gridcell "선택 취소됨" [ref=e4177]:
+                                    - img "선택 취소됨" [ref=e4178]
+                                  - gridcell "KF kt-finops 711464dc-c8ef-42c9-8382-17609b2db57e" [ref=e4179]:
+                                    - generic [ref=e4183]:
+                                      - paragraph [ref=e4188]: KF
+                                      - link "kt-finops" [ref=e4190] [cursor=pointer]:
+                                        - /url: "#"
+                                      - generic "711464dc-c8ef-42c9-8382-17609b2db57e" [ref=e4191]
+                                  - gridcell "그룹" [ref=e4192]:
+                                    - generic [ref=e4193]: 그룹
+                                  - gridcell "기여자" [ref=e4194]:
+                                    - link "기여자" [ref=e4196] [cursor=pointer]:
+                                      - /url: "#blade/Microsoft_Azure_AD/RolePermissionsLandingBlade/allowRoleSelection//priorityRoles/%5B%5D/roleId/%2Fsubscriptions%2F331cddde-a813-40e5-affe-851f3f29e337%2Fproviders%2FMicrosoft.Authorization%2FroleDefinitions%2Fb24988ac-6180-42a0-ab88-20f7382dd24c/scope/%2Fsubscriptions%2F331cddde-a813-40e5-affe-851f3f29e337/showLinks/"
+                                  - gridcell "이 리소스" [ref=e4197]:
+                                    - generic [ref=e4198]:
+                                      - img [ref=e4200]
+                                      - text: 이 리소스
+                                  - gridcell "없음" [ref=e4202]:
+                                    - generic [ref=e4203]: 없음
+                                  - gridcell
+                          - generic [ref=e4207]:
+                            - generic [ref=e4208]: 1 중 4 - 4 결과 표시
+                            - generic [ref=e4209]:
+                              - navigation "페이지 매김":
+                                - list
+  - img [ref=e343]
+  - img [ref=e344]
+  - img [ref=e345]
+  - img [ref=e346]
+  - img [ref=e347]
+  - img [ref=e348]
+  - img [ref=e349]
+  - img [ref=e350]
+  - img [ref=e351]
+  - img [ref=e352]
+  - img [ref=e353]
+  - img [ref=e354]
+  - img [ref=e355]
+  - img [ref=e356]
+  - img [ref=e357]
+  - img [ref=e358]
+  - img [ref=e359]
+  - img [ref=e360]
+  - img [ref=e361]
+  - img [ref=e362]
+  - img [ref=e363]
+  - img [ref=e364]
+  - img [ref=e365]
+  - img [ref=e366]
+  - img [ref=e367]
+  - img [ref=e368]
+  - img [ref=e369]
+  - img [ref=e370]
+  - img [ref=e371]
+  - img [ref=e372]
+  - img [ref=e373]
+  - img [ref=e374]
+  - img [ref=e375]
+  - img [ref=e376]
+  - img [ref=e377]
+  - img [ref=e703]
+  - img [ref=e704]
+  - img [ref=e705]
+  - img [ref=e706]
+  - img [ref=e707]
+  - img [ref=e708]
+  - img [ref=e709]
+  - img [ref=e710]
+  - img [ref=e711]
+  - img [ref=e712]
+  - img [ref=e713]
+  - img [ref=e714]
+  - img [ref=e715]
+  - img [ref=e716]
+  - img [ref=e717]
+  - img [ref=e718]
+  - img [ref=e719]
+  - img [ref=e720]
+  - img [ref=e721]
+  - img [ref=e722]
+  - img [ref=e723]
+  - img [ref=e724]
+  - img [ref=e725]
+  - img [ref=e726]
+  - img [ref=e727]
+  - img [ref=e728]
+  - img [ref=e729]
+  - img [ref=e730]
+  - img [ref=e731]
+  - img [ref=e732]
+  - img [ref=e733]
+  - img [ref=e734]
+  - img [ref=e735]
+  - img [ref=e736]
+  - img [ref=e737]
+  - img [ref=e738]
+  - img [ref=e739]
+  - img [ref=e740]
+  - img [ref=e781]
+  - img [ref=e2266]
+  - img [ref=e4210]

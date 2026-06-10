@@ -1,7 +1,0 @@
-{
-  "tool_name": "mcp__pw__browser_navigate",
-  "tool_input_preview": "{\"url\":\"http://127.0.0.1:8767/ktds/AI/ai_agentic.html\"}",
-  "error": "### Error\nError: browserBackend.callTool: Target page, context or browser has been closed",
-  "timestamp": "2026-06-08T03:38:24.083Z",
-  "retry_count": 1
-}

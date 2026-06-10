@@ -1,0 +1,38 @@
+- generic [ref=e5]:
+  - img "조직 배경 이미지" [ref=e7]
+  - generic [ref=e8]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - img "Microsoft" [ref=e17]
+        - main [ref=e18]:
+          - generic [ref=e21]:
+            - generic [ref=e24]:
+              - heading "로그인" [level=1] [ref=e25]
+              - generic [ref=e26]: Microsoft Azure(으)로 계속
+            - generic [ref=e27]:
+              - alert
+              - generic [ref=e29]:
+                - textbox "전자 메일, 전화 또는 Skype를 입력하세요." [active] [ref=e30]:
+                  - /placeholder: 전자 메일, 전화 또는 Skype
+                - textbox [ref=e31]
+            - generic [ref=e35]:
+              - generic [ref=e36]:
+                - text: 계정이 없으신가요?
+                - link "Microsoft 계정 만들기" [ref=e37] [cursor=pointer]:
+                  - /url: https://login.live.com/oauth20_authorize.srf?scope=openid+profile+email+offline_access&response_type=code&client_id=51483342-085c-4d86-bf88-cf50c7252078&response_mode=form_post&redirect_uri=https%3a%2f%2flogin.microsoftonline.com%2fcommon%2ffederation%2foauth2msa&state=rQQIARAAjZE_bBJhAMXvK4VS0gpiYjRxYGjUiNx_jqOxA_0n0AJCgRaW5vjuO_jg7r7z7iiWUZeOHRxMh5o4dMDBqktjjHFx6cRoamI6ODRNjMapkzEM7l1e8vLyS97LC3jjtEyz9zw8zc7OQFFsiKwsxIRGg42JScjFGmJCjSUTIooLsKFqAsz64iwnCqwdDoQeHOyDp7mf_f03ePj6b-jZHpjc1PEWoiExBuBOy3UtZ5ZhkOnaCm1gaBOHaO4oZZSu22J00sQmcwTAEIAzAAZjMyyXRIokwJioymIsIYkolpQgF4vLPORhUhYEqJ2MBQuprtviR0Js3Ed_xvyarTQNZLp7HgttZ636QkbKtFNPCuvVVr6db6-WS53CYs7N8yWjvsa1an3VWC2nejk-wxXKS0KuX2QLaxknY3C6-nAJF0wHK-txtr6RbdWEktXg4xW0Ma9n2gRDo9pRNrJ6TShibYOdG3hm_i81FFNpolEPGhIb0T1sqqTn0CZymXeeaWI3FRP3FRcT0zn2rFwGY2gVaUpXdyPEQiZWI5ZNNKyjCNE0HZtoU4EQOc5XDxiOg_Px635vyH-DilB3b7OeWb8_EKJG7mIcvPKGA6Fh8Pt2-f3LpZ2bh18Wbz2njr1MgRcfdXR5xaqUuqmi9FiUs0vz83GrYbqVqs1xGsMI-spCtJ_uzPGz3JkX7PrAru_asS9oOIpOtx26YZOeg-zfPrAzQX2YvOzxLwJgEIgaW8J2Hi-aWUyKUqqi92tETSfifEmu1eSc5fZaORZ10HK-VzsMgMMpcDI1FZiAOlYVVwkD7vM0dXHl46cf344O3v5KnwfvQ5x2y1axuoxltW4nSVlic8kOlpr1Glp3tjqWkWDVaLSbkZtzhyHqNESdXqUurkZ2wtQgDLh_0&estsfed=1&uaid=019ea63c4d827aed9eaf69d0abfe1083&signup=1&lw=1&fl=easi2&cobrandid=ed5d1924-9524-4e70-8f68-5ee5e35afbef&fci=c44b4083-3bb0-49c1-b47d-974e53cbdf3c
+                  - text: 계정을 만드세요!
+              - link "본인 계정으로 로그인할 수 없습니까?" [ref=e39] [cursor=pointer]:
+                - /url: "#"
+            - button "다음" [ref=e42] [cursor=pointer]
+      - generic [ref=e45]:
+        - button "로그인 옵션" [ref=e48] [cursor=pointer]:
+          - generic [ref=e52]: 로그인 옵션
+        - button "GitHub(으)로 로그인" [ref=e55] [cursor=pointer]:
+          - generic [ref=e59]: GitHub(으)로 로그인
+    - contentinfo [ref=e60]:
+      - generic [ref=e61]:
+        - link "사용 약관" [ref=e62] [cursor=pointer]:
+          - /url: https://www.microsoft.com/ko-KR/servicesagreement/
+        - link "개인정보처리방침 및 위치정보이용약관" [ref=e63] [cursor=pointer]:
+          - /url: https://privacy.microsoft.com/ko-KR/privacystatement
+        - button "문제 해결 정보를 보려면 여기를 클릭하세요." [ref=e64] [cursor=pointer]: ...

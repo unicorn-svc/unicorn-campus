@@ -1,0 +1,31 @@
+[      32ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[      32ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[      89ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[      89ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[     864ms] [LOG] Version: 17.385.0.1
+Session: d2563a5387e94b2aaecb50b1cf3d675f @ https://entra.microsoft.com/Content/Dynamic/k80GJpTTTJ9c.js:383
+[    1100ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[    1100ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[    1112ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[    1112ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[    1406ms] [LOG] Extension: Microsoft_Entra_Copilot @ blob:https://entra.microsoft.com/ab6ffba4-a548-447c-8109-37764cc7319c:0
+[    1408ms] [LOG] Extension: HubsExtension @ blob:https://entra.microsoft.com/ab6ffba4-a548-447c-8109-37764cc7319c:0
+[    1441ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://entra.microsoft.com/#view/Microsoft_AAD_IAM/GroupDetailsMenuBlade/~/Members/groupId/711464dc-c8ef-42c9-8382-17609b2db57e:0
+[    1810ms] [ERROR] [Microsoft_Entra_Copilot]  오후 5:15:07 MsPortalFx/MsPortalFxEnd MsPortalFxEnd: Uncaught Error: Module name "buffer" has not been loaded yet. Use require([]). {error: Object} @ https://entra.microsoft.com/Content/Dynamic/nq_A6dwmcvdo.js:0
+[    1812ms] [ERROR] [Microsoft_Entra_Copilot]  오후 5:15:07 MsPortalFx/MsPortalFxEnd MsPortalFxEnd: Uncaught Error: Module name "long" has not been loaded yet. Use require([]). {error: Object} @ https://entra.microsoft.com/Content/Dynamic/nq_A6dwmcvdo.js:0
+[    2112ms] [ERROR] [Microsoft_Entra_Copilot]  오후 5:15:07 MsPortalFx/MsPortalFxEnd MsPortalFxEnd: Uncaught Error: Module name "buffer" has not been loaded yet. Use require([]). {error: Object} @ https://entra.microsoft.com/Content/Dynamic/nq_A6dwmcvdo.js:0
+[    2113ms] [ERROR] [Microsoft_Entra_Copilot]  오후 5:15:07 MsPortalFx/MsPortalFxEnd MsPortalFxEnd: Uncaught Error: Module name "long" has not been loaded yet. Use require([]). {error: Object} @ https://entra.microsoft.com/Content/Dynamic/nq_A6dwmcvdo.js:0
+[    2318ms] [LOG] Extension: Microsoft_AAD_IAM @ blob:https://entra.microsoft.com/ab6ffba4-a548-447c-8109-37764cc7319c:0
+[    3232ms] [ERROR] Refused to get unsafe header "request-id" @ https://hosting.portal.azure.net/iam/Content/Dynamic/hMnQ3GcJaxtH.js:2
+[    3511ms] [ERROR] Refused to get unsafe header "request-id" @ https://hosting.portal.azure.net/iam/Content/Dynamic/xfdZThOhi2k5.js:2
+[    3651ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ https://graph.microsoft.com/beta/$batch:0
+[    3703ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ https://graph.microsoft.com/beta/$batch:0
+[    3913ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[    4307ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[    4307ms] [ERROR] Refused to get unsafe header "client-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[    4475ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[    4499ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[    5433ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[    5433ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'battery'. @ :0
+[    5559ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
+[    7953ms] [ERROR] Refused to get unsafe header "x-ms-correlation-request-id" @ https://entra.microsoft.com/Content/Dynamic/vd9YS_hkREq-.js:14
