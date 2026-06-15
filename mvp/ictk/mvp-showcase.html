@@ -1,0 +1,1284 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ICTK 디바이스 보안 MVP 쇼케이스 — 발급·인증·운영</title>
+<style>
+  :root{
+    --brand:#0d9488; --brand-2:#14b8a6; --brand-ink:#0f766e; --brand-soft:#e6faf6; --brand-soft2:#d3f3ec;
+    --ink:#0f1f2e; --ink-2:#3a4f63; --ink-3:#6b7f92; --ink-4:#93a4b4;
+    --line:#e4eaf0; --line-2:#eef2f6; --bg:#eef3f7; --card:#ffffff; --soft:#f4f8fb;
+    --green:#15a34a; --green-soft:#e7f6ec; --amber:#d97706; --amber-soft:#fdf2e1;
+    --red:#dc2626; --red-soft:#fcebeb; --blue:#2563eb; --blue-soft:#e9f0fe; --gray:#64748b; --gray-soft:#eef1f5;
+    --shadow-sm:0 1px 2px rgba(16,31,46,.05);
+    --shadow:0 1px 2px rgba(16,31,46,.04),0 10px 30px rgba(16,31,46,.07);
+    --shadow-lg:0 24px 60px rgba(16,31,46,.16);
+    --radius:16px; --radius-sm:10px;
+    --sans:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --mono:"SFMono-Regular",Consolas,"JetBrains Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.65;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,h4{margin:0;line-height:1.3;letter-spacing:-.02em}
+  p{margin:0}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ===== NAV ===== */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1120px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:20px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:15.5px;color:var(--ink)}
+  .brand .dot{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--brand-2),var(--brand-ink));
+    display:grid;place-items:center;color:#fff;font-size:14px}
+  .nav-links{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+  .nav-links a{padding:7px 13px;border-radius:999px;font-size:13.5px;font-weight:600;color:var(--ink-2);transition:.15s}
+  .nav-links a:hover{background:var(--brand-soft);color:var(--brand-ink)}
+  .nav-links a.active{background:var(--brand);color:#fff}
+
+  /* ===== HERO ===== */
+  .hero{padding:64px 0 30px;background:
+    radial-gradient(1200px 380px at 70% -10%,#d8f3ee 0%,rgba(216,243,238,0) 70%),var(--bg)}
+  .kicker{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);
+    color:var(--brand-ink);font-weight:700;font-size:12.5px;padding:6px 13px;border-radius:999px;box-shadow:var(--shadow-sm)}
+  .hero h1{font-size:42px;margin:18px 0 0;letter-spacing:-.035em}
+  .hero h1 .hl{color:var(--brand)}
+  .hero .lead{font-size:17.5px;color:var(--ink-2);margin-top:16px;max-width:760px}
+  .puf-card{display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:20px 22px;margin-top:26px;box-shadow:var(--shadow)}
+  .puf-card .ic{font-size:30px;line-height:1;flex:none;width:54px;height:54px;border-radius:14px;
+    background:var(--brand-soft);display:grid;place-items:center}
+  .puf-card b{color:var(--brand-ink)}
+  .puf-card .t{font-size:15px;color:var(--ink-2)}
+  .puf-card .t .lead-w{font-weight:800;color:var(--ink);font-size:16px}
+
+  /* lifecycle band */
+  .lifecycle{margin-top:30px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;box-shadow:var(--shadow)}
+  .lifecycle .lc-img{display:block;width:100%;border-bottom:1px solid var(--line-2);background:#f7fbfd}
+  .lc-head{padding:18px 22px 0}
+  .lc-head h3{font-size:18px}
+  .lc-head p{color:var(--ink-3);font-size:13.5px;margin-top:6px}
+  .lc-steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:18px 22px 22px}
+  .lc-step{border:1px solid var(--line);border-radius:12px;padding:14px 15px;background:var(--soft);position:relative}
+  .lc-step .n{position:absolute;top:-11px;left:14px;width:24px;height:24px;border-radius:50%;background:var(--brand);
+    color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center;box-shadow:0 2px 6px rgba(13,148,136,.4)}
+  .lc-step h4{font-size:14.5px;margin-top:4px}
+  .lc-step .stage{font-size:12px;color:var(--brand-ink);font-weight:700;margin:2px 0 6px}
+  .lc-step p{font-size:12.5px;color:var(--ink-3)}
+  .thread{display:flex;gap:10px;align-items:center;margin:0 22px 20px;padding:12px 15px;border-radius:12px;
+    background:var(--brand-soft);border:1px dashed var(--brand-2);font-size:13px;color:var(--brand-ink)}
+  .thread code{font-family:var(--mono);background:#fff;border:1px solid var(--brand-soft2);padding:1px 7px;border-radius:6px;font-weight:700}
+
+  /* summary cards */
+  .sum{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+  .sum a{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;display:block;
+    transition:.18s;box-shadow:var(--shadow-sm)}
+  .sum a:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--brand-2)}
+  .sum .badge-n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--brand-soft);
+    color:var(--brand-ink);font-weight:800;font-size:15px;margin-bottom:10px}
+  .sum h4{font-size:16px}
+  .sum .role{font-size:12px;color:var(--brand-ink);font-weight:700;margin-top:3px}
+  .sum p{font-size:13px;color:var(--ink-3);margin-top:8px}
+
+  /* ===== SECTION ===== */
+  .mvp{padding:62px 0 8px;border-top:1px solid var(--line);scroll-margin-top:64px}
+  .mvp:nth-child(odd){background:linear-gradient(180deg,#fff 0%,var(--bg) 360px)}
+  .sec-head{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap}
+  .sec-head .num{flex:none;width:60px;height:60px;border-radius:18px;background:linear-gradient(135deg,var(--brand-2),var(--brand-ink));
+    color:#fff;font-weight:800;font-size:26px;display:grid;place-items:center;box-shadow:0 8px 22px rgba(13,148,136,.35)}
+  .sec-head .stage-badge{display:inline-flex;align-items:center;gap:7px;background:var(--brand-soft);color:var(--brand-ink);
+    font-weight:700;font-size:12.5px;padding:5px 12px;border-radius:999px;margin-bottom:8px}
+  .sec-head h2{font-size:30px}
+  .sec-head .en{color:var(--brand)}
+  .sec-head .role{font-size:14.5px;color:var(--ink-2);margin-top:8px;max-width:720px}
+  .tagline{font-size:16px;font-weight:700;color:var(--ink);margin:18px 0 0;padding:14px 18px;border-left:4px solid var(--brand);
+    background:var(--brand-soft);border-radius:0 12px 12px 0}
+  .analogy-row{display:flex;gap:12px;align-items:flex-start;margin-top:14px;font-size:14.5px;color:var(--ink-2)}
+  .analogy-row .em{font-size:20px;flex:none}
+  .hero-shot{margin-top:22px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#fff}
+  .hero-shot img{display:block;width:100%}
+
+  /* blocks */
+  .block{margin-top:34px}
+  .block-label{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;color:var(--brand-ink);
+    text-transform:none;letter-spacing:.01em;margin-bottom:14px}
+  .block-label .bar{width:22px;height:3px;border-radius:2px;background:var(--brand)}
+  .block-label .q{color:var(--ink-3);font-weight:600}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+  .pad{padding:22px 24px}
+
+  /* target customer */
+  .persona{display:flex;gap:16px;align-items:flex-start;padding:20px 22px;border-bottom:1px solid var(--line-2)}
+  .persona .ava{flex:none;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--brand-2),var(--brand-ink));
+    color:#fff;font-weight:800;font-size:22px;display:grid;place-items:center}
+  .persona .pn{font-weight:800;font-size:16px}
+  .persona .pr{font-size:13px;color:var(--brand-ink);font-weight:700;margin-top:2px}
+  .persona .pd{font-size:13.5px;color:var(--ink-2);margin-top:8px}
+  .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .meta-grid > div{padding:16px 22px}
+  .meta-grid > div:first-child{border-right:1px solid var(--line-2)}
+  .meta-grid h5{font-size:12.5px;color:var(--ink-3);font-weight:700;margin-bottom:6px}
+  .meta-grid p{font-size:13.5px;color:var(--ink-2)}
+  .pain{display:inline-flex;align-items:center;gap:6px;background:var(--red-soft);color:var(--red);font-weight:800;
+    font-size:12px;padding:4px 11px;border-radius:999px}
+
+  /* problem */
+  .prob-head{font-size:18.5px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+  .story{margin-top:16px;background:var(--soft);border:1px solid var(--line-2);border-left:4px solid var(--ink-4);
+    border-radius:0 12px 12px 0;padding:18px 20px;font-size:14px;color:var(--ink-2);position:relative}
+  .story .tag{position:absolute;top:-11px;left:16px;background:var(--ink-2);color:#fff;font-size:11px;font-weight:700;
+    padding:3px 10px;border-radius:999px}
+  .cons{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:9px}
+  .cons li{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;color:var(--ink-2);
+    background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 14px}
+  .cons li .x{flex:none;color:var(--red);font-weight:800;margin-top:1px}
+
+  /* value + before/after */
+  .uv-head{font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--brand-ink)}
+  .uv-points{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px}
+  .uv-points li{display:flex;gap:11px;align-items:flex-start;font-size:13.7px;color:var(--ink-2)}
+  .uv-points li .c{flex:none;color:var(--brand);font-weight:800;margin-top:1px}
+  .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin-top:22px}
+  .ba .col{border-radius:14px;padding:16px 18px;font-size:13.5px}
+  .ba .before{background:var(--red-soft);border:1px solid #f5cccc;color:#7c2727}
+  .ba .after{background:var(--brand-soft);border:1px solid var(--brand-soft2);color:#0c5d54}
+  .ba .lab{font-weight:800;font-size:12.5px;display:flex;align-items:center;gap:7px;margin-bottom:8px}
+  .ba .arrow{align-self:center;font-size:22px;color:var(--brand);font-weight:800}
+
+  /* features */
+  .feat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow-sm);
+    transition:.16s}
+  .feat:hover{border-color:var(--brand-2);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .feat .fic{font-size:24px;width:46px;height:46px;border-radius:12px;background:var(--brand-soft);display:grid;
+    place-items:center;margin-bottom:12px}
+  .feat h4{font-size:15px}
+  .feat .exp{font-size:13px;color:var(--ink-2);margin-top:8px}
+  .feat .ana{font-size:12.5px;color:var(--ink-3);margin-top:10px;padding-left:11px;border-left:2px solid var(--line);font-style:italic}
+  .feat .ben{font-size:12.5px;color:var(--brand-ink);margin-top:10px;background:var(--brand-soft);border-radius:8px;padding:8px 10px;font-weight:600}
+  .feat .ben b{font-weight:800}
+
+  /* ===== MOCKUP (browser frame + app) ===== */
+  .screens-tabs{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px;gap:4px;margin-bottom:16px}
+  .screens-tabs button{border:0;background:transparent;font-family:inherit;font-weight:700;font-size:13px;color:var(--ink-3);
+    padding:7px 16px;border-radius:999px;cursor:pointer;transition:.15s}
+  .screens-tabs button.on{background:var(--brand);color:#fff}
+  .screen-pane{display:none}
+  .screen-pane.on{display:block;animation:fade .3s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .scene-cap{font-size:13px;color:var(--ink-2);background:var(--soft);border:1px solid var(--line-2);border-radius:12px;
+    padding:13px 16px;margin-top:14px;display:flex;gap:10px}
+  .scene-cap .em{flex:none}
+
+  .win{border-radius:14px;overflow:hidden;border:1px solid #d4dde6;box-shadow:var(--shadow-lg);background:#fff}
+  .win-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#eef2f6;border-bottom:1px solid #dde4ec}
+  .win-bar .dots{display:flex;gap:6px}
+  .win-bar .dots i{width:11px;height:11px;border-radius:50%;display:block}
+  .win-bar .dots i:nth-child(1){background:#ff5f57}.win-bar .dots i:nth-child(2){background:#febc2e}.win-bar .dots i:nth-child(3){background:#28c840}
+  .win-bar .url{flex:1;text-align:center;font-size:12px;color:#6b7f92;font-family:var(--mono);background:#fff;border:1px solid #dde4ec;
+    border-radius:7px;padding:4px 10px;max-width:420px;margin:0 auto;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+  .app{display:grid;grid-template-columns:210px 1fr;background:#f6f9fb;min-height:300px}
+  .app.solo{grid-template-columns:1fr}
+  .side{background:#0f2230;color:#cfe0ec;padding:16px 12px;font-size:13px}
+  .side .logo{display:flex;align-items:center;gap:8px;font-weight:800;color:#fff;font-size:14px;padding:6px 8px 14px}
+  .side .logo .d{width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--brand-2),var(--brand));display:grid;place-items:center;font-size:12px}
+  .side a{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:9px;color:#9db3c4;font-weight:600;margin-bottom:2px}
+  .side a .ct{margin-left:auto;background:#ff5f57;color:#fff;font-size:10.5px;font-weight:800;border-radius:999px;padding:1px 7px}
+  .side a.on{background:rgba(20,184,166,.18);color:#fff}
+  .main{padding:18px 20px;min-width:0}
+  .apptop{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+  .apptop h3{font-size:16px;color:var(--ink)}
+  .apptop .sp{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;
+    padding:5px 11px;font-size:12px;color:var(--ink-2);font-weight:600}
+  .live{color:var(--green)}
+  .ava-sm{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--brand-2),var(--brand-ink));color:#fff;
+    display:grid;place-items:center;font-weight:800;font-size:12px}
+
+  .alert{display:flex;gap:11px;align-items:center;border-radius:11px;padding:11px 15px;font-size:12.8px;margin-bottom:14px;font-weight:600}
+  .alert .a-act{margin-left:auto;display:flex;gap:8px;flex:none}
+  .alert.danger{background:var(--red-soft);border:1px solid #f3c9c9;color:#9a2020}
+  .alert.warn{background:var(--amber-soft);border:1px solid #f3ddb4;color:#92590a}
+  .alert.info{background:var(--blue-soft);border:1px solid #cdddfb;color:#1c47ab}
+  .alert.ok{background:var(--green-soft);border:1px solid #bfe6cb;color:#0f7a37}
+  .mini{font-size:11px;font-weight:700;border-radius:7px;padding:3px 9px;border:1px solid currentColor;opacity:.85;white-space:nowrap}
+
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:14px}
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 14px}
+  .kpi .k-l{font-size:11.5px;color:var(--ink-3);font-weight:700}
+  .kpi .k-v{font-size:21px;font-weight:800;color:var(--ink);margin-top:5px;letter-spacing:-.02em}
+  .kpi .k-s{font-size:11.5px;margin-top:4px;font-weight:700}
+  .up{color:var(--green)} .down{color:var(--red)} .mut{color:var(--ink-3);font-weight:600}
+  .kpi.alarm{border-color:#f1c4c4;background:linear-gradient(180deg,#fff,#fdf1f1)}
+  .kpi.alarm .k-v{color:var(--red)}
+
+  .row2{display:grid;grid-template-columns:1.7fr 1fr;gap:12px;margin-bottom:14px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 15px}
+  .panel .p-h{font-size:12.5px;font-weight:800;color:var(--ink-2);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+  .panel .p-h .tagm{margin-left:auto;font-size:11px;color:var(--ink-4);font-weight:600}
+  .chart-svg{width:100%;height:130px;display:block}
+  .legend{display:flex;flex-direction:column;gap:7px;margin-top:6px}
+  .legend .lg{display:flex;align-items:center;gap:8px;font-size:11.8px;color:var(--ink-2)}
+  .legend .sw{width:11px;height:11px;border-radius:3px;flex:none}
+  .donut-wrap{display:flex;gap:14px;align-items:center}
+  .donut{width:108px;height:108px;border-radius:50%;flex:none;display:grid;place-items:center;position:relative}
+  .donut::after{content:"";position:absolute;inset:18px;background:#fff;border-radius:50%}
+  .donut .dc{position:relative;z-index:1;text-align:center;font-size:11px;color:var(--ink-3);font-weight:700;line-height:1.3}
+  .donut .dc b{display:block;font-size:14.5px;color:var(--ink);font-weight:800}
+
+  table.mt{width:100%;border-collapse:collapse;font-size:12.3px}
+  table.mt th{text-align:left;color:var(--ink-3);font-weight:700;font-size:11.3px;padding:8px 10px;border-bottom:1px solid var(--line);
+    background:var(--soft);white-space:nowrap}
+  table.mt td{padding:9px 10px;border-bottom:1px solid var(--line-2);color:var(--ink-2);white-space:nowrap}
+  table.mt tr:last-child td{border-bottom:0}
+  table.mt td.id{font-family:var(--mono);color:var(--ink);font-weight:600}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+  .tbl-h{display:flex;align-items:center;gap:10px;padding:11px 14px 0}
+  .tbl-h .p-h{font-size:12.5px;font-weight:800;color:var(--ink-2)}
+  .tbl-h .sp{margin-left:auto;display:flex;gap:7px}
+
+  .b{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;border-radius:999px;padding:2px 9px;white-space:nowrap}
+  .b.g{background:var(--green-soft);color:#0f7a37}.b.a{background:var(--amber-soft);color:#92590a}
+  .b.r{background:var(--red-soft);color:#9a2020}.b.gr{background:var(--gray-soft);color:#475569}.b.t{background:var(--brand-soft);color:var(--brand-ink)}
+  .btn{display:inline-flex;align-items:center;gap:6px;font-size:11.8px;font-weight:700;border-radius:9px;padding:7px 12px;
+    border:1px solid var(--line);background:#fff;color:var(--ink-2);cursor:default}
+  .btn.pri{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .btn.dng{background:#fff;color:var(--red);border-color:#f0c4c4}
+  .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
+  .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+  /* detail layouts */
+  .d3{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:12px}
+  .d2{display:grid;grid-template-columns:1fr 1.2fr;gap:12px}
+  .kv{font-size:12.3px;color:var(--ink-2);display:grid;gap:7px}
+  .kv .r{display:flex;gap:8px;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:6px}
+  .kv .r b{color:var(--ink);font-weight:700;text-align:right;font-family:var(--mono);font-size:11.7px}
+  .tl{list-style:none;padding:0;margin:0;position:relative}
+  .tl li{position:relative;padding:0 0 14px 24px;font-size:12.3px;color:var(--ink-2)}
+  .tl li::before{content:"";position:absolute;left:6px;top:3px;width:11px;height:11px;border-radius:50%;background:var(--brand);
+    box-shadow:0 0 0 3px var(--brand-soft)}
+  .tl li::after{content:"";position:absolute;left:11px;top:14px;bottom:0;width:2px;background:var(--line)}
+  .tl li:last-child::after{display:none}
+  .tl li.bad::before{background:var(--red);box-shadow:0 0 0 3px var(--red-soft)}
+  .tl li.warn::before{background:var(--amber);box-shadow:0 0 0 3px var(--amber-soft)}
+  .tl li .tt{font-weight:700;color:var(--ink)}
+  .tl li .ts{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+  .bigbadge{display:flex;align-items:center;gap:12px;background:var(--green-soft);border:1px solid #bfe6cb;border-radius:12px;
+    padding:14px 16px}
+  .bigbadge.r{background:var(--red-soft);border-color:#f3c9c9}
+  .bigbadge .ic{font-size:26px}
+  .bigbadge .t b{display:block;font-size:15px;color:#0f7a37}
+  .bigbadge.r .t b{color:#9a2020}
+  .bigbadge .t span{font-size:12px;color:var(--ink-3)}
+  .searchbar{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:10px;
+    padding:9px 13px;font-size:13px;color:var(--ink-2);margin-bottom:12px;font-family:var(--mono)}
+
+  /* business value band */
+  .biz{margin-top:30px;background:linear-gradient(135deg,#0f2a33,#0c5d54);color:#dff5f0;border-radius:var(--radius);
+    padding:24px 26px;box-shadow:var(--shadow)}
+  .biz .bl{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:#9beadc;
+    background:rgba(255,255,255,.08);padding:5px 12px;border-radius:999px;margin-bottom:12px}
+  .biz p{font-size:14px;color:#cdeee7}
+  .biz .price{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+  .biz .price .chip{background:rgba(255,255,255,.1);border:1px solid rgba(155,234,220,.3);border-radius:10px;padding:9px 13px;
+    font-size:12.5px;color:#eafbf7}
+  .biz .price .chip b{color:#fff}
+  .biz .price .chip .ex{font-size:10.5px;color:#9beadc;font-weight:700;margin-right:6px}
+
+  /* blueprint */
+  .bp{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;align-items:start}
+  .bp-img{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:var(--shadow-sm)}
+  .bp-img img{display:block;width:100%}
+  .bp-legend{display:flex;flex-direction:column;gap:10px}
+  .bp-row{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:var(--shadow-sm)}
+  .bp-row .bp-h{font-size:12.5px;font-weight:800;color:#fff;padding:7px 13px}
+  .bp-row p{font-size:12.3px;color:var(--ink-2);padding:10px 13px;line-height:1.55}
+  .bp-row p b{color:var(--ink);font-weight:800}
+  .bp-row.money .bp-h{background:#15a34a}
+  .bp-row.service .bp-h{background:#2563eb}
+  .bp-row.data .bp-h{background:#7c3aed}
+  .bp-row.sec .bp-h{background:#d97706}
+  @media(max-width:900px){.bp{grid-template-columns:1fr}}
+
+  /* footer */
+  .foot{margin-top:60px;border-top:1px solid var(--line);background:#fff;padding:34px 0 50px}
+  .foot .wrap{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
+  .foot h4{font-size:16px}
+  .foot p{font-size:13px;color:var(--ink-3);margin-top:8px;max-width:680px}
+  .foot .ln{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+  .foot .ln a{font-size:12.5px;font-weight:700;color:var(--brand-ink);background:var(--brand-soft);border:1px solid var(--brand-soft2);
+    border-radius:9px;padding:8px 13px}
+
+  .note{font-size:11.5px;color:var(--ink-4);margin-top:8px}
+  @media(max-width:900px){
+    .lc-steps,.sum,.feat-grid{grid-template-columns:1fr}
+    .kpis{grid-template-columns:1fr 1fr}
+    .row2,.d3,.d2,.ba{grid-template-columns:1fr}
+    .ba .arrow{transform:rotate(90deg)}
+    .meta-grid{grid-template-columns:1fr}
+    .meta-grid>div:first-child{border-right:0;border-bottom:1px solid var(--line-2)}
+    .hero h1{font-size:32px}
+    .app{grid-template-columns:1fr}.side{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-in">
+    <div class="brand"><span class="dot">🔐</span> ICTK 디바이스 보안 플랫폼</div>
+    <div class="nav-links">
+      <a href="#top" class="active">개요</a>
+      <a href="#mvp1">① 발급</a>
+      <a href="#mvp2">② 인증</a>
+      <a href="#mvp3">③ 운영</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="kicker">🔐 PUF 보안칩 기반 · 디바이스 보안 MVP 3종</span>
+    <h1>보안칩 하나로 만드는<br/><span class="hl">3가지 디바이스 보안 서비스</span></h1>
+    <p class="lead">ICTK의 PUF 보안칩을 활용해, 디바이스가 <b>태어나고(발급) · 드나들고(인증) · 살아가는(운영)</b>
+      전 과정을 지켜주는 3개의 서비스입니다. 각 MVP의 <b>타겟 고객 · 해결하는 문제 · 고유 가치 · 핵심 기능</b>을
+      실제 제품 화면 예시와 함께 쉽게 풀어봅니다.</p>
+
+    <div class="puf-card">
+      <div class="ic">🫆</div>
+      <div class="t">
+        <span class="lead-w">먼저, PUF = 디바이스의 '지문'</span><br/>
+        같은 설계로 같은 공장에서 찍어내도 반도체 칩마다 회로의 전기적 특성이 <b>미세하게 다릅니다.</b>
+        사람 지문처럼 세상에 단 하나뿐이고, 복사하려 해도 똑같이 만들 수 없습니다. PUF는 키를 <b>저장</b>하는 게 아니라, 필요할 때마다 칩 안에서 <b>개인키를 다시 만들어냅니다</b>(그래서 뜯어도 빼낼 수 없음).
+        정리하면 — <b>지문(PUF) → 그 지문으로 판 도장(개인키) → "이 도장이 진짜"임을 공인한 인감증명서(X.509 인증서)</b>. 아래 3개 서비스가 모두 이 구조를 씁니다.
+      </div>
+    </div>
+
+    <!-- lifecycle -->
+    <section class="lifecycle">
+      <img class="lc-img" src="images/mvp-overview.png" alt="디바이스 보안 생애주기: 발급 → 인증 → 운영"/>
+      <div class="lc-head">
+        <h3>한 도어록의 일생으로 보는 3개 서비스</h3>
+        <p>스마트 도어록 <b>DK-8842301</b> 한 대를 따라가며, 같은 디바이스가 세 단계에서 어떻게 보호받는지 이어집니다.</p>
+      </div>
+      <div class="lc-steps">
+        <div class="lc-step"><span class="n">1</span><h4>출생신고</h4><div class="stage">발급 · TrustProvision</div>
+          <p>공장에서 만들어지는 순간, 지문으로 키쌍을 만들고 그 공개키에 공인 인증서(X.509)를 발급받음.</p></div>
+        <div class="lc-step"><span class="n">2</span><h4>출입심사</h4><div class="stage">인증 · DeviceTrust Gateway</div>
+          <p>서버에 접속할 때마다 지문으로 "진짜 정품?"을 확인받고 통과함.</p></div>
+        <div class="lc-step"><span class="n">3</span><h4>건강검진·CCTV</h4><div class="stage">운영 · DeviceGuard</div>
+          <p>현장에서 사는 동안 위변조·이상을 24시간 감시받고, 문제 시 즉시 격리됨.</p></div>
+      </div>
+      <div class="thread">🧵 <span>같은 도어록 <code>DK-8842301</code>이 ① 발급되고 → ② 새벽에 복제 공격을 받아 인증에서 차단되고 →
+        ③ 운영 중 위변조가 탐지돼 자동 격리되는, <b>한 디바이스의 일생</b>으로 세 화면이 이어집니다.</span></div>
+    </section>
+
+    <!-- summary cards -->
+    <div class="sum">
+      <a href="#mvp1"><span class="badge-n">①</span><h4>TrustProvision</h4><div class="role">디바이스 키 프로비저닝 · 발급</div>
+        <p>공장 출하 시 모든 디바이스에 위조 불가능한 신분증을 자동 발급·추적하는 SaaS.</p></a>
+      <a href="#mvp2"><span class="badge-n">②</span><h4>DeviceTrust Gateway</h4><div class="role">디바이스 인증·인가 · 인증</div>
+        <p>비밀번호 없이 칩 지문으로, 정품 기기만 통과시키는 디바이스 출입심사대.</p></a>
+      <a href="#mvp3"><span class="badge-n">③</span><h4>DeviceGuard</h4><div class="role">위변조 탐지·신뢰 모니터링 · 운영</div>
+        <p>출고된 디바이스를 24시간 감시하다 위변조 순간 자동 격리하는 보안 관제.</p></a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= MVP 1 ================= -->
+<section class="mvp" id="mvp1">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="num">①</div>
+      <div>
+        <span class="stage-badge">🍼 발급(Provisioning) · 디바이스의 '출생신고' 단계</span>
+        <h2><span class="en">TrustProvision</span> — 디바이스 키 프로비저닝</h2>
+        <p class="role">공장 출하 시 디바이스가 PUF로 만든 공개키에 복제 불가능한 공인 인증서(X.509)를 자동으로 발급·등록·추적·폐기하는 클라우드 서비스. (개인키는 칩 안에서 재생성되어 밖으로 나오지 않음)</p>
+      </div>
+    </div>
+    <p class="tagline">"공장 라인을 흐르는 모든 디바이스에 위조 불가능한 신분증을, 한 대 한 대 자동으로 — 그리고 발급한 건수만큼 매달 매출이 되는 SaaS."</p>
+    <div class="analogy-row"><span class="em">🪪</span><div>도어록이 공장에서 '태어나는' 순간, 칩 속 PUF 지문을 읽어 평생 쓸 신분증을 발급해 주는 <b>디바이스 전용 '출생신고 + 주민등록증 발급 창구'</b>.</div></div>
+    <!-- blueprint (가치 흐름) -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>가치 흐름 블루프린트 <span class="q">· 누가 누구에게 돈을 내고, ICTK는 어디서 버는가</span></div>
+      <div class="bp">
+        <div class="bp-img"><svg viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="OEM 제조사가 ICTK에 발급료를 내고, ICTK는 디바이스에 인증서를 발급하며, 디바이스 데이터가 ICTK로 모인다" style="width:100%;height:auto;display:block;background:#fbfdff">
+          <defs>
+            <marker id="g1" markerUnits="userSpaceOnUse" markerWidth="22" markerHeight="22" refX="18" refY="11" orient="auto"><path d="M2,3 L19,11 L2,19 Z" fill="#15a34a"/></marker>
+            <marker id="b1" markerUnits="userSpaceOnUse" markerWidth="22" markerHeight="22" refX="18" refY="11" orient="auto"><path d="M2,3 L19,11 L2,19 Z" fill="#2563eb"/></marker>
+            <marker id="p1" markerUnits="userSpaceOnUse" markerWidth="22" markerHeight="22" refX="18" refY="11" orient="auto"><path d="M2,3 L19,11 L2,19 Z" fill="#7c3aed"/></marker>
+          </defs>
+          <line x1="171" y1="140" x2="258" y2="140" stroke="#15a34a" stroke-width="13" marker-end="url(#g1)"/>
+          <line x1="422" y1="122" x2="509" y2="122" stroke="#2563eb" stroke-width="13" marker-end="url(#b1)"/>
+          <line x1="509" y1="158" x2="422" y2="158" stroke="#7c3aed" stroke-width="13" marker-end="url(#p1)"/>
+          <g text-anchor="middle" font-family="inherit">
+            <rect x="14" y="98" width="150" height="84" rx="13" fill="#eef2f6" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="89" y="135" font-size="16" font-weight="800" fill="#0f1f2e">OEM</text>
+            <text x="89" y="157" font-size="13.5" font-weight="700" fill="#3a4f63">제조사</text>
+            <rect x="265" y="88" width="150" height="104" rx="15" fill="#0d9488"/>
+            <text x="340" y="134" font-size="16.5" font-weight="800" fill="#ffffff">ICTK</text>
+            <text x="340" y="156" font-size="12.5" font-weight="600" fill="#bdf3ea">Platform</text>
+            <rect x="516" y="98" width="150" height="84" rx="13" fill="#eef2f6" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="591" y="135" font-size="16" font-weight="800" fill="#0f1f2e">IoT</text>
+            <text x="591" y="157" font-size="13.5" font-weight="700" fill="#3a4f63">디바이스</text>
+            <g font-size="13" font-weight="800">
+              <rect x="196" y="117" width="36" height="22" rx="11" fill="#ffffff" stroke="#15a34a" stroke-width="1.4"/><text x="214" y="132" fill="#15a34a">돈</text>
+              <rect x="438" y="100" width="56" height="22" rx="11" fill="#ffffff" stroke="#2563eb" stroke-width="1.4"/><text x="466" y="115" fill="#2563eb">서비스</text>
+              <rect x="438" y="158" width="56" height="22" rx="11" fill="#ffffff" stroke="#7c3aed" stroke-width="1.4"/><text x="466" y="173" fill="#7c3aed">데이터</text>
+            </g>
+          </g>
+        </svg></div>
+        <div class="bp-legend">
+          <div class="bp-row money"><div class="bp-h">💰 돈 흐름</div><p>OEM 제조사 → ICTK · <b>발급 1건당 ₩150</b><br/>칩 판매가는 그대로, 발급료가 위에 얹힘 (예: 월 28만 건 → 약 <b>₩4,270만</b>)</p></div>
+          <div class="bp-row service"><div class="bp-h">🔧 서비스 흐름</div><p>ICTK → 디바이스 · PUF 키쌍의 <b>공개키에 X.509 인증서 발급·서명</b></p></div>
+          <div class="bp-row data"><div class="bp-h">📊 데이터 흐름</div><p>디바이스 → ICTK · PUF 등록값·발급 이력 → <b>감사·정품 증명 자산화</b></p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- target -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>누구를 위한 서비스인가 <span class="q">· 타겟 고객</span></div>
+      <div class="card">
+        <div class="persona">
+          <div class="ava">강</div>
+          <div>
+            <div class="pn">강민호 책임 <span style="font-weight:600;color:var(--ink-3);font-size:13px">· 39세</span></div>
+            <div class="pr">스마트도어록 제조사 'H社' 생산기술팀 책임</div>
+            <div class="pd">매일 아침 7시 30분, 가장 먼저 생산라인 관제 모니터 앞에 앉아 그날 양산 물량 4만 대를 점검. 라인이 1분만 멈춰도 수백만 원이 날아가기에 1순위 걱정은 늘 '키 주입이 라인 속도를 못 따라가 병목이 생기는 것'. 분기마다 자동차 OEM 보안 감사가 닥치면 '몇 번 라인에서 몇 시에 몇 대를 발급했는지'를 증명해야 하는데, 지금은 공장 PC 엑셀·USB를 밤새 뒤져 짜맞춤.</div>
+          </div>
+        </div>
+        <div class="meta-grid">
+          <div><h5>🎯 주 고객</h5><p>ICTK 칩을 사다 자사 제품(도어록·월패드·차량 부품)에 탑재하는 IoT·자동차 OEM 제조사의 <b>생산기술팀·보안운영팀</b>.</p></div>
+          <div><h5>🏭 처한 상황</h5><p>하루 수만 대 양산 라인. 발급 기록이 한국·중국·베트남 공장의 PC·엑셀·USB에 제각각 흩어져, 본사가 '오늘 몇 대 발급됐는지'조차 실시간으로 알 수 없음. <span class="pain">통증 강도: 상</span></p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- problem -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>어떤 문제를 푸는가 <span class="q">· 해결하는 문제</span></div>
+      <div class="card pad">
+        <div class="prob-head">신분증을 사람이 한 장씩 손으로 발급하다 라인이 멈추고, 발급 장부가 없어 '누가 진짜 정품인지'를 끝내 증명하지 못한다</div>
+        <div class="story"><span class="tag">현장 스토리</span>
+          H社는 스마트도어록 신모델 'X3' 40만 대 양산에 막 들어갔다. 공장 구석 낡은 PC의 옛날 키발급 유틸리티는 라인 속도를 못 따라가 매일 병목을 만든다. 어느 날 그 PC의 USB가 고장 나며 발급 로그 이틀 치가 통째로 사라졌다. 두 달 뒤, 자동차 OEM이 "가짜 도어록이 정품 행세를 한다"며 <b>문제의 디바이스 DK-8842301이 정말 H社 정품 라인에서 나온 게 맞는지</b> 증명하라고 요구했다. 강 책임은 엑셀과 USB를 며칠 밤 뒤졌지만 하필 그 디바이스가 USB 고장 난 이틀 사이 발급된 것이라 기록이 아예 없었다. 칩은 분명 ICTK 정품인데, '언제·어디서 신분증을 발급했는지' 장부가 없으니 진짜인지 가짜인지 그 무엇도 입증할 수 없었다. 결국 '증명 불가'로 끝났고, OEM과의 신뢰에 금이 갔다.</div>
+        <ul class="cons">
+          <li><span class="x">✗</span>키 주입이 수작업이라 라인 속도를 못 따라가 병목·정지가 매일 발생 — 정지 1분당 수백만 원이 곧장 증발</li>
+          <li><span class="x">✗</span>발급 이력이 공장별 PC·엑셀·USB로 흩어져, 클레임·리콜 때 '이건 우리 정품'을 증명할 통합 장부가 없음</li>
+          <li><span class="x">✗</span>OEM 보안 감사 때마다 기록을 사람이 일일이 짜맞추느라 며칠씩 밤샘 — 감사 시즌마다 인건비 폭증</li>
+          <li><span class="x">✗</span>문제 디바이스 '한 대'만 골라 차단하는 폐기 체계가 없어, 사고 시 의심 물량 전체를 회수하는 대량 리콜로 번짐</li>
+          <li><span class="x">✗</span>공장(테넌트)별 데이터가 한 PC에 뒤섞여 OEM 간 기밀 유출·정산 분쟁 소지</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- value -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>무엇이 특별한가 <span class="q">· 고유 가치</span></div>
+      <div class="card pad">
+        <div class="uv-head">칩을 '한 번 팔고 끝'에서 '발급한 건수만큼 매달 버는' 구조로 — 위조 불가능한 출생신고를 클라우드가 한 대도 빠짐없이 자동으로</div>
+        <ul class="uv-points">
+          <li><span class="c">✓</span><b>수학으로 보증하는 정품:</b> 개인키를 저장하지 않고 PUF에서 그때그때 재생성하므로, 칩에서 키를 빼낼 수도 위조할 수도 없음 — '진짜 정품'을 말이 아니라 수학으로 보증.</li>
+          <li><span class="c">✓</span><b>발급 = 매출(반복 수익):</b> 디바이스가 '태어날 때마다' 건당 요금이 발생하는 SaaS. 칩을 많이 팔수록 발급 매출도 비례해 늘어나는 선순환.</li>
+          <li><span class="c">✓</span><b>검색 한 번으로 끝나는 감사:</b> 발급→활성→폐기까지 모든 신분증의 일생을 한 화면에서 추적·증명. 며칠 걸리던 클레임 대응이 클릭 몇 번.</li>
+          <li><span class="c">✓</span><b>고객사 간 완벽한 칸막이(멀티테넌시):</b> 경쟁사 여럿이 같은 플랫폼을 써도 발급 기밀이 절대 섞이지 않음.</li>
+          <li><span class="c">✓</span><b>라인 안 멈추는 전환:</b> 공장 PC의 낡은 유틸리티를 한 기능씩 차례로 클라우드로 옮기는 점진적 현대화로 안전하게 이행.</li>
+        </ul>
+        <div class="ba">
+          <div class="col before"><div class="lab">😣 도입 전</div>공장 구석 낡은 PC에서 직원이 칩을 하나씩 올려 손으로 키를 주입. 두 달 뒤 가짜 클레임이 와도 USB를 뒤지다 '기록 없음'으로 끝나, '이게 진짜 우리 정품'임을 끝내 증명하지 못함.</div>
+          <div class="arrow">→</div>
+          <div class="col after"><div class="lab">😎 도입 후</div>라인의 모든 디바이스가 클라우드에서 자동으로 위조 불가 신분증을 발급받아 즉시 등록. 'DK-8842301을 6/15 14:22:09에 3번 라인에서 발급'까지 한 화면에서 증명, PDF로 감사 제출. 그리고 발급 건수 하나하나가 곧 매출.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- features -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>핵심 기능 <span class="q">· 6가지</span></div>
+      <div class="feat-grid">
+        <div class="feat"><div class="fic">🍼</div><h4>디바이스 등록 (Enrollment)</h4>
+          <p class="exp">라인을 흐르는 디바이스를 PUF 지문으로 식별해 '정품 후보 #12345'로 시스템에 처음 접수하는 단계.</p>
+          <div class="ana">아기가 태어나면 병원이 산모수첩에 먼저 적어두듯, 컨베이어에 올라오는 순간 칩 지문으로 '바로 이 도어록'을 장부에 접수.</div>
+          <div class="ben"><b>이득:</b> 중복 발급·미발급 누락을 발급 전에 미리 잡아냄.</div></div>
+        <div class="feat"><div class="fic">🪪</div><h4>인증서 발급 (X.509)</h4>
+          <p class="exp">디바이스가 PUF로 <b>키쌍을 직접 생성</b>(개인키는 칩 안에서만 재생성·외부 유출 없음)하면, 그 <b>공개키</b>에 ICTK 발급기관(CA)이 서명해 표준 인증서(X.509)를 발급. 새 비밀키를 주는 게 아니라 공개키를 '공인'하는 것. <span class="note">※ X.509 = 은행 웹사이트 자물쇠에 쓰이는 그 표준 인증서.</span></p>
+          <div class="ana">지문으로 판 도장(개인키)은 본인이 갖고, 구청이 "이 도장은 진짜 ○○○의 것"이라며 인감증명서(X.509)를 발급해 주는 것.</div>
+          <div class="ben"><b>이득:</b> 자동화로 라인 병목 제거 + 어떤 서버·앱과도 무설정 호환.</div></div>
+        <div class="feat"><div class="fic">🔎</div><h4>디바이스 정품 검증 (Attestation)</h4>
+          <p class="exp">칩에 '암호 퀴즈(챌린지)'를 보내 정답(리스폰스)이 정확히 오는지 확인. <b>정답은 진짜 칩만 풀 수 있어</b> 정품 여부가 가려짐.</p>
+          <div class="ana">신분증을 내주기 전, 창구 직원이 지문 인식기로 '본인 맞으세요?'를 한 번 더 확인하는 절차.</div>
+          <div class="ben"><b>이득:</b> 위조·불량 칩에 정품 키가 잘못 발급되는 사고를 출하 전에 차단.</div></div>
+        <div class="feat"><div class="fic">🚫</div><h4>키 폐기·갱신 (CRL)</h4>
+          <p class="exp">분실·탈취·불량 디바이스의 신분증을 즉시 무효화하고 '무효 명단(CRL)'을 모든 시스템에 배포. 갱신도 같은 화면에서.</p>
+          <div class="ana">분실 신고된 신용카드를 즉시 정지하고 전국 가맹점에 정지 명단을 돌리는 것.</div>
+          <div class="ben"><b>이득:</b> 문제 디바이스 '딱 한 대'만 핀셋으로 차단 — 대량 리콜 회피.</div></div>
+        <div class="feat"><div class="fic">📊</div><h4>발급 현황·사용량 대시보드</h4>
+          <p class="exp">오늘·이번 달 발급량, 라인·모델별 발급, 실패율을 실시간 집계하고 건당 과금을 자동 계산. 여러 나라 공장이 한 화면에.</p>
+          <div class="ana">구청 전광판에 '오늘 발급 1,240건'이 뜨고, 그 숫자가 그달 정산 근거가 되는 것.</div>
+          <div class="ben"><b>이득:</b> 라인 상태를 숫자로 즉시 파악 + ICTK·OEM 정산 근거 투명 공유.</div></div>
+        <div class="feat"><div class="fic">🏢</div><h4>멀티테넌시 (고객사 격리)</h4>
+          <p class="exp">한 플랫폼을 여러 OEM이 함께 쓰되, 각 사의 디바이스·키·발급 데이터를 서로 절대 볼 수 없게 단단히 칸막이.</p>
+          <div class="ana">같은 빌딩에 여러 회사가 입주해도 각자 다른 층·출입카드로 자기 사무실에만 들어가는 것.</div>
+          <div class="ben"><b>이득:</b> 경쟁사와 같은 클라우드를 써도 기밀이 안 새 OEM이 안심하고 도입.</div></div>
+      </div>
+    </div>
+
+    <!-- example screens -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>예시 화면으로 보기 <span class="q">· 핵심 기능이 실제로 이렇게 보입니다</span></div>
+      <div class="screens-tabs" data-tabs="m1">
+        <button class="on" data-t="m1-a">📊 발급 운영 대시보드</button>
+        <button data-t="m1-b">🪪 신분증 상세·정품 증명</button>
+      </div>
+
+      <!-- screen A: dashboard -->
+      <div class="screen-pane on" id="m1-a">
+        <div class="win">
+          <div class="win-bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">trustprovision.ictk.com / dashboard</div></div>
+          <div class="app">
+            <aside class="side">
+              <div class="logo"><span class="d">🪪</span> TrustProvision</div>
+              <a class="on">📊 대시보드</a><a>🍼 디바이스 등록</a><a>🪪 발급 내역</a>
+              <a>🚫 폐기 관리</a><a>💳 사용량·과금</a><a>🏢 테넌트 설정</a>
+            </aside>
+            <div class="main">
+              <div class="apptop"><h3>발급 운영 대시보드</h3>
+                <div class="sp"><span class="pill">🏢 H社 스마트홈사업부 ▾</span><span class="pill live">🟢 실시간 ON</span><span class="ava-sm">강</span></div>
+              </div>
+              <div class="alert danger"><span>⚠️</span><div><b>3번 라인(LINE-03) 발급 실패율 급증 2.1%</b> (정상 0.3%) — PUF 응답 노이즈 의심</div>
+                <div class="a-act"><span class="mini">3번 라인 상세</span><span class="mini">담당자 호출</span></div></div>
+              <div class="kpis">
+                <div class="kpi"><div class="k-l">오늘 발급</div><div class="k-v">12,340건</div><div class="k-s up">▲8% vs 어제</div></div>
+                <div class="kpi"><div class="k-l">이번 달 누적</div><div class="k-v">284,910건</div><div class="k-s mut">목표 30만 · 95% 달성</div></div>
+                <div class="kpi"><div class="k-l">발급 성공률</div><div class="k-v">99.7%</div><div class="k-s mut">실패 38건 · ▼0.1%p</div></div>
+                <div class="kpi"><div class="k-l">이번 달 예상 과금</div><div class="k-v">₩42.7M</div><div class="k-s mut">284,910건 × ₩150</div></div>
+              </div>
+              <div class="row2">
+                <div class="panel"><div class="p-h">📈 시간대별 발급 추이 <span class="tagm">00시~현재 14시 · 단위 건</span></div>
+                  <svg class="chart-svg" viewBox="0 0 340 130" preserveAspectRatio="none">
+                    <line x1="6" y1="110" x2="334" y2="110" stroke="#e4eaf0"/><line x1="6" y1="70" x2="334" y2="70" stroke="#eef2f6"/><line x1="6" y1="30" x2="334" y2="30" stroke="#eef2f6"/>
+                    <polyline fill="none" stroke="#c3cdd8" stroke-width="2" stroke-dasharray="4 4" points="10,98 60,90 110,80 160,72 210,66 260,70 300,74 330,70"/>
+                    <polyline fill="none" stroke="#0d9488" stroke-width="2.6" points="10,100 60,88 110,72 160,58 210,46 250,38 300,40 330,44"/>
+                    <circle cx="250" cy="38" r="4" fill="#0d9488"/><text x="244" y="28" font-size="9" fill="#0f766e" font-weight="700">피크 2,480</text>
+                  </svg></div>
+                <div class="panel"><div class="p-h">🍩 모델별 발급 비중</div>
+                  <div class="donut-wrap">
+                    <div class="donut" style="background:conic-gradient(#0d9488 0 62%,#5eead4 62% 86%,#99f6e4 86% 100%)"><div class="dc"><b>12,340</b>총 건수</div></div>
+                    <div class="legend">
+                      <div class="lg"><span class="sw" style="background:#0d9488"></span>스마트도어록 X3 · 62% (7,651)</div>
+                      <div class="lg"><span class="sw" style="background:#5eead4"></span>도어록 X2 · 24% (2,962)</div>
+                      <div class="lg"><span class="sw" style="background:#99f6e4"></span>월패드 G1 · 14% (1,727)</div>
+                    </div>
+                  </div></div>
+              </div>
+              <div class="tbl-wrap">
+                <div class="tbl-h"><div class="p-h">🪪 최근 발급 내역 (실시간 · 2초마다 갱신)</div><div class="sp"><span class="btn pri">+ 신규 발급 배치</span><span class="btn">📄 리포트 내보내기</span></div></div>
+                <table class="mt">
+                  <thead><tr><th>디바이스ID</th><th>모델</th><th>라인</th><th>발급시각</th><th>인증서 만료</th><th>상태</th></tr></thead>
+                  <tbody>
+                    <tr><td class="id">DK-8842301</td><td>스마트도어록 X3</td><td>LINE-03</td><td>14:22:09</td><td>2031-06-15</td><td><span class="b g">✅ 발급완료</span></td></tr>
+                    <tr><td class="id">DK-8842302</td><td>스마트도어록 X3</td><td>LINE-03</td><td>14:22:11</td><td>2031-06-15</td><td><span class="b g">✅ 발급완료</span></td></tr>
+                    <tr><td class="id">DK-8842318</td><td>월패드 G1</td><td>LINE-01</td><td>14:22:14</td><td>—</td><td><span class="b r">❌ 검증실패 (재시도 2/3)</span></td></tr>
+                    <tr><td class="id">DK-8842291</td><td>도어록 X2</td><td>LINE-02</td><td>14:22:02</td><td>2031-06-15</td><td><span class="b g">✅ 발급완료</span></td></tr>
+                    <tr><td class="id">DK-8842333</td><td>스마트도어록 X3</td><td>LINE-03</td><td>14:22:16</td><td>2031-06-15</td><td><span class="b g">✅ 발급완료</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="badges"><span class="b t">🔒 H社 전용 격리 환경 · 타사 접근 차단</span><span class="b g">🟢 LINE-01 가동</span><span class="b g">🟢 LINE-02 가동</span><span class="b a">🟡 LINE-03 주의</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="scene-cap"><span class="em">🎬</span><div>오후 2시 22분, 강 책임은 KPI에서 '오늘 12,340건 ▲8%·성공률 99.7%'로 라인 순항을 1초 만에 확인합니다. 그 순간 빨간 배너로 '3번 라인 실패율 급증'이 뜨고, 실시간 표에서 <b>DK-8842318</b>이 '❌ 검증실패'로 깜빡입니다. 도넛에서 해당 모델이 14%뿐임을 보고 라인 전체를 세우는 대신 [담당자 호출]을 누릅니다 — 두 달 뒤 터질 가짜 클레임을, 발급되는 그 순간에 잡아낸 것입니다.</div></div>
+      </div>
+
+      <!-- screen B: detail -->
+      <div class="screen-pane" id="m1-b">
+        <div class="win">
+          <div class="win-bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">trustprovision.ictk.com / device / DK-8842301</div></div>
+          <div class="app solo">
+            <div class="main">
+              <div class="searchbar">🔍 DK-8842301</div>
+              <div class="bigbadge"><span class="ic">✅</span><div class="t"><b>정품 확인됨 — PUF 챌린지-리스폰스 일치</b><span>마지막 검증 2026-06-15 14:25:31 (방금 전)</span></div></div>
+              <div style="height:14px"></div>
+              <div class="d3">
+                <div class="panel"><div class="p-h">📇 디바이스 기본 정보</div>
+                  <div class="kv">
+                    <div class="r"><span>디바이스ID</span><b>DK-8842301</b></div>
+                    <div class="r"><span>모델</span><b>스마트도어록 X3</b></div>
+                    <div class="r"><span>생산라인</span><b>LINE-03 (한국 본사)</b></div>
+                    <div class="r"><span>PUF 지문(요약)</span><b>a9f3·····7c21</b></div>
+                    <div class="r"><span>테넌트</span><b>H社 스마트홈</b></div>
+                    <div class="r"><span>현재 상태</span><b style="color:#15a34a">🟢 활성(배포됨)</b></div>
+                  </div></div>
+                <div class="panel"><div class="p-h">🪪 공인 인증서(X.509) · 일생 타임라인</div>
+                  <div class="kv" style="margin-bottom:12px">
+                    <div class="r"><span>발급기관(CA)</span><b>ICTK-TrustProvision-CA</b></div>
+                    <div class="r"><span>일련번호</span><b>0x4F8A21</b></div>
+                    <div class="r"><span>유효기간</span><b>2026-06-15 ~ 2031</b></div>
+                    <div class="r"><span>키 알고리즘</span><b>ECC P-256</b></div>
+                  </div>
+                  <ul class="tl">
+                    <li><span class="tt">🍼 등록</span> <span class="ts">14:22:05</span> · LINE-03 접수 ✓</li>
+                    <li><span class="tt">🪪 인증서 발급(공개키 공인)</span> <span class="ts">14:22:09</span> · ECC P-256 ✓</li>
+                    <li><span class="tt">🔎 정품 검증 통과</span> <span class="ts">14:22:10</span> · 챌린지 일치 ✓</li>
+                    <li><span class="tt">🟢 활성(현장 배포)</span> <span class="ts">06-15</span> · 출하 ✓</li>
+                    <li><span class="tt">🚫 폐기</span> <span class="ts">—</span> · 해당 없음(유효)</li>
+                  </ul></div>
+                <div class="panel"><div class="p-h">🛠️ 조치</div>
+                  <div class="btns" style="margin-top:0;flex-direction:column;align-items:stretch">
+                    <span class="btn pri" style="justify-content:center">🔎 정품 검증 다시 실행</span>
+                    <span class="btn dng" style="justify-content:center">🚫 이 신분증 폐기(Revoke)</span>
+                  </div>
+                  <div class="alert info" style="margin:13px 0 0;align-items:flex-start"><span>📌</span>
+                    <div>이 디바이스는 H社 LINE-03에서 <b>14:22:09에 정상 발급된 정품</b>입니다. 이 화면을 PDF로 내보내 OEM 감사·클레임 증빙으로 바로 제출하세요.<div class="btns" style="margin-top:9px"><span class="btn pri">📄 정품 증명서 PDF</span></div></div></div>
+                </div>
+              </div>
+              <div style="height:13px"></div>
+              <div class="tbl-wrap">
+                <div class="tbl-h"><div class="p-h">📜 감사 로그 (시간 역순)</div></div>
+                <table class="mt">
+                  <thead><tr><th>시각</th><th>행위</th><th>수행자/시스템</th><th>결과</th></tr></thead>
+                  <tbody>
+                    <tr><td>06-15 14:25:31</td><td>정품 재검증(수동)</td><td>강민호 책임</td><td><span class="b g">✅ 일치</span></td></tr>
+                    <tr><td>06-15 14:22:10</td><td>정품 검증(자동)</td><td class="id">attestation-svc</td><td><span class="b g">✅ 일치</span></td></tr>
+                    <tr><td>06-15 14:22:09</td><td>인증서 발급</td><td class="id">provisioning-svc</td><td><span class="b g">✅ 성공</span></td></tr>
+                    <tr><td>06-15 14:22:05</td><td>디바이스 등록</td><td class="id">enrollment-svc</td><td><span class="b g">✅ 접수</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="scene-cap"><span class="em">🎬</span><div>가짜 클레임이 온 날, 강 책임은 OEM이 지목한 <b>DK-8842301</b>을 검색합니다. 엔터를 치자마자 큼직한 '✅ 정품 확인됨' 배지와 함께 '등록 → 발급 → 검증 → 활성' 타임라인이 또렷이 뜹니다. 며칠 밤 USB를 뒤지다 '기록 없음'으로 끝났을 일을, 검색 한 번으로 증명하고 [정품 증명서 PDF]로 그날 안에 회신합니다.</div></div>
+      </div>
+    </div>
+
+    <!-- business value -->
+    <div class="biz">
+      <span class="bl">💼 ICTK 비즈니스 가치</span>
+      <p>ICTK의 가장 큰 숙제는 '칩을 한 번 팔면 매출이 끝나는' 단품 판매 구조(2024년 매출 약 67억 원, 영업적자도 비슷한 규모)를 넘어 <b>매달 반복되는 SaaS 매출</b>로 흑자 전환하는 것입니다. TrustProvision은 그 첫걸음 — 칩은 그대로 팔되, 디바이스가 '태어날 때마다' 발급 1건당 요금을 더합니다. <b>칩 판매가 늘수록 발급 매출도 비례해 따라 늘어나는 선순환</b>이 생기고, 한번 올라탄 OEM은 교체 비용이 커져 오래 남습니다(LTV 상승).</p>
+      <div class="price">
+        <div class="chip"><span class="ex">예시</span>발급 단가 <b>건당 ₩150</b></div>
+        <div class="chip"><span class="ex">환산</span>하루 1.2만 건이면 <b>매일 약 ₩180만</b></div>
+        <div class="chip"><span class="ex">월</span>월 28만 건이면 <b>약 ₩4,270만</b> 반복 매출</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /MVP1 -->
+
+<!-- ================= MVP 2 ================= -->
+<section class="mvp" id="mvp2">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="num">②</div>
+      <div>
+        <span class="stage-badge">🛂 인증(Authentication) · 디바이스의 '출입심사' 단계</span>
+        <h2><span class="en">DeviceTrust Gateway</span> — 디바이스 인증·인가 게이트웨이</h2>
+        <p class="role">서버에 접속하려는 모든 기기를 문 앞에서 검사해, 칩의 '지문'으로 정품임이 증명된 기기에만 출입증을 내주는 보안 관문. 가짜는 지문이 없어 문턱에서 걸러집니다.</p>
+      </div>
+    </div>
+    <p class="tagline">"비밀번호 없이, 칩의 지문 하나로 — 정품 기기만 들여보내는 디바이스 출입심사대."</p>
+    <div class="analogy-row"><span class="em">🛂</span><div>공항 출입심사대처럼, 도어록이 서버에 접속할 때마다 여권 대신 <b>복제 불가능한 칩 지문</b>을 내밀어 신원 검사를 받고, 진짜 정품만 문을 통과합니다.</div></div>
+    <!-- blueprint (가치 흐름) -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>가치 흐름 블루프린트 <span class="q">· 누가 누구에게 돈을 내고, ICTK는 어디서 버는가</span></div>
+      <div class="bp">
+        <div class="bp-img"><svg viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="서비스 사업자가 ICTK에 인증 구독료를 내고, ICTK가 사업자에 인증 서비스를 제공하며, 디바이스 데이터가 ICTK로 모인다" style="width:100%;height:auto;display:block;background:#fbfdff">
+          <defs>
+            <marker id="g2" markerUnits="userSpaceOnUse" markerWidth="22" markerHeight="22" refX="18" refY="11" orient="auto"><path d="M2,3 L19,11 L2,19 Z" fill="#15a34a"/></marker>
+            <marker id="b2" markerUnits="userSpaceOnUse" markerWidth="22" markerHeight="22" refX="18" refY="11" orient="auto"><path d="M2,3 L19,11 L2,19 Z" fill="#2563eb"/></marker>
+            <marker id="p2" markerUnits="userSpaceOnUse" markerWidth="22" markerHeight="22" refX="18" refY="11" orient="auto"><path d="M2,3 L19,11 L2,19 Z" fill="#7c3aed"/></marker>
+          </defs>
+          <line x1="171" y1="140" x2="258" y2="140" stroke="#7c3aed" stroke-width="13" marker-end="url(#p2)"/>
+          <line x1="509" y1="122" x2="422" y2="122" stroke="#15a34a" stroke-width="13" marker-end="url(#g2)"/>
+          <line x1="422" y1="158" x2="509" y2="158" stroke="#2563eb" stroke-width="13" marker-end="url(#b2)"/>
+          <g text-anchor="middle" font-family="inherit">
+            <rect x="14" y="98" width="150" height="84" rx="13" fill="#eef2f6" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="89" y="135" font-size="16" font-weight="800" fill="#0f1f2e">IoT</text>
+            <text x="89" y="157" font-size="13.5" font-weight="700" fill="#3a4f63">디바이스</text>
+            <rect x="265" y="88" width="150" height="104" rx="15" fill="#0d9488"/>
+            <text x="340" y="134" font-size="16.5" font-weight="800" fill="#ffffff">ICTK</text>
+            <text x="340" y="156" font-size="12.5" font-weight="600" fill="#bdf3ea">Gateway</text>
+            <rect x="516" y="98" width="150" height="84" rx="13" fill="#eef2f6" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="591" y="135" font-size="15.5" font-weight="800" fill="#0f1f2e">서비스</text>
+            <text x="591" y="157" font-size="13.5" font-weight="700" fill="#3a4f63">사업자</text>
+            <g font-size="13" font-weight="800">
+              <rect x="186" y="117" width="56" height="22" rx="11" fill="#ffffff" stroke="#7c3aed" stroke-width="1.4"/><text x="214" y="132" fill="#7c3aed">데이터</text>
+              <rect x="448" y="100" width="36" height="22" rx="11" fill="#ffffff" stroke="#15a34a" stroke-width="1.4"/><text x="466" y="115" fill="#15a34a">돈</text>
+              <rect x="438" y="158" width="56" height="22" rx="11" fill="#ffffff" stroke="#2563eb" stroke-width="1.4"/><text x="466" y="173" fill="#2563eb">서비스</text>
+            </g>
+          </g>
+        </svg></div>
+        <div class="bp-legend">
+          <div class="bp-row money"><div class="bp-h">💰 돈 흐름</div><p>서비스 사업자 → ICTK · <b>디바이스당 월 ₩300 인증 구독</b> (예: 80만 대 → 월 약 <b>₩2.4억</b>)</p></div>
+          <div class="bp-row service"><div class="bp-h">🔧 서비스 흐름</div><p>ICTK → 사업자 · 디바이스 인증·인가 + <b>단기 출입증(JWT) 발급</b></p></div>
+          <div class="bp-row data"><div class="bp-h">📊 데이터 흐름</div><p>디바이스 → ICTK · 챌린지-리스폰스·인증 로그 → <b>이상·복제 탐지 강화</b></p></div>
+          <div class="bp-row sec"><div class="bp-h">🚫 보안 흐름</div><p>ICTK가 복제·위조 디바이스를 <b>문턱에서 차단(Blocked)</b></p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- target -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>누구를 위한 서비스인가 <span class="q">· 타겟 고객</span></div>
+      <div class="card">
+        <div class="persona">
+          <div class="ava">김</div>
+          <div>
+            <div class="pn">김운영 차장 <span style="font-weight:600;color:var(--ink-3);font-size:13px">· 38세</span></div>
+            <div class="pr">스마트홈 플랫폼 '홈가드' 백엔드 보안운영(SecOps)팀 리더</div>
+            <div class="pd">전국 가정에 설치된 스마트 도어록 <b>80만 대</b>가 24시간 자사 서버에 접속해 '문 열림/잠김'을 보고하는 시스템을 책임짐. 출근하면 가장 먼저 밤사이 쌓인 '비정상 접속 로그'를 여는데, '이 도어록이 진짜 우리가 판 정품인지' 확신할 방법이 없어 늘 불안. 최근 중국발 IP에서 똑같은 도어록 ID로 수천 건 접속 시도가 잡혀 사흘째 밤잠을 설침. 가장 큰 두려움은 '내 집 도어록이 뚫렸다'는 뉴스에 회사 이름이 나오는 것.</div>
+          </div>
+        </div>
+        <div class="meta-grid">
+          <div><h5>🎯 주 고객</h5><p>ICTK 칩 탑재 디바이스를 수십만~수백만 대 운영하는 <b>서비스 사업자</b>(스마트홈·산업 IoT·차량 텔레매틱스)의 백엔드·보안운영팀.</p></div>
+          <div><h5>🌐 처한 상황</h5><p>모든 도어록에 똑같은 비밀번호를 심어두는 방식이라, 단 한 대만 뜯겨 그 비밀번호가 새면 80만 대 전체가 동시에 위험(마스터키 하나가 모든 집 문을 여는 셈). <span class="pain">통증 강도: 상</span></p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- problem -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>어떤 문제를 푸는가 <span class="q">· 해결하는 문제</span></div>
+      <div class="card pad">
+        <div class="prob-head">네트워크에 붙는 이 기기가 '진짜 정품'인지, 몰래 끼어든 '가짜 복제품'인지 — 서버는 매 순간 구분할 방법이 없다</div>
+        <div class="story"><span class="tag">현장 스토리</span>
+          새벽 2시 14분, 김 차장의 휴대폰이 울린다. <b>'도어록 DK-8842301에서 1분간 접속 4,200회 시도.'</b> 정상 도어록은 1분에 한두 번 조용히 보고할 뿐인데, 똑같은 ID 하나가 1초에 70번씩 폭주하고 있었다. 누군가 진짜 도어록 한 대를 뜯어 그 안의 비밀번호(모든 도어록이 공유하는 그 비밀번호)를 빼낸 뒤, 똑같은 ID·비밀번호를 박은 가짜 도어록 수백 대를 서버에 밀어 넣는 중이었다. 무서운 건, 서버 입장에서 '진짜'와 '가짜'가 보내는 신호가 비트 하나 다르지 않다는 것. 비밀번호가 같으니 가짜도 전부 정상으로 통과했고, 김 차장은 화면을 들여다봐도 어느 게 진짜 고객 집 도어록이고 어느 게 침입자인지 가릴 수 없었다. 결국 그가 할 수 있는 건 'DK-8842301 ID를 통째로 차단'하는 것뿐 — 그 순간 가짜 수백 대와 함께 <b>그 ID를 쓰던 진짜 고객의 집 도어록도 같이 먹통</b>이 되어, 다음 날 항의 전화가 빗발쳤다.</div>
+        <ul class="cons">
+          <li><span class="x">✗</span>복제·스푸핑된 가짜 기기가 정품으로 위장해 침입. 비밀번호가 한 번만 새도 같은 비밀번호를 쓰는 전체가 동시에 뚫리는 '도미노' 구조</li>
+          <li><span class="x">✗</span>침입한 가짜 기기가 봇넷으로 동원되거나, 심하면 남의 집 도어록을 원격으로 여는 물리 침입 사고로 확대</li>
+          <li><span class="x">✗</span>진짜와 가짜를 구분 못 해, 위협을 막으려면 정상 고객까지 함께 차단 → 대규모 서비스 장애·고객 이탈</li>
+          <li><span class="x">✗</span>'우리 도어록이 뚫렸다'는 뉴스 한 줄로 브랜드가 무너지고 리콜·집단소송·과징금이 한꺼번에 닥침</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- value -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>무엇이 특별한가 <span class="q">· 고유 가치</span></div>
+      <div class="card pad">
+        <div class="uv-head">비밀번호를 아예 없애고, 복제 불가능한 칩의 '지문'으로 접속할 때마다 신원을 검증 — 칩의 가치를 '출고 한 번'에서 '운영 전 기간'으로</div>
+        <ul class="uv-points">
+          <li><span class="c">✓</span><b>훔칠 비밀번호가 없음(패스워드리스):</b> 칩 안에서만 만들어지고 절대 밖으로 안 나오는 지문으로 매 접속을 증명. 비밀번호가 없으니 빼낼 것도, 샐 것도 없음.</li>
+          <li><span class="c">✓</span><b>복제 원천 차단:</b> 아무리 정교한 가짜 도어록도 칩 지문만은 복제 불가 → 정답을 못 만들어 문턱에서 입장 거부.</li>
+          <li><span class="c">✓</span><b>매번 재확인(Zero-Trust):</b> 한 번 통과가 영원한 신뢰가 되지 않음. 접속할 때마다 짧게만 유효한 출입증을 새로 발급해 매 순간 검증.</li>
+          <li><span class="c">✓</span><b>운영 기간 내내 매출:</b> 칩을 '한 번 팔고 끝'이 아니라 기기가 켜진 5~10년 내내 인증 서비스로 과금하는 구독형 매출로 전환.</li>
+        </ul>
+        <div class="ba">
+          <div class="col before"><div class="lab">😣 도입 전</div>모든 도어록에 똑같은 비밀번호. 한 대만 뜯겨도 80만 대가 동시에 위험. 사고 나도 진짜·가짜 구분이 안 돼, 막으려면 정상 고객까지 함께 차단해야 함.</div>
+          <div class="arrow">→</div>
+          <div class="col after"><div class="lab">😎 도입 후</div>비밀번호가 아예 없음. 접속하는 도어록은 지문으로 그 자리에서 신원을 증명하고, 통과한 기기에만 15분짜리 출입증 발급. 가짜는 문턱에서 자동 차단, 복제 시도는 그 기기만 콕 집어 격리, <b>정상 고객은 무영향</b>.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- features -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>핵심 기능 <span class="q">· 6가지</span></div>
+      <div class="feat-grid">
+        <div class="feat"><div class="fic">🔑</div><h4>패스워드리스 챌린지-리스폰스 인증</h4>
+          <p class="exp">비밀번호 대신, 게이트웨이가 매번 다른 무작위 질문(챌린지)을 던지고 도어록은 칩 지문으로만 풀 수 있는 정답(리스폰스)을 돌려줌. 질문이 매번 바뀌어 엿들어도 소용없음.</p>
+          <div class="ana">'오늘의 암구호'를 매번 새로 부르고, 진짜 직원만 아는 방식으로 답하는지 보는 것.</div>
+          <div class="ben"><b>이득:</b> 훔칠 비밀번호가 없어 도청·재사용 공격 원천 차단. 칩 없는 가짜는 자동 탈락.</div></div>
+        <div class="feat"><div class="fic">🎫</div><h4>단기 출입증(JWT) 발급</h4>
+          <p class="exp">한 번 통과한 도어록에 15분만 유효한 <b>디지털 임시 통행증(JWT 토큰)</b>을 발급. 이후 요청은 통행증만 빠르게 확인하고, 15분 지나면 다시 지문 검사. <span class="note">※ JWT = 시간이 지나면 자동 만료되는 임시 통행증.</span></p>
+          <div class="ana">공항 통과 후 '오늘만 유효한 게이트 팔찌'를 채워주는 것. 시간이 지나면 풀려 다시 심사대로.</div>
+          <div class="ben"><b>이득:</b> 매 요청마다 무거운 검사 반복이 없어 서버가 빠름. 탈취돼도 곧 만료.</div></div>
+        <div class="feat"><div class="fic">🛂</div><h4>권한(scope) 기반 인가</h4>
+          <p class="exp">문을 통과한 기기라도 '무엇까지 할 수 있는지'를 잘게 나눔. 도어록은 '문 상태 보고'만 허용하고 '원격 잠금 해제'·'관리자 설정'은 막아둠.</p>
+          <div class="ana">공항을 통과해도 일반 탑승객은 게이트까지만, 직원만 활주로에 들어가는 것.</div>
+          <div class="ben"><b>이득:</b> 한 대가 뚫려도 '상태 보고'밖에 못 해, 해커가 그 도어록으로 남의 집 문을 못 엶.</div></div>
+        <div class="feat"><div class="fic">🚨</div><h4>이상 인증 탐지·복제 차단</h4>
+          <p class="exp">연속 실패, 같은 ID의 동시 다중 접속, 평소와 다른 지역 접속 등 '복제 의심'을 실시간 감시하고 자동 격리. <span class="note">※ 정상 공유기(NAT) 뒤 다수 기기와 구분하기 위해 의심 건은 우선 🟡검토중으로 분류해 오탐을 거름.</span></p>
+          <div class="ana">같은 여권 번호가 서울·부산 공항에 동시에 나타나면 '복제'로 보고 즉시 붙잡는 것.</div>
+          <div class="ben"><b>이득:</b> 새벽 공격을 담당자가 자도 자동 차단. 의심 기기만 격리해 정상 고객 무영향.</div></div>
+        <div class="feat"><div class="fic">📇</div><h4>디바이스 신원 등록·폐기</h4>
+          <p class="exp">정품 도어록의 신원(지문에서 나온 공개키)을 출입 명부에 등록. 분실·도난·폐기 기기는 명부에서 즉시 빼 영원히 못 들어오게 함.</p>
+          <div class="ana">신입을 명부에 올려 사원증을 주고, 퇴사하면 바로 지워 다음 날부터 출입을 막는 것.</div>
+          <div class="ben"><b>이득:</b> 문제 기기를 한 번의 폐기로 전체 네트워크에서 즉시 퇴출.</div></div>
+        <div class="feat"><div class="fic">📊</div><h4>실시간 인증 현황 대시보드</h4>
+          <p class="exp">오늘 인증 성공·차단·의심 기기를 한 화면에서 실시간 숫자·그래프로. 흩어진 로그를 뒤지지 않아도 밤사이 상황이 한눈에.</p>
+          <div class="ana">검문소 상황실의 대형 관제 모니터 — 통과·차단·경보가 실시간으로 흐르는 것.</div>
+          <div class="ben"><b>이득:</b> 아침 5분이면 밤사이 상황 파악, 이상을 놓치지 않고 즉시 대응.</div></div>
+      </div>
+    </div>
+
+    <!-- example screens -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>예시 화면으로 보기 <span class="q">· 핵심 기능이 실제로 이렇게 보입니다</span></div>
+      <div class="screens-tabs" data-tabs="m2">
+        <button class="on" data-t="m2-a">📊 인증 관제 대시보드</button>
+        <button data-t="m2-b">🔑 챌린지-리스폰스 인증 추적</button>
+      </div>
+
+      <!-- screen A -->
+      <div class="screen-pane on" id="m2-a">
+        <div class="win">
+          <div class="win-bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">gateway.ictk.com / dashboard</div></div>
+          <div class="app">
+            <aside class="side">
+              <div class="logo"><span class="d">🛂</span> DeviceTrust</div>
+              <a class="on">📊 대시보드</a><a>📜 인증 로그</a><a>📇 디바이스 신원</a>
+              <a>🚨 이상 탐지 <span class="ct">18</span></a><a>⚙️ 정책 설정</a><a>📋 감사 리포트</a>
+            </aside>
+            <div class="main">
+              <div class="apptop"><h3>디바이스 인증 관제</h3>
+                <div class="sp"><span class="pill">🏢 홈가드 스마트홈 ▾</span><span class="pill live">🟢 실시간 · 5초 전</span><span class="ava-sm">김</span></div>
+              </div>
+              <div class="alert danger"><span>🚨</span><div><b>02:14:07 'DK-8842301'에서 1분간 4,200회 인증 시도</b> — 동시 다중접속(복제 의심)으로 자동 격리. 정상 고객 영향 없음.</div>
+                <div class="a-act"><span class="mini">상세 보기</span><span class="mini">경보 끄기</span></div></div>
+              <div class="kpis">
+                <div class="kpi"><div class="k-l">오늘 인증 성공</div><div class="k-v">1.28M건</div><div class="k-s up">▲6% vs 어제</div></div>
+                <div class="kpi alarm"><div class="k-l">인증 차단</div><div class="k-v">3,417건</div><div class="k-s down">▲212% 급증 🔴</div></div>
+                <div class="kpi alarm"><div class="k-l">복제 의심 디바이스</div><div class="k-v">18대</div><div class="k-s down">🔴 격리 대기 (어제 0)</div></div>
+                <div class="kpi"><div class="k-l">평균 인증 응답</div><div class="k-v">42ms</div><div class="k-s up">SLA 100ms 이내 ✅</div></div>
+              </div>
+              <div class="row2">
+                <div class="panel"><div class="p-h">📈 시간대별 인증 추이 <span class="tagm">00시~24시 · 파랑=성공 빨강=차단</span></div>
+                  <svg class="chart-svg" viewBox="0 0 340 130" preserveAspectRatio="none">
+                    <line x1="6" y1="110" x2="334" y2="110" stroke="#e4eaf0"/><line x1="6" y1="60" x2="334" y2="60" stroke="#eef2f6"/>
+                    <polyline fill="none" stroke="#2563eb" stroke-width="2.4" points="10,30 50,26 90,32 130,24 170,28 210,22 250,30 290,26 330,28"/>
+                    <polyline fill="none" stroke="#dc2626" stroke-width="2.4" points="10,108 40,108 55,34 70,106 110,107 160,108 210,107 260,108 330,106"/>
+                    <circle cx="55" cy="34" r="4" fill="#dc2626"/><text x="64" y="20" font-size="9" fill="#dc2626" font-weight="700">🚨 02시 복제공격 1,900건</text>
+                  </svg></div>
+                <div class="panel"><div class="p-h">🍩 인증 결과 비율</div>
+                  <div class="donut-wrap">
+                    <div class="donut" style="background:conic-gradient(#0d9488 0 99.7%,#d97706 99.7% 99.9%,#dc2626 99.9% 100%)"><div class="dc"><b>1.29M</b>총 인증</div></div>
+                    <div class="legend">
+                      <div class="lg"><span class="sw" style="background:#0d9488"></span>성공 · 99.70%</div>
+                      <div class="lg"><span class="sw" style="background:#d97706"></span>응답 실패 · 0.20%</div>
+                      <div class="lg"><span class="sw" style="background:#94a3b8"></span>미등록 기기 · 0.08%</div>
+                      <div class="lg"><span class="sw" style="background:#dc2626"></span>복제 의심 · 0.02%</div>
+                    </div>
+                  </div></div>
+              </div>
+              <div class="tbl-wrap">
+                <div class="tbl-h"><div class="p-h">🚫 최근 차단 디바이스</div><div class="sp"><span class="btn dng">해당 ID 즉시 폐기</span><span class="btn">동일 모델 일괄 차단</span></div></div>
+                <table class="mt">
+                  <thead><tr><th>디바이스ID</th><th>모델</th><th>차단 사유</th><th>접속 IP</th><th>차단 시각</th><th>상태</th></tr></thead>
+                  <tbody>
+                    <tr><td class="id">DK-8842301</td><td>스마트도어록 X3</td><td>동시 다중접속(복제)</td><td>14.x.x.211 (중국)</td><td>02:14:07</td><td><span class="b r">🔴 격리</span></td></tr>
+                    <tr><td class="id">DK-7710945</td><td>스마트도어록 X3</td><td>챌린지 응답 불일치</td><td>211.x.x.88 (국내)</td><td>02:09:33</td><td><span class="b a">🟡 검토중</span></td></tr>
+                    <tr><td class="id">DK-5520118</td><td>도어록 Lite</td><td>폐기된 신원 재사용</td><td>185.x.x.40 (러시아)</td><td>01:47:12</td><td><span class="b gr">⛔ 차단완료</span></td></tr>
+                    <tr><td class="id">DK-8842301-c7</td><td>스마트도어록 X3</td><td>등록되지 않은 위조 신원</td><td>14.x.x.211 (중국)</td><td>02:14:05</td><td><span class="b r">🔴 격리</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="badges"><span class="b g">✅ 정상</span><span class="b a">🟡 검토중</span><span class="b r">🔴 격리</span><span class="b gr">⛔ 폐기/차단</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="scene-cap"><span class="em">🎬</span><div>아침 9시, 김 차장이 가장 먼저 이 화면을 엽니다. '인증 차단 3,417건 ▲212%'가 빨갛게 강조되고, 추이 그래프의 새벽 2시 구간에 차단선이 수직으로 솟은 스파이크가 또렷합니다. 빨간 배너엔 'DK-8842301 4,200회 시도 — 복제 의심으로 자동 격리됨, 정상 고객 영향 없음'. 예전이라면 자다 일어나 ID를 통째로 막아 진짜 고객 문까지 먹통이 됐을 일을, 시스템이 가짜만 콕 집어 이미 격리해 둔 것입니다. 도넛은 여전히 성공률 99.70% — 정상 고객은 무영향입니다.</div></div>
+      </div>
+
+      <!-- screen B -->
+      <div class="screen-pane" id="m2-b">
+        <div class="win">
+          <div class="win-bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">gateway.ictk.com / device / DK-9981204</div></div>
+          <div class="app solo">
+            <div class="main">
+              <div class="bigbadge"><span class="ic">✅</span><div class="t"><b>정상 인증됨 (정품 확인 · 칩 지문 검증 통과)</b><span>DK-9981204 · 스마트도어록 X3 · 비밀번호 0회 사용</span></div></div>
+              <div style="height:14px"></div>
+              <div class="d2">
+                <div class="panel"><div class="p-h">📇 디바이스 기본 정보</div>
+                  <div class="kv">
+                    <div class="r"><span>디바이스ID</span><b>DK-9981204</b></div>
+                    <div class="r"><span>등록일</span><b>2025-11-03</b></div>
+                    <div class="r"><span>소속 테넌트</span><b>홈가드 스마트홈</b></div>
+                    <div class="r"><span>공개키 지문</span><b>3A:7F:C1:9D:…:E2</b></div>
+                    <div class="r"><span>권한 등급</span><b>센서(읽기 전용)</b></div>
+                    <div class="r"><span>펌웨어</span><b>v2.4.1</b></div>
+                  </div>
+                  <div class="note" style="margin-top:10px">※ 이 공개키 지문은 ①TrustProvision 발급 시 부여된 신원과 동일 — '발급'과 '인증'이 한 디바이스로 이어집니다.</div>
+                </div>
+                <div class="panel"><div class="p-h">🔑 챌린지-리스폰스 인증 5단계</div>
+                  <ul class="tl">
+                    <li><span class="tt">① 접속 요청 수신</span> <span class="ts">14:22:01 · IP 211.x.x.45(국내)</span></li>
+                    <li><span class="tt">② 무작위 챌린지 발송</span> <span class="ts">14:22:01 · nonce=8f3a…d2</span><div class="note">매 접속마다 새로 생성되는 일회용 질문값(nonce)</div></li>
+                    <li><span class="tt">③ 디바이스 리스폰스 수신</span> <span class="ts">14:22:02 · 칩 PUF 지문으로 서명</span></li>
+                    <li><span class="tt">④ 공개키로 서명 검증 → ✅ 일치</span> <span class="ts">14:22:02 · 정품 확인</span></li>
+                    <li><span class="tt">⑤ 출입증(JWT) 발급</span> <span class="ts">14:22:02 · 유효 15분</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div style="height:13px"></div>
+              <div class="d2">
+                <div class="panel" style="background:linear-gradient(180deg,#fff,#f0fbf8)"><div class="p-h">🎫 발급된 출입증(JWT)</div>
+                  <div class="kv">
+                    <div class="r"><span>토큰ID</span><b>tok_4421a8</b></div>
+                    <div class="r"><span>발급 / 만료</span><b>14:22:02 / 14:37:02</b></div>
+                    <div class="r"><span>서명 / 발급자</span><b>ES256 / gw-seoul-03</b></div>
+                  </div>
+                  <div style="margin-top:12px;text-align:center;background:var(--brand-soft);border-radius:10px;padding:12px">
+                    <div style="font-size:12px;color:var(--brand-ink);font-weight:700">⏳ 남은 유효시간</div>
+                    <div style="font-size:26px;font-weight:800;color:var(--brand-ink);letter-spacing:-.02em">12분 18초</div>
+                    <div class="note" style="margin-top:2px">만료되면 다시 지문 검사를 받습니다</div>
+                  </div>
+                </div>
+                <div class="panel"><div class="p-h">🛂 권한 범위(scope)</div>
+                  <table class="mt">
+                    <thead><tr><th>권한</th><th>허용</th><th>설명</th></tr></thead>
+                    <tbody>
+                      <tr><td class="id">door.status.report</td><td><span class="b g">✅ 허용</span></td><td>문 열림/잠김 보고</td></tr>
+                      <tr><td class="id">door.battery.report</td><td><span class="b g">✅ 허용</span></td><td>배터리 잔량 보고</td></tr>
+                      <tr><td class="id">door.unlock.remote</td><td><span class="b r">⛔ 차단</span></td><td>원격 잠금 해제(권한 아님)</td></tr>
+                      <tr><td class="id">config.admin</td><td><span class="b r">⛔ 차단</span></td><td>관리자 설정 변경</td></tr>
+                      <tr><td class="id">firmware.update</td><td><span class="b a">🟡 승인 필요</span></td><td>펌웨어 업데이트</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="btns"><span class="btn">강제 재인증 요청</span><span class="btn">출입증 즉시 폐기</span><span class="btn dng">신원 영구 폐기</span><span class="btn">감사 로그 PDF</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="scene-cap"><span class="em">🎬</span><div>담당자가 도어록 <b>DK-9981204</b>가 정말 정품으로 인증되는지 확인하려고 상세를 엽니다. 타임라인을 따라 ① 접속 → ② 일회용 질문 → ③ 지문 서명 응답 → ④ ✅검증 일치 → ⑤ 15분 출입증 발급 전 과정이 초 단위로 펼쳐집니다. <b>비밀번호가 단 한 번도 오가지 않았는데</b> 정품이 또렷이 증명되고, 권한 표에서 이 도어록은 '상태 보고'만 가능하고 '원격 잠금 해제'는 ⛔라 — 설령 뚫려도 남의 집 문은 못 연다는 걸 눈으로 확인합니다.</div></div>
+      </div>
+    </div>
+
+    <div class="biz">
+      <span class="bl">💼 ICTK 비즈니스 가치</span>
+      <p>칩의 가치를 '출고 시점 1회성 판매'에서 '디바이스가 켜져 있는 운영 전 기간'으로 확장하는 핵심 사업화 시나리오입니다. 복제 불가능한 PUF 지문을 런타임 인증 서비스로 제품화하면, 칩 단품 판매의 구조적 적자를 넘어 <b>'인증 건수·연결 디바이스 수'에 비례하는 구독형 반복 매출</b>을 확보합니다. 한 번 팔면 끝이던 칩이, 기기가 살아 있는 5~10년 내내 매달 과금되는 자산으로 바뀌고, 빠르게 성장하는 Zero-Trust·디바이스 IAM 시장 진입의 명분이 됩니다.</p>
+      <div class="price">
+        <div class="chip"><span class="ex">예시</span>디바이스당 <b>월 ₩300 구독</b></div>
+        <div class="chip"><span class="ex">환산</span>80만 대면 <b>월 약 ₩2.4억</b> 반복 매출</div>
+        <div class="chip"><span class="ex">연계</span>①발급 신원을 그대로 검증 → 플랫폼 락인</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /MVP2 -->
+
+<!-- ================= MVP 3 ================= -->
+<section class="mvp" id="mvp3">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="num">③</div>
+      <div>
+        <span class="stage-badge">🩺 운영(Monitoring) · 디바이스의 '건강검진·CCTV' 단계</span>
+        <h2><span class="en">DeviceGuard</span> — 디바이스 위변조 탐지·신뢰 모니터링</h2>
+        <p class="role">출고된 디바이스가 작동하는 전 기간(보통 수년)을 24시간 지켜보다, 위변조된 바로 그 순간 사람 손이 닿기 전에 자동으로 격리하는 보안 관제 서비스. <b>발급·인증과 달리, 설치 후 수년간 주기적으로 받는 건강검진</b>입니다.</p>
+      </div>
+    </div>
+    <p class="tagline">"출고된 디바이스의 일생을 24시간 지켜보는 보안 건강검진센터 — 위변조된 순간, 사람 손이 닿기 전에 자동 격리."</p>
+    <div class="analogy-row"><span class="em">🩺</span><div>도어록이 매일 "저는 아직 멀쩡한 정품이에요"라는 건강검진 결과지를 보내고, 관제실 CCTV가 지켜보다 <b>몰래 바꿔치기된 가짜가 발견되는 순간 1~2초 만에 자동으로 잠가버리는</b> 서비스입니다.</div></div>
+    <!-- blueprint (가치 흐름) -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>가치 흐름 블루프린트 <span class="q">· 누가 누구에게 돈을 내고, ICTK는 어디서 버는가</span></div>
+      <div class="bp">
+        <div class="bp-img"><svg viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="플릿 운영사가 ICTK에 모니터링 구독료를 내고, ICTK가 운영사에 대시보드·알림을 제공하며, 디바이스 증명 데이터가 ICTK로 모인다" style="width:100%;height:auto;display:block;background:#fbfdff">
+          <defs>
+            <marker id="g3" markerUnits="userSpaceOnUse" markerWidth="22" markerHeight="22" refX="18" refY="11" orient="auto"><path d="M2,3 L19,11 L2,19 Z" fill="#15a34a"/></marker>
+            <marker id="b3" markerUnits="userSpaceOnUse" markerWidth="22" markerHeight="22" refX="18" refY="11" orient="auto"><path d="M2,3 L19,11 L2,19 Z" fill="#2563eb"/></marker>
+            <marker id="p3" markerUnits="userSpaceOnUse" markerWidth="22" markerHeight="22" refX="18" refY="11" orient="auto"><path d="M2,3 L19,11 L2,19 Z" fill="#7c3aed"/></marker>
+          </defs>
+          <line x1="171" y1="140" x2="258" y2="140" stroke="#7c3aed" stroke-width="13" marker-end="url(#p3)"/>
+          <line x1="509" y1="122" x2="422" y2="122" stroke="#15a34a" stroke-width="13" marker-end="url(#g3)"/>
+          <line x1="422" y1="158" x2="509" y2="158" stroke="#2563eb" stroke-width="13" marker-end="url(#b3)"/>
+          <g text-anchor="middle" font-family="inherit">
+            <rect x="14" y="98" width="150" height="84" rx="13" fill="#eef2f6" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="89" y="135" font-size="15.5" font-weight="800" fill="#0f1f2e">디바이스</text>
+            <text x="89" y="157" font-size="13.5" font-weight="700" fill="#3a4f63">플릿</text>
+            <rect x="265" y="88" width="150" height="104" rx="15" fill="#0d9488"/>
+            <text x="340" y="134" font-size="16" font-weight="800" fill="#ffffff">ICTK</text>
+            <text x="340" y="156" font-size="11.5" font-weight="600" fill="#bdf3ea">DeviceGuard</text>
+            <rect x="516" y="98" width="150" height="84" rx="13" fill="#eef2f6" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="591" y="135" font-size="15.5" font-weight="800" fill="#0f1f2e">플릿</text>
+            <text x="591" y="157" font-size="13.5" font-weight="700" fill="#3a4f63">운영사</text>
+            <g font-size="13" font-weight="800">
+              <rect x="186" y="117" width="56" height="22" rx="11" fill="#ffffff" stroke="#7c3aed" stroke-width="1.4"/><text x="214" y="132" fill="#7c3aed">데이터</text>
+              <rect x="448" y="100" width="36" height="22" rx="11" fill="#ffffff" stroke="#15a34a" stroke-width="1.4"/><text x="466" y="115" fill="#15a34a">돈</text>
+              <rect x="438" y="158" width="56" height="22" rx="11" fill="#ffffff" stroke="#2563eb" stroke-width="1.4"/><text x="466" y="173" fill="#2563eb">서비스</text>
+            </g>
+          </g>
+        </svg></div>
+        <div class="bp-legend">
+          <div class="bp-row money"><div class="bp-h">💰 돈 흐름</div><p>플릿 운영사 → ICTK · <b>디바이스당 월 ₩500 모니터링 구독</b> (예: 38만 대 → 월 약 <b>₩1.9억</b>)</p></div>
+          <div class="bp-row service"><div class="bp-h">🔧 서비스 흐름</div><p>ICTK → 운영사 · 실시간 <b>신뢰도 대시보드·자동 알림</b></p></div>
+          <div class="bp-row data"><div class="bp-h">📊 데이터 흐름</div><p>디바이스 → ICTK · <b>PUF 서명 attestation 리포트</b>(6시간 주기)</p></div>
+          <div class="bp-row sec"><div class="bp-h">🚫 보안 흐름</div><p>위변조 디바이스를 <b>2초 내 자동 격리(Isolate)</b>·인증서 폐기</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- target -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>누구를 위한 서비스인가 <span class="q">· 타겟 고객</span></div>
+      <div class="card">
+        <div class="persona">
+          <div class="ava">박</div>
+          <div>
+            <div class="pn">박실장 <span style="font-weight:600;color:var(--ink-3);font-size:13px">· 43세</span></div>
+            <div class="pr">스마트홈 가전사 보안운영팀장</div>
+            <div class="pd">전국 가정·아파트에 설치된 스마트 도어록 <b>38만 2천 대</b>의 보안을 혼자 책임짐. 출근하면 커피도 내리기 전에 '밤사이 뚫린 기기는 없나'를 확인. 가장 큰 스트레스는 '사고가 터진 다음에야 안다'는 구조 — 새벽에 해킹 시도가 들어오면 그의 휴대폰이 먼저 울려야 하는데, 현실은 고객 항의 전화가 먼저 울림. '예방하는 사람'이 되고 싶은데 시스템이 그를 '뒤처리하는 사람'으로 만듦.</div>
+          </div>
+        </div>
+        <div class="meta-grid">
+          <div><h5>🎯 주 고객</h5><p>수십만 대 IoT 디바이스 집단(플릿)을 운영하는 사업자와 <b>자동차 보안운영센터(SOC)</b>의 디바이스 보안 책임자.</p></div>
+          <div><h5>🛰️ 처한 상황</h5><p>출고 시점에 한 번 검증하고 끝 — 신생아 검진만 받고 평생 검진을 안 받는 셈. 현장 디바이스가 펌웨어 변조·부품 교체로 서서히 변질돼도 잡아낼 감시 체계가 없음. <span class="pain">통증 강도: 상</span></p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- problem -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>어떤 문제를 푸는가 <span class="q">· 해결하는 문제</span></div>
+      <div class="card pad">
+        <div class="prob-head">디바이스는 '한 번 믿으면 끝'이 아니다 — 설치된 뒤 조용히 변질되는데, 아무도 지켜보지 않는다</div>
+        <div class="story"><span class="tag">현장 스토리</span>
+          월요일 아침 9시 10분, 고객센터에서 다급한 전화. "실장님, 강남 OO아파트 도어록 200세대가 새벽 3시에 멋대로 열렸다 닫혔다 했대요. 항의가 빗발칩니다." 박실장은 로그 서버를 뒤지지만, 38만 대 도어록은 각자 돌아갈 뿐 <b>'나 지금 정상이에요'라고 주기적으로 보고하는 창구가 어디에도 없다.</b> 펌웨어를 바꿔치기한 복제 도어록인지, 정품의 단순 고장인지조차 구분할 방법이 없다. 설상가상으로 수집·탐지·조회·알림이 한 덩어리로 얽힌 낡은 서버(모놀리식)는 보고가 몰리는 새벽 피크에 과부하로 다운돼 있었고, 하필 사고의 결정적 신호를 통째로 놓쳤다. 점심도 거른 채 오후 내내 로그를 헤매다 '어느 기기가 문제였는지'조차 확정 못 한 채, 또 한 번 '사고가 터진 다음에' 사태를 파악한다. 그는 생각한다. <b>'내가 보안 담당인데, 왜 나는 항상 고객보다 늦게 아는 걸까.'</b></div>
+        <ul class="cons">
+          <li><span class="x">✗</span>위변조·복제 디바이스를 실시간으로 못 잡아, 한 대의 침해가 플릿 전체로 번져 수만 대가 봇넷으로 동원되는 사고로 확대</li>
+          <li><span class="x">✗</span>수집·탐지·알림이 한 덩어리라 새벽 피크에 서버가 통째로 다운, 하필 그때 가장 위험한 신호를 놓침</li>
+          <li><span class="x">✗</span>탐지 규칙 하나만 바꿔도 전체를 멈추고 재배포해야 해, 새 공격 수법에 며칠~몇 주씩 굼뜨게 대응</li>
+          <li><span class="x">✗</span>사고를 항상 사후 인지 → 초기에 막으면 적었을 손실이 리콜·고객 이탈·브랜드 붕괴로 수십 배 확대</li>
+          <li><span class="x">✗</span>'어느 기기가 문제인지'를 며칠씩 수작업 추적 — 보안 담당자의 시간이 예방이 아닌 뒤처리에만 소모</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- value -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>무엇이 특별한가 <span class="q">· 고유 가치</span></div>
+      <div class="card pad">
+        <div class="uv-head">PUF라는 '복제 불가능한 물리적 지문'을 근거로 증명하기에, 보고서 자체를 위조할 수 없다 — 그리고 의심 즉시 자동 차단</div>
+        <ul class="uv-points">
+          <li><span class="c">✓</span><b>위조 못 하는 건강검진 보고서:</b> 디바이스가 보내는 '나 정상' 보고서가 PUF 지문으로 전자 서명됨. 소프트웨어 키는 탈취되면 위조되지만, 물리적 지문은 복제 불가 — 경쟁 솔루션이 본질적으로 흉내 못 내는 차이.</li>
+          <li><span class="c">✓</span><b>탐지에서 끝나지 않고 조치까지:</b> 이상 신호가 잡히면 1~2초 안에 해당 디바이스를 격리하고 인증서를 폐기. 사람이 로그를 며칠 뒤질 때까지 기다리지 않음.</li>
+          <li><span class="c">✓</span><b>생애주기의 마지막 퍼즐 완성:</b> 발급·인증으로 부여한 신뢰가 시간이 지나며 변질되지 않는지 '사후에 지속 검증' — 출생부터 폐기까지 빈틈없이 연결.</li>
+          <li><span class="c">✓</span><b>칩을 판 뒤에도 매출:</b> 디바이스가 살아 있는 수년 내내 모니터링 구독료가 과금되는 반복 매출.</li>
+        </ul>
+        <div class="ba">
+          <div class="col before"><div class="lab">😣 도입 전</div>38만 대가 각자 조용히 돌아가다, 해킹 사실을 고객 항의 전화로 처음 알게 됨. 어느 기기가 문제인지조차 사후에 며칠 수작업으로 찾아냄. 박실장은 늘 고객보다 늦게 안다.</div>
+          <div class="arrow">→</div>
+          <div class="col after"><div class="lab">😎 도입 후</div>모든 도어록이 6시간마다 'PUF 서명된 건강검진 결과지'를 보내고, 위변조된 도어록은 탐지 즉시(2초 내) 자동 격리·인증서 폐기. 박실장 휴대폰엔 1분 내 알림이 뜨고, 아침엔 '이미 끝난 조치'를 확인만 함. <b>고객보다 먼저 안다.</b></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- features -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>핵심 기능 <span class="q">· 6가지</span></div>
+      <div class="feat-grid">
+        <div class="feat"><div class="fic">📡</div><h4>원격 증명(Attestation) 리포트 수집</h4>
+          <p class="exp">현장 모든 디바이스가 6시간마다 보내는 '나는 위변조 안 된 정품이에요' 보고서(PUF 지문 서명, 위조 불가)를 한 건도 빠짐없이 수집.</p>
+          <div class="ana">전국 38만 가구의 '건강검진 결과지'를 한 곳에서 빠짐없이 받아 접수 도장을 찍는 창구.</div>
+          <div class="ben"><b>이득:</b> 새벽에 수십만 대가 한꺼번에 보내도 누락 0 — '신호를 놓쳐 사고를 몰랐다'가 사라짐.</div></div>
+        <div class="feat"><div class="fic">🔍</div><h4>위변조·이상 탐지 룰 엔진</h4>
+          <p class="exp">보고서를 즉시 검사해 증명값이 PUF 기대값과 안 맞거나(위변조), 수상한 패턴(보고 주기 폭증, 동시 보고)을 골라내고 0~100% 신뢰도 점수를 매김.</p>
+          <div class="ana">검진 결과지를 읽으며 '이 수치는 비정상'을 짚어내는 판독 전문의. 기준표(룰)를 바꾸면 새 질병도 잡음.</div>
+          <div class="ben"><b>이득:</b> 새 공격 수법엔 룰만 교체 — 전체를 멈추거나 재배포하지 않고 당일 대응(독립 마이크로서비스).</div></div>
+        <div class="feat"><div class="fic">🚫</div><h4>이상 디바이스 격리·인증서 폐기</h4>
+          <p class="exp">위변조로 판정된 디바이스를 사람 개입 없이 1~2초 안에 네트워크에서 격리하고 인증서를 무효화. <span class="note">※ 격리 = 서버와의 통신·원격 제어 차단. 도어록의 로컬 개폐는 유지돼 집주인 출입은 영향 없음.</span></p>
+          <div class="ana">전염병 환자를 즉시 격리 병동으로 옮겨 다른 사람과 접촉을 끊는 방역. 빨리 끊을수록 집단 감염을 막음.</div>
+          <div class="ben"><b>이득:</b> 의심~차단 시간차를 '며칠'에서 '2초'로 — 한 대의 침해가 전체로 번지는 걸 물리적으로 차단.</div></div>
+        <div class="feat"><div class="fic">📊</div><h4>실시간 신뢰도 대시보드·이력 조회</h4>
+          <p class="exp">플릿 38만 대의 건강 상태를 신뢰도 점수와 신호등(🟢🟡🔴)으로. 클릭하면 그 디바이스의 증명 이력 전체를 타임라인으로. <span class="note">※ 신뢰도 = 증명 일치·보고 주기·과거 이력을 종합한 점수.</span></p>
+          <div class="ana">관제실을 가득 채운 CCTV 모니터 벽 — 전체를 훑다 수상한 화면을 클릭해 과거 영상까지 되감는 것.</div>
+          <div class="ben"><b>이득:</b> 아침마다 로그 수작업 대신 한 화면으로 '밤사이 이상 없음'을 5초 만에 확인.</div></div>
+        <div class="feat"><div class="fic">🔔</div><h4>알림 디스패치(즉시 통보)</h4>
+          <p class="exp">위변조·자동격리 같은 중요한 사건은 담당자에게 이메일·메신저로 즉시 알림. 화면을 안 봐도 절대 놓치지 않음.</p>
+          <div class="ana">화재경보기 — 사람이 자고 있어도 사이렌과 문자로 먼저 깨워주는 것.</div>
+          <div class="ben"><b>이득:</b> 고객 항의 전화보다 시스템 알림이 먼저 — '사후 뒤처리'가 '사전 인지'로 바뀜.</div></div>
+        <div class="feat"><div class="fic">⚡</div><h4>대량 이벤트 자동 확장(오토스케일)</h4>
+          <p class="exp">보고가 폭주하는 새벽 피크엔 처리 일꾼을 자동으로 늘리고, 잠잠해지면 줄여 다운 없이 받아냄. 부하가 몰리는 부분만 골라 늘림.</p>
+          <div class="ana">명절에 손님이 몰리면 계산대를 더 열고, 한산하면 닫는 대형마트의 탄력 운영.</div>
+          <div class="ben"><b>이득:</b> 새벽 보고 폭주에도 서버가 안 죽어, '피크에 다운돼 신호를 놓치던' 순간을 구조적으로 제거.</div></div>
+      </div>
+    </div>
+
+    <!-- example screens -->
+    <div class="block">
+      <div class="block-label"><span class="bar"></span>예시 화면으로 보기 <span class="q">· 핵심 기능이 실제로 이렇게 보입니다</span></div>
+      <div class="screens-tabs" data-tabs="m3">
+        <button class="on" data-t="m3-a">📊 플릿 신뢰도 관제</button>
+        <button data-t="m3-b">🚫 위변조 탐지 상세·격리</button>
+      </div>
+
+      <!-- screen A -->
+      <div class="screen-pane on" id="m3-a">
+        <div class="win">
+          <div class="win-bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">deviceguard.ictk.com / fleet</div></div>
+          <div class="app">
+            <aside class="side">
+              <div class="logo"><span class="d">🩺</span> DeviceGuard</div>
+              <a class="on">📊 대시보드</a><a>📡 증명 수집현황</a><a>🔍 이상 탐지</a>
+              <a>🚫 격리 관리 <span class="ct">14</span></a><a>🔔 알림 설정</a><a>⚙️ 룰 관리</a>
+            </aside>
+            <div class="main">
+              <div class="apptop"><h3>플릿 신뢰도 관제</h3>
+                <div class="sp"><span class="pill">🛰️ 전체 플릿 ▾</span><span class="pill" style="color:#dc2626">🔴 LIVE · 15초 전</span><span class="ava-sm">박</span></div>
+              </div>
+              <div class="alert warn"><span>⚠️</span><div><b>03:12 위변조 14대 자동 격리 완료</b> — 박실장님께 메일·메신저 알림 발송됨</div><div class="a-act"><span class="mini">자세히 보기 →</span></div></div>
+              <div class="kpis">
+                <div class="kpi"><div class="k-l">감시 중 디바이스</div><div class="k-v">382,140대</div><div class="k-s up">▲1,204 신규 등록</div></div>
+                <div class="kpi"><div class="k-l">오늘 수신 증명</div><div class="k-v">4.21M건</div><div class="k-s up">▲6% · 수집 누락 0 ✅</div></div>
+                <div class="kpi alarm"><div class="k-l">위변조 의심 탐지</div><div class="k-v">17건</div><div class="k-s down">자동 격리 14 / 검토 3</div></div>
+                <div class="kpi"><div class="k-l">플릿 평균 신뢰도</div><div class="k-v">99.92%</div><div class="k-s up">🟢 임계치 99.5% 유지</div></div>
+              </div>
+              <div class="row2">
+                <div class="panel"><div class="p-h">📈 24시간 신뢰도 추이 <span class="tagm">Y축 99.0~100%</span></div>
+                  <svg class="chart-svg" viewBox="0 0 340 130" preserveAspectRatio="none">
+                    <line x1="6" y1="30" x2="334" y2="30" stroke="#eef2f6"/><line x1="6" y1="70" x2="334" y2="70" stroke="#eef2f6"/><line x1="6" y1="108" x2="334" y2="108" stroke="#e4eaf0"/>
+                    <polyline fill="none" stroke="#15a34a" stroke-width="2.6" points="10,26 60,26 100,27 130,26 145,78 160,52 180,34 210,30 260,30 330,30"/>
+                    <circle cx="145" cy="78" r="4.5" fill="#dc2626"/><text x="150" y="92" font-size="9" fill="#dc2626" font-weight="700">03:12 위변조 17건 → 99.4%</text>
+                    <text x="190" y="18" font-size="9" fill="#15a34a" font-weight="700">격리 후 99.92% 회복</text>
+                  </svg></div>
+                <div class="panel"><div class="p-h">🍩 디바이스 상태 분포</div>
+                  <div class="donut-wrap">
+                    <div class="donut" style="background:conic-gradient(#15a34a 0 99.5%,#d97706 99.5% 99.99%,#dc2626 99.99% 100%)"><div class="dc"><b>99.50%</b>신뢰</div></div>
+                    <div class="legend">
+                      <div class="lg"><span class="sw" style="background:#15a34a"></span>🟢 정상 · 99.50% (380,229대)</div>
+                      <div class="lg"><span class="sw" style="background:#d97706"></span>🟡 점검필요 · 0.49% (1,873대)</div>
+                      <div class="lg"><span class="sw" style="background:#dc2626"></span>🔴 격리됨 · 0.01% (38대)</div>
+                    </div>
+                  </div></div>
+              </div>
+              <div class="tbl-wrap">
+                <div class="tbl-h"><div class="p-h">🔍 실시간 이상 탐지 이벤트</div><div class="sp"><span class="btn dng">선택 인증서 즉시 폐기</span><span class="btn">일일 리포트 PDF</span></div></div>
+                <table class="mt">
+                  <thead><tr><th>탐지시각</th><th>디바이스ID</th><th>모델</th><th>이상유형</th><th>신뢰도</th><th>조치상태</th></tr></thead>
+                  <tbody>
+                    <tr><td>03:12:47</td><td class="id">DK-8842301</td><td>스마트도어록 X3</td><td>🔴 증명값 불일치(위변조)</td><td><span class="b r">12%</span></td><td><span class="b g">✅ 자동격리</span></td></tr>
+                    <tr><td>03:13:02</td><td class="id">DK-7710945</td><td>스마트도어록 X3</td><td>🟡 보고주기 이상(17분 폭증)</td><td><span class="b a">64%</span></td><td><span class="b a">⏳ 검토중</span></td></tr>
+                    <tr><td>03:15:20</td><td class="id">DK-9920514</td><td>도어록 Pro</td><td>🔴 복제 의심(동일ID 중복보고)</td><td><span class="b r">8%</span></td><td><span class="b g">✅ 자동격리</span></td></tr>
+                    <tr><td>03:21:08</td><td class="id">DK-6633870</td><td>스마트도어록 X3</td><td>🟡 펌웨어 버전 불일치</td><td><span class="b a">71%</span></td><td><span class="b a">⏳ 검토중</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="badges"><span class="b g">🟢 신뢰</span><span class="b a">🟡 점검필요</span><span class="b r">🔴 격리됨</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="scene-cap"><span class="em">🎬</span><div>박실장이 아침 9시에 대시보드를 엽니다. 경보 배너의 '03:12 위변조 14대 자동 격리 완료'와 KPI '위변조 17건·평균 신뢰도 99.92% 🟢'를 5초 만에 파악합니다. 추이 차트엔 새벽 3시 12분 신뢰도가 99.4%로 잠깐 떨어졌다 격리 후 회복된 흔적이 빨간 점으로 찍혀 있습니다. 표에서 <b>DK-8842301</b>이 '증명값 불일치(위변조)·신뢰도 12%'로 이미 자동 격리(✅)된 걸 확인 — 사고가 커지기 전에, 이미 끝나 있는 조치를 확인만 하면 됩니다. 더는 로그를 며칠씩 뒤지지 않습니다.</div></div>
+      </div>
+
+      <!-- screen B -->
+      <div class="screen-pane" id="m3-b">
+        <div class="win">
+          <div class="win-bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">deviceguard.ictk.com / incident / DK-8842301</div></div>
+          <div class="app solo">
+            <div class="main">
+              <div class="bigbadge r"><span class="ic">🔴</span><div class="t"><b>위변조 확정 — DK-8842301 (스마트도어록 X3)</b><span>펌웨어 해시가 PUF 지문 서명과 불일치 · 현재 신뢰도 12%</span></div></div>
+              <div style="height:14px"></div>
+              <div class="d2">
+                <div class="panel"><div class="p-h">📇 디바이스 기본정보</div>
+                  <div class="kv">
+                    <div class="r"><span>모델</span><b>스마트도어록 X3</b></div>
+                    <div class="r"><span>디바이스ID</span><b>DK-8842301</b></div>
+                    <div class="r"><span>발급일</span><b>2026-03-02</b></div>
+                    <div class="r"><span>설치위치</span><b>서울 강남 OO아파트 1203동 1504호</b></div>
+                    <div class="r"><span>소유 테넌트</span><b>스마트홈케어㈜</b></div>
+                  </div>
+                  <div style="margin-top:12px;text-align:center;background:var(--red-soft);border-radius:10px;padding:12px">
+                    <div style="font-size:12px;color:#9a2020;font-weight:700">신뢰도 (격리 직전 99.9% → )</div>
+                    <div style="font-size:26px;font-weight:800;color:#dc2626">12% 🔴</div>
+                    <div class="note" style="margin-top:2px">위변조 탐지 후 87.9%p 급락</div>
+                  </div>
+                </div>
+                <div class="panel"><div class="p-h">🔬 탐지 근거 (증명값 비교)</div>
+                  <table class="mt">
+                    <thead><tr><th>검증항목</th><th>기대값(PUF)</th><th>수신값</th><th>판정</th></tr></thead>
+                    <tbody>
+                      <tr><td>펌웨어 해시</td><td class="id">a9f3…7c2</td><td class="id">b1e0…44d</td><td><span class="b r">❌ 불일치</span></td></tr>
+                      <tr><td>챌린지 서명</td><td>정상 검증</td><td>검증 실패</td><td><span class="b r">❌ 위조</span></td></tr>
+                      <tr><td>보고 주기</td><td>6시간</td><td>17분(폭증)</td><td><span class="b a">⚠️ 이상</span></td></tr>
+                      <tr><td>ID 유일성</td><td>단일 위치</td><td>2곳 동시보고</td><td><span class="b r">❌ 복제</span></td></tr>
+                    </tbody>
+                  </table>
+                  <div class="p-h" style="margin:16px 0 8px">⏱️ 조치 타임라인 <span class="tagm" style="margin-left:auto">총 4초</span></div>
+                  <ul class="tl">
+                    <li class="bad"><span class="tt">위변조 탐지(룰 엔진)</span> <span class="ts">03:12:47</span></li>
+                    <li><span class="tt">네트워크 격리 실행</span> <span class="ts">03:12:49 (+2초)</span></li>
+                    <li><span class="tt">인증서 폐기·CRL 등재</span> <span class="ts">03:12:50 (+1초)</span></li>
+                    <li><span class="tt">담당자 알림 발송</span> <span class="ts">03:12:51 (메일·메신저)</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div style="height:13px"></div>
+              <div class="d2">
+                <div class="panel"><div class="p-h">✅ 현재 조치 상태</div>
+                  <div class="badges" style="margin-top:0"><span class="b g">✅ 격리됨</span><span class="b g">✅ 인증서 폐기됨</span><span class="b g">✅ 알림 발송됨</span></div>
+                  <div class="btns"><span class="btn">격리 해제</span><span class="btn">인증서 재발급 요청</span><span class="btn pri">현장 점검 티켓 생성</span><span class="btn">오탐(false positive) 신고</span></div>
+                  <div class="note" style="margin-top:10px">※ 🟡검토중 단계와 [오탐 신고]·[격리 해제]가 정상 기기 오인 차단(오탐)을 되돌리는 안전장치입니다.</div>
+                </div>
+                <div class="panel"><div class="p-h">🔔 발송된 알림 미리보기</div>
+                  <div class="alert warn" style="margin:0;align-items:flex-start"><span>🔔</span><div><b>[DeviceGuard] 위변조 자동격리 알림</b><br/>DK-8842301(서울 강남 OO아파트 1203동 1504호)이 06/14 03:12 위변조로 판정되어 격리·인증서 폐기 완료. 확인 요망.<div class="note" style="margin-top:6px">수신: 박실장 · 채널: 이메일·카카오워크 동시 · 발송 03:12:51</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="scene-cap"><span class="em">🎬</span><div>박실장이 격리된 <b>DK-8842301</b>의 상세로 들어옵니다. '증명값 비교 표'에서 펌웨어 해시가 기대값(a9f3…7c2)과 다른 값(b1e0…44d)으로 들어왔고, 서명 검증도 실패, 같은 ID가 두 곳에서 동시 보고된 걸 근거로 확인 — 명백한 복제 도어록입니다. 조치 타임라인을 보니 탐지(03:12:47)부터 격리·폐기·알림까지 <b>단 4초 만에 자동으로</b> 끝나 있습니다. 사람 손이 닿기 전에 위협이 차단됐음을 확인하고, [현장 점검 티켓 생성]을 눌러 1504호에 점검 기사를 보냅니다. 과거였다면 며칠 걸렸을 일이 그가 출근하기도 전에 끝나 있었습니다.</div></div>
+      </div>
+    </div>
+
+    <div class="biz">
+      <span class="bl">💼 ICTK 비즈니스 가치</span>
+      <p>그동안 ICTK는 '칩을 한 번 팔면 끝'인 단품 판매에 갇혀, 디바이스가 현장에서 수년간 살아 움직여도 돌아오는 돈이 없었습니다. DeviceGuard는 바로 이 <b>'운영 기간'을 매출원</b>으로 바꿉니다. 디바이스가 작동하는 수년 내내 모니터링 구독료가 과금되는 반복 매출을 만들어, 발급·인증에 이어 생애주기의 마지막 매출원을 더합니다. 특히 PUF '복제 불가능한 물리 지문' 덕에 증명 보고서 자체를 위조할 수 없어, <b>소프트웨어 키 기반 경쟁 솔루션이 흉내 못 내는 신뢰도</b>가 차별점입니다. '칩을 많이 팔수록 감시 대상도, 모니터링 매출도 함께 커지는' 선순환을 만듭니다.</p>
+      <div class="price">
+        <div class="chip"><span class="ex">예시</span>디바이스당 <b>월 ₩500 모니터링</b></div>
+        <div class="chip"><span class="ex">환산</span>38만 대면 <b>월 약 ₩1.9억</b> 반복 매출</div>
+        <div class="chip"><span class="ex">차별</span>PUF 서명 = 경쟁사가 못 흉내내는 신뢰</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /MVP3 -->
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div style="flex:1;min-width:280px">
+      <h4>세 서비스가 모이면 → 하나의 디바이스 보안 플랫폼</h4>
+      <p><b>발급(TrustProvision) → 인증(DeviceTrust Gateway) → 운영(DeviceGuard)</b>. 셋 다 '복제 불가능한 지문(PUF)'이라는
+        같은 무기를 다른 장면에서 쓰며, 디바이스 한 대의 일생을 빈틈없이 보호합니다. ICTK는 이로써 '칩을 파는 팹리스'에서
+        '디바이스의 신뢰를 파는 플랫폼 기업'으로 나아갑니다.</p>
+      <div class="ln">
+        <a href="mvp-candidates.md">📄 MVP 추천서 (mvp-candidates.md)</a>
+        <a href="#top">↑ 맨 위로</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="note">※ 본 페이지는 ICTK AM 부트캠프 '공통 MVP' 이해를 돕기 위한 자료입니다. 화면 속 수치·디바이스ID·인물(강민호·김운영·박실장)·
+      과금 단가는 모두 이해를 돕기 위한 <b>가상 예시</b>이며 실제 ICTK 데이터가 아닙니다.</p>
+  </div>
+</footer>
+
+<script>
+  // tab switching
+  document.querySelectorAll('.screens-tabs').forEach(function(group){
+    var g = group.getAttribute('data-tabs');
+    group.querySelectorAll('button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var id = btn.getAttribute('data-t');
+        group.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', b===btn); });
+        document.querySelectorAll('[id^="'+g+'-"]').forEach(function(p){ p.classList.toggle('on', p.id===id); });
+      });
+    });
+  });
+  // nav active on scroll
+  var secs = ['top','mvp1','mvp2','mvp3'].map(function(id){return document.getElementById(id);});
+  var links = {};
+  document.querySelectorAll('.nav-links a').forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        Object.values(links).forEach(function(l){l.classList.remove('active');});
+        var id = e.target.id; if(links[id]) links[id].classList.add('active');
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(function(s){ if(s) obs.observe(s); });
+</script>
+</body>
+</html>
